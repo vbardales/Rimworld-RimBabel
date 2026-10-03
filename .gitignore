@@ -5,7 +5,9 @@
 Source/obj/
 Source/bin/
 Tests/obj/
+Tests/Game/obj/
 Tests/bin/
+Tests/Game/bin/
 
 # Development environments
 .vs/

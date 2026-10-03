@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Runs the SHIPPED RimBabel.dll against the real RimWorld assemblies, outside the game.
+
+    What it covers: the extractor. It builds a few Defs by hand, registers them in the game's own
+    DefDatabase, and checks which texts SourceScanner lists for a mod, and that the package built
+    from them is well formed. The Def walk is the game's (DefInjectionUtility), so this is the real
+    code answering, not a copy of it.
+
+    What it cannot cover: a real mod loaded by the game (XML parsing, patches, inheritance,
+    translations already loaded), and anything that needs Unity's runtime. Those need a game.
+
+    Needs a RimWorld installation. If yours is elsewhere, override RimWorldManaged on the command
+    line, or pass the Managed folder as the first argument. Build the mod first: the assembly under
+    test is copied in from Mod/Assemblies.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <AssemblyName>RimBabel.GameTests</AssemblyName>
+    <RootNamespace>RimBabel.GameTests</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <RimWorldManaged Condition="'$(RimWorldManaged)' == ''">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed</RimWorldManaged>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyMetadata Include="RimWorldManaged" Value="$(RimWorldManaged)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RimBabel">
+      <HintPath>$(MSBuildThisFileDirectory)..\..\Mod\Assemblies\RimBabel.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(RimWorldManaged)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(RimWorldManaged)\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(RimWorldManaged)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

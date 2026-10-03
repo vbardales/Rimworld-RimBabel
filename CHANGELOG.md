@@ -17,4 +17,5 @@ written once the Workshop item exists ("creation of a publishId file") and says 
 - Reading a loaded mod's texts in game: its Keyed files and every Def string the game itself would let a translation
   inject, through a developer-menu action that writes the package for the active language. Developer tooling for now;
   no window yet.
-- 43 offline checks of the package core and the Keyed reader.
+- 43 offline checks of the package core and the Keyed reader, and 32 checks of the extractor against the game's own
+  assemblies (hand-built Defs in the real `DefDatabase`, walked by the game's `DefInjectionUtility`).

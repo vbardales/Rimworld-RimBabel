@@ -66,7 +66,7 @@ namespace RimBabel.Core
         {
             if (string.IsNullOrEmpty(previous)) return "0.1.0";
             if (!diff.HasChanges) return previous;
-            string[] p = previous.Split('.');
+            string[] p = previous.Split(new[] { '.' });
             int major, minor;
             if (p.Length != 3 || !int.TryParse(p[0], out major) || !int.TryParse(p[1], out minor)) return previous;
             return major + "." + (minor + 1) + ".0";

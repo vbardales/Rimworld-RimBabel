@@ -19,13 +19,38 @@ line breaks as the game reads them, leaves pending texts out, keeps `PublishedFi
 update, lists the changelog newest first, adds nothing when nothing moved, and refuses a hand-made language folder, a
 path-like language name and a key that is not an XML name.
 
+## What runs against the game's assemblies, still outside the game
+
+```bash
+dotnet build Source/RimBabel.csproj -c Release && dotnet build Tests/Game/RimBabel.GameTests.csproj -c Release && Tests/Game/bin/Release/RimBabel.GameTests.exe
+```
+
+Needs a RimWorld install (the `Managed` folder; override `RimWorldManaged` or pass it as the first argument). It runs
+the **shipped** `Mod/Assemblies/RimBabel.dll` against the real `Assembly-CSharp`, builds a few Defs by hand, registers them
+in the game's own `DefDatabase` and lets `SourceScanner` walk them with the game's own `DefInjectionUtility`. 32 checks,
+all green on 2026-10-03: Keyed texts listed with their placeholders and real line breaks; a def's label and description
+listed under the exact injection path; a one-word label and description taken because the game marks both
+`MustTranslate`; a texture path (even with a space in it), a defName, another mod's def and a generated def left out; a
+text inside a list of objects listed through the list; every path a valid XML element name; no entry twice; then the
+package built from the scan (id, source named, manifest complete, unknown licence blocks publication), a second scan
+changing nothing, and an edited source text being the only change. The scanner's rule is also checked on real fields.
+
+**A mutation check was run**: removing the "holds a space" rule makes one check fail, so those checks can fail.
+Removing the former `label` clause changed nothing, which showed it was dead code (`Def.label` is `MustTranslate`),
+and it was deleted.
+
+What this cannot show: a real mod loaded by the game (XML parsing, patches, inheritance, translations already
+loaded, mods that add their own assemblies), and the developer-menu action itself, which needs Unity. Two traps of this
+setup, so the next person does not lose time: Defs are built **without their constructors** (`ThingDef`'s reaches
+Unity's shader loading), and `GenTypes`' type cache is filled by hand, because it logs through Unity when 27 game
+types fail to load on this runtime. The test host is .NET Framework and the game runs Unity's Mono, so a BCL overload
+that only exists in the newer profile can fail here without being a defect in the game (three were met and avoided:
+`Trim(char)`, `TrimStart(char)`, `Split(char, ...)`; the code now passes arrays).
+
 ## What needs the game
 
-The extractor (`Source/Game`) reads a mod's texts through `DefInjectionUtility`. It compiles, but a real list of Defs
-only exists in a running game, so what it returns for a real mod is unverified. Its file reading is plain C# and is
-tested above (`KeyedXml`: comments and nested elements skipped, backslash-n as a line break, the first load folder
-wins a key, empty values dropped, another language not read). Not written yet: the settings page, the shortcut, the
-engines' calls. The Pickle
+A real list of Defs only exists in a running game, so what the extractor returns for a real mod is unverified. Not
+written yet: the settings page, the shortcut, the engines' calls. The Pickle
 suite under `Tests/Pickle/` does not exist. Gate `preTest -> done` needs it written, with its scope justified, or its
 absence justified in this file: the layer that is plain C# is proved above, and what only a running game can show
 is the page layout and the real reading of a mod's texts. Engines are exercised with a fake endpoint, not the real

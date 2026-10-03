@@ -60,18 +60,18 @@ namespace RimBabel.Game
         }
 
         /// <summary>
-        /// Which strings of a Def are texts for a player. The game marks some (MustTranslate, MayTranslate)
-        /// and treats the rest as text when they hold a space; a label of one word is the common miss of that
-        /// rule, so the label field is always taken. This is a heuristic: the blacklist is where a mod's own
-        /// exceptions go.
+        /// Which strings of a Def are texts for a player: the game's own rule for a missing translation
+        /// (a field marked MustTranslate, or any other string that holds a space), plus MayTranslate fields.
+        /// Def.label and Def.description are MustTranslate, so a one-word label is taken. A one-word string
+        /// in an unmarked field is not, which is the rule's known miss: the blacklist and a later pass are
+        /// where a mod's own exceptions go.
         /// </summary>
         public static bool IsText(string text, FieldInfo field)
         {
             if (string.IsNullOrEmpty(text)) return false;
             return field.HasAttribute<MustTranslateAttribute>()
                 || field.HasAttribute<MayTranslateAttribute>()
-                || text.IndexOf(' ') >= 0
-                || field.Name == "label";
+                || text.IndexOf(' ') >= 0;
         }
     }
 }

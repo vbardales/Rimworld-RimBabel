@@ -239,7 +239,7 @@ namespace RimBabel.Core
             string line = first
                 ? "- First generation: " + merge.New.Count + " texts."
                 : "- " + merge.New.Count + " new, " + merge.Changed.Count + " changed in the source, " + merge.Removed.Count + " removed.";
-            string older = rest.Trim().Length == 0 ? "" : "\n" + rest.TrimStart('\n');
+            string older = rest.Trim().Length == 0 ? "" : "\n" + rest.TrimStart(new[] { '\n' });
             WriteText(path, head + "\n\n## " + m.PackageVersion + " - " + today.ToString("yyyy-MM-dd") + "\n\n" + line + "\n" + older);
         }
 

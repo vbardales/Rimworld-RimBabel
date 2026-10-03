@@ -19,8 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- The Pickle suite has its own project. -->
+    <!-- The Pickle suite and the game-assembly tests have their own projects. -->
     <Compile Remove="Pickle\**" />
+    <Compile Remove="Game\**" />
   </ItemGroup>
 
 </Project>

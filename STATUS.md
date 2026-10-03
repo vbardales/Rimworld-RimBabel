@@ -22,7 +22,7 @@ workshop:      N/A
 remaining:
   - unverified: dansMonoRepo to horsMonoRepo - the GitHub repository does not exist yet, so no remote and no first pushed commit (the local git repository was initialised on 2026-10-03, nothing committed)
   - unverified: ModIcon, Preview and the Steam description are not made (the owner generates the icon; nothing here generates one)
-  - unverified: the extractor (Source/Game/SourceScanner.cs) compiles against the 1.6 reference assemblies but has never run in a game: whether it lists the right texts of a real mod, and whether the dev-menu action writes a package, are not proved
+  - unverified: the extractor (Source/Game/SourceScanner.cs) is proved against hand-built Defs in the game's own DefDatabase (32 checks, Tests/Game, 2026-10-03) but has never run in a game: whether it lists the right texts of a real loaded mod, and whether the dev-menu action writes a package, are not proved
   - defect: no settings page, no engines, no import, no glossary or blacklist yet (the Mod class returns an empty settings category, so there is no empty page)
   - unverified: the About.xml description is a draft and does not end with the "Source code on GitHub" link yet, because the repository does not exist (PUBLISHING.md, criterion of the step to preOptions); no <url> field either
   - unverified: Mod/Assemblies/RimBabel.dll is committed from the sources of 2026-10-03; the shipped assembly must match the sources before any upload

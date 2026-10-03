@@ -43,7 +43,7 @@ namespace RimBabel.Game
             foreach (char c in s.ToLowerInvariant())
                 if (char.IsLetterOrDigit(c)) sb.Append(c);
                 else if (sb.Length > 0 && sb[sb.Length - 1] != '.') sb.Append('.');
-            return sb.ToString().Trim('.');
+            return sb.ToString().Trim(new[] { '.' });
         }
 
         private static string Safe(string s)
