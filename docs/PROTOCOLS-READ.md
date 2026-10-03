@@ -29,7 +29,7 @@ so a plain `git log` from the monorepo answers for the commit that removed them:
 | `PickleTools/Headless/README.md` | lines 1-260 of 509 (read 2026-10-04 before the first request: options, exit codes, filter terms, passes, maps); the rest not read | ed4e73a, 2026-09-26 | Yes for the part read |
 | `PickleTools/docs/steps.md` | **not read** | bb732f7, 2026-10-02, 344 lines | **Not yet**: the step catalogue, to consult before writing a step |
 | `Rimworld-Release-Admin/docs/OPERATIONS.md` | whole | 3c03f51, 2026-09-26, 112 lines | Yes: dry-run of the exact SHA, 40-character SHA, only the owner approves `steam-production`, CI creates tag and release |
-| `Rimworld-Ticket-Dispatcher/docs/WELCOME.md` | whole | 77ca9d7, 2026-09-27, 150 lines | Yes: which test for which task, a request carries no SHA, the list of documents to note |
+| `Rimworld-Ticket-Dispatcher/docs/WELCOME.md` | whole at 77ca9d7 (150 lines), then point 6 only at ada1ab1 (2026-10-04, 159 lines: priority is the Ticket Manager's, size via `-Tests`, batching of same-mod requests, `-NoBatch`) | Yes: which test for which task, a request carries no SHA, the list of documents to note |
 | `Rimworld-Ticket-Dispatcher/docs/SUBMIT.md` | whole | 294c43d, 2026-10-03 (M), 159 lines | Yes for the first request: options, `-EvidenceDir`, priority is the Ticket Manager's, `-NoBatch`, exit codes |
 
 ## Documents of this repository (no commit yet)
