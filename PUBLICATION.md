@@ -36,6 +36,8 @@ Translate RimWorld mods into your language, once, the same way in every mod, and
 RimBabel reads the texts of a mod, translates what is missing with the engine you choose, and writes a translation package: a normal RimWorld mod that never touches the mod it translates. Run it again when the source mod changes and only the texts that moved are translated again.
 
 Work in progress.
+
+[Source code on GitHub](https://github.com/vbardales/Rimworld-RimBabel)
 ```
 
 ## Thanks to post

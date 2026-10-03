@@ -6,9 +6,12 @@
   <supportedVersions>
     <li>1.6</li>
   </supportedVersions>
+  <url>https://github.com/vbardales/Rimworld-RimBabel</url>
   <description>Translate RimWorld mods into your language, once, the same way in every mod, and ship the result as a mod of its own.
 
 RimBabel reads the texts of a mod, translates what is missing with the engine you choose, and writes a translation package: a normal RimWorld mod that never touches the mod it translates. Run it again when the source mod changes and only the texts that moved are translated again.
 
-Work in progress: this description is a draft and the mod does not do anything in game yet.</description>
+Work in progress: this description is a draft and the mod does not do much in game yet.
+
+Source code on GitHub (https://github.com/vbardales/Rimworld-RimBabel)</description>
 </ModMetaData>

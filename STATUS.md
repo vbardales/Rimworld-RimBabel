@@ -4,7 +4,7 @@ translation_en: unchecked
 translation_fr: unchecked
 mod:          RimBabel
 packageId:    nelim.rimbabel
-repo:         N/A
+repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
 stage:        port
