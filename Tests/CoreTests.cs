@@ -21,6 +21,7 @@ internal static class Program
         WriterLayout();
         WriterUpdate();
         WriterRefusals();
+        KeyedReading();
         Console.WriteLine(checks + " checks, " + failures + " failed");
         return failures == 0 ? 0 : 1;
     }
@@ -146,6 +147,28 @@ internal static class Program
         PackageResult same = PackageWriter.Write(root, Spec(), new[] { Entry.Keyed("A", "one"), Entry.Keyed("C", "three") }, new DateTime(2026, 10, 5));
         Check(same.Version == "0.2.0" && !File.ReadAllText(Path.Combine(root, "CHANGELOG.md")).Contains("2026-10-05"), "no change, no new version, no changelog line");
         Directory.Delete(root, true);
+    }
+
+    private static void KeyedReading()
+    {
+        var kv = KeyedXml.Parse("<LanguageData><!-- c --><A>one\\ntwo</A><B>x &amp; y</B><C><d>nested</d></C></LanguageData>");
+        Check(kv.Count == 2, "keyed: comment and nested element are skipped");
+        Check(kv[0].Value == "one\ntwo", "keyed: backslash-n becomes a line break");
+        Check(kv[1].Value == "x & y", "keyed: entities are decoded");
+        Check(KeyedXml.Parse("<Other><A>x</A></Other>").Count == 0, "keyed: a file that is not LanguageData is empty");
+
+        string hi = Temp(), lo = Temp();
+        foreach (string[] f in new[] { new[] { hi, "<LanguageData><A>high</A><B>b</B></LanguageData>" }, new[] { lo, "<LanguageData><A>low</A><C>c</C><E></E></LanguageData>" } })
+        {
+            string d = Path.Combine(f[0], "Languages", "English", "Keyed");
+            Directory.CreateDirectory(d);
+            File.WriteAllText(Path.Combine(d, "X.xml"), f[1]);
+        }
+        var entries = KeyedXml.ReadFolders(new[] { hi, lo, Path.Combine(hi, "missing") }, "English");
+        Check(entries.Count == 3 && entries.Single(e => e.Key == "A").Source == "high", "keyed: the first load folder wins a key");
+        Check(entries.All(e => e.Key != "E"), "keyed: an empty value is not a text");
+        Check(KeyedXml.ReadFolders(new[] { hi }, "French").Count == 0, "keyed: another language is not read");
+        Directory.Delete(hi, true); Directory.Delete(lo, true);
     }
 
     private static void WriterRefusals()

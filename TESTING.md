@@ -11,7 +11,7 @@ The package core (`Source/Core`) is plain C# and its tests compile it in directl
 dotnet run --project Tests/RimBabel.Tests.csproj
 ```
 
-36 checks, exit code 1 when one fails; all passed on 2026-10-03. They cover: the source hash ignores the newline
+43 checks, exit code 1 when one fails; all passed on 2026-10-03. They cover: the source hash ignores the newline
 convention; the manifest round-trips special characters, newlines, status, engine, glossary and blacklist, and refuses a
 newer schema; the merge keeps unchanged and human text, makes a stale draft of a changed source, never touches a locked
 text, reports new and removed keys, and bumps the version only on a change; the writer lays out the package, escapes
@@ -19,9 +19,13 @@ line breaks as the game reads them, leaves pending texts out, keeps `PublishedFi
 update, lists the changelog newest first, adds nothing when nothing moved, and refuses a hand-made language folder, a
 path-like language name and a key that is not an XML name.
 
-## What needs the game, not written yet
+## What needs the game
 
-Reading a mod's texts through `DefInjectionUtility`, the settings page, the shortcut, the engines' calls. The Pickle
+The extractor (`Source/Game`) reads a mod's texts through `DefInjectionUtility`. It compiles, but a real list of Defs
+only exists in a running game, so what it returns for a real mod is unverified. Its file reading is plain C# and is
+tested above (`KeyedXml`: comments and nested elements skipped, backslash-n as a line break, the first load folder
+wins a key, empty values dropped, another language not read). Not written yet: the settings page, the shortcut, the
+engines' calls. The Pickle
 suite under `Tests/Pickle/` does not exist. Gate `preTest -> done` needs it written, with its scope justified, or its
 absence justified in this file: the layer that is plain C# is proved above, and what only a running game can show
 is the page layout and the real reading of a mod's texts. Engines are exercised with a fake endpoint, not the real

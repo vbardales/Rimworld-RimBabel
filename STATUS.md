@@ -22,9 +22,10 @@ workshop:      N/A
 remaining:
   - unverified: dansMonoRepo to horsMonoRepo - the GitHub repository does not exist yet, so no remote and no first pushed commit (the local git repository was initialised on 2026-10-03, nothing committed)
   - unverified: ModIcon, Preview and the Steam description are not made (the owner generates the icon; nothing here generates one)
-  - defect: the in-game part does not exist yet - no Mod class, no settings page, no extractor, no engines; only the package core (Source/Core) and its 36 offline checks
+  - unverified: the extractor (Source/Game/SourceScanner.cs) compiles against the 1.6 reference assemblies but has never run in a game: whether it lists the right texts of a real mod, and whether the dev-menu action writes a package, are not proved
+  - defect: no settings page, no engines, no import, no glossary or blacklist yet (the Mod class returns an empty settings category, so there is no empty page)
   - unverified: the About.xml description is a draft and does not end with the "Source code on GitHub" link yet, because the repository does not exist (PUBLISHING.md, criterion of the step to preOptions); no <url> field either
-  - unverified: the Mod/Assemblies folder is empty, so Mod/ cannot ship as it stands
+  - unverified: Mod/Assemblies/RimBabel.dll is committed from the sources of 2026-10-03; the shipped assembly must match the sources before any upload
   - unverified: no Pickle suite exists; gate to done needs the suite written or its absence justified in TESTING.md
   - unverified: settings_audit, localization, translation_en and translation_fr are all unchecked: the mod has no player-facing text yet
   - unverified: licence of the generated translation packages - a package is a derivative of its source mod, so the generator refuses to call one publishable while the source licence is unknown (PackageWriter.Blockers)
@@ -58,9 +59,13 @@ What the transition asks, and where each point stands:
 
 - `Source/Core/` is the package core, plain C# with no game type in it: `Entry`, `Manifest` (the XML manifest that is the
   source of truth of a package), `Merge` (update by key and source hash), `PackageWriter` (writes a repository that is
-  ready to commit). `Tests/` runs 36 checks on it without the game (`dotnet run`, see `TESTING.md`); all pass as of
+  ready to commit). `Tests/` runs 43 checks on it without the game (`dotnet run`, see `TESTING.md`); all pass as of
   2026-10-03.
-- Not started: reading a source mod's texts in game (`DefInjectionUtility`, `Languages/English/Keyed`), the settings page
+- `Source/Game/` is the in-game layer: `SourceScanner` lists a loaded mod's texts (the Keyed files of its load folders
+  through `Source/Core/KeyedXml.cs`, and every Def string through the game's own `DefInjectionUtility`), `PackageBuilder`
+  writes or updates the package for the active language under `SaveData/RimBabel/`, and a developer-menu action
+  (`RimBabel > Write a translation package for a mod...`) runs it. It compiles; it has not run in a game.
+- Not started: the settings page
   and its hidden MainButtons shortcut, the engines (DeepL, Anthropic, OpenAI-compatible), the glossary and blacklist
   screens, the regex search, the import of an existing translation pack.
 

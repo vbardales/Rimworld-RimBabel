@@ -14,4 +14,7 @@ written once the Workshop item exists ("creation of a publishId file") and says 
   (`Mod/Babel/manifest.xml`) as the source of truth, the merge that brings a package up to date with its source mod, and
   the writer that produces a repository ready to commit (About, Languages, manifest, README, CHANGELOG, ATTRIBUTION,
   STATUS, LICENCE).
-- 36 offline checks of that core.
+- Reading a loaded mod's texts in game: its Keyed files and every Def string the game itself would let a translation
+  inject, through a developer-menu action that writes the package for the active language. Developer tooling for now;
+  no window yet.
+- 43 offline checks of the package core and the Keyed reader.

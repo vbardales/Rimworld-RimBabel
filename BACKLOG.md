@@ -9,7 +9,12 @@ This mod's own backlog, not the monorepo's. Opened 2026-10-03.
 ## Version 1, offline
 
 - [x] Package core: entry, manifest, merge, package writer, offline tests.
-- [ ] Read a mod's texts in game: `DefInjectionUtility` for Defs, `Languages/English/Keyed` for Keyed.
+- [x] Read a mod's texts in game: `DefInjectionUtility` for Defs, `Languages/English/Keyed` for Keyed (written and
+  compiled, **not run in a game yet**).
+- [ ] Run the extractor on a real mod and read what it lists; tune `SourceScanner.IsText` (single-word fields other
+  than `label` are missed today).
+- [ ] Existing translations of the source mod in the active language: import them as human work.
+- [ ] Source languages other than English; English DefInjected files that override a Def.
 - [ ] Import an existing translation pack into a package, as human work an engine never overwrites; check its licence.
 - [ ] Engines: DeepL (glossary, `tag_handling=xml`), Anthropic (Messages API), OpenAI-compatible endpoint, a free fallback.
 - [ ] Placeholder protection: tokenise, validate (same tokens, balanced tags, language, length), retry once, else keep the source.
