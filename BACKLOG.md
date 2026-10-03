@@ -1,0 +1,28 @@
+# Backlog - RimBabel
+
+This mod's own backlog, not the monorepo's. Opened 2026-10-03.
+
+## Before `horsMonoRepo`
+
+- [ ] Create the GitHub repository and agree its name, add the remote, push the first commit (the owner's call).
+
+## Version 1, offline
+
+- [x] Package core: entry, manifest, merge, package writer, offline tests.
+- [ ] Read a mod's texts in game: `DefInjectionUtility` for Defs, `Languages/English/Keyed` for Keyed.
+- [ ] Import an existing translation pack into a package, as human work an engine never overwrites; check its licence.
+- [ ] Engines: DeepL (glossary, `tag_handling=xml`), Anthropic (Messages API), OpenAI-compatible endpoint, a free fallback.
+- [ ] Placeholder protection: tokenise, validate (same tokens, balanced tags, language, length), retry once, else keep the source.
+- [ ] Dictionary applied before the engine and handed to it as a glossary; blacklist by mod, key, regex and kind of text.
+- [ ] Settings page under Mod options, hidden MainButtons shortcut, English and French keys.
+- [ ] Search across the texts with regular expressions (in-memory index first; a stored index only if it is needed).
+- [ ] Generated repositories also carry `.github/` workflows and `publish.config.json` (from `Rimworld-Release-Admin`'s generator) and
+  a `FRENCH_REVIEW.md` for French packages.
+- [ ] Align the generated `STATUS.md` front matter with the schema of `PUBLISHING.md` / `AUDIT.md`.
+
+## Later
+
+- [ ] On-the-fly translation of the interface (Harmony, a cache by source string, never a blocking call, a blacklist for
+  numbers, identifiers and colonist names, the original text on hover).
+- [ ] `.po` import and export; a stored index (SQLite) if the in-memory one stops being enough, which means an explicit
+  exception to the rule against bundling third-party DLLs.

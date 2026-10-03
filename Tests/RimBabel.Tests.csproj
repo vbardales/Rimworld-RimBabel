@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Tests of the package core: manifest, merge, package writer. That layer is plain C# with no game
+    type in it, so the source files are compiled in directly and no RimWorld install is needed.
+    Run with: dotnet run, passing Tests/RimBabel.Tests.csproj as the project.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <AssemblyName>RimBabel.Tests</AssemblyName>
+    <RootNamespace>RimBabel.Tests</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Source\Core\**\*.cs" LinkBase="Core" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The Pickle suite has its own project. -->
+    <Compile Remove="Pickle\**" />
+  </ItemGroup>
+
+</Project>
