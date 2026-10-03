@@ -68,7 +68,7 @@ What the transition asks, and where each point stands:
 
 - `Source/Core/` is the package core, plain C# with no game type in it: `Entry`, `Manifest` (the XML manifest that is the
   source of truth of a package), `Merge` (update by key and source hash), `PackageWriter` (writes a repository that is
-  ready to commit). `Tests/` runs 43 checks on it without the game (`dotnet run`, see `TESTING.md`); all pass as of
+  ready to commit). `Tests/` runs 105 checks on it without the game (`dotnet run`, see `TESTING.md`); all pass as of
   2026-10-03.
 - `Source/Game/` is the in-game layer: `SourceScanner` lists a loaded mod's texts (the Keyed files of its load folders
   through `Source/Core/KeyedXml.cs`, and every Def string through the game's own `DefInjectionUtility`), `PackageBuilder`

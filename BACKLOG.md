@@ -13,12 +13,11 @@ This mod's own backlog, not the monorepo's. Opened 2026-10-03.
   compiled, **not run in a game yet**).
 - [ ] Run the extractor on a real mod and read what it lists; tune `SourceScanner.IsText` (single-word fields other
   than `label` are missed today).
-- [ ] Existing translations of the source mod in the active language: import them as human work.
 - [ ] Source languages other than English; English DefInjected files that override a Def.
-- [ ] Import an existing translation pack into a package, as human work an engine never overwrites; check its licence.
+- [x] Import an existing translation pack into a package, as human work an engine never overwrites (`Importer`, tested). [ ] Still to do: check the licence of the pack before it is redistributed, and wire it to a window or action.
 - [ ] Engines: DeepL (glossary, `tag_handling=xml`), Anthropic (Messages API), OpenAI-compatible endpoint, a free fallback.
-- [ ] Placeholder protection: tokenise, validate (same tokens, balanced tags, language, length), retry once, else keep the source.
-- [ ] Dictionary applied before the engine and handed to it as a glossary; blacklist by mod, key, regex and kind of text.
+- [x] Placeholder protection: tokenise, validate (same tokens, length), retry once alone, else keep the source (`Protector`, `Pipeline`, tested). [ ] Still to do: detect an answer still in the source language, and translate the literal branches of a gender switch.
+- [x] Dictionary applied before the engine and handed to it as a glossary; blacklist by key glob or regular expression (`Protector`, `Blacklist`, tested). [ ] Still to do: a dictionary shared across mods (one file, not per package), blacklist by kind of text (colonist names) for the on-the-fly mode, and their screens.
 - [ ] Settings page under Mod options, hidden MainButtons shortcut, English and French keys.
 - [ ] Search across the texts with regular expressions (in-memory index first; a stored index only if it is needed).
 - [ ] Generated repositories also carry `.github/` workflows and `publish.config.json` (from `Rimworld-Release-Admin`'s generator) and

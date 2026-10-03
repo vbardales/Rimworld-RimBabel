@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using RimBabel.Core;
 
-internal static class Program
+internal static partial class Program
 {
     private static int checks, failures;
 
@@ -22,6 +22,11 @@ internal static class Program
         WriterUpdate();
         WriterRefusals();
         KeyedReading();
+        ProtectorTests();
+        GlossaryTests();
+        BlacklistTests();
+        PipelineTests();
+        ImporterTests();
         Console.WriteLine(checks + " checks, " + failures + " failed");
         return failures == 0 ? 0 : 1;
     }

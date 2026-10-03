@@ -11,13 +11,28 @@ The package core (`Source/Core`) is plain C# and its tests compile it in directl
 dotnet run --project Tests/RimBabel.Tests.csproj
 ```
 
-43 checks, exit code 1 when one fails; all passed on 2026-10-03. They cover: the source hash ignores the newline
+105 checks, exit code 1 when one fails; all passed on 2026-10-04. They cover: the source hash ignores the newline
 convention; the manifest round-trips special characters, newlines, status, engine, glossary and blacklist, and refuses a
 newer schema; the merge keeps unchanged and human text, makes a stale draft of a changed source, never touches a locked
 text, reports new and removed keys, and bumps the version only on a change; the writer lays out the package, escapes
 line breaks as the game reads them, leaves pending texts out, keeps `PublishedFileId.txt` and human texts across an
 update, lists the changelog newest first, adds nothing when nothing moved, and refuses a hand-made language folder, a
 path-like language name and a key that is not an XML name.
+
+### The translation machinery (2026-10-04)
+
+Offline, with fake engines and no network: **placeholder protection** (braces, a whole gender switch, nested switches,
+rich-text tags and `(*Colonist)` markers hidden behind tokens; a faithful answer gets every original back, tokens may
+change places, and a lost, duplicated, invented or empty answer, or one ten times too long or too short, is refused);
+the **glossary** (terms hidden from the engine and given back as the required translation, longest term first, a capital
+kept at the start of a sentence, no match inside a longer word, an engine that drops a term refused); the **blacklist**
+(glob, regular expression, invalid rules named); the **pipeline** (pending and stale texts translated, human and locked
+never touched, blacklisted never sent, a broken translation left as the source after one more try alone, a shifted answer
+dropped whole, an engine that throws stops the run and keeps what was done, batches of the asked size); the **importer**
+(an existing translation brought in as human work, the game's `EN:` comment used to tell a text written for another source
+apart, the `TODO` placeholder ignored, orphans reported, existing human texts kept). Three mutations were run (the status
+filter of the pipeline, the once-only token rule, and the empty-answer check) and each makes tests fail. **Not covered**:
+the real engines. No test calls DeepL, Anthropic or any other service; the real engines are not written yet.
 
 ## What runs against the game's assemblies, still outside the game
 
