@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Source texts of the RimBabel Pickle suite, in the language RimBabel reads from. -->
+  <RbFixture_Hello>Hello {0}</RbFixture_Hello>
+  <RbFixture_Two>Line one\nline two</RbFixture_Two>
+
+</LanguageData>

@@ -24,7 +24,8 @@ so a plain `git log` from the monorepo answers for the commit that removed them:
 
 | Document | Read | Version | Useful here? |
 |---|---|---|---|
-| `PickleTools/README.md` | whole | bb732f7, 2026-10-02, 91 lines | Yes: the table of tools and how a pass map names one. No Pickle suite exists yet |
+| `PickleTools/README.md` | whole | bb732f7, 2026-10-02, 91 lines | Yes: the table of tools and how a pass map names one |
+| `PickleTools/Authoring/README.md` | whole (read 2026-10-03, when the first suite was written; not on the owner's list) | 324 lines, version not recorded (read from the working tree) | Yes: it is the guide for writing a suite: layout, pass matrix, step conventions, evidence. The suite follows it |
 | `PickleTools/Headless/README.md` | **not read** | ed4e73a, 2026-09-26, 509 lines | **Not yet**: read before the first Pickle request (filters, `-DepMap`, traps) |
 | `PickleTools/docs/steps.md` | **not read** | bb732f7, 2026-10-02, 344 lines | **Not yet**: the step catalogue, to consult before writing a step |
 | `Rimworld-Release-Admin/docs/OPERATIONS.md` | whole | 3c03f51, 2026-09-26, 112 lines | Yes: dry-run of the exact SHA, 40-character SHA, only the owner approves `steam-production`, CI creates tag and release |
@@ -38,7 +39,7 @@ so a plain `git log` from the monorepo answers for the commit that removed them:
 | `STATUS.md`, `README.md`, `CHANGELOG.md`, `ATTRIBUTION.md`, `LICENSE`, `PUBLICATION.md`, `TESTING.md`, `BACKLOG.md` | written 2026-10-03 | uncommitted | Yes. `ATTRIBUTION.md` and `LICENSE` have identical copies in `Mod/` (checked with `cmp`); `BACKLOG.md` is the mod's own, not the monorepo's |
 | `docs/runs/history.md` | written 2026-10-03 | uncommitted | Yes |
 | `Mod/About/About.xml` | written 2026-10-03 | uncommitted | Yes; the description is a draft |
-| `Tests/Pickle/` | does not exist | | |
+| `Tests/Pickle/` | written 2026-10-03 (1 feature, 4 scenarios, never run); `Check-Steps.ps1` is a copy of Bill Autopilot's, unchanged | uncommitted | Yes |
 | `NOTES.md`, `BUGS.md` | do not exist | | Nothing to note yet |
 
 ## Useless this time, not to reread when they change

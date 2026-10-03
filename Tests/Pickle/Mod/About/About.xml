@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>RimBabel - Pickle tests</name>
+  <author>Nelim</author>
+  <packageId>nelim.rimbabel.pickletests</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>In-game functional tests for RimBabel, run by Pickle. Development only: never published, never part of the distributed Mod/ folder.
+
+This mod is also the SOURCE MOD the tests translate: it carries a few Defs and a Keyed file whose texts are known, so that what RimBabel lists for it can be checked exactly. See Tests/Pickle/README.md.
+
+The name Pickle's -pickle-run filter wants is the display name above, not the folder.</description>
+  <modDependencies>
+    <li>
+      <packageId>nelim.rimbabel</packageId>
+      <displayName>RimBabel</displayName>
+    </li>
+    <li>
+      <packageId>rimworks.pickle</packageId>
+      <displayName>Pickle</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/3791648678</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>nelim.rimbabel</li>
+    <li>rimworks.pickle</li>
+  </loadAfter>
+</ModMetaData>

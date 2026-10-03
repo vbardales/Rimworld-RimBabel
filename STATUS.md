@@ -26,7 +26,7 @@ remaining:
   - defect: no settings page, no engines, no import, no glossary or blacklist yet (the Mod class returns an empty settings category, so there is no empty page)
   - unverified: the About.xml description is a draft and does not end with the "Source code on GitHub" link yet, because the repository does not exist (PUBLISHING.md, criterion of the step to preOptions); no <url> field either
   - unverified: Mod/Assemblies/RimBabel.dll is committed from the sources of 2026-10-03; the shipped assembly must match the sources before any upload
-  - unverified: no Pickle suite exists; gate to done needs the suite written or its absence justified in TESTING.md
+  - unverified: the Pickle suite (Tests/Pickle, 1 feature, 4 scenarios) is written and has never run: no report exists, and no pass has been requested; execution is a criterion of done -> tested, and the passes it needs are declared in Tests/Pickle/README.md (minimal English, minimal French)
   - unverified: settings_audit, localization, translation_en and translation_fr are all unchecked: the mod has no player-facing text yet
   - unverified: licence of the generated translation packages - a package is a derivative of its source mod, so the generator refuses to call one publishable while the source licence is unknown (PackageWriter.Blockers)
 session:      local_a2fc6f2c-0a40-46e3-b162-497e9923317b

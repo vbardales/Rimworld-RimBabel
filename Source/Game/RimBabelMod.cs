@@ -31,12 +31,13 @@ namespace RimBabel.Game
             foreach (ModContentPack mod in LoadedModManager.RunningModsListForReading.Where(m => !m.IsCoreMod && !m.IsOfficialMod))
             {
                 ModContentPack captured = mod;
-                options.Add(new DebugMenuOption(mod.Name, DebugMenuOptionMode.Action, () => Run(captured, language)));
+                options.Add(new DebugMenuOption(mod.Name, DebugMenuOptionMode.Action, () => WriteFor(captured, language)));
             }
             Find.WindowStack.Add(new Dialog_DebugOptionListLister(options));
         }
 
-        private static void Run(ModContentPack mod, string language)
+        /// <summary>What the menu entry does once a mod is picked. Public so a test can run it without the menu.</summary>
+        public static PackageResult WriteFor(ModContentPack mod, string language)
         {
             PackageResult r = PackageBuilder.Build(mod, language, "RimBabel user");
             Log.Message("[RimBabel] " + mod.Name + " -> " + r.Root + " (version " + r.Version + "): "
@@ -44,6 +45,7 @@ namespace RimBabel.Game
                 + " removed, " + r.Merge.Unchanged + " unchanged. " + (r.PublishBlockers.Count == 0
                     ? "Nothing in the way of publication."
                     : "Not publishable yet: " + string.Join(" ", r.PublishBlockers.ToArray())));
+            return r;
         }
     }
 }

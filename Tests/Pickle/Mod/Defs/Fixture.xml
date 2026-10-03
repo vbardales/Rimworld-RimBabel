@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The source texts of the RimBabel Pickle suite. Two def types, so that the package is shown to
+       group by type, and two kinds of text: a label and a description. Nothing here is ever used by
+       the game; the defs exist to be listed. Do not add a text without updating
+       Pickle/Features/01-package.feature: the scenarios name every text they expect. -->
+
+  <ThingCategoryDef>
+    <defName>RbFixtureCategory</defName>
+    <label>fixture category</label>
+    <description>Things that exist only to be listed.</description>
+  </ThingCategoryDef>
+
+  <StatCategoryDef>
+    <defName>RbFixtureStats</defName>
+    <label>fixture stats</label>
+    <displayOrder>99</displayOrder>
+  </StatCategoryDef>
+
+</Defs>

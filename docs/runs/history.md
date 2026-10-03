@@ -5,3 +5,4 @@ One text line per run. Raw evidence stays on disk only and is ignored by git. No
 - 2026-10-03: `dotnet run` on `Tests/RimBabel.Tests.csproj` (package core, outside the game): 36 checks, 0 failed.
 - 2026-10-03: same, with the Keyed reader added: 43 checks, 0 failed. `dotnet build Source/RimBabel.csproj -c Release`: 0 errors, 0 warnings. Nothing run in game.
 - 2026-10-03: `Tests/Game/RimBabel.GameTests.exe` (shipped RimBabel.dll against the real Assembly-CSharp, no game running): 32 checks, 0 failed; the mutation "remove the space rule of `IsText`" makes 1 fail.
+- 2026-10-03: `Tests/Pickle/Check-Steps.ps1` against the installed Pickle (WSL copy, 1.6): 11 patterns compile, none ambiguous against 2242 others (234 Pickle, 2008 from 77 sources), all 24 step lines of the suite resolve. No Pickle run: the suite has never been played.

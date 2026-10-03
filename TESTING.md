@@ -49,18 +49,26 @@ that only exists in the newer profile can fail here without being a defect in th
 
 ## What needs the game
 
-A real list of Defs only exists in a running game, so what the extractor returns for a real mod is unverified. Not
-written yet: the settings page, the shortcut, the engines' calls. The Pickle
-suite under `Tests/Pickle/` does not exist. Gate `preTest -> done` needs it written, with its scope justified, or its
-absence justified in this file: the layer that is plain C# is proved above, and what only a running game can show
-is the page layout and the real reading of a mod's texts. Engines are exercised with a fake endpoint, not the real
-services: no test calls DeepL or Anthropic.
+A real list of Defs only exists in a running game, so what the extractor returns for a real loaded mod is **written as a
+Pickle scenario and not played yet**. Not written yet: the settings page, the shortcut, the engines' calls. Engines are
+exercised with a fake endpoint, not the real services: no test calls DeepL or Anthropic.
+
+### The Pickle suite (written 2026-10-03, not run)
+
+`Tests/Pickle/` holds `01-package.feature` (4 scenarios, the manual check "write the package of a mod from the developer
+menu, read the manifest" made into steps), its step assembly (`Source/PackageSteps.cs`, built into
+`Mod/Pickle/Assemblies/`) and `README.md`, which says what each scenario needs a game for and what stays manual (the menu
+window, a large real mod). The companion mod is also the source mod: it carries two Defs and a Keyed file whose texts are
+known. The scenarios run at the main menu, with no save, so a run is seconds. `Check-Steps.ps1` compiles the step
+expressions with Pickle's own engine and checks them for ambiguity. **Execution and the review of anything it produces
+belong to `done -> tested`**; until a report exists the verdict is `unverified`.
 
 ## Passes
 
-Declared when the suite exists. Expected: without optional mods, in English and in French (one pass per language,
-`-Language`); with optional mods only if an integration is added. Non-regression passes are filed together at the end,
-on the final revision.
+Declared in `Tests/Pickle/README.md`: **minimal in English, then minimal in French** (the package language is a setting,
+not the game's language, so the French pass shows it does not depend on it). No optional integration exists, so no pass
+with optional mods; no declared incompatibility; no DLC. Each pass is one request filed through the Ticket Dispatcher.
+Non-regression passes are filed together at the end, on the final revision.
 
 ## What is not tested here, and why
 
