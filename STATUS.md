@@ -26,7 +26,7 @@ remaining:
   - unverified: the About.xml description is a draft: it ends with the "Source code on GitHub" link and the <url> field points at the repository, but the text itself is a placeholder to rewrite once the mod does something
   - unverified: GitHub social preview image (needs Mod/About/Preview.png, which the owner generates; the setting exists only on the web page)
   - unverified: Mod/Assemblies/RimBabel.dll is committed from the sources of 2026-10-03; the shipped assembly must match the sources before any upload
-  - unverified: the Pickle suite (Tests/Pickle, 1 feature, 4 scenarios) is written and has never run: no report exists, and no pass has been requested; execution is a criterion of done -> tested, and the passes it needs are declared in Tests/Pickle/README.md (minimal English, minimal French)
+  - unverified: the Pickle suite (Tests/Pickle, 1 feature, 4 scenarios) is written and has never run: no report exists; two passes were requested on 2026-10-04 for revision 7d0cc42 (`20261004-000340-546-454b` English, `20261004-000341-508-ad5b` French, evidence to `Tests/Pickle/Evidence/package-en` and `package-fr`) and had not run when this line was written (the worker was paused by the owner); execution is a criterion of done -> tested, and the passes it needs are declared in Tests/Pickle/README.md (minimal English, minimal French)
   - unverified: settings_audit, localization, translation_en and translation_fr are all unchecked: the mod has no player-facing text yet
   - unverified: licence of the generated translation packages - a package is a derivative of its source mod, so the generator refuses to call one publishable while the source licence is unknown (PackageWriter.Blockers)
 session:      local_a2fc6f2c-0a40-46e3-b162-497e9923317b

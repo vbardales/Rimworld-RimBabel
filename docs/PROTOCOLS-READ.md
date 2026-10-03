@@ -26,7 +26,7 @@ so a plain `git log` from the monorepo answers for the commit that removed them:
 |---|---|---|---|
 | `PickleTools/README.md` | whole | bb732f7, 2026-10-02, 91 lines | Yes: the table of tools and how a pass map names one |
 | `PickleTools/Authoring/README.md` | whole (read 2026-10-03, when the first suite was written; not on the owner's list) | 324 lines, version not recorded (read from the working tree) | Yes: it is the guide for writing a suite: layout, pass matrix, step conventions, evidence. The suite follows it |
-| `PickleTools/Headless/README.md` | **not read** | ed4e73a, 2026-09-26, 509 lines | **Not yet**: read before the first Pickle request (filters, `-DepMap`, traps) |
+| `PickleTools/Headless/README.md` | lines 1-260 of 509 (read 2026-10-04 before the first request: options, exit codes, filter terms, passes, maps); the rest not read | ed4e73a, 2026-09-26 | Yes for the part read |
 | `PickleTools/docs/steps.md` | **not read** | bb732f7, 2026-10-02, 344 lines | **Not yet**: the step catalogue, to consult before writing a step |
 | `Rimworld-Release-Admin/docs/OPERATIONS.md` | whole | 3c03f51, 2026-09-26, 112 lines | Yes: dry-run of the exact SHA, 40-character SHA, only the owner approves `steam-production`, CI creates tag and release |
 | `Rimworld-Ticket-Dispatcher/docs/WELCOME.md` | whole | 77ca9d7, 2026-09-27, 150 lines | Yes: which test for which task, a request carries no SHA, the list of documents to note |
