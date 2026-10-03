@@ -7,8 +7,8 @@ packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-stage:        port
-workflow_stage: dansMonoRepo
+stage:        showcase
+workflow_stage: horsMonoRepo
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -20,24 +20,33 @@ settings_audit: unchecked
 tested_on:    N/A
 workshop:      N/A
 remaining:
-  - unverified: dansMonoRepo to horsMonoRepo - the GitHub repository does not exist yet, so no remote and no first pushed commit (the local git repository was initialised on 2026-10-03, nothing committed)
   - unverified: ModIcon, Preview and the Steam description are not made (the owner generates the icon; nothing here generates one)
   - unverified: the extractor (Source/Game/SourceScanner.cs) is proved against hand-built Defs in the game's own DefDatabase (32 checks, Tests/Game, 2026-10-03) but has never run in a game: whether it lists the right texts of a real loaded mod, and whether the dev-menu action writes a package, are not proved
   - defect: no settings page, no engines, no import, no glossary or blacklist yet (the Mod class returns an empty settings category, so there is no empty page)
-  - unverified: the About.xml description is a draft and does not end with the "Source code on GitHub" link yet, because the repository does not exist (PUBLISHING.md, criterion of the step to preOptions); no <url> field either
+  - unverified: the About.xml description is a draft: it ends with the "Source code on GitHub" link and the <url> field points at the repository, but the text itself is a placeholder to rewrite once the mod does something
+  - unverified: GitHub social preview image (needs Mod/About/Preview.png, which the owner generates; the setting exists only on the web page)
   - unverified: Mod/Assemblies/RimBabel.dll is committed from the sources of 2026-10-03; the shipped assembly must match the sources before any upload
   - unverified: the Pickle suite (Tests/Pickle, 1 feature, 4 scenarios) is written and has never run: no report exists, and no pass has been requested; execution is a criterion of done -> tested, and the passes it needs are declared in Tests/Pickle/README.md (minimal English, minimal French)
   - unverified: settings_audit, localization, translation_en and translation_fr are all unchecked: the mod has no player-facing text yet
   - unverified: licence of the generated translation packages - a package is a derivative of its source mod, so the generator refuses to call one publishable while the source licence is unknown (PackageWriter.Blockers)
 session:      local_a2fc6f2c-0a40-46e3-b162-497e9923317b
-updated:      2026-10-03, first audit against AUDIT.md (version 5a975b5, 2026-10-02): stage port, nothing published, nothing committed
+updated:      2026-10-04, repository created and first commits pushed (e936541): horsMonoRepo; nothing published
 ---
 
 # RimBabel - status
 
-## Decision of 2026-10-03 (audit against `AUDIT.md`, protocols read listed in `docs/PROTOCOLS-READ.md`)
+## Decision of 2026-10-04: `horsMonoRepo`
 
-**Retained state: `dansMonoRepo`** (`stage: port`, `workflow_stage: dansMonoRepo`). The first transition,
+The owner asked for the repository to be created. `vbardales/Rimworld-RimBabel` (public, topics `rimworld`,
+`rimworld-mod`, `mod`) exists, `origin` is set, and `main` is pushed: the remote head `e936541` equals the local one,
+checked with `gh api`. Every criterion of `dansMonoRepo -> horsMonoRepo` now holds (table below, last column of the 10-03
+decision). Retained: `workflow_stage: horsMonoRepo`, `stage: showcase` (the `stage` field has six codes and no code of its
+own for this state). The next transition, `horsMonoRepo -> ModIcon générée`, asks for finished development, a build and
+an icon the owner generates: none of that holds.
+
+## Decision of 2026-10-03, replaced on 2026-10-04 (audit against `AUDIT.md`, protocols read listed in `docs/PROTOCOLS-READ.md`)
+
+**Retained state then: `dansMonoRepo`** (`stage: port`, `workflow_stage: dansMonoRepo`). The first transition,
 `dansMonoRepo -> horsMonoRepo`, is not met: the criteria are a standalone git repository, an existing GitHub
 repository with its remote, and at least one pushed commit. The standalone repository now exists locally (init on
 2026-10-03, branch `main`); the GitHub repository and the first commit do not. Nothing later in the chain was
@@ -47,8 +56,8 @@ What the transition asks, and where each point stands:
 
 | Criterion | State |
 |---|---|
-| Standalone git repository | **validated locally**, no commit yet |
-| GitHub repository and remote, first commit pushed | **unverified**: the repository is the owner's to create |
+| Standalone git repository | **validated** (own `.git`, branch `main`) |
+| GitHub repository and remote, first commit pushed | **validated 2026-10-04**: `vbardales/Rimworld-RimBabel`, remote head equals local head `e936541` (at the 10-03 audit: not met) |
 | `STATUS.md` initialised | **validated** (this file) |
 | Visibility and licence status defined and justified | **validated**: public, original work, MIT. Ideas come from other translators, no code does (see `ATTRIBUTION.md`) |
 | `upstream_mod_remotes` filled | **validated**: `N/A`, there is no source mod to port. The tools studied are listed in `ATTRIBUTION.md` with their licences, since two of them are GPL and none of their code is used |
