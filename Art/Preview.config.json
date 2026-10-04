@@ -1,0 +1,34 @@
+{
+  "title": "RimBabel",
+  "titleSize": 54,
+  "titleParts": [
+    { "text": "RimBabel", "scale": 1 }
+  ],
+  "suffix": "",
+  "tag": "",
+  "copyLines": [
+    "Translate any mod with DeepL, Claude or your own server, and get a translation mod ready to publish."
+  ],
+  "layout": "panel",
+  "panelAnchor": "bottom-right",
+  "backgroundFile": "Preview-source.png",
+  "backgroundPosition": "0px -10px",
+  "backgroundSize": "896px auto",
+  "iconBadge": {
+    "file": "ModIcon-badge.png",
+    "corner": "bottom-left",
+    "width": 220,
+    "outline": false,
+    "veil": "radial",
+    "veilSize": 275,
+    "veilLeft": -55,
+    "veilBottom": -61
+  },
+  "palette": {
+    "veil": "#2B2418",
+    "inkPrimary": "#F2ECE1",
+    "inkSecondary": "#E5B66F",
+    "accent": "#6BB7B0",
+    "badgeInk": "#17120E"
+  }
+}
