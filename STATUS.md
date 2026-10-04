@@ -1,7 +1,7 @@
 ---
-localization: unchecked
-translation_en: unchecked
-translation_fr: unchecked
+localization: partial
+translation_en: partial
+translation_fr: partial
 mod:          RimBabel
 packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
@@ -16,19 +16,20 @@ licence_name: MIT
 licence_file: LICENSE (identical copy in Mod/LICENSE)
 dependencies: none yet
 showcase:     unchecked
-settings_audit: unchecked
+settings_audit: partial
 tested_on:    N/A
 workshop:      N/A
 remaining:
   - unverified: ModIcon, Preview and the Steam description are not made (the owner generates the icon; nothing here generates one)
   - unverified: the extractor (Source/Game/SourceScanner.cs) ran once in a real game, in the WSL install: Pickle request `20261004-000340-546-454b` (English, tree 8e7ecfb, played 2026-10-04 19:23-19:28) 4 scenarios passed, `exitReason: passed`, `Player.log` shows "5 new, 0 changed, 0 removed" for the fixture mod then "0 new, 5 unchanged" on the second scan, with no error line. Not yet proved: a large real mod (many defs, patches, inheritance), and the narrowed walk with many mods loaded (the suite loads Core and the DLC only)
   - defect: the first scan was far too slow (about 72 s for one small mod: the game's walk read every def of every mod before the mod's own were kept). Fixed 2026-10-04 by passing the mod's metadata to `DefInjectionUtility`, which skips other mods' defs before reading a field; a fifth Pickle scenario asserts a scan under 15 s. Proved in French on 2026-10-04: scans took 18-111 ms and the speed scenario passed (414 ms)
-  - defect: no settings page, and the engines (DeepL, Anthropic, OpenAI-compatible) have never talked to their real services (no key was used) and are not reachable from the game; import, glossary, blacklist and the translation pipeline exist in the core (105 offline checks) but nothing reaches them from the game (the Mod class returns an empty settings category, so there is no empty page)
+  - defect: the engines (DeepL, Anthropic, OpenAI-compatible) have never talked to their real services (no key was used); the page has a test button to try one, not yet pressed; there is no window to translate a mod from, only the developer-menu action
+  - unverified: translation_fr - French review by the owner (FRENCH_REVIEW.md, revision 88cb3d6, five doubts flagged); translation_en and localization - the in-game checks in English and French (raw keys, fallback, clipping), scenario 02-settings written and not run
+  - unverified: settings_audit - the runtime rows of the table under "Settings audit" (primary route by Mod options, the page drawing without a logged error, the file written by the game, a restart reading it, RIMMSQOL)
   - unverified: the About.xml description is a draft: it ends with the "Source code on GitHub" link and the <url> field points at the repository, but the text itself is a placeholder to rewrite once the mod does something
   - unverified: GitHub social preview image (needs Mod/About/Preview.png, which the owner generates; the setting exists only on the web page)
-  - unverified: Mod/Assemblies/RimBabel.dll is committed from the sources of 2026-10-03; the shipped assembly must match the sources before any upload
-  - unverified: the Pickle suite (Tests/Pickle, 1 feature, 5 scenarios): the English pass of 2026-10-04 (4 scenarios, tree 8e7ecfb) passed; the French pass `20261004-000341-508-ad5b` (5 scenarios, including the new speed one) passed on the tree that carries the fix (scans 18-111 ms); the speed scenario also passed in English (`20261004-193459-869-da64`, scan 98 ms); the first four passed in English on the older tree. A full 5-scenario English pass on the final tree is a non-regression pass for the end. Execution and reading of the reports is a criterion of done -> tested; passes are declared in Tests/Pickle/README.md (minimal English, minimal French)
-  - unverified: settings_audit, localization, translation_en and translation_fr are all unchecked: the mod has no player-facing text yet
+  - unverified: Mod/Assemblies/RimBabel.dll is committed from the sources of 2026-10-04 (revision 88cb3d6); the shipped assembly must match the sources before any upload
+  - unverified: the Pickle suite (Tests/Pickle, 2 features: 01-package with 5 scenarios, and 02-settings with 5 scenarios written 2026-10-04 and never run): the English pass of 2026-10-04 (4 scenarios, tree 8e7ecfb) passed; the French pass `20261004-000341-508-ad5b` (5 scenarios, including the new speed one) passed on the tree that carries the fix (scans 18-111 ms); the speed scenario also passed in English (`20261004-193459-869-da64`, scan 98 ms); the first four passed in English on the older tree. A full 5-scenario English pass on the final tree is a non-regression pass for the end. Execution and reading of the reports is a criterion of done -> tested; passes are declared in Tests/Pickle/README.md (minimal English, minimal French)
   - unverified: licence of the generated translation packages - a package is a derivative of its source mod, so the generator refuses to call one publishable while the source licence is unknown (PackageWriter.Blockers)
 session:      local_a2fc6f2c-0a40-46e3-b162-497e9923317b
 updated:      2026-10-04, repository created and first commits pushed (e936541): horsMonoRepo; nothing published
@@ -69,13 +70,13 @@ What the transition asks, and where each point stands:
 
 - `Source/Core/` is the package core, plain C# with no game type in it: `Entry`, `Manifest` (the XML manifest that is the
   source of truth of a package), `Merge` (update by key and source hash), `PackageWriter` (writes a repository that is
-  ready to commit). `Tests/` runs 139 checks on it without the game (`dotnet run`, see `TESTING.md`); all pass as of
+  ready to commit). `Tests/` runs 304 checks (plus 47 against the game's own assemblies) on it without the game (`dotnet run`, see `TESTING.md`); all pass as of
   2026-10-03.
 - `Source/Game/` is the in-game layer: `SourceScanner` lists a loaded mod's texts (the Keyed files of its load folders
   through `Source/Core/KeyedXml.cs`, and every Def string through the game's own `DefInjectionUtility`), `PackageBuilder`
   writes or updates the package for the active language under `SaveData/RimBabel/`, and a developer-menu action
   (`RimBabel > Write a translation package for a mod...`) runs it. It compiles; it has not run in a game.
-- Not started: the settings page
+- Done: the settings page (see the Settings audit below)
   and its hidden MainButtons shortcut, the engines (DeepL, Anthropic, OpenAI-compatible), the glossary and blacklist
   screens, the regex search, the import of an existing translation pack.
 
@@ -93,12 +94,65 @@ to keep from a Pickle run, once there are runs, is written in `TESTING.md`.
 
 ## Translation audit
 
-Not started. The mod has no player-facing text yet. Its own interface will need English and French Keyed files, with
-the French read by the owner (`FRENCH_REVIEW.md` at the root, generated by `scripts/Make-FrenchReview.ps1`). The
-translation packages RimBabel generates are a separate matter: each carries its own `STATUS.md`, and a French
-package is also read by the owner before it counts as complete.
+Audit of 2026-10-04, revision `88cb3d6`. The mod's own interface is the settings page and the hidden shortcut; there is
+no other player-facing text (no gizmo, letter, alert or thought).
+
+- **Where the texts live.** English: `Mod/Languages/English/Keyed/RimBabel.xml`, 45 keys. French: `Mod/Languages/French/Keyed/RimBabel.xml`,
+  the same 45 keys, and `Mod/Languages/French/DefInjected/MainButtonDef/RimBabel.xml` (2 keys, the shortcut's label and
+  description). The English of the shortcut is the Def's own value, the game's native fallback.
+- **Checked offline** (`Tests/SettingsTests.cs`, part of the 304 checks): English and French define exactly the same keys;
+  no empty text; the same `{n}` parameters in both languages for every key; no `(e)` form in French; every key the code asks
+  for exists and every key defined is asked for (a key built from an enum name is covered name by name); counted phrases
+  have `.One` and `.Many` forms in both languages; the shortcut is hidden by default and its French injection exists.
+  `scripts/Check-DefInjected.ps1` on `Mod`: 2 keys checked, 0 errors (that script checks injection paths, not coverage).
+- **Not checked, and why `partial`.** In a running game, in English and in French, for raw keys, fallback text and clipping: the
+  Pickle scenarios are written (`02-settings.feature`: every text exists in the language of the pass, and a `@review`
+  screenshot) and have not run. French has not been read by the owner.
+- **Known limits, stated rather than hidden.** (1) The engines' error messages are technical English strings built in the
+  core (`anthropic answered 401: ...`); the page shows them after "It failed:". Translating them would mean carrying a key
+  through the core for every failure. (2) The developer-menu entry `RimBabel > Write a translation package for a mod...` and
+  the log lines are developer tooling in English. (3) Product names (DeepL, Anthropic, OpenAI, Ollama...) are not translated.
+- **No gender agreement.** No text refers to a pawn, so the neutral o-series and the player choice for gendered French do not
+  apply, and no such setting is offered.
+- **French review by the owner: not done.** `FRENCH_REVIEW.md` (root) was generated on 2026-10-04 for revision `88cb3d6` by
+  `scripts/Make-FrenchReview.ps1`, with five doubts of the session flagged in `french-review-flags.json` (terminology of
+  "paquet de traduction", the figure "doux pour un petit modèle local", the wording of "en clair"). `translation_fr` stays
+  `partial` until the owner has read it; this section never records that review for her.
 
 ## Settings audit
 
-Not started (`unchecked`). Expected: useful settings exist (engines and keys, glossary, blacklist, output package), so
-primary access is Mod options -> RimBabel and the MainButtons shortcut is hidden by default, opening the same page.
+Audit of 2026-10-04, revision `88cb3d6`. **`settings_audit: partial`**: useful settings exist and the offline checks pass; the
+runtime checks have not run.
+
+- **Inventory and why each option exists.** Engine (DeepL, Anthropic or an OpenAI-compatible server: which service translates),
+  its key, model and address (what that service needs; a local server needs no key), texts per request (cost against
+  gentleness to a small model), a test button (the only way to tell a wrong key from a wrong model without translating a
+  mod), author name (written into About.xml of generated packages), target language (default: the game's), output folder
+  (default: next to the saves), a dictionary (one word, one translation, in every mod: the owner's requirement), a blacklist
+  (what is never sent), and a reset. Not exposed: the length-ratio limits and the retry count, internal constants with no
+  decision behind them.
+- **Access.** Primary: Mod options -> RimBabel (`SettingsCategory()` returns "RimBabel"). Shortcut: `MainButtonDef` `RimBabel_Settings`,
+  `buttonVisible=false`, `validWithoutMap=true`, worker `MainButtonWorker_Settings`, which opens `Dialog_ModSettings` for the same
+  mod. No customization mod is required.
+- **Application and scope.** Every control applies immediately; the file is written when the window closes. Global, not per save.
+  The keys are plain text in the game's settings file, which the page says; they are never written into a manifest or a package
+  (checked: a manifest holds no key).
+- **Tests against `MOD_SETTINGS.md` section 4.**
+
+| Area | Result |
+|---|---|
+| First use | **Passed offline** (Tests/Game, 47 checks): a clean file loads the documented defaults, no key, default folder and language |
+| Primary access | **Unverified in a game.** The Pickle scenario opens the same `Dialog_ModSettings` the Mod options row opens, through the shortcut's worker; clicking the row in the Mod options list was not done |
+| Actual effect | **Passed offline** for the data (engine choice makes the matching engine, a missing key or model or a bad address is a problem, the dictionary and blacklist parse); the widgets' effect on screen is **unverified** |
+| Persistence | **Passed offline** through the game's own Scribe (every field, accents, line breaks); the game writing the file is a Pickle scenario, **not run**; a restart reading it back is **not tested** |
+| Input validation | **Passed offline**: batch size outside 1-100 is brought back, a bad server address, a missing key or model and an unreadable dictionary line or regular expression are reported |
+| Defaults and upgrades | **Passed offline**: reset restores everything on the page except the keys; fields missing from an older file take their defaults |
+| Optional dependencies | Not applicable: nothing is optional |
+| Shortcut default | **Passed offline** (the Def) and written as a Pickle scenario, **not run** |
+| Shortcut integration (RIMMSQOL) | **Not tested.** Needs RIMMSQOL; revealing the button in its own interface is its behaviour |
+| Runtime robustness | **Unverified**: the scenario that lets the page draw for ten frames and then asks for logged errors has not run. An exception in `OnGUI` is logged, not thrown, so only that scenario can show one |
+| No settings | Not applicable |
+
+- **Two traps found on the way**, both now covered by a check: the serializer writes the platform's line break (a Windows save
+  reads a multi-line dictionary back with CR LF; the text is normalised on load), and the game has no scrolling text area
+  (`Widgets.TextAreaScrollable` does not exist in 1.6; the page lays the text out in its own scroll view).

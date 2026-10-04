@@ -20,6 +20,7 @@ window and its hidden MainButtons shortcut exist (BACKLOG.md), they get their ow
 it carries two Defs (`Mod/Defs/Fixture.xml`) and a Keyed file (`Mod/Languages/English/Keyed/RimBabelFixture.xml`) whose texts
 are known, so what RimBabel lists is checked text by text. No second mod, no `wsl-deps` map: the minimal pass is enough.
 Adding a text to the fixture means adding a line to `01-package.feature`.
+`02-settings.feature` (5 scenarios, needs the save `test-colony`): hidden shortcut contract, dialog belongs to this mod, page draws without a logged error, settings file written, every text present in the pass language, one `@review` screenshot. Steps in `Source/SettingsSteps.cs`. Run it in English and in French.
 
 ## Passes
 

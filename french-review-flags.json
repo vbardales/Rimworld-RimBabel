@@ -1,0 +1,7 @@
+{
+  "RimBabel.Settings.PackagesHeader": "Terminology: 'package' is rendered 'paquet de traduction' throughout. A modder may say 'pack' or 'mod de traduction'; the French reader may prefer one of those.",
+  "RimBabel.Settings.EngineOpenAi": "Left as 'Serveur compatible OpenAI': the product names are kept as they are.",
+  "RimBabel.Settings.KeyDesc": "'Enregistrée en clair' for 'stored as plain text': check that the meaning (not encrypted) is obvious to a player.",
+  "RimBabel.Settings.BatchDesc": "Tone: 'doux pour un petit modèle local' is a figure of speech for 'gentle on'; rephrase if it reads oddly.",
+  "RimBabel.Settings.Batch": "The colon before the number follows French spacing ('Textes par requête : {0}')."
+}

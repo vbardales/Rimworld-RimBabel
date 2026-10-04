@@ -7,7 +7,7 @@ package**: a normal RimWorld mod, ready to commit and publish, that never touche
 when the source mod changes and only the texts that moved are translated again.
 
 **Status: in development.** The package core exists and is tested outside the game. The in-game part (reading a mod,
-the settings page, the engines) is not written yet. See [STATUS.md](STATUS.md).
+the engines) is not written yet. See [STATUS.md](STATUS.md).
 
 ## What it is meant to do
 

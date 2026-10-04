@@ -11,7 +11,7 @@ The package core (`Source/Core`) is plain C# and its tests compile it in directl
 dotnet run --project Tests/RimBabel.Tests.csproj
 ```
 
-139 checks, exit code 1 when one fails; all passed on 2026-10-04. They cover: the source hash ignores the newline
+304 checks, exit code 1 when one fails; all passed on 2026-10-04. They cover: the source hash ignores the newline
 convention; the manifest round-trips special characters, newlines, status, engine, glossary and blacklist, and refuses a
 newer schema; the merge keeps unchanged and human text, makes a stale draft of a changed source, never touches a locked
 text, reports new and removed keys, and bumps the version only on a change; the writer lays out the package, escapes
@@ -65,18 +65,26 @@ that only exists in the newer profile can fail here without being a defect in th
 ## What needs the game
 
 A real list of Defs only exists in a running game, so what the extractor returns for a real loaded mod is **written as a
-Pickle scenario and not played yet**. Not written yet: the settings page, the shortcut, the engines' calls. Engines are
+Pickle scenario and not played yet**. Not written yet: the engines' calls. Engines are
 exercised with a fake endpoint, not the real services: no test calls DeepL or Anthropic.
 
 ### The Pickle suite (written 2026-10-03, not run)
 
-`Tests/Pickle/` holds `01-package.feature` (5 scenarios, the manual check "write the package of a mod from the developer
+`Tests/Pickle/` holds two features. `01-package.feature` (5 scenarios, the manual check "write the package of a mod from the developer
 menu, read the manifest" made into steps), its step assembly (`Source/PackageSteps.cs`, built into
 `Mod/Pickle/Assemblies/`) and `README.md`, which says what each scenario needs a game for and what stays manual (the menu
 window, a large real mod). The companion mod is also the source mod: it carries two Defs and a Keyed file whose texts are
 known. The scenarios run at the main menu, with no save, so a run is seconds. `Check-Steps.ps1` compiles the step
 expressions with Pickle's own engine and checks them for ambiguity. **Execution and the review of anything it produces
 belong to `done -> tested`**; until a report exists the verdict is `unverified`.
+
+`02-settings.feature` (5 scenarios, written 2026-10-04, never run) holds what only a game shows about the settings page: the
+hidden shortcut (hidden on a clean configuration, drawn and not greyed once revealed, gone again when hidden), that activating it
+opens the dialog of this mod and not another, that the page draws for ten frames without a logged error, that the game writes
+the settings file (and no key when none was set), that every settings text exists in the language of the pass, and a `@review`
+screenshot of the page for a person to read. These need the save `test-colony` (the main bar answers differently without a
+map), run in English and in French, and each puts the player's own settings back afterwards. Its step assembly is
+`Source/SettingsSteps.cs`.
 
 ## Passes
 

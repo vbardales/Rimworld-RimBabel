@@ -17,11 +17,12 @@ written once the Workshop item exists ("creation of a publishId file") and says 
 - Reading a loaded mod's texts in game: its Keyed files and every Def string the game itself would let a translation
   inject, through a developer-menu action that writes the package for the active language. Developer tooling for now;
   no window yet.
+- Settings page under Mod options: engine (DeepL, Anthropic, OpenAI-compatible) with keys, a test button, packages (author, language, output folder), dictionary and blacklist as text lines, reset. Optional MainButtons shortcut, hidden by default. English and French texts.
 - Placeholder and glossary protection around machine translation: placeholders, whole gender switches, rich-text tags and
   markers are hidden from the engine and checked on the way back; a translation that lost one is refused and the text
   stays as the source. A glossary of required translations, a blacklist (glob or regular expression), a pipeline that
   translates only pending and stale texts and never touches human, reviewed or locked ones, and an importer that brings an
   existing translation in as human work. Engines for DeepL, Anthropic and any OpenAI-compatible endpoint, with a small JSON reader and writer so that no library is needed; tested against a fake network only, and not reachable from the game yet.
 - A scan of one mod no longer walks the whole game (about 72 s before, 18-111 ms after, measured in the WSL install).
-- 139 offline checks of the package core, the Keyed reader, the translation machinery and the engines, and 32 checks of the extractor against the game's own
+- 304 offline checks of the package core, the Keyed reader, the translation machinery and the engines, and 47 checks of the extractor and the settings round trip against the game's own
   assemblies (hand-built Defs in the real `DefDatabase`, walked by the game's `DefInjectionUtility`).
