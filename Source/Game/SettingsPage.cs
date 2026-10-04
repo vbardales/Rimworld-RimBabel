@@ -199,10 +199,10 @@ namespace RimBabel.Game
             TooltipHandler.TipRegion(langRow, "RimBabel.Settings.LanguageDesc".Translate());
 
             s.outputFolder = TextRow(l, "RimBabel.Settings.Output", "RimBabel.Settings.OutputDesc", s.outputFolder);
-            Rect openRow = l.GetRect(30f);
-            Widgets.Label(new Rect(openRow.x, openRow.y + 4f, openRow.width * 0.7f, openRow.height),
+            Rect openRow = l.GetRect(44f);
+            Widgets.Label(new Rect(openRow.x, openRow.y, openRow.width * 0.7f, openRow.height),
                 string.IsNullOrWhiteSpace(s.outputFolder) ? "RimBabel.Settings.OutputDefault".Translate(PackageBuilder.OutputRoot).Resolve() : PackageBuilder.OutputRoot);
-            if (Widgets.ButtonText(openRow.RightPart(0.28f), "RimBabel.Settings.OutputOpen".Translate()))
+            if (Widgets.ButtonText(new Rect(openRow.xMax - openRow.width * 0.28f, openRow.y, openRow.width * 0.28f, 30f), "RimBabel.Settings.OutputOpen".Translate()))
                 OpenFolder(PackageBuilder.OutputRoot);
         }
 
