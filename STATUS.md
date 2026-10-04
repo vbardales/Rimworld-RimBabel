@@ -114,10 +114,7 @@ no other player-facing text (no gizmo, letter, alert or thought).
   the log lines are developer tooling in English. (3) Product names (DeepL, Anthropic, OpenAI, Ollama...) are not translated.
 - **No gender agreement.** No text refers to a pawn, so the neutral o-series and the player choice for gendered French do not
   apply, and no such setting is offered.
-- **French review by the owner: not done.** `FRENCH_REVIEW.md` (root) was generated on 2026-10-04 for revision `88cb3d6` by
-  `scripts/Make-FrenchReview.ps1`, with five doubts of the session flagged in `french-review-flags.json` (terminology of
-  "paquet de traduction", the figure "doux pour un petit modèle local", the wording of "en clair"). `translation_fr` stays
-  `partial` until the owner has read it; this section never records that review for her.
+- **French review by the owner: corrections applied, not yet validated.** On 2026-10-04 the owner read the sheet for revision `88cb3d6` and answered "pas validé" with seven corrections (syntax identifiers `K:key` and `D:DefType/defName.field` kept verbatim in the blacklist text, "mod de traduction" everywhere instead of "paquet de traduction", and the wording of `BatchDesc`, `TestDesc`, `DictionaryBad`, `Author`, `OutputDesc`), and confirmed "enregistrée en clair". They are applied; `translation_fr` stays `partial` until she validates the new sheet, which this section never records for her.
 
 ## Settings audit
 

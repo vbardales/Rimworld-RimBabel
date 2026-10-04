@@ -13,7 +13,7 @@
   <RimBabel.Settings.EngineAnthropic>Anthropic (Claude)</RimBabel.Settings.EngineAnthropic>
   <RimBabel.Settings.EngineOpenAi>Serveur compatible OpenAI (Ollama, LM Studio, OpenRouter...)</RimBabel.Settings.EngineOpenAi>
   <RimBabel.Settings.Key>Clé</RimBabel.Settings.Key>
-  <RimBabel.Settings.KeyDesc>Enregistrée en clair dans le dossier de configuration du jeu, sur cet ordinateur seulement. Elle n’est jamais écrite dans un paquet de traduction.</RimBabel.Settings.KeyDesc>
+  <RimBabel.Settings.KeyDesc>Enregistrée en clair dans le dossier de configuration du jeu, sur cet ordinateur seulement. Elle n’est jamais écrite dans un mod de traduction.</RimBabel.Settings.KeyDesc>
   <RimBabel.Settings.KeyShow>Afficher les clés</RimBabel.Settings.KeyShow>
   <RimBabel.Settings.KeyHide>Masquer les clés</RimBabel.Settings.KeyHide>
   <RimBabel.Settings.Model>Modèle</RimBabel.Settings.Model>
@@ -21,35 +21,35 @@
   <RimBabel.Settings.Url>Adresse du serveur</RimBabel.Settings.Url>
   <RimBabel.Settings.UrlDesc>L’adresse de base du service de conversation, par exemple http://localhost:11434/v1 pour Ollama.</RimBabel.Settings.UrlDesc>
   <RimBabel.Settings.Batch>Textes par requête : {0}</RimBabel.Settings.Batch>
-  <RimBabel.Settings.BatchDesc>Combien de textes partent au service en une seule requête. Moins, c’est plus doux pour un petit modèle local ; plus, c’est plus rapide et moins cher.</RimBabel.Settings.BatchDesc>
+  <RimBabel.Settings.BatchDesc>Combien de textes partent au service en une seule requête. Réduire ce nombre sollicite moins un petit modèle local ; l’augmenter est plus rapide et moins cher.</RimBabel.Settings.BatchDesc>
   <RimBabel.Settings.Problem.NoKey>Ce moteur demande une clé.</RimBabel.Settings.Problem.NoKey>
   <RimBabel.Settings.Problem.NoModel>Ce moteur demande un nom de modèle.</RimBabel.Settings.Problem.NoModel>
   <RimBabel.Settings.Problem.BadUrl>L’adresse du serveur n’est pas une adresse web valide.</RimBabel.Settings.Problem.BadUrl>
   <RimBabel.Settings.Test>Tester le moteur</RimBabel.Settings.Test>
-  <RimBabel.Settings.TestDesc>Envoie une courte phrase au moteur choisi et montre ce qui revient, pour vérifier la clé et le modèle.</RimBabel.Settings.TestDesc>
+  <RimBabel.Settings.TestDesc>Envoie une courte phrase au moteur choisi et affiche le résultat, afin de vérifier la clé et le modèle.</RimBabel.Settings.TestDesc>
   <RimBabel.Settings.TestRunning>En attente du moteur...</RimBabel.Settings.TestRunning>
   <RimBabel.Settings.TestOk>Ça marche : {0}</RimBabel.Settings.TestOk>
   <RimBabel.Settings.TestFailed>Échec : {0}</RimBabel.Settings.TestFailed>
 
-  <!-- Paquets -->
-  <RimBabel.Settings.PackagesHeader>Paquets de traduction</RimBabel.Settings.PackagesHeader>
-  <RimBabel.Settings.Author>Nom de l’auteur</RimBabel.Settings.Author>
-  <RimBabel.Settings.AuthorDesc>Écrit dans le fichier About.xml des paquets que vous générez.</RimBabel.Settings.AuthorDesc>
+  <!-- Mods de traduction -->
+  <RimBabel.Settings.PackagesHeader>Mods de traduction</RimBabel.Settings.PackagesHeader>
+  <RimBabel.Settings.Author>Nom de la personne créditée</RimBabel.Settings.Author>
+  <RimBabel.Settings.AuthorDesc>Écrit dans le fichier About.xml des mods de traduction que vous générez.</RimBabel.Settings.AuthorDesc>
   <RimBabel.Settings.Language>Langue cible</RimBabel.Settings.Language>
   <RimBabel.Settings.LanguageGame>La langue du jeu ({0})</RimBabel.Settings.LanguageGame>
-  <RimBabel.Settings.LanguageDesc>La langue dans laquelle les paquets sont traduits. Par défaut, la langue dans laquelle le jeu tourne.</RimBabel.Settings.LanguageDesc>
+  <RimBabel.Settings.LanguageDesc>La langue dans laquelle les mods de traduction sont traduits. Par défaut, la langue dans laquelle le jeu tourne.</RimBabel.Settings.LanguageDesc>
   <RimBabel.Settings.Output>Dossier de sortie</RimBabel.Settings.Output>
   <RimBabel.Settings.OutputDefault>{0} (par défaut)</RimBabel.Settings.OutputDefault>
-  <RimBabel.Settings.OutputDesc>L’endroit où les paquets sont écrits. Laissez vide pour le dossier par défaut, à côté de vos sauvegardes.</RimBabel.Settings.OutputDesc>
+  <RimBabel.Settings.OutputDesc>Dossier où sont créés les mods de traduction. Laissez vide pour le dossier par défaut, à côté de vos sauvegardes.</RimBabel.Settings.OutputDesc>
   <RimBabel.Settings.OutputOpen>Ouvrir le dossier</RimBabel.Settings.OutputOpen>
 
   <!-- Dictionnaire et liste noire -->
   <RimBabel.Settings.DictionaryHeader>Dictionnaire</RimBabel.Settings.DictionaryHeader>
   <RimBabel.Settings.DictionaryDesc>Une entrée par ligne : mot = traduction imposée. Il s’applique à tous les mods, donc un même mot est traduit de la même façon partout. Une ligne qui commence par # est ignorée.</RimBabel.Settings.DictionaryDesc>
-  <RimBabel.Settings.DictionaryBad.One>1 ligne n’a pas de mot ou pas de traduction autour de son signe égal, et elle est ignorée.</RimBabel.Settings.DictionaryBad.One>
-  <RimBabel.Settings.DictionaryBad.Many>{0} lignes n’ont pas de mot ou pas de traduction autour de leur signe égal, et elles sont ignorées.</RimBabel.Settings.DictionaryBad.Many>
+  <RimBabel.Settings.DictionaryBad.One>1 ligne n’a pas de mot ou pas de traduction de part et d’autre du signe égal, et elle est ignorée.</RimBabel.Settings.DictionaryBad.One>
+  <RimBabel.Settings.DictionaryBad.Many>{0} lignes n’ont pas de mot ou pas de traduction de part et d’autre du signe égal, et elles sont ignorées.</RimBabel.Settings.DictionaryBad.Many>
   <RimBabel.Settings.BlacklistHeader>Ne jamais traduire</RimBabel.Settings.BlacklistHeader>
-  <RimBabel.Settings.BlacklistDesc>Une règle par ligne. Un texte se nomme K:clé pour un texte Keyed, ou D:TypeDeDef/defName.champ pour un texte de Def. Utilisez * et ? comme jokers, ou commencez la ligne par re: pour une expression régulière. Une ligne qui commence par # est ignorée.</RimBabel.Settings.BlacklistDesc>
+  <RimBabel.Settings.BlacklistDesc>Une règle par ligne. Un texte se nomme K:key pour un texte Keyed, ou D:DefType/defName.field pour un texte de Def. Utilisez * et ? comme jokers, ou commencez la ligne par re: pour une expression régulière. Une ligne qui commence par # est ignorée.</RimBabel.Settings.BlacklistDesc>
   <RimBabel.Settings.BlacklistBad.One>1 règle n’est pas une expression régulière valide et ne correspond à rien.</RimBabel.Settings.BlacklistBad.One>
   <RimBabel.Settings.BlacklistBad.Many>{0} règles ne sont pas des expressions régulières valides et ne correspondent à rien.</RimBabel.Settings.BlacklistBad.Many>
 
