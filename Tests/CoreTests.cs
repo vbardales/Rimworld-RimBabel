@@ -29,6 +29,8 @@ internal static partial class Program
         ImporterTests();
         JsonTests();
         EngineTests();
+        ConfigTests();
+        TranslationCoverageTests();
         Console.WriteLine(checks + " checks, " + failures + " failed");
         return failures == 0 ? 0 : 1;
     }

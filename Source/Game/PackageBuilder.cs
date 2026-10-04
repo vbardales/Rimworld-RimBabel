@@ -12,7 +12,11 @@ namespace RimBabel.Game
         /// <summary>Where packages are written: next to the game's saves, outside every mod folder.</summary>
         public static string OutputRoot
         {
-            get { return Path.Combine(GenFilePaths.SaveDataFolderPath, "RimBabel"); }
+            get
+            {
+                string chosen = RimBabelMod.Settings == null ? null : RimBabelMod.Settings.outputFolder;
+                return string.IsNullOrWhiteSpace(chosen) ? Path.Combine(GenFilePaths.SaveDataFolderPath, "RimBabel") : chosen.Trim();
+            }
         }
 
         public static PackageSpec SpecFor(ModContentPack mod, string language, string author)

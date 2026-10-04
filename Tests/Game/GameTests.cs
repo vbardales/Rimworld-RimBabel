@@ -12,7 +12,7 @@ using Verse;
 
 // Exercises the shipped RimBabel.dll's extractor against the real RimWorld assemblies, with no game
 // running. See the csproj for what this does and does not prove.
-internal static class Program
+internal static partial class Program
 {
     private static int checks, failures;
 
@@ -205,6 +205,7 @@ internal static class Program
         Check(SourceScanner.IsText("two words", plainField), "IsText: a plain field with a space");
         Check(!SourceScanner.IsText("", labelField) && !SourceScanner.IsText(null, labelField), "IsText: empty and null");
 
+        SettingsRoundTrip(root);
         Directory.Delete(root, true);
     }
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RimBabel.Settings.Intro>RimBabel translates the texts of a mod and writes the result as a translation mod of its own. Nothing here changes a mod you have installed.</RimBabel.Settings.Intro>
+  <RimBabel.Settings.Applies>Changes apply immediately and are saved when you close this window.</RimBabel.Settings.Applies>
+  <RimBabel.Settings.Reset>Reset to defaults</RimBabel.Settings.Reset>
+  <RimBabel.Settings.ResetDesc>Restores everything on this page except your keys.</RimBabel.Settings.ResetDesc>
+
+  <!-- Engine -->
+  <RimBabel.Settings.EngineHeader>Translation engine</RimBabel.Settings.EngineHeader>
+  <RimBabel.Settings.EngineDesc>The service that translates the texts. Each one needs its own key, except a server running on your own computer.</RimBabel.Settings.EngineDesc>
+  <RimBabel.Settings.EngineDeepL>DeepL</RimBabel.Settings.EngineDeepL>
+  <RimBabel.Settings.EngineAnthropic>Anthropic (Claude)</RimBabel.Settings.EngineAnthropic>
+  <RimBabel.Settings.EngineOpenAi>OpenAI-compatible server (Ollama, LM Studio, OpenRouter...)</RimBabel.Settings.EngineOpenAi>
+  <RimBabel.Settings.Key>Key</RimBabel.Settings.Key>
+  <RimBabel.Settings.KeyDesc>Stored as plain text in the game's configuration folder, on this computer only. It is never written into a translation package.</RimBabel.Settings.KeyDesc>
+  <RimBabel.Settings.KeyShow>Show keys</RimBabel.Settings.KeyShow>
+  <RimBabel.Settings.KeyHide>Hide keys</RimBabel.Settings.KeyHide>
+  <RimBabel.Settings.Model>Model</RimBabel.Settings.Model>
+  <RimBabel.Settings.ModelDesc>The model name the service expects, for example claude-haiku-4-5-20251001 or qwen2.5.</RimBabel.Settings.ModelDesc>
+  <RimBabel.Settings.Url>Server address</RimBabel.Settings.Url>
+  <RimBabel.Settings.UrlDesc>The base address of the chat service, for example http://localhost:11434/v1 for Ollama.</RimBabel.Settings.UrlDesc>
+  <RimBabel.Settings.Batch>Texts per request: {0}</RimBabel.Settings.Batch>
+  <RimBabel.Settings.BatchDesc>How many texts go to the service in one request. Fewer is gentler on a small local model; more is faster and cheaper.</RimBabel.Settings.BatchDesc>
+  <RimBabel.Settings.Problem.NoKey>This engine needs a key.</RimBabel.Settings.Problem.NoKey>
+  <RimBabel.Settings.Problem.NoModel>This engine needs a model name.</RimBabel.Settings.Problem.NoModel>
+  <RimBabel.Settings.Problem.BadUrl>The server address is not a valid web address.</RimBabel.Settings.Problem.BadUrl>
+  <RimBabel.Settings.Test>Test the engine</RimBabel.Settings.Test>
+  <RimBabel.Settings.TestDesc>Sends one short sentence through the chosen engine and shows what comes back, to check the key and the model.</RimBabel.Settings.TestDesc>
+  <RimBabel.Settings.TestRunning>Waiting for the engine...</RimBabel.Settings.TestRunning>
+  <RimBabel.Settings.TestOk>It works: {0}</RimBabel.Settings.TestOk>
+  <RimBabel.Settings.TestFailed>It failed: {0}</RimBabel.Settings.TestFailed>
+
+  <!-- Packages -->
+  <RimBabel.Settings.PackagesHeader>Translation packages</RimBabel.Settings.PackagesHeader>
+  <RimBabel.Settings.Author>Author name</RimBabel.Settings.Author>
+  <RimBabel.Settings.AuthorDesc>Written into the About.xml of the packages you generate.</RimBabel.Settings.AuthorDesc>
+  <RimBabel.Settings.Language>Target language</RimBabel.Settings.Language>
+  <RimBabel.Settings.LanguageGame>The game's language ({0})</RimBabel.Settings.LanguageGame>
+  <RimBabel.Settings.LanguageDesc>The language packages are translated into. By default, the language the game runs in.</RimBabel.Settings.LanguageDesc>
+  <RimBabel.Settings.Output>Output folder</RimBabel.Settings.Output>
+  <RimBabel.Settings.OutputDefault>{0} (default)</RimBabel.Settings.OutputDefault>
+  <RimBabel.Settings.OutputDesc>Where packages are written. Leave it empty for the default folder, next to your saves.</RimBabel.Settings.OutputDesc>
+  <RimBabel.Settings.OutputOpen>Open folder</RimBabel.Settings.OutputOpen>
+
+  <!-- Dictionary and blacklist -->
+  <RimBabel.Settings.DictionaryHeader>Dictionary</RimBabel.Settings.DictionaryHeader>
+  <RimBabel.Settings.DictionaryDesc>One entry per line: word = required translation. It applies to every mod, so the same word is translated the same way everywhere. A line starting with # is ignored.</RimBabel.Settings.DictionaryDesc>
+  <RimBabel.Settings.DictionaryBad.One>1 line has no word or no translation around its equals sign, and is ignored.</RimBabel.Settings.DictionaryBad.One>
+  <RimBabel.Settings.DictionaryBad.Many>{0} lines have no word or no translation around their equals sign, and are ignored.</RimBabel.Settings.DictionaryBad.Many>
+  <RimBabel.Settings.BlacklistHeader>Never translate</RimBabel.Settings.BlacklistHeader>
+  <RimBabel.Settings.BlacklistDesc>One rule per line. A text is named K:key for a Keyed text, or D:DefType/defName.field for a Def text. Use * and ? as wildcards, or start the line with re: for a regular expression. A line starting with # is ignored.</RimBabel.Settings.BlacklistDesc>
+  <RimBabel.Settings.BlacklistBad.One>1 rule is not a valid regular expression and matches nothing.</RimBabel.Settings.BlacklistBad.One>
+  <RimBabel.Settings.BlacklistBad.Many>{0} rules are not valid regular expressions and match nothing.</RimBabel.Settings.BlacklistBad.Many>
+
+</LanguageData>

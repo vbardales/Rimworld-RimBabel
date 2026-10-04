@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Optional shortcut to the settings, for RIMMSQOL and other mods that customize the main bar.
+       Hidden by default: neither visible nor greyed out. It opens the same dialog as Mod options. -->
+  <MainButtonDef>
+    <defName>RimBabel_Settings</defName>
+    <label>RimBabel</label>
+    <description>Open RimBabel settings.</description>
+    <workerClass>RimBabel.Game.MainButtonWorker_Settings</workerClass>
+    <buttonVisible>false</buttonVisible>
+    <validWithoutMap>true</validWithoutMap>
+    <order>1000</order>
+  </MainButtonDef>
+</Defs>
