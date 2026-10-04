@@ -21,7 +21,7 @@ written once the Workshop item exists ("creation of a publishId file") and says 
   markers are hidden from the engine and checked on the way back; a translation that lost one is refused and the text
   stays as the source. A glossary of required translations, a blacklist (glob or regular expression), a pipeline that
   translates only pending and stale texts and never touches human, reviewed or locked ones, and an importer that brings an
-  existing translation in as human work. No engine is connected yet.
+  existing translation in as human work. Engines for DeepL, Anthropic and any OpenAI-compatible endpoint, with a small JSON reader and writer so that no library is needed; tested against a fake network only, and not reachable from the game yet.
 - A scan of one mod no longer walks the whole game (about 72 s before, 18-111 ms after, measured in the WSL install).
-- 105 offline checks of the package core, the Keyed reader and the translation machinery, and 32 checks of the extractor against the game's own
+- 139 offline checks of the package core, the Keyed reader, the translation machinery and the engines, and 32 checks of the extractor against the game's own
   assemblies (hand-built Defs in the real `DefDatabase`, walked by the game's `DefInjectionUtility`).

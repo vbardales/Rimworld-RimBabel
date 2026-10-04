@@ -15,7 +15,7 @@ This mod's own backlog, not the monorepo's. Opened 2026-10-03.
   than `label` are missed today).
 - [ ] Source languages other than English; English DefInjected files that override a Def.
 - [x] Import an existing translation pack into a package, as human work an engine never overwrites (`Importer`, tested). [ ] Still to do: check the licence of the pack before it is redistributed, and wire it to a window or action.
-- [ ] Engines: DeepL (glossary, `tag_handling=xml`), Anthropic (Messages API), OpenAI-compatible endpoint, a free fallback.
+- [x] Engines written and tested against a fake network: DeepL (free and paid hosts, tokens sent as XML tags), Anthropic (Messages API) and any OpenAI-compatible endpoint (Ollama, LM Studio, OpenRouter...). [ ] Still to do: try each against its real service (needs keys: the owner's), a free no-key fallback (MyMemory or LibreTranslate), DeepL glossary ids, and the settings that hold the keys (never in a package or a repository).
 - [x] Placeholder protection: tokenise, validate (same tokens, length), retry once alone, else keep the source (`Protector`, `Pipeline`, tested). [ ] Still to do: detect an answer still in the source language, and translate the literal branches of a gender switch.
 - [x] Dictionary applied before the engine and handed to it as a glossary; blacklist by key glob or regular expression (`Protector`, `Blacklist`, tested). [ ] Still to do: a dictionary shared across mods (one file, not per package), blacklist by kind of text (colonist names) for the on-the-fly mode, and their screens.
 - [ ] Settings page under Mod options, hidden MainButtons shortcut, English and French keys.

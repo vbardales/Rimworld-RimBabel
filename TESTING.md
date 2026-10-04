@@ -11,7 +11,7 @@ The package core (`Source/Core`) is plain C# and its tests compile it in directl
 dotnet run --project Tests/RimBabel.Tests.csproj
 ```
 
-105 checks, exit code 1 when one fails; all passed on 2026-10-04. They cover: the source hash ignores the newline
+139 checks, exit code 1 when one fails; all passed on 2026-10-04. They cover: the source hash ignores the newline
 convention; the manifest round-trips special characters, newlines, status, engine, glossary and blacklist, and refuses a
 newer schema; the merge keeps unchanged and human text, makes a stale draft of a changed source, never touches a locked
 text, reports new and removed keys, and bumps the version only on a change; the writer lays out the package, escapes
@@ -32,7 +32,7 @@ dropped whole, an engine that throws stops the run and keeps what was done, batc
 (an existing translation brought in as human work, the game's `EN:` comment used to tell a text written for another source
 apart, the `TODO` placeholder ignored, orphans reported, existing human texts kept). Three mutations were run (the status
 filter of the pipeline, the once-only token rule, and the empty-answer check) and each makes tests fail. **Not covered**:
-the real engines. No test calls DeepL, Anthropic or any other service; the real engines are not written yet.
+the real services. The engines (DeepL, Anthropic, any OpenAI-compatible endpoint) are tested against a stand-in for the network: request URL, headers and body, reading of the reply (including a fenced one), a refusal that names the status and never the key, an unusable reply refused, and a whole chain from manifest to translated text. **No test calls a real service**, so nothing proves a real key, a real model name or a real reply format works; that needs the owner's keys.
 
 ## What runs against the game's assemblies, still outside the game
 

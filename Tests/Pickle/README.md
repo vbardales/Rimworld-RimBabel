@@ -1,6 +1,6 @@
 # The Pickle suite for RimBabel
 
-One feature file, written 2026-10-03. Passes of 2026-10-04: English 4 of 4 (older tree), French 5 of 5 (tree with the speed fix). The English pass of the fifth scenario has not run. It holds what only a running game can show; everything provable
+One feature file, written 2026-10-03. Passes of 2026-10-04: English 4 of 4 (older tree), French 5 of 5 (tree with the speed fix), and the speed scenario alone in English. It holds what only a running game can show; everything provable
 outside one is proven outside one (`Tests/RimBabel.Tests.csproj` for the package core, `Tests/Game` for the extractor against
 the game's assemblies). A scenario that restated those would take the machine for nothing.
 

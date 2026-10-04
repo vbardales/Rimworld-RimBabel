@@ -27,6 +27,8 @@ internal static partial class Program
         BlacklistTests();
         PipelineTests();
         ImporterTests();
+        JsonTests();
+        EngineTests();
         Console.WriteLine(checks + " checks, " + failures + " failed");
         return failures == 0 ? 0 : 1;
     }
