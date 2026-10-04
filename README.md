@@ -7,8 +7,7 @@ package**: a normal RimWorld mod, ready to commit and publish, that never touche
 when the source mod changes and only the texts that moved are translated again.
 
 **Status: in development.** The package core exists and is tested outside the game. The in-game part (reading a mod,
-the engines) is not written yet. See [STATUS.md](STATUS.md).
-
+**Status: v1 in development.** v1 is the developer menu (write the translation mod of an installed mod) plus the settings page (engine, keys, dictionary, blacklist). A window to translate from the interface, regular-expression search and the hover original come later. See [STATUS.md](STATUS.md).
 ## What it is meant to do
 
 - **One package per translated mod.** A package is a plain mod: `Mod/About`, `Mod/Languages/<language>/Keyed` and

@@ -8,7 +8,7 @@ repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
 stage:        showcase
-workflow_stage: horsMonoRepo
+workflow_stage: preOptions
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -32,12 +32,25 @@ remaining:
   - unverified: the Pickle suite (Tests/Pickle, 2 features: 01-package with 5 scenarios, and 02-settings with 5 scenarios run 2026-10-04: English `20261004-211530-940-2872` and French `20261004-212022-623-1787`, 10 of 10 each, captures read, evidence in `Tests/Pickle/Evidence/run-en` and `run-fr`; the first French run showed a clipped line, fixed in fc20c74): the English pass of 2026-10-04 (4 scenarios, tree 8e7ecfb) passed; the French pass `20261004-000341-508-ad5b` (5 scenarios, including the new speed one) passed on the tree that carries the fix (scans 18-111 ms); the speed scenario also passed in English (`20261004-193459-869-da64`, scan 98 ms); the first four passed in English on the older tree. A full 5-scenario English pass on the final tree is a non-regression pass for the end. Execution and reading of the reports is a criterion of done -> tested; passes are declared in Tests/Pickle/README.md (minimal English, minimal French)
   - unverified: licence of the generated translation packages - a package is a derivative of its source mod, so the generator refuses to call one publishable while the source licence is unknown (PackageWriter.Blockers)
 session:      local_a2fc6f2c-0a40-46e3-b162-497e9923317b
-updated:      2026-10-04, ModIcon and Preview installed, description rewritten, French corrections applied: still horsMonoRepo (next transition waits for the owner declaring the development finished); nothing published
+updated:      2026-10-05, v1 scope fixed, ModIcon accepted: preOptions; nothing published
 ---
 
 # RimBabel - status
 
-## Decision of 2026-10-04: `horsMonoRepo`
+## Decision of 2026-10-05: `preOptions`
+
+The owner fixed the scope of v1: **the developer menu plus the settings page**. A window to translate a mod from the
+interface, the regular-expression search and the hover original are not part of v1 (BACKLOG). She accepted the ModIcon as
+delivered (32 px check: the head reads, the two side objects blur; her override). Transitions, in order:
+`horsMonoRepo -> ModIcon générée` holds (development finished for that scope, build current, `ModIcon.png` 128x128 in
+`Mod/About`, accepted by the owner); `-> Preview générée` holds (`Preview.png` 896x504, 482 KB, read by eye 2026-10-04);
+`-> preOptions` holds (English description, plain name, teal accent against the gold secondary ink). `preOptions -> options`
+fails: the runtime rows of the settings audit are not all proved (restart reading the values back, RIMMSQOL, the primary
+route by Mod options in a real session) and `settings_audit` is `partial`. Retained: `workflow_stage: preOptions`,
+`stage: showcase`.
+
+
+## Decision of 2026-10-04: `horsMonoRepo` (superseded)
 
 The owner asked for the repository to be created. `vbardales/Rimworld-RimBabel` (public, topics `rimworld`,
 `rimworld-mod`, `mod`) exists, `origin` is set, and `main` is pushed: the remote head `e936541` equals the local one,
