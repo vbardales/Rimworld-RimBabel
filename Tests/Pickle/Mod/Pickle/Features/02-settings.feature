@@ -50,3 +50,22 @@ Feature: RimBabel's settings page and its hidden shortcut
     And RimBabel: the settings window draws for 10 frames
     And I take a screenshot "RimBabel settings page"
     And I close all dialogs
+
+  # The primary route of MOD_SETTINGS.md, through the game's own options window. The click on the mod's name is simulated by
+  # setting the window's chosen mod: a real click is a pointer event Pickle does not send to an immediate-mode window.
+  Scenario: Options, Mod options lists RimBabel and its page draws from there
+    When RimBabel: the game's options window is opened on Mod options
+    And RimBabel: the settings window draws for 5 frames
+    Then the Mod options list holds RimBabel
+    When RimBabel: RimBabel is chosen in the Mod options list
+    And RimBabel: the settings window draws for 10 frames
+    Then no errors were logged
+    When I close all dialogs
+
+  # What the next start would read: the game's loader on the file just written, not the object in memory. Two lines or more of
+  # text, since a Windows save reads line breaks back as CR LF.
+  Scenario: values survive a write and a read of the file, including line breaks
+    When RimBabel: I set the author name to "Pickle Reader"
+    And RimBabel: I set the dictionary to 3 lines
+    And RimBabel: the settings are written
+    Then RimBabel: the file read back by the game holds author "Pickle Reader" and a dictionary of 3 lines

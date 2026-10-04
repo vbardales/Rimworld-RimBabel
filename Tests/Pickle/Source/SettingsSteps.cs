@@ -134,6 +134,64 @@ namespace RimBabel.PickleSteps
                 + string.Join(", ", missing.Take(8).ToArray()));
         }
 
+        // The primary route of MOD_SETTINGS.md: Options -> Mod options -> RimBabel. In 1.6 "Mod options" is a category of
+        // Dialog_Options (the OptionCategoryDef "Mods"), and the left list holds the mods whose SettingsCategory is not empty.
+        [When("RimBabel: the game's options window is opened on Mod options")]
+        public void OpenModOptions(PickleContext ctx)
+        {
+            ctx.Require(Find.WindowStack != null, "there is no window stack: no game and no main menu is running");
+            OptionCategoryDef category = DefDatabase<OptionCategoryDef>.GetNamedSilentFail("Mods");
+            ctx.Require(category != null, "no OptionCategoryDef named 'Mods': this version of the game names its Mod options category differently");
+            Find.WindowStack.Add(new Dialog_Options(category));
+        }
+
+        // Asked of the window itself, after it has drawn: the game's own list, not a re-computation of the rule.
+        [Then("the Mod options list holds RimBabel")]
+        public void ListHoldsUs(PickleContext ctx)
+        {
+            Dialog_Options dialog = Find.WindowStack.Windows.OfType<Dialog_Options>().FirstOrDefault();
+            ctx.Assert(dialog != null, "the options window is not open");
+            FieldInfo field = typeof(Dialog_Options).GetField("cachedModsWithSettings", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+            ctx.Require(field != null, "Dialog_Options has no 'cachedModsWithSettings' field in this version");
+            var list = field.GetValue(dialog) as IEnumerable<Mod>;
+            ctx.Assert(list != null, "the options window has not built its list of mods with settings after drawing");
+            ctx.Assert(list.Contains(RimBabelMod.Instance), "RimBabel is not in the Mod options list; the list holds: "
+                + string.Join(", ", list.Select(m => m.Content == null ? "?" : m.Content.Name).Take(12).ToArray()));
+        }
+
+        // What a click on the mod's name does: the window keeps the chosen mod in 'selectedMod' and draws its page.
+        [When("RimBabel: RimBabel is chosen in the Mod options list")]
+        public void ChooseUs(PickleContext ctx)
+        {
+            Dialog_Options dialog = Find.WindowStack.Windows.OfType<Dialog_Options>().FirstOrDefault();
+            ctx.Require(dialog != null, "the options window is not open");
+            FieldInfo field = typeof(Dialog_Options).GetField("selectedMod", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+            ctx.Require(field != null, "Dialog_Options has no 'selectedMod' field in this version");
+            field.SetValue(dialog, RimBabelMod.Instance);
+        }
+
+        [When("RimBabel: I set the dictionary to {int} lines")]
+        public void SetDictionary(PickleContext ctx, int lines)
+        {
+            Settings(ctx).dictionaryText = string.Join("\n", Enumerable.Range(1, lines).Select(i => "word" + i + " = mot" + i).ToArray());
+        }
+
+        // The game's own loader, from the file the game just wrote: what the next start would read. The in-memory object is
+        // not touched, so a value that only lives in memory cannot pass.
+        [Then("RimBabel: the file read back by the game holds author {string} and a dictionary of {int} lines")]
+        public void ReadBack(PickleContext ctx, string author, int lines)
+        {
+            MethodInfo read = typeof(LoadedModManager).GetMethod("ReadModSettings", BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
+            ctx.Require(read != null, "LoadedModManager.ReadModSettings is not there in this version");
+            var fresh = (RimBabelSettings)read.MakeGenericMethod(typeof(RimBabelSettings))
+                .Invoke(null, new object[] { RimBabelMod.Instance.Content.FolderName, RimBabelMod.Instance.GetType().Name });
+            ctx.Assert(fresh != null, "the game read no settings back");
+            ctx.Assert(fresh.author == author, "the author read back is '" + fresh.author + "', not '" + author + "'");
+            int got = string.IsNullOrEmpty(fresh.dictionaryText) ? 0 : fresh.dictionaryText.Split(new[] { '\n' }).Length;
+            ctx.Assert(got == lines, "the dictionary read back has " + got + " lines, not " + lines + ": a line break was lost or changed");
+            ctx.Assert(fresh.dictionaryText.IndexOf((char)13) < 0, "the dictionary read back still holds carriage returns");
+        }
+
         [AfterScenario]
         public void PutSettingsBack(PickleContext ctx)
         {
