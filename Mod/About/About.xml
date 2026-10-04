@@ -7,11 +7,18 @@
     <li>1.6</li>
   </supportedVersions>
   <url>https://github.com/vbardales/Rimworld-RimBabel</url>
-  <description>Translate RimWorld mods into your language, once, the same way in every mod, and ship the result as a mod of its own.
+  <description>Translate any RimWorld mod into your language, and get the result as a translation mod of its own, ready to publish.
 
-RimBabel reads the texts of a mod, translates what is missing with the engine you choose, and writes a translation package: a normal RimWorld mod that never touches the mod it translates. Run it again when the source mod changes and only the texts that moved are translated again.
+RimBabel reads the texts of a mod, translates what is missing with the engine you choose (DeepL, Anthropic, or any OpenAI-compatible server, including one running on your own computer), and writes a normal translation mod. It never touches the mod it translates.
 
-Work in progress: this description is a draft and the mod does not do much in game yet.
+- One dictionary for every mod, so the same word is translated the same way everywhere.
+- A blacklist for the texts that must stay as they are.
+- Placeholders, tags and markers are kept out of the engine's sight and checked on the way back. A translation that loses one is refused.
+- Run it again when the source mod changes: only the texts that moved are translated again. Texts you reviewed by hand are never overwritten.
+- Import an existing translation as the starting point.
+- Settings under Mod options, in English and French. Your keys stay in the game's settings file on your computer.
+
+Current limits: packages are written from the developer menu (RimBabel, Write a translation package for a mod); there is no window to translate a mod yet.
 
 Source code on GitHub (https://github.com/vbardales/Rimworld-RimBabel)</description>
 </ModMetaData>
