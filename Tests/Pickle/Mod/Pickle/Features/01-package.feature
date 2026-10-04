@@ -39,6 +39,14 @@ Feature: RimBabel lists the texts of a loaded mod and writes its translation pac
     And RimBabel: the package id is "nelim.rimbabel.nelim.rimbabel.pickletests.french"
     And RimBabel: the package is not publishable yet because "Licence of the source mod is unknown"
 
+  # The scan of one mod must not walk the whole game. The first run of this suite (2026-10-04) took about 72 seconds
+  # for one mod: every def of every mod was read before the mod's own were kept. The limit is generous (the game
+  # runs under a software renderer here); a scan that walks everything again is far over it.
+  Scenario: scanning one mod is fast, whatever else is loaded
+    Given RimBabel: no package exists yet for the mod "RimBabel - Pickle tests" in "French"
+    When RimBabel: I write the translation package of the mod "RimBabel - Pickle tests" for the language "French"
+    Then RimBabel: the last write took less than 15 seconds
+
   Scenario: scanning the same mod again changes nothing
     Given RimBabel: no package exists yet for the mod "RimBabel - Pickle tests" in "French"
     When RimBabel: I write the translation package of the mod "RimBabel - Pickle tests" for the language "French"

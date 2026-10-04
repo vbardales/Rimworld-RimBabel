@@ -39,10 +39,12 @@ namespace RimBabel.Game
         /// <summary>What the menu entry does once a mod is picked. Public so a test can run it without the menu.</summary>
         public static PackageResult WriteFor(ModContentPack mod, string language)
         {
+            var clock = System.Diagnostics.Stopwatch.StartNew();
             PackageResult r = PackageBuilder.Build(mod, language, "RimBabel user");
+            clock.Stop();
             Log.Message("[RimBabel] " + mod.Name + " -> " + r.Root + " (version " + r.Version + "): "
                 + r.Merge.New.Count + " new, " + r.Merge.Changed.Count + " changed, " + r.Merge.Removed.Count
-                + " removed, " + r.Merge.Unchanged + " unchanged. " + (r.PublishBlockers.Count == 0
+                + " removed, " + r.Merge.Unchanged + " unchanged, in " + clock.ElapsedMilliseconds + " ms. " + (r.PublishBlockers.Count == 0
                     ? "Nothing in the way of publication."
                     : "Not publishable yet: " + string.Join(" ", r.PublishBlockers.ToArray())));
             return r;

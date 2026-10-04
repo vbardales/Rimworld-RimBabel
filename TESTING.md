@@ -70,7 +70,7 @@ exercised with a fake endpoint, not the real services: no test calls DeepL or An
 
 ### The Pickle suite (written 2026-10-03, not run)
 
-`Tests/Pickle/` holds `01-package.feature` (4 scenarios, the manual check "write the package of a mod from the developer
+`Tests/Pickle/` holds `01-package.feature` (5 scenarios, the manual check "write the package of a mod from the developer
 menu, read the manifest" made into steps), its step assembly (`Source/PackageSteps.cs`, built into
 `Mod/Pickle/Assemblies/`) and `README.md`, which says what each scenario needs a game for and what stays manual (the menu
 window, a large real mod). The companion mod is also the source mod: it carries two Defs and a Keyed file whose texts are

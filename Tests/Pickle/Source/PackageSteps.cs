@@ -23,6 +23,7 @@ namespace RimBabel.PickleSteps
             public PackageResult Result;
             public ModContentPack Mod;
             public Manifest Manifest;
+            public long ElapsedMs;
         }
 
         [Given("RimBabel: no package exists yet for the mod {string} in {string}")]
@@ -40,9 +41,11 @@ namespace RimBabel.PickleSteps
         public void Write(PickleContext ctx, string modName, string language)
         {
             ModContentPack mod = FindMod(ctx, modName);
+            var clock = System.Diagnostics.Stopwatch.StartNew();
             PackageResult result = DevActions.WriteFor(mod, language);
+            clock.Stop();
             Manifest manifest = Manifest.Parse(File.ReadAllText(Path.Combine(result.Root, "Mod", "Babel", "manifest.xml")));
-            ctx.Set(new Written { Result = result, Mod = mod, Manifest = manifest });
+            ctx.Set(new Written { Result = result, Mod = mod, Manifest = manifest, ElapsedMs = clock.ElapsedMilliseconds });
         }
 
         [Then("RimBabel: the manifest lists {string} as {string}")]
@@ -121,6 +124,15 @@ namespace RimBabel.PickleSteps
             ctx.Assert(m.New.Count == added && m.Changed.Count == changed && m.Removed.Count == removed,
                 "the last write found " + m.New.Count + " new, " + m.Changed.Count + " changed and " + m.Removed.Count
                 + " removed texts, expected " + added + ", " + changed + " and " + removed);
+        }
+
+        [Then("RimBabel: the last write took less than {int} seconds")]
+        public void Fast(PickleContext ctx, int seconds)
+        {
+            Written w = Last(ctx);
+            ctx.Assert(w.ElapsedMs < seconds * 1000L,
+                "writing the package took " + (w.ElapsedMs / 1000.0).ToString("0.0") + " s, expected under " + seconds + " s. "
+                + "The first Pickle run (2026-10-04) took about 72 s: the scan walked every def of the game instead of the mod's own.");
         }
 
         [Then("RimBabel: the package version is {string}")]

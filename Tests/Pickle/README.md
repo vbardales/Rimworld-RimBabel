@@ -1,6 +1,6 @@
 # The Pickle suite for RimBabel
 
-One feature file, written 2026-10-03, **not run yet**. It holds what only a running game can show; everything provable
+One feature file, written 2026-10-03. Passes of 2026-10-04: English 4 of 4 (older tree), French 5 of 5 (tree with the speed fix). The English pass of the fifth scenario has not run. It holds what only a running game can show; everything provable
 outside one is proven outside one (`Tests/RimBabel.Tests.csproj` for the package core, `Tests/Game` for the extractor against
 the game's assemblies). A scenario that restated those would take the machine for nothing.
 
@@ -8,7 +8,7 @@ the game's assemblies). A scenario that restated those would take the machine fo
 
 | Feature | What a person would do by hand | Why a running game |
 | --- | --- | --- |
-| 01 package | Load a mod, open the developer menu, run `RimBabel > Write a translation package for a mod...`, pick the mod, read the manifest | The Defs are loaded **by the game from XML** (inheritance, `ModContentPack` assignment, the real `DefDatabase`), and the Keyed files are read from the load folders the game computed. `Tests/Game` builds its Defs by hand; this is the only place the whole chain is shown |
+| 01 package (5 scenarios) | Load a mod, open the developer menu, run `RimBabel > Write a translation package for a mod...`, pick the mod, read the manifest, and notice it took a minute | The Defs are loaded **by the game from XML** (inheritance, `ModContentPack` assignment, the real `DefDatabase`), and the Keyed files are read from the load folders the game computed. `Tests/Game` builds its Defs by hand; this is the only place the whole chain is shown |
 
 The step calls `DevActions.WriteFor`, the method the menu entry calls once a mod is picked, so everything under the menu is the
 real code. **The menu window itself is not covered**: it is a developer tool with no player-facing layout. When the settings

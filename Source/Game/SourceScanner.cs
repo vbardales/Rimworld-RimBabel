@@ -16,18 +16,25 @@ namespace RimBabel.Game
     {
         public const string SourceLanguage = "English";
 
-        public static List<Entry> Scan(ModContentPack mod)
+        public static List<Entry> Scan(ModContentPack mod, bool narrowTheWalk = true)
         {
             var entries = new List<Entry>();
             entries.AddRange(KeyedXml.ReadFolders(mod.foldersToLoadDescendingOrder, SourceLanguage));
-            entries.AddRange(ScanDefs(mod));
+            entries.AddRange(ScanDefs(mod, narrowTheWalk));
             return entries;
         }
 
-        public static List<Entry> ScanDefs(ModContentPack mod)
+        public static List<Entry> ScanDefs(ModContentPack mod, bool narrowTheWalk = true)
         {
             var entries = new List<Entry>();
             var seen = new HashSet<string>();
+
+            // The game's walk can skip the defs of every other mod before it reads a single field, when it is
+            // given the mod's metadata. Without it, each scan walked every def of the whole game: about 72 seconds
+            // in the WSL install (Pickle run of 2026-10-04), which is the slow indexing this mod exists to avoid.
+            // narrowTheWalk is false only in the offline tests, where the mod list cannot be built (it needs the engine);
+            // the check below keeps the result right either way, and the Pickle suite times the narrowed walk.
+            ModMetaData only = narrowTheWalk ? mod.ModMetaData : null;
 
             foreach (Type defType in GenDefDatabase.AllDefTypesWithDatabases())
             {
@@ -47,7 +54,7 @@ namespace RimBabel.Game
                         {
                             Add(entries, seen, folder, suggestedPath, currentValue, field);
                         }
-                    });
+                    }, only);
             }
             return entries;
         }

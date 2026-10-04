@@ -137,7 +137,7 @@ internal static class Program
         thought.stages = new List<ThoughtStage> { new ThoughtStage { label = "rb feeling", description = "It feels rb." } };
         DefDatabase<ThoughtDef>.Add(thought);
 
-        List<Entry> entries = SourceScanner.Scan(mine);
+        List<Entry> entries = SourceScanner.Scan(mine, false);
         Func<string, Entry> find = id => entries.FirstOrDefault(e => e.Id == id);
 
         // Keyed
@@ -185,12 +185,12 @@ internal static class Program
         Check(first.PublishBlockers.Any(b => b.Contains("Licence of the source mod")), "an unknown source licence blocks publication");
 
         // Second scan of the same mod: nothing moved, nothing changes
-        PackageResult again = PackageWriter.Write(pkg, spec, SourceScanner.Scan(mine), new DateTime(2026, 10, 4));
+        PackageResult again = PackageWriter.Write(pkg, spec, SourceScanner.Scan(mine, false), new DateTime(2026, 10, 4));
         Check(!again.Merge.HasChanges && again.Version == first.Version, "scanning an unchanged mod again changes nothing");
 
         // The source mod changes its text: that one text moves, and a human translation would become stale
         File.WriteAllText(Path.Combine(keyed, "Rb.xml"), "<LanguageData><RbHello>Hello there {0}</RbHello><RbTwo>Line one\\nline two</RbTwo></LanguageData>");
-        PackageResult changed = PackageWriter.Write(pkg, spec, SourceScanner.Scan(mine), new DateTime(2026, 10, 5));
+        PackageResult changed = PackageWriter.Write(pkg, spec, SourceScanner.Scan(mine, false), new DateTime(2026, 10, 5));
         Check(changed.Merge.Changed.Count == 1 && changed.Merge.Changed[0].Key == "RbHello", "an edited source text is the only change");
 
         // The scanner's own rule, on real fields
