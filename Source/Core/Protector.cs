@@ -44,7 +44,7 @@ namespace RimBabel.Core
         private const string Open = "⟦";   // mathematical left white square bracket
         private const string Close = "⟧";
 
-        private static readonly Regex Tags = new Regex(@"</?[A-Za-z][A-Za-z0-9_]*(?:=[^>]*)?>|\(\*[A-Za-z_]+(?:\s[^)]*)?\)", RegexOptions.Compiled);
+        private static readonly Regex Tags = new Regex(@"</?[A-Za-z][A-Za-z0-9_]*(?:=[^>]*)?>|\(\*[A-Za-z_]+(?:\s[^)]*)?\)|\(/[A-Za-z_]+\)", RegexOptions.Compiled);
         private static readonly Regex TokenPattern = new Regex(Open + @"(\d+)" + Close, RegexOptions.Compiled);
 
         public static Protected Protect(string source, IList<KeyValuePair<string, string>> glossary)
@@ -132,6 +132,21 @@ namespace RimBabel.Core
                 int c;
                 seen.TryGetValue(n, out c);
                 if (c != 1) return Fail("the token for '" + p.Slots[n].Original + "' appears " + c + " times instead of once");
+            }
+
+            // Tokens may swap places (grammar differs), but a closing tag in front of its own opening tag is broken markup.
+            for (int c = 0; c < p.Slots.Count; c++)
+            {
+                Match close = Regex.Match(p.Slots[c].Original, @"^(?:</([A-Za-z][A-Za-z0-9_]*)>|\(/([A-Za-z_]+)\))$");
+                if (!close.Success) continue;
+                string name = close.Groups[1].Success ? close.Groups[1].Value : close.Groups[2].Value;
+                for (int o = 0; o < p.Slots.Count; o++)
+                {
+                    if (!Regex.IsMatch(p.Slots[o].Original, @"^(?:<" + Regex.Escape(name) + @"(?:=[^>]*)?>|\(\*" + Regex.Escape(name) + @"(?:\s[^)]*)?\))$")) continue;
+                    if (text.IndexOf(p.Slots[c].Token, StringComparison.Ordinal) < text.IndexOf(p.Slots[o].Token, StringComparison.Ordinal))
+                        return Fail("the closing '" + p.Slots[c].Original + "' comes before its opening '" + p.Slots[o].Original + "'");
+                    break;
+                }
             }
 
             // A length far from the source's is a sign of a refusal, a summary or a run-on.

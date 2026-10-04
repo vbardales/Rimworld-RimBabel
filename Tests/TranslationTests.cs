@@ -28,6 +28,15 @@ internal static partial class Program
         string good = p.Text.Replace("Hello", "Bonjour").Replace("danger", "danger!").Replace("runs", "court");
         Check(Round(src, good) == "Bonjour {0}, <color=#ff0000>danger!</color> (*Colonist) {PAWN_gender ? he : she} court", "protector: a faithful translation gets every original back");
 
+        // The closing marker of a (*Name)...(/Name) pair is hidden too: DeepL, run live, translated "(/Good)" to "(/Bon)".
+        Protected pair = Protector.Protect("(*Good)Warm hearth(/Good) here", NoGlossary);
+        Check(pair.Slots.Count == 2 && !pair.Text.Contains("(/"), "protector: the closing (/Name) marker is hidden as well as the opening one");
+
+        // And the live answer to that sentence put the closing token before the opening one: refused, not shipped.
+        string tOpen = pair.Slots[0].Token, tClose = pair.Slots[1].Token;
+        Check(!Protector.Restore("Un foyer" + tClose + " " + tOpen + "chaleureux ici", pair, "(*Good)Warm hearth(/Good) here").Ok, "protector: a closing marker before its opening one is refused");
+        Check(Protector.Restore(tOpen + "Un foyer chaleureux" + tClose + " ici", pair, "(*Good)Warm hearth(/Good) here").Ok, "protector: the same pair in order is accepted");
+
         // Reordered tokens are legal: grammar differs between languages.
         Protected two = Protector.Protect("{0} gave {1} a gift", NoGlossary);
         Restored swapped = Protector.Restore("⟦1⟧ a reçu un cadeau de ⟦0⟧", two, "{0} gave {1} a gift");
