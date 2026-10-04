@@ -78,7 +78,7 @@ known. The scenarios run at the main menu, with no save, so a run is seconds. `C
 expressions with Pickle's own engine and checks them for ambiguity. **Execution and the review of anything it produces
 belong to `done -> tested`**; until a report exists the verdict is `unverified`.
 
-`02-settings.feature` (5 scenarios, written 2026-10-04, never run) holds what only a game shows about the settings page: the
+`02-settings.feature` (5 scenarios, written 2026-10-04, run 2026-10-04, English and French passed; the first French capture caught a clipped line, fixed) holds what only a game shows about the settings page: the
 hidden shortcut (hidden on a clean configuration, drawn and not greyed once revealed, gone again when hidden), that activating it
 opens the dialog of this mod and not another, that the page draws for ten frames without a logged error, that the game writes
 the settings file (and no key when none was set), that every settings text exists in the language of the pass, and a `@review`
