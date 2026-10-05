@@ -39,5 +39,9 @@ This mod's own backlog, not the monorepo's. Opened 2026-10-03.
 
 - [ ] On-the-fly translation of the interface (Harmony, a cache by source string, never a blocking call, a blacklist for
   numbers, identifiers and colonist names, the original text on hover).
+- [ ] Show the original text on hover over a translated text, in the interface and in the translation window, so that a player
+  can check what a machine translation replaced. Out of version 1 (owner's decision, 2026-10-05). When it exists: a Pickle
+  scenario that hovers a translated text and a capture proving the tooltip shows the source language, not a key or the
+  translation itself; Pickle has no step to place the pointer, so that step comes first.
 - [ ] `.po` import and export; a stored index (SQLite) if the in-memory one stops being enough, which means an explicit
   exception to the rule against bundling third-party DLLs.
