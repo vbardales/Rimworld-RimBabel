@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace RimBabel.Core
 {
@@ -56,12 +55,10 @@ namespace RimBabel.Core
 
     /// <summary>
     /// Google Cloud Translation, basic edition (v2), with the user's own API key. The key goes in a header, never in the address,
-    /// so it cannot end up in a log line. Tokens are wrapped in a notranslate span, which this service honours in HTML mode.
+    /// so it cannot end up in a log line. Plain-text mode: HTML mode, with the tokens wrapped in a notranslate span, put a space on both sides of every span.
     /// </summary>
     public sealed class GoogleCloudEngine : ITranslationEngine
     {
-        private static readonly Regex Wrapped = new Regex("<span[^>]*>(⟦\\d+⟧)</span>", RegexOptions.Compiled);
-        private static readonly Regex Token = new Regex("⟦\\d+⟧", RegexOptions.Compiled);
         private readonly IHttp http;
         private readonly string key;
 
@@ -78,8 +75,8 @@ namespace RimBabel.Core
             string from = MtHelpers.Code(Name, fromLanguage), to = MtHelpers.Code(Name, toLanguage);
             if (from == "zh") from = "zh-CN";
             if (to == "zh") to = "zh-CN";
-            var q = texts.Select(t => Token.Replace(Escape(t), m => "<span class=\"notranslate\">" + m.Value + "</span>")).Cast<object>().ToList();
-            string body = Json.Write(new Dictionary<string, object> { { "q", q }, { "source", from }, { "target", to }, { "format", "html" } });
+            var q = texts.Cast<object>().ToList();
+            string body = Json.Write(new Dictionary<string, object> { { "q", q }, { "source", from }, { "target", to }, { "format", "text" } });
             var headers = new Dictionary<string, string> { { "X-goog-api-key", key } };
             HttpReply reply = http.PostJson("https://translation.googleapis.com/language/translate/v2", headers, body, 60000);
             if (reply.Status < 200 || reply.Status >= 300) throw new EngineException(MtHelpers.Fail(Name, reply, key));
@@ -88,17 +85,10 @@ namespace RimBabel.Core
                 var data = (Dictionary<string, object>)((Dictionary<string, object>)Json.Parse(reply.Body))["data"];
                 var list = (List<object>)data["translations"];
                 if (list.Count != texts.Length) throw new EngineException(Name + " returned " + list.Count + " texts for " + texts.Length);
-                return list.Select(x => Unescape(Wrapped.Replace((string)((Dictionary<string, object>)x)["translatedText"], "$1"))).ToArray();
+                return list.Select(x => (string)((Dictionary<string, object>)x)["translatedText"]).ToArray();
             });
         }
 
-        private static string Escape(string s) { return s.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;"); }
-
-        // In HTML mode this service also writes the apostrophe and the quote as numeric entities.
-        private static string Unescape(string s)
-        {
-            return s.Replace("&#39;", "'").Replace("&quot;", "\"").Replace("&lt;", "<").Replace("&gt;", ">").Replace("&amp;", "&");
-        }
     }
 
     /// <summary>

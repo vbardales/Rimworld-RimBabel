@@ -14,15 +14,15 @@ internal static partial class Program
         // ---- Google Cloud
         var google = new FakeHttp
         {
-            Respond = b => Ok("{\"data\":{\"translations\":[{\"translatedText\":\"Bonjour <span class=\\\"notranslate\\\">⟦0⟧</span> d&#39;un ami\"},{\"translatedText\":\"Salut\"}]}}")
+            Respond = b => Ok("{\"data\":{\"translations\":[{\"translatedText\":\"Bonjour ⟦0⟧ d'un ami\"},{\"translatedText\":\"Salut\"}]}}")
         };
         var g = new GoogleCloudEngine(google, "SECRET-KEY");
         string[] gr = g.Translate(new[] { "Hello ⟦0⟧ of a friend", "Hi" }, "English", "French", NoGlossary);
         Check(google.Url == "https://translation.googleapis.com/language/translate/v2" && !google.Url.Contains("SECRET-KEY"), "google: the key is not in the address");
         Check(google.Headers["X-goog-api-key"] == "SECRET-KEY", "google: the key goes in a header");
         var gsent = (Dictionary<string, object>)Json.Parse(google.Body);
-        Check((string)gsent["format"] == "html" && ((List<object>)gsent["q"])[0].ToString().Contains("<span class=\"notranslate\">⟦0⟧</span>"), "google: a token is wrapped so the service leaves it alone");
-        Check(gr[0] == "Bonjour ⟦0⟧ d'un ami" && gr[1] == "Salut", "google: the wrapper and the entities are taken off the answer (" + gr[0] + ")");
+        Check((string)gsent["format"] == "text" && ((List<object>)gsent["q"])[0].ToString() == "Hello ⟦0⟧ of a friend", "google: plain-text mode, the text goes as it is (HTML mode put a space on each side of a wrapped token)");
+        Check(gr[0] == "Bonjour ⟦0⟧ d'un ami" && gr[1] == "Salut", "google: the answer is used as it comes (" + gr[0] + ")");
         var gbad = new GoogleCloudEngine(new FakeHttp { Respond = b => new HttpReply { Status = 403, Body = "bad SECRET-KEY" } }, "SECRET-KEY");
         string gmsg = null;
         try { gbad.Translate(new[] { "x" }, "English", "French", NoGlossary); } catch (EngineException ex) { gmsg = ex.Message; }
