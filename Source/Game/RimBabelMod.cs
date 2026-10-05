@@ -111,11 +111,14 @@ namespace RimBabel.Game
             translating = true;
             string author = AuthorName();
             Log.Message("[RimBabel] translating " + mod.Name + " into " + language + "...");
+            PackageBuilder.TranslationJob job;
+            try { job = PackageBuilder.Prepare(mod, language, author, settings, new WebHttp()); }
+            catch (System.Exception ex) { translating = false; Log.Error("[RimBabel] the translation of " + mod.Name + " could not start: " + ex.Message); return; }
             System.Threading.ThreadPool.QueueUserWorkItem(_ =>
             {
                 try
                 {
-                    PackageBuilder.TranslationOutcome o = PackageBuilder.Translate(mod, language, author, settings, new WebHttp());
+                    PackageBuilder.TranslationOutcome o = job.Run();
                     Log.Message("[RimBabel] " + mod.Name + " -> " + o.Package.Root + ": " + o.Report.Translated + " translated by " + o.EngineName + ", "
                         + o.Report.Failed + " refused or failed, " + o.Report.Blacklisted + " blacklisted" + (o.Report.Aborted ? ", STOPPED: " + string.Join(" ", o.Report.Failures.ToArray()) : ".")
                         + (o.Package.PublishBlockers.Count == 0 ? " Nothing in the way of publication." : " Not publishable yet: " + string.Join(" ", o.Package.PublishBlockers.ToArray())));

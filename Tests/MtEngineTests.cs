@@ -89,6 +89,18 @@ internal static partial class Program
         c = new EngineConfig { Kind = EngineKind.Yandex, YandexKey = "k" };
         Check(EngineFactory.Problems(c).SequenceEqual(new[] { EngineProblem.NoFolder }), "config: Yandex needs a folder as well as a key");
 
+        // ---- review findings: two pairs of one tag may swap places, and a stopped run keeps the answers it already has
+        Protected twin = Protector.Protect("<b>one</b> and <b>two</b>", NoGlossary);
+        string[] tk = twin.Slots.Select(s => s.Token).ToArray();
+        Check(Protector.Restore(tk[2] + "deux" + tk[3] + " et " + tk[0] + "un" + tk[1], twin, "<b>one</b> and <b>two</b>").Ok, "protector: two pairs of the same tag may swap places");
+        Check(!Protector.Restore(tk[1] + "un" + tk[0] + " et " + tk[2] + "deux" + tk[3], twin, "<b>one</b> and <b>two</b>").Ok, "protector: a closer before its own opener is still refused");
+
+        Entry s0 = Entry.Keyed("S0", "Hello {0}"), s1 = Entry.Keyed("S1", "Two"), s2 = Entry.Keyed("S2", "Three");
+        var stop = new StoppingEngine();
+        PipelineReport stopped = Pipeline.Run(ManifestOf(s0, s1, s2), stop, "English", "French", 10);
+        Check(stopped.Aborted && s1.Status == EntryStatus.Machine && s2.Status == EntryStatus.Machine && s0.Status == EntryStatus.Pending && stop.Calls == 2,
+            "pipeline: a retry that stops the run does not lose the valid answers of the same batch (" + stop.Calls + " calls)");
+
         // ---- engine names say which model wrote a text
         Check(new LlmEngine(new FakeHttp(), LlmEngine.Kind.Anthropic, "k", "claude-x", null).Name == "anthropic:claude-x", "name: an LLM engine names its model");
 
@@ -104,5 +116,18 @@ internal static partial class Program
         Check(Merge.Flush(all, "anthropic:claude-haiku") == 1 && b2.Status == EntryStatus.Pending && c2.Status == EntryStatus.Machine, "flush: one model of an engine can be taken back alone");
         Check(Merge.Flush(all, "anthropic") == 1 && c2.Status == EntryStatus.Pending, "flush: the engine's name alone takes back every model of it");
         Check(Merge.Flush(all, "") == 0 && Merge.Flush(all, "nobody") == 0, "flush: an empty or unknown engine takes nothing back");
+    }
+}
+
+// Answers a batch with its first text broken (the token lost), then fails the single retry the way an exhausted quota does.
+internal sealed class StoppingEngine : ITranslationEngine
+{
+    public int Calls;
+    public string Name { get { return "stopping"; } }
+    public string[] Translate(string[] texts, string fromLanguage, string toLanguage, IList<KeyValuePair<string, string>> glossary)
+    {
+        Calls++;
+        if (Calls > 1) throw new EngineException("quota used up");
+        return texts.Select((t, i) => i == 0 ? "Bonjour" : t.ToUpperInvariant().Replace("⟦", "⟦")).ToArray();
     }
 }

@@ -140,9 +140,17 @@ namespace RimBabel.Core
                 Match close = Regex.Match(p.Slots[c].Original, @"^(?:</([A-Za-z][A-Za-z0-9_]*)>|\(/([A-Za-z_]+)\))$");
                 if (!close.Success) continue;
                 string name = close.Groups[1].Success ? close.Groups[1].Value : close.Groups[2].Value;
+                // The nth closer of a name belongs to the nth opener of that name, as in the source: two pairs of one tag may swap places.
+                int nth = 0;
+                for (int k = 0; k < c; k++)
+                {
+                    Match earlier = Regex.Match(p.Slots[k].Original, @"^(?:</([A-Za-z][A-Za-z0-9_]*)>|\(/([A-Za-z_]+)\))$");
+                    if (earlier.Success && (earlier.Groups[1].Success ? earlier.Groups[1].Value : earlier.Groups[2].Value) == name) nth++;
+                }
                 for (int o = 0; o < p.Slots.Count; o++)
                 {
                     if (!Regex.IsMatch(p.Slots[o].Original, @"^(?:<" + Regex.Escape(name) + @"(?:=[^>]*)?>|\(\*" + Regex.Escape(name) + @"(?:\s[^)]*)?\))$")) continue;
+                    if (nth-- > 0) continue;
                     if (text.IndexOf(p.Slots[c].Token, StringComparison.Ordinal) < text.IndexOf(p.Slots[o].Token, StringComparison.Ordinal))
                         return Fail("the closing '" + p.Slots[c].Original + "' comes before its opening '" + p.Slots[o].Original + "'");
                     break;

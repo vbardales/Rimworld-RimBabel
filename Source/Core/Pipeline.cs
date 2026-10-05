@@ -67,7 +67,8 @@ namespace RimBabel.Core
                 {
                     Entry e = batch[i];
                     Restored r = Protector.Restore(answers[i], prot[i], e.Source);
-                    if (!r.Ok)
+                    // After the run stopped, the answers already received are still used; only the extra requests are not made.
+                    if (!r.Ok && !report.Aborted)
                     {
                         // One more try, alone: a batch can fail one text for reasons that a single request does not share.
                         try
@@ -78,7 +79,7 @@ namespace RimBabel.Core
                         catch (Exception ex)
                         {
                             Abort(report, engine, new List<Entry> { e }, ex);
-                            break;
+                            continue;
                         }
                     }
                     if (r.Ok)

@@ -50,22 +50,49 @@ namespace RimBabel.Game
         }
 
         /// <summary>
-        /// Brings the package of a mod up to date, sends what is still untranslated to the engine of the settings (with the dictionary
-        /// and the blacklist of the settings), and writes the package again. Blocks until the engine is done: run it off the main thread.
-        /// A refused key or an exhausted quota stops the run, and what was translated before it is kept.
+        /// A translation run split in two: <see cref="Prepare"/> touches the game (the scan, the output folder, the settings) and must
+        /// run on the main thread; <see cref="Run"/> only talks to the engine and writes files, and is the part to run off it.
         /// </summary>
-        public static TranslationOutcome Translate(ModContentPack mod, string language, string author, RimBabelSettings settings, IHttp http)
+        public sealed class TranslationJob
+        {
+            public PackageResult Package;
+            internal PackageSpec Spec;
+            internal Manifest Manifest;
+            internal ITranslationEngine Engine;
+            internal string Language;
+            internal int BatchSize;
+
+            /// <summary>Blocks until the engine is done. A refused key or an exhausted quota stops the run, and what was translated before it is kept.</summary>
+            public TranslationOutcome Run()
+            {
+                PipelineReport report = Pipeline.Run(Manifest, Engine, SourceScanner.SourceLanguage, Language, BatchSize);
+                PackageWriter.Save(Package.Root, Spec, Manifest);
+                return new TranslationOutcome { Package = Package, Report = report, EngineName = Engine.Name };
+            }
+        }
+
+        /// <summary>
+        /// Brings the package of a mod up to date and readies the engine of the settings, with the dictionary and the blacklist of the
+        /// settings. Reads the game and the settings now, so the caller can run the returned job on another thread.
+        /// </summary>
+        public static TranslationJob Prepare(ModContentPack mod, string language, string author, RimBabelSettings settings, IHttp http)
         {
             PackageResult package = Build(mod, language, author);
-            PackageSpec spec = SpecFor(mod, language, author);
             Manifest manifest = Manifest.Parse(File.ReadAllText(Path.Combine(package.Root, PackageWriter.ManifestPath), Encoding.UTF8));
             int ignored;
             manifest.Glossary = LineLists.ParseDictionary(settings.dictionaryText, out ignored);
             manifest.Blacklist = LineLists.ParseRules(settings.blacklistText);
-            ITranslationEngine engine = EngineFactory.Create(settings.ToConfig(), http);
-            PipelineReport report = Pipeline.Run(manifest, engine, SourceScanner.SourceLanguage, language, settings.batchSize);
-            PackageWriter.Save(package.Root, spec, manifest);
-            return new TranslationOutcome { Package = package, Report = report, EngineName = engine.Name };
+            return new TranslationJob
+            {
+                Package = package, Spec = SpecFor(mod, language, author), Manifest = manifest, Language = language, BatchSize = settings.batchSize,
+                Engine = EngineFactory.Create(settings.ToConfig(), http),
+            };
+        }
+
+        /// <summary>Prepare and Run in one go, for a caller that is already off the main thread and does not mind (a test).</summary>
+        public static TranslationOutcome Translate(ModContentPack mod, string language, string author, RimBabelSettings settings, IHttp http)
+        {
+            return Prepare(mod, language, author, settings, http).Run();
         }
 
         /// <summary>Takes back the machine texts one engine wrote in the package of a mod (see Merge.Flush), and writes the package again.</summary>
