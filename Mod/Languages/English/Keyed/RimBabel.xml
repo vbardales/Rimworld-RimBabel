@@ -12,6 +12,10 @@
   <RimBabel.Settings.EngineDeepL>DeepL</RimBabel.Settings.EngineDeepL>
   <RimBabel.Settings.EngineAnthropic>Anthropic (Claude)</RimBabel.Settings.EngineAnthropic>
   <RimBabel.Settings.EngineOpenAi>OpenAI-compatible server (Ollama, LM Studio, OpenRouter...)</RimBabel.Settings.EngineOpenAi>
+  <RimBabel.Settings.EngineGoogle>Google Cloud Translation</RimBabel.Settings.EngineGoogle>
+  <RimBabel.Settings.EngineLibre>LibreTranslate (free, open source: your own server)</RimBabel.Settings.EngineLibre>
+  <RimBabel.Settings.EngineMyMemory>MyMemory (free, no key, small daily allowance)</RimBabel.Settings.EngineMyMemory>
+  <RimBabel.Settings.EngineYandex>Yandex Cloud Translate</RimBabel.Settings.EngineYandex>
   <RimBabel.Settings.Key>Key</RimBabel.Settings.Key>
   <RimBabel.Settings.KeyDesc>Stored as plain text in the game's configuration folder, on this computer only. It is never written into a translation package.</RimBabel.Settings.KeyDesc>
   <RimBabel.Settings.KeyShow>Show keys</RimBabel.Settings.KeyShow>
@@ -25,6 +29,12 @@
   <RimBabel.Settings.Problem.NoKey>This engine needs a key.</RimBabel.Settings.Problem.NoKey>
   <RimBabel.Settings.Problem.NoModel>This engine needs a model name.</RimBabel.Settings.Problem.NoModel>
   <RimBabel.Settings.Problem.BadUrl>The server address is not a valid web address.</RimBabel.Settings.Problem.BadUrl>
+  <RimBabel.Settings.Problem.NoFolder>This engine needs a folder identifier.</RimBabel.Settings.Problem.NoFolder>
+  <RimBabel.Settings.LibreUrlDesc>The address of your LibreTranslate server, for example http://localhost:5000. A key is only needed if that server asks for one.</RimBabel.Settings.LibreUrlDesc>
+  <RimBabel.Settings.Email>E-mail address</RimBabel.Settings.Email>
+  <RimBabel.Settings.EmailDesc>Optional. MyMemory raises its daily allowance when it is given an e-mail address. Nothing else is sent with it.</RimBabel.Settings.EmailDesc>
+  <RimBabel.Settings.Folder>Folder identifier</RimBabel.Settings.Folder>
+  <RimBabel.Settings.FolderDesc>The identifier of the Yandex Cloud folder the key belongs to.</RimBabel.Settings.FolderDesc>
   <RimBabel.Settings.Test>Test the engine</RimBabel.Settings.Test>
   <RimBabel.Settings.TestDesc>Sends one short sentence through the chosen engine and shows what comes back, to check the key and the model.</RimBabel.Settings.TestDesc>
   <RimBabel.Settings.TestRunning>Waiting for the engine...</RimBabel.Settings.TestRunning>

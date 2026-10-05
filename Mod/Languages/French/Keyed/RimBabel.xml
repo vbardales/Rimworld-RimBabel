@@ -12,6 +12,10 @@
   <RimBabel.Settings.EngineDeepL>DeepL</RimBabel.Settings.EngineDeepL>
   <RimBabel.Settings.EngineAnthropic>Anthropic (Claude)</RimBabel.Settings.EngineAnthropic>
   <RimBabel.Settings.EngineOpenAi>Serveur compatible OpenAI (Ollama, LM Studio, OpenRouter...)</RimBabel.Settings.EngineOpenAi>
+  <RimBabel.Settings.EngineGoogle>Google Cloud Translation</RimBabel.Settings.EngineGoogle>
+  <RimBabel.Settings.EngineLibre>LibreTranslate (gratuit, libre : votre propre serveur)</RimBabel.Settings.EngineLibre>
+  <RimBabel.Settings.EngineMyMemory>MyMemory (gratuit, sans clÃ©, petit quota par jour)</RimBabel.Settings.EngineMyMemory>
+  <RimBabel.Settings.EngineYandex>Yandex Cloud Translate</RimBabel.Settings.EngineYandex>
   <RimBabel.Settings.Key>Clé</RimBabel.Settings.Key>
   <RimBabel.Settings.KeyDesc>Enregistrée en clair dans le dossier de configuration du jeu, sur cet ordinateur seulement. Elle n’est jamais écrite dans un mod de traduction.</RimBabel.Settings.KeyDesc>
   <RimBabel.Settings.KeyShow>Afficher les clés</RimBabel.Settings.KeyShow>
@@ -25,6 +29,12 @@
   <RimBabel.Settings.Problem.NoKey>Ce moteur demande une clé.</RimBabel.Settings.Problem.NoKey>
   <RimBabel.Settings.Problem.NoModel>Ce moteur demande un nom de modèle.</RimBabel.Settings.Problem.NoModel>
   <RimBabel.Settings.Problem.BadUrl>L’adresse du serveur n’est pas une adresse web valide.</RimBabel.Settings.Problem.BadUrl>
+  <RimBabel.Settings.Problem.NoFolder>Ce moteur demande un identifiant de dossier.</RimBabel.Settings.Problem.NoFolder>
+  <RimBabel.Settings.LibreUrlDesc>Lâ€™adresse de votre serveur LibreTranslate, par exemple http://localhost:5000. Une clÃ© nâ€™est nÃ©cessaire que si ce serveur en demande une.</RimBabel.Settings.LibreUrlDesc>
+  <RimBabel.Settings.Email>Adresse e-mail</RimBabel.Settings.Email>
+  <RimBabel.Settings.EmailDesc>Facultatif. MyMemory augmente son quota quotidien quand on lui donne une adresse e-mail. Rien dâ€™autre nâ€™est envoyÃ© avec.</RimBabel.Settings.EmailDesc>
+  <RimBabel.Settings.Folder>Identifiant du dossier</RimBabel.Settings.Folder>
+  <RimBabel.Settings.FolderDesc>Lâ€™identifiant du dossier Yandex Cloud auquel appartient la clÃ©.</RimBabel.Settings.FolderDesc>
   <RimBabel.Settings.Test>Tester le moteur</RimBabel.Settings.Test>
   <RimBabel.Settings.TestDesc>Envoie une courte phrase au moteur choisi et affiche le résultat, afin de vérifier la clé et le modèle.</RimBabel.Settings.TestDesc>
   <RimBabel.Settings.TestRunning>En attente du moteur...</RimBabel.Settings.TestRunning>

@@ -29,6 +29,7 @@ internal static partial class Program
         ImporterTests();
         JsonTests();
         EngineTests();
+        MtEngineTests();
         ConfigTests();
         TranslationCoverageTests();
         Console.WriteLine(checks + " checks, " + failures + " failed");

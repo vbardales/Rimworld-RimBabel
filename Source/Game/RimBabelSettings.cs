@@ -18,6 +18,12 @@ namespace RimBabel.Game
         public string openAiModel = "";
         public string openAiUrl = EngineConfig.DefaultOpenAiUrl;
         public int batchSize = EngineConfig.DefaultBatchSize;
+        public string googleKey = "";
+        public string libreUrl = EngineConfig.DefaultLibreUrl;
+        public string libreKey = "";
+        public string myMemoryEmail = "";
+        public string yandexKey = "";
+        public string yandexFolder = "";
 
         public string author = "";
         /// <summary>A language folder name; empty means the language the game runs in.</summary>
@@ -35,6 +41,8 @@ namespace RimBabel.Game
                 Kind = engine, DeepLKey = deeplKey ?? "", AnthropicKey = anthropicKey ?? "", OpenAiKey = openAiKey ?? "",
                 AnthropicModel = anthropicModel ?? "", OpenAiModel = openAiModel ?? "", OpenAiUrl = openAiUrl ?? "",
                 BatchSize = batchSize,
+                GoogleKey = googleKey ?? "", LibreUrl = libreUrl ?? "", LibreKey = libreKey ?? "", MyMemoryEmail = myMemoryEmail ?? "",
+                YandexKey = yandexKey ?? "", YandexFolder = yandexFolder ?? "",
             };
         }
 
@@ -45,6 +53,9 @@ namespace RimBabel.Game
             anthropicModel = EngineConfig.DefaultAnthropicModel;
             openAiModel = "";
             openAiUrl = EngineConfig.DefaultOpenAiUrl;
+            libreUrl = EngineConfig.DefaultLibreUrl;
+            myMemoryEmail = "";
+            yandexFolder = "";
             batchSize = EngineConfig.DefaultBatchSize;
             author = "";
             targetLanguage = "";
@@ -63,6 +74,12 @@ namespace RimBabel.Game
             Scribe_Values.Look(ref openAiModel, "openAiModel", "");
             Scribe_Values.Look(ref openAiUrl, "openAiUrl", EngineConfig.DefaultOpenAiUrl);
             Scribe_Values.Look(ref batchSize, "batchSize", EngineConfig.DefaultBatchSize);
+            Scribe_Values.Look(ref googleKey, "googleKey", "");
+            Scribe_Values.Look(ref libreUrl, "libreUrl", EngineConfig.DefaultLibreUrl);
+            Scribe_Values.Look(ref libreKey, "libreKey", "");
+            Scribe_Values.Look(ref myMemoryEmail, "myMemoryEmail", "");
+            Scribe_Values.Look(ref yandexKey, "yandexKey", "");
+            Scribe_Values.Look(ref yandexFolder, "yandexFolder", "");
             Scribe_Values.Look(ref author, "author", "");
             Scribe_Values.Look(ref targetLanguage, "targetLanguage", "");
             Scribe_Values.Look(ref outputFolder, "outputFolder", "");
@@ -76,6 +93,12 @@ namespace RimBabel.Game
             if (anthropicModel == null) anthropicModel = "";
             if (openAiModel == null) openAiModel = "";
             if (openAiUrl == null) openAiUrl = "";
+            if (googleKey == null) googleKey = "";
+            if (libreUrl == null) libreUrl = "";
+            if (libreKey == null) libreKey = "";
+            if (myMemoryEmail == null) myMemoryEmail = "";
+            if (yandexKey == null) yandexKey = "";
+            if (yandexFolder == null) yandexFolder = "";
             if (author == null) author = "";
             if (targetLanguage == null) targetLanguage = "";
             if (outputFolder == null) outputFolder = "";

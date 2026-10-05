@@ -28,14 +28,14 @@ internal static partial class Program
         c.Kind = EngineKind.Anthropic;
         Check(EngineFactory.Problems(c).SequenceEqual(new[] { EngineProblem.NoKey }), "config: Anthropic needs a key, and the default model is already set");
         c.AnthropicKey = "sk";
-        Check(EngineFactory.Problems(c).Count == 0 && EngineFactory.Create(c, new FakeHttp()).Name == "anthropic", "config: Anthropic with a key makes an Anthropic engine");
+        Check(EngineFactory.Problems(c).Count == 0 && EngineFactory.Create(c, new FakeHttp()).Name.StartsWith("anthropic:"), "config: Anthropic with a key makes an Anthropic engine");
         c.AnthropicModel = "  ";
         Check(EngineFactory.Problems(c).SequenceEqual(new[] { EngineProblem.NoModel }), "config: a blank model is a problem");
 
         c.Kind = EngineKind.OpenAiCompatible;
         Check(EngineFactory.Problems(c).SequenceEqual(new[] { EngineProblem.NoModel }), "config: an OpenAI-compatible server needs a model but no key");
         c.OpenAiModel = "qwen2.5";
-        Check(EngineFactory.Problems(c).Count == 0 && EngineFactory.Create(c, new FakeHttp()).Name == "openai-compatible", "config: a local server with no key is complete");
+        Check(EngineFactory.Problems(c).Count == 0 && EngineFactory.Create(c, new FakeHttp()).Name.StartsWith("openai-compatible:"), "config: a local server with no key is complete");
         foreach (string url in new[] { "", "localhost:11434", "ftp://x/y", "not a url" })
         {
             c.OpenAiUrl = url;

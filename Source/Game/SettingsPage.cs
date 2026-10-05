@@ -64,6 +64,10 @@ namespace RimBabel.Game
             if (l.RadioButton("RimBabel.Settings.EngineDeepL".Translate(), s.engine == EngineKind.DeepL)) s.engine = EngineKind.DeepL;
             if (l.RadioButton("RimBabel.Settings.EngineAnthropic".Translate(), s.engine == EngineKind.Anthropic)) s.engine = EngineKind.Anthropic;
             if (l.RadioButton("RimBabel.Settings.EngineOpenAi".Translate(), s.engine == EngineKind.OpenAiCompatible)) s.engine = EngineKind.OpenAiCompatible;
+            if (l.RadioButton("RimBabel.Settings.EngineGoogle".Translate(), s.engine == EngineKind.GoogleCloud)) s.engine = EngineKind.GoogleCloud;
+            if (l.RadioButton("RimBabel.Settings.EngineLibre".Translate(), s.engine == EngineKind.LibreTranslate)) s.engine = EngineKind.LibreTranslate;
+            if (l.RadioButton("RimBabel.Settings.EngineMyMemory".Translate(), s.engine == EngineKind.MyMemory)) s.engine = EngineKind.MyMemory;
+            if (l.RadioButton("RimBabel.Settings.EngineYandex".Translate(), s.engine == EngineKind.Yandex)) s.engine = EngineKind.Yandex;
             l.Gap(4f);
 
             switch (s.engine)
@@ -74,6 +78,20 @@ namespace RimBabel.Game
                 case EngineKind.Anthropic:
                     s.anthropicKey = KeyRow(l, s.anthropicKey);
                     s.anthropicModel = TextRow(l, "RimBabel.Settings.Model", "RimBabel.Settings.ModelDesc", s.anthropicModel);
+                    break;
+                case EngineKind.GoogleCloud:
+                    s.googleKey = KeyRow(l, s.googleKey);
+                    break;
+                case EngineKind.LibreTranslate:
+                    s.libreUrl = TextRow(l, "RimBabel.Settings.Url", "RimBabel.Settings.LibreUrlDesc", s.libreUrl);
+                    s.libreKey = KeyRow(l, s.libreKey);
+                    break;
+                case EngineKind.MyMemory:
+                    s.myMemoryEmail = TextRow(l, "RimBabel.Settings.Email", "RimBabel.Settings.EmailDesc", s.myMemoryEmail);
+                    break;
+                case EngineKind.Yandex:
+                    s.yandexKey = KeyRow(l, s.yandexKey);
+                    s.yandexFolder = TextRow(l, "RimBabel.Settings.Folder", "RimBabel.Settings.FolderDesc", s.yandexFolder);
                     break;
                 default:
                     s.openAiUrl = TextRow(l, "RimBabel.Settings.Url", "RimBabel.Settings.UrlDesc", s.openAiUrl);

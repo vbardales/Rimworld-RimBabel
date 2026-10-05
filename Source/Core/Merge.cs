@@ -62,6 +62,32 @@ namespace RimBabel.Core
         }
 
         /// <summary>No difference: same version. Any difference: next minor.</summary>
+        /// <summary>
+        /// Takes back what one engine wrote: its machine texts go back to Pending, so the next run sends them again (to another
+        /// engine, say, after one proved poor or ran out of credit). The engine is named as the entries record it: "deepl",
+        /// or "anthropic" for every model of it, or "anthropic:claude-haiku-4-5-20251001" for one model. Human, Reviewed and
+        /// Locked texts are never touched, even when an engine's name is on them. Returns how many were taken back.
+        /// </summary>
+        public static int Flush(IEnumerable<Entry> entries, string engine)
+        {
+            if (string.IsNullOrWhiteSpace(engine)) return 0;
+            string name = engine.Trim();
+            int n = 0;
+            foreach (Entry e in entries)
+            {
+                if (e.Status != EntryStatus.Machine && e.Status != EntryStatus.Stale) continue;
+                if (string.IsNullOrEmpty(e.Engine)) continue;
+                bool same = string.Equals(e.Engine, name, StringComparison.OrdinalIgnoreCase)
+                    || e.Engine.StartsWith(name + ":", StringComparison.OrdinalIgnoreCase);
+                if (!same) continue;
+                e.Target = null;
+                e.Status = EntryStatus.Pending;
+                e.Engine = null;
+                n++;
+            }
+            return n;
+        }
+
         public static string NextVersion(string previous, MergeResult diff)
         {
             if (string.IsNullOrEmpty(previous)) return "0.1.0";

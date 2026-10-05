@@ -25,7 +25,7 @@ remaining:
   - defect: the first scan was far too slow (about 72 s for one small mod: the game's walk read every def of every mod before the mod's own were kept). Fixed 2026-10-04 by passing the mod's metadata to `DefInjectionUtility`, which skips other mods' defs before reading a field; a fifth Pickle scenario asserts a scan under 15 s. Proved in French on 2026-10-04: scans took 18-111 ms and the speed scenario passed (414 ms)
   - defect: the three engines have each talked to their real service once; Anthropic did on 2026-10-05 (claude-haiku-4-5, three short texts, everything intact, after the key was replaced by one scoped to a workspace); the OpenAI-compatible one on 2026-10-05 on 2026-10-05 (api.openai.com, gpt-4.1-nano, three short texts: placeholders, both markers and the colour tag all came back intact); DeepL did, once, on 2026-10-04 (free host, three short texts), see docs/runs/history.md; the page has a test button to try one, not yet pressed; there is no window to translate a mod from, only the developer-menu action
   - unverified: translation_fr - French review by the owner (FRENCH_REVIEW.md, revision 9632d5d, the owner's seven corrections applied, awaiting her validation); translation_en and localization - the in-game checks in English and French (raw keys, fallback, clipping), scenario 02-settings written and not run
-  - unverified: settings_audit - the runtime rows of the table under "Settings audit" (primary route by Mod options, the page drawing without a logged error, the file written by the game, a restart reading it, RIMMSQOL)
+  - unverified: settings_audit - what is left: the effect of the engine choice on a real translation run in the game (the dev-menu entry "Translate a mod with the chosen engine..." was written 2026-10-05 and has never been run in a game), and a real restart of the game reading the values back (the read-back scenario uses the game's loader on the file, not a restart). Proved 2026-10-05, English and French: route by Mod options, page drawing without a logged error, file written, values read back, RIMMSQOL
   - unverified: the About.xml description is a draft: it ends with the "Source code on GitHub" link and the <url> field points at the repository, but the text itself is a placeholder to rewrite once the mod does something
   - unverified: GitHub social preview image (Mod/About/Preview.png exists now; the setting exists only on the web page, the owner uploads it)
   - unverified: Mod/Assemblies/RimBabel.dll is committed from the sources of 2026-10-04 (revision 7cb8a47 plus the protector fix of 2026-10-04); the shipped assembly must match the sources before any upload
@@ -45,8 +45,8 @@ delivered (32 px check: the head reads, the two side objects blur; her override)
 `horsMonoRepo -> ModIcon générée` holds (development finished for that scope, build current, `ModIcon.png` 128x128 in
 `Mod/About`, accepted by the owner); `-> Preview générée` holds (`Preview.png` 896x504, 482 KB, read by eye 2026-10-04);
 `-> preOptions` holds (English description, plain name, teal accent against the gold secondary ink). `preOptions -> options`
-fails: the runtime rows of the settings audit are not all proved (restart reading the values back, RIMMSQOL, the primary
-route by Mod options in a real session) and `settings_audit` is `partial`. Retained: `workflow_stage: preOptions`,
+fails: the settings audit still lacks the effect of its options on a real run (see `remaining`); the Mod options route, the file, the read-back and RIMMSQOL were proved on 2026-10-05.
+`settings_audit` is `partial`. Retained: `workflow_stage: preOptions`,
 `stage: showcase`.
 
 
@@ -159,7 +159,7 @@ runtime checks have not run.
 | Defaults and upgrades | **Passed offline**: reset restores everything on the page except the keys; fields missing from an older file take their defaults |
 | Optional dependencies | Not applicable: nothing is optional |
 | Shortcut default | **Passed offline** (the Def) and written as a Pickle scenario, **not run** |
-| Shortcut integration (RIMMSQOL) | **Not tested.** Needs RIMMSQOL; revealing the button in its own interface is its behaviour |
+| Shortcut integration (RIMMSQOL) | **Passed in English and French (2026-10-05, `20261005-060643-651-594a` and `20261005-060647-164-61e0`, pass `avec-rimmsqol`, tree f30cf14, 3 of 3 each, captures read).** RIMMSQOL's own list offers `RimBabel_Settings`, hidden; RIMMSQOL reveals it, the bar draws it (the RimBabel button appears at the right of the bar) and its file records it; the revealed button opens RimBabel's settings; hiding it empties the bar and forgetting the choice leaves nothing. Not covered: clicking RIMMSQOL's checkbox (the shared steps call what it calls) and RIMMSQOL keeping its choice across a restart, which is its own behaviour. Observation: its edit page shows no icon for the shortcut |
 | Runtime robustness | **Unverified**: the scenario that lets the page draw for ten frames and then asks for logged errors has not run. An exception in `OnGUI` is logged, not thrown, so only that scenario can show one |
 | No settings | Not applicable |
 

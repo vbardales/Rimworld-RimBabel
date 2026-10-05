@@ -3,16 +3,17 @@ using System.Collections.Generic;
 
 namespace RimBabel.Core
 {
-    public enum EngineKind : byte { DeepL = 0, Anthropic = 1, OpenAiCompatible = 2 }
+    public enum EngineKind : byte { DeepL = 0, Anthropic = 1, OpenAiCompatible = 2, GoogleCloud = 3, LibreTranslate = 4, MyMemory = 5, Yandex = 6 }
 
     /// <summary>What can be wrong with an engine's settings before any request is made.</summary>
-    public enum EngineProblem { NoKey, NoModel, BadUrl }
+    public enum EngineProblem { NoKey, NoModel, BadUrl, NoFolder }
 
     /// <summary>The engine part of the settings, as plain data: no game type, so it is tested without the game.</summary>
     public sealed class EngineConfig
     {
         public const string DefaultAnthropicModel = "claude-haiku-4-5-20251001";
         public const string DefaultOpenAiUrl = "http://localhost:11434/v1";
+        public const string DefaultLibreUrl = "http://localhost:5000";
         public const int DefaultBatchSize = 20;
 
         public EngineKind Kind = EngineKind.DeepL;
@@ -22,6 +23,12 @@ namespace RimBabel.Core
         public string AnthropicModel = DefaultAnthropicModel;
         public string OpenAiModel = "";
         public string OpenAiUrl = DefaultOpenAiUrl;
+        public string GoogleKey = "";
+        public string LibreUrl = DefaultLibreUrl;
+        public string LibreKey = "";
+        public string MyMemoryEmail = "";
+        public string YandexKey = "";
+        public string YandexFolder = "";
         public int BatchSize = DefaultBatchSize;
     }
 
@@ -42,12 +49,27 @@ namespace RimBabel.Core
                     break;
                 case EngineKind.OpenAiCompatible:
                     if (string.IsNullOrWhiteSpace(c.OpenAiModel)) list.Add(EngineProblem.NoModel);
-                    Uri uri;
-                    if (!Uri.TryCreate((c.OpenAiUrl ?? "").Trim(), UriKind.Absolute, out uri) || (uri.Scheme != "http" && uri.Scheme != "https"))
-                        list.Add(EngineProblem.BadUrl);
+                    if (!IsWebAddress(c.OpenAiUrl)) list.Add(EngineProblem.BadUrl);
                     break;
+                case EngineKind.GoogleCloud:
+                    if (string.IsNullOrWhiteSpace(c.GoogleKey)) list.Add(EngineProblem.NoKey);
+                    break;
+                case EngineKind.LibreTranslate:
+                    if (!IsWebAddress(c.LibreUrl)) list.Add(EngineProblem.BadUrl);
+                    break;
+                case EngineKind.Yandex:
+                    if (string.IsNullOrWhiteSpace(c.YandexKey)) list.Add(EngineProblem.NoKey);
+                    if (string.IsNullOrWhiteSpace(c.YandexFolder)) list.Add(EngineProblem.NoFolder);
+                    break;
+                // MyMemory needs nothing: the e-mail address only raises its daily allowance.
             }
             return list;
+        }
+
+        private static bool IsWebAddress(string text)
+        {
+            Uri uri;
+            return Uri.TryCreate((text ?? "").Trim(), UriKind.Absolute, out uri) && (uri.Scheme == "http" || uri.Scheme == "https");
         }
 
         public static ITranslationEngine Create(EngineConfig c, IHttp http)
@@ -56,6 +78,10 @@ namespace RimBabel.Core
             switch (c.Kind)
             {
                 case EngineKind.DeepL: return new DeepLEngine(http, c.DeepLKey);
+                case EngineKind.GoogleCloud: return new GoogleCloudEngine(http, c.GoogleKey);
+                case EngineKind.LibreTranslate: return new LibreTranslateEngine(http, c.LibreUrl, c.LibreKey);
+                case EngineKind.MyMemory: return new MyMemoryEngine(http, c.MyMemoryEmail);
+                case EngineKind.Yandex: return new YandexEngine(http, c.YandexKey, c.YandexFolder);
                 case EngineKind.Anthropic: return new LlmEngine(http, LlmEngine.Kind.Anthropic, c.AnthropicKey.Trim(), c.AnthropicModel.Trim(), null);
                 default: return new LlmEngine(http, LlmEngine.Kind.OpenAiCompatible, (c.OpenAiKey ?? "").Trim(), c.OpenAiModel.Trim(), c.OpenAiUrl.Trim());
             }

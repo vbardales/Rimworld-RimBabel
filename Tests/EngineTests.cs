@@ -10,6 +10,11 @@ internal static partial class Program
     {
         public string Url, Body;
         public IDictionary<string, string> Headers;
+        public HttpReply Get(string url, IDictionary<string, string> headers, int timeoutMs)
+        {
+            Calls++; Url = url; Headers = headers; Body = null;
+            return Respond(url);
+        }
         public int Calls;
         public Func<string, HttpReply> Respond;
         public HttpReply PostJson(string url, IDictionary<string, string> headers, string body, int timeoutMs)
@@ -124,7 +129,7 @@ internal static partial class Program
             }
         };
         PipelineReport rep = Pipeline.Run(m, new LlmEngine(echo, LlmEngine.Kind.OpenAiCompatible, "", "m", null), "English", "French", 10);
-        Check(rep.Translated == 1 && e.Target == "Bonjour {0}, bienvenue maison" && e.Engine == "openai-compatible", "end to end: placeholders, the glossary and the engine name survive the whole chain (" + e.Target + ")");
+        Check(rep.Translated == 1 && e.Target == "Bonjour {0}, bienvenue maison" && e.Engine == "openai-compatible:m", "end to end: placeholders, the glossary and the engine name survive the whole chain (" + e.Target + ")");
         Check(!echo.Body.Contains("{0}") && !echo.Body.Contains("home"), "end to end: the service never saw the placeholder or the glossary term");
     }
 }

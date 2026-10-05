@@ -18,6 +18,7 @@ namespace RimBabel.Core
     public interface IHttp
     {
         HttpReply PostJson(string url, IDictionary<string, string> headers, string body, int timeoutMs);
+        HttpReply Get(string url, IDictionary<string, string> headers, int timeoutMs);
     }
 
     /// <summary>A service refused or failed. The message never holds the key.</summary>
@@ -30,19 +31,32 @@ namespace RimBabel.Core
     {
         public HttpReply PostJson(string url, IDictionary<string, string> headers, string body, int timeoutMs)
         {
+            return Send("POST", url, headers, body, timeoutMs);
+        }
+
+        public HttpReply Get(string url, IDictionary<string, string> headers, int timeoutMs)
+        {
+            return Send("GET", url, headers, null, timeoutMs);
+        }
+
+        private static HttpReply Send(string method, string url, IDictionary<string, string> headers, string body, int timeoutMs)
+        {
             // TLS 1.2 is not on by default in every Mono the game may run on.
             ServicePointManager.SecurityProtocol |= (SecurityProtocolType)3072;
             var req = (HttpWebRequest)WebRequest.Create(url);
-            req.Method = "POST";
-            req.ContentType = "application/json";
+            req.Method = method;
             req.Timeout = timeoutMs;
             req.ReadWriteTimeout = timeoutMs;
             foreach (KeyValuePair<string, string> h in headers) req.Headers[h.Key] = h.Value;
-            byte[] data = new UTF8Encoding(false).GetBytes(body);
-            req.ContentLength = data.Length;
-            using (Stream s = req.GetRequestStream()) s.Write(data, 0, data.Length);
             try
             {
+                if (body != null)
+                {
+                    req.ContentType = "application/json";
+                    byte[] data = new UTF8Encoding(false).GetBytes(body);
+                    req.ContentLength = data.Length;
+                    using (Stream s = req.GetRequestStream()) s.Write(data, 0, data.Length);
+                }
                 using (var resp = (HttpWebResponse)req.GetResponse())
                     return new HttpReply { Status = (int)resp.StatusCode, Body = Read(resp) };
             }
@@ -59,7 +73,6 @@ namespace RimBabel.Core
             using (var r = new StreamReader(resp.GetResponseStream(), Encoding.UTF8)) return r.ReadToEnd();
         }
     }
-
     /// <summary>The names the game gives a language folder, as the codes the services want.</summary>
     public static class LanguageCodes
     {
@@ -94,7 +107,7 @@ namespace RimBabel.Core
         private readonly Kind kind;
         private readonly string key, model, baseUrl;
 
-        public string Name { get { return kind == Kind.Anthropic ? "anthropic" : "openai-compatible"; } }
+        public string Name { get { return (kind == Kind.Anthropic ? "anthropic" : "openai-compatible") + ":" + model; } }
 
         public LlmEngine(IHttp http, Kind kind, string key, string model, string baseUrl)
         {
