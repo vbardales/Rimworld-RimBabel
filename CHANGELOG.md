@@ -14,7 +14,7 @@ Nothing has been published; the Workshop item exists (private).
 ## [0.1.0] - 2026-10-05
 
 Creation of a publishId file: the first upload, made by the owner to create the Workshop item (private, as Steam creates
-them all). It contained `Mod/` as it stood at commit `5d31c07`, and nothing in that folder has changed since. What it
+them all). It contained `Mod/` as it stood at commit `5d31c07`. What it
 holds is listed below.
 
 ### Added
