@@ -37,7 +37,7 @@ Tests/Pickle/Evidence/<run>` (gitignored; what to keep is in `TESTING.md`).
 ```powershell
 powershell.exe -ExecutionPolicy Bypass -File C:\Users\nelim\Documents\rimworld\Rimworld-Ticket-Dispatcher\scripts\Submit-PickleRun.ps1 `
   -Mod RimBabel -Owner local_<session id> -Label "01-package, English, <sha>" `
-  -EvidenceDir RimBabel/Tests/Pickle/Evidence/package-en
+  -EvidenceDir RimBabel/Tests/Pickle/Evidence/suite-en
 ```
 
 The filter that names the suite is the display name `RimBabel - Pickle tests`, not the folder.
