@@ -69,6 +69,14 @@ internal static partial class Program
         };
         Dictionary<string, string> en = keyed("English"), fr = keyed("French");
 
+        // A UTF-8 text read through another code page shows up as these pairs ("clé" as "clÃ©", the apostrophe as "â€™"): seen once in the French file.
+        foreach (string file in Directory.GetFiles(Path.Combine(root, "Mod", "Languages"), "*.xml", SearchOption.AllDirectories))
+        {
+            string text = File.ReadAllText(file);
+            Check(!text.Contains("Ã©") && !text.Contains("Ã¨") && !text.Contains("â€") && !text.Contains("Ãƒ") && !text.Contains("�"),
+                "l10n: " + Path.GetFileName(Path.GetDirectoryName(file)) + "/" + Path.GetFileName(file) + " holds no garbled characters");
+        }
+
         Check(en.Keys.OrderBy(k => k, StringComparer.Ordinal).SequenceEqual(fr.Keys.OrderBy(k => k, StringComparer.Ordinal)), "l10n: English and French define exactly the same keys");
         Check(en.Values.All(v => v.Trim().Length > 0) && fr.Values.All(v => v.Trim().Length > 0), "l10n: no empty text in either language");
         foreach (string k in en.Keys.Where(fr.ContainsKey))

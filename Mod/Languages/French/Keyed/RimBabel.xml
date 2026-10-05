@@ -14,7 +14,7 @@
   <RimBabel.Settings.EngineOpenAi>Serveur compatible OpenAI (Ollama, LM Studio, OpenRouter...)</RimBabel.Settings.EngineOpenAi>
   <RimBabel.Settings.EngineGoogle>Google Cloud Translation</RimBabel.Settings.EngineGoogle>
   <RimBabel.Settings.EngineLibre>LibreTranslate (gratuit, libre : votre propre serveur)</RimBabel.Settings.EngineLibre>
-  <RimBabel.Settings.EngineMyMemory>MyMemory (gratuit, sans clÃ©, petit quota par jour)</RimBabel.Settings.EngineMyMemory>
+  <RimBabel.Settings.EngineMyMemory>MyMemory (gratuit, sans clé, petit quota par jour)</RimBabel.Settings.EngineMyMemory>
   <RimBabel.Settings.EngineYandex>Yandex Cloud Translate</RimBabel.Settings.EngineYandex>
   <RimBabel.Settings.Key>Clé</RimBabel.Settings.Key>
   <RimBabel.Settings.KeyDesc>Enregistrée en clair dans le dossier de configuration du jeu, sur cet ordinateur seulement. Elle n’est jamais écrite dans un mod de traduction.</RimBabel.Settings.KeyDesc>
@@ -30,13 +30,13 @@
   <RimBabel.Settings.Problem.NoModel>Ce moteur demande un nom de modèle.</RimBabel.Settings.Problem.NoModel>
   <RimBabel.Settings.Problem.BadUrl>L’adresse du serveur n’est pas une adresse web valide.</RimBabel.Settings.Problem.BadUrl>
   <RimBabel.Settings.Problem.NoFolder>Ce moteur demande un identifiant de dossier.</RimBabel.Settings.Problem.NoFolder>
-  <RimBabel.Settings.OllamaPreset>Remplir pour Ollama sur cet ordinateur</RimBabel.Settings.OllamaPreset>
-  <RimBabel.Settings.OllamaPresetDesc>Renseigne lâ€™adresse et le modÃ¨le dâ€™un serveur Ollama gratuit sur cet ordinateur, sans clÃ©. Tools/Install-Ollama.ps1, dans le dÃ©pÃ´t de RimBabel, installe Ollama et tÃ©lÃ©charge ce modÃ¨le.</RimBabel.Settings.OllamaPresetDesc>
-  <RimBabel.Settings.LibreUrlDesc>Lâ€™adresse de votre serveur LibreTranslate, par exemple http://localhost:5000. Une clÃ© nâ€™est nÃ©cessaire que si ce serveur en demande une.</RimBabel.Settings.LibreUrlDesc>
+  <RimBabel.Settings.OllamaPreset>Préremplir pour Ollama sur cet ordinateur.</RimBabel.Settings.OllamaPreset>
+  <RimBabel.Settings.OllamaPresetDesc>Renseigne l’adresse et le modèle d’un serveur Ollama gratuit sur cet ordinateur, sans clé. Tools/Install-Ollama.ps1, dans le dépôt de RimBabel, installe Ollama et télécharge ce modèle.</RimBabel.Settings.OllamaPresetDesc>
+  <RimBabel.Settings.LibreUrlDesc>L’adresse de votre serveur LibreTranslate, par exemple http://localhost:5000. Une clé n’est nécessaire que si ce serveur en demande une.</RimBabel.Settings.LibreUrlDesc>
   <RimBabel.Settings.Email>Adresse e-mail</RimBabel.Settings.Email>
-  <RimBabel.Settings.EmailDesc>Facultatif. MyMemory augmente son quota quotidien quand on lui donne une adresse e-mail. Rien dâ€™autre nâ€™est envoyÃ© avec.</RimBabel.Settings.EmailDesc>
+  <RimBabel.Settings.EmailDesc>Facultatif. MyMemory augmente son quota quotidien quand on lui donne une adresse e-mail. Rien d’autre n’est envoyé avec.</RimBabel.Settings.EmailDesc>
   <RimBabel.Settings.Folder>Identifiant du dossier</RimBabel.Settings.Folder>
-  <RimBabel.Settings.FolderDesc>Lâ€™identifiant du dossier Yandex Cloud auquel appartient la clÃ©.</RimBabel.Settings.FolderDesc>
+  <RimBabel.Settings.FolderDesc>L’identifiant du dossier Yandex Cloud auquel appartient la clé.</RimBabel.Settings.FolderDesc>
   <RimBabel.Settings.Test>Tester le moteur</RimBabel.Settings.Test>
   <RimBabel.Settings.TestDesc>Envoie une courte phrase au moteur choisi et affiche le résultat, afin de vérifier la clé et le modèle.</RimBabel.Settings.TestDesc>
   <RimBabel.Settings.TestRunning>En attente du moteur...</RimBabel.Settings.TestRunning>
