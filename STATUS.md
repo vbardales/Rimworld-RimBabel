@@ -1,7 +1,7 @@
 ---
-localization: partial
-translation_en: partial
-translation_fr: partial
+localization: complete
+translation_en: complete
+translation_fr: complete
 mod:          RimBabel
 packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
@@ -24,7 +24,6 @@ remaining:
   - unverified: the extractor (Source/Game/SourceScanner.cs) ran once in a real game, in the WSL install: Pickle request `20261004-000340-546-454b` (English, tree 8e7ecfb, played 2026-10-04 19:23-19:28) 4 scenarios passed, `exitReason: passed`, `Player.log` shows "5 new, 0 changed, 0 removed" for the fixture mod then "0 new, 5 unchanged" on the second scan, with no error line. Not yet proved: a large real mod (many defs, patches, inheritance), and the narrowed walk with many mods loaded (the suite loads Core and the DLC only)
   - defect: the first scan was far too slow (about 72 s for one small mod: the game's walk read every def of every mod before the mod's own were kept). Fixed 2026-10-04 by passing the mod's metadata to `DefInjectionUtility`, which skips other mods' defs before reading a field; a fifth Pickle scenario asserts a scan under 15 s. Proved in French on 2026-10-04: scans took 18-111 ms and the speed scenario passed (414 ms)
   - defect: the three engines have each talked to their real service once; Google Cloud and Anthropic did on 2026-10-05 (claude-haiku-4-5, three short texts, everything intact, after the key was replaced by one scoped to a workspace); the OpenAI-compatible one on 2026-10-05 on 2026-10-05 (api.openai.com, gpt-4.1-nano, three short texts: placeholders, both markers and the colour tag all came back intact); DeepL did, once, on 2026-10-04 (free host, three short texts), see docs/runs/history.md; the page has a test button to try one, not yet pressed; there is no window to translate a mod from, only the developer-menu action
-  - unverified: translation_fr - French review by the owner (FRENCH_REVIEW.md, revision b219986, after the encoding fix, the owner's two rounds of corrections (seven, then four) applied, awaiting her validation); translation_en and localization - the in-game checks in English and French (raw keys, fallback, clipping), scenario 02-settings written and not run
   - unverified: settings_audit - what is left: the effect of the engine choice on a real translation run in the game (the dev-menu entry "Translate a mod with the chosen engine..." was written 2026-10-05 and has never been run in a game), and a real restart of the game reading the values back (the read-back scenario uses the game's loader on the file, not a restart). Proved 2026-10-05, English and French: route by Mod options, page drawing without a logged error, file written, values read back, RIMMSQOL
   - unverified: the About.xml description is a draft: it ends with the "Source code on GitHub" link and the <url> field points at the repository, but the text itself is a placeholder to rewrite once the mod does something
   - unverified: GitHub social preview image (Mod/About/Preview.png exists now; the setting exists only on the web page, the owner uploads it)
@@ -118,16 +117,22 @@ no other player-facing text (no gizmo, letter, alert or thought).
   for exists and every key defined is asked for (a key built from an enum name is covered name by name); counted phrases
   have `.One` and `.Many` forms in both languages; the shortcut is hidden by default and its French injection exists.
   `scripts/Check-DefInjected.ps1` on `Mod`: 2 keys checked, 0 errors (that script checks injection paths, not coverage).
-- **Not checked, and why `partial`.** In a running game, in English and in French, for raw keys, fallback text and clipping: the
-  Pickle scenarios are written (`02-settings.feature`: every text exists in the language of the pass, and a `@review`
-  screenshot) and have not run. French has not been read by the owner.
+- **Checked in a running game, 2026-10-05** (Pickle, tree 5d31c07, English `20261005-175434-102-019f` and French `20261005-175437-401-821f`,
+  12 of 12 played scenarios passed in each): every text of the page exists in the language of the pass, and the `@review`
+  capture of the page was read in both languages: no raw key, no clipped line, the longest French texts fit their rows. The
+  texts corrected afterwards (the owner's two review rounds, the encoding fix) have no capture yet and change no layout rule.
+- **French review by Virginie, 2026-10-05, revision `b219986`: validated**, with one last correction she dictated in the same
+  message (`OllamaPreset`: "Préremplir les champs pour Ollama sur cet ordinateur", no final period), applied in the commit that
+  follows. Two earlier rounds asked for seven and four corrections, all applied. Recorded here by a session on her statement in
+  chat; the review line of `FRENCH_REVIEW.md` is hers and was not touched. Any later change to a French file sets
+  `translation_fr` back to `unchecked`.
 - **Known limits, stated rather than hidden.** (1) The engines' error messages are technical English strings built in the
   core (`anthropic answered 401: ...`); the page shows them after "It failed:". Translating them would mean carrying a key
   through the core for every failure. (2) The developer-menu entry `RimBabel > Write a translation package for a mod...` and
   the log lines are developer tooling in English. (3) Product names (DeepL, Anthropic, OpenAI, Ollama...) are not translated.
 - **No gender agreement.** No text refers to a pawn, so the neutral o-series and the player choice for gendered French do not
   apply, and no such setting is offered.
-- **French review by the owner: corrections applied, not yet validated.** On 2026-10-04 the owner read the sheet for revision `88cb3d6` and answered "pas validé" with seven corrections (syntax identifiers `K:key` and `D:DefType/defName.field` kept verbatim in the blacklist text, "mod de traduction" everywhere instead of "paquet de traduction", and the wording of `BatchDesc`, `TestDesc`, `DictionaryBad`, `Author`, `OutputDesc`), and confirmed "enregistrée en clair". They are applied; `translation_fr` stays `partial` until she validates the new sheet, which this section never records for her.
+- **French review by the owner: validated 2026-10-05 at b219986 (see the Translation audit section).** On 2026-10-04 the owner read the sheet for revision `88cb3d6` and answered "pas validé" with seven corrections (syntax identifiers `K:key` and `D:DefType/defName.field` kept verbatim in the blacklist text, "mod de traduction" everywhere instead of "paquet de traduction", and the wording of `BatchDesc`, `TestDesc`, `DictionaryBad`, `Author`, `OutputDesc`), and confirmed "enregistrée en clair". They are applied; `translation_fr` stays `partial` until she validates the new sheet, which this section never records for her.
 
 ## Settings audit
 
