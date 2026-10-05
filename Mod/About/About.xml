@@ -18,7 +18,7 @@ RimBabel reads the texts of a mod, translates what is missing with the engine yo
 - Import an existing translation as the starting point.
 - Settings under Mod options, in English and French. Your keys stay in the game's settings file on your computer.
 
-Current limits: packages are written from the developer menu (RimBabel, Write a translation package for a mod); there is no window to translate a mod yet.
+How to use it (version 1): there is no translation window yet. Turn on development mode in the game options, open the debug actions menu (the bug icon), find the RimBabel section, pick "Translate a mod with the chosen engine..." and choose the mod. The result is a new translation mod, in the folder shown under Mod options, RimBabel. Pick "Write a translation package for a mod..." instead to only extract the texts without translating.
 
 Source code on GitHub (https://github.com/vbardales/Rimworld-RimBabel)</description>
 </ModMetaData>

@@ -5,7 +5,11 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
-Nothing yet. The Workshop item exists (private) and nothing has been published.
+Nothing has been published; the Workshop item exists (private).
+
+### Changed
+
+- The description says how to use the mod in version 1 (the developer menu, step by step), and the French settings texts follow the owner's review.
 
 ## [0.1.0] - 2026-10-05
 

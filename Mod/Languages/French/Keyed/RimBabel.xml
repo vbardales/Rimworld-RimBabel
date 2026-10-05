@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <RimBabel.Settings.Intro>RimBabel traduit les textes d’un mod et écrit le résultat dans un mod de traduction à part. Rien ici ne modifie un mod installé.</RimBabel.Settings.Intro>
+  <RimBabel.Settings.Intro>RimBabel traduit les textes d’un mod et génère un mod de traduction distinct. Aucun mod installé n’est modifié.</RimBabel.Settings.Intro>
   <RimBabel.Settings.Applies>Les changements s’appliquent tout de suite et sont enregistrés à la fermeture de cette fenêtre.</RimBabel.Settings.Applies>
   <RimBabel.Settings.Reset>Rétablir les valeurs par défaut</RimBabel.Settings.Reset>
   <RimBabel.Settings.ResetDesc>Rétablit tout ce qui est sur cette page, sauf vos clés.</RimBabel.Settings.ResetDesc>
@@ -49,17 +49,17 @@
   <RimBabel.Settings.AuthorDesc>Écrit dans le fichier About.xml des mods de traduction que vous générez.</RimBabel.Settings.AuthorDesc>
   <RimBabel.Settings.Language>Langue cible</RimBabel.Settings.Language>
   <RimBabel.Settings.LanguageGame>La langue du jeu ({0})</RimBabel.Settings.LanguageGame>
-  <RimBabel.Settings.LanguageDesc>La langue dans laquelle les mods de traduction sont traduits. Par défaut, la langue dans laquelle le jeu tourne.</RimBabel.Settings.LanguageDesc>
+  <RimBabel.Settings.LanguageDesc>Langue vers laquelle les textes sont traduits. Par défaut, celle dans laquelle le jeu s’exécute.</RimBabel.Settings.LanguageDesc>
   <RimBabel.Settings.Output>Dossier de sortie</RimBabel.Settings.Output>
   <RimBabel.Settings.OutputDefault>{0} (par défaut)</RimBabel.Settings.OutputDefault>
-  <RimBabel.Settings.OutputDesc>Dossier où sont créés les mods de traduction. Laissez vide pour le dossier par défaut, à côté de vos sauvegardes.</RimBabel.Settings.OutputDesc>
+  <RimBabel.Settings.OutputDesc>Dossier où sont créés les mods de traduction. Laissez ce champ vide pour le dossier par défaut, à côté de vos sauvegardes.</RimBabel.Settings.OutputDesc>
   <RimBabel.Settings.OutputOpen>Ouvrir le dossier</RimBabel.Settings.OutputOpen>
 
   <!-- Dictionnaire et liste noire -->
   <RimBabel.Settings.DictionaryHeader>Dictionnaire</RimBabel.Settings.DictionaryHeader>
   <RimBabel.Settings.DictionaryDesc>Une entrée par ligne : mot = traduction imposée. Il s’applique à tous les mods, donc un même mot est traduit de la même façon partout. Une ligne qui commence par # est ignorée.</RimBabel.Settings.DictionaryDesc>
-  <RimBabel.Settings.DictionaryBad.One>1 ligne n’a pas de mot ou pas de traduction de part et d’autre du signe égal, et elle est ignorée.</RimBabel.Settings.DictionaryBad.One>
-  <RimBabel.Settings.DictionaryBad.Many>{0} lignes n’ont pas de mot ou pas de traduction de part et d’autre du signe égal, et elles sont ignorées.</RimBabel.Settings.DictionaryBad.Many>
+  <RimBabel.Settings.DictionaryBad.One>1 ligne n’a pas de mot avant le signe égal ou pas de traduction après, et est ignorée.</RimBabel.Settings.DictionaryBad.One>
+  <RimBabel.Settings.DictionaryBad.Many>{0} lignes n’ont pas de mot avant le signe égal ou pas de traduction après, et sont ignorées.</RimBabel.Settings.DictionaryBad.Many>
   <RimBabel.Settings.BlacklistHeader>Ne jamais traduire</RimBabel.Settings.BlacklistHeader>
   <RimBabel.Settings.BlacklistDesc>Une règle par ligne. Un texte se nomme K:key pour un texte Keyed, ou D:DefType/defName.field pour un texte de Def. Utilisez * et ? comme jokers, ou commencez la ligne par re: pour une expression régulière. Une ligne qui commence par # est ignorée.</RimBabel.Settings.BlacklistDesc>
   <RimBabel.Settings.BlacklistBad.One>1 règle n’est pas une expression régulière valide et ne correspond à rien.</RimBabel.Settings.BlacklistBad.One>
