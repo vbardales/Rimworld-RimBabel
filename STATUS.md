@@ -126,6 +126,7 @@ no other player-facing text (no gizmo, letter, alert or thought).
   follows. Two earlier rounds asked for seven and four corrections, all applied. Recorded here by a session on her statement in
   chat; the review line of `FRENCH_REVIEW.md` is hers and was not touched. Any later change to a French file sets
   `translation_fr` back to `unchecked`.
+- **French re-read, 2026-10-05, revision `3111404`: validated** by the owner in chat ("Français correct, encodage propre, révision 3111404 reproductible"); `translation_fr: complete` holds. Recorded by a session on her statement; the review line of `FRENCH_REVIEW.md` was not touched.
 - **Known limits, stated rather than hidden.** (1) The engines' error messages are technical English strings built in the
   core (`anthropic answered 401: ...`); the page shows them after "It failed:". Translating them would mean carrying a key
   through the core for every failure. (2) The developer-menu entry `RimBabel > Write a translation package for a mod...` and
