@@ -30,6 +30,8 @@
   <RimBabel.Settings.Problem.NoModel>Ce moteur demande un nom de modèle.</RimBabel.Settings.Problem.NoModel>
   <RimBabel.Settings.Problem.BadUrl>L’adresse du serveur n’est pas une adresse web valide.</RimBabel.Settings.Problem.BadUrl>
   <RimBabel.Settings.Problem.NoFolder>Ce moteur demande un identifiant de dossier.</RimBabel.Settings.Problem.NoFolder>
+  <RimBabel.Settings.OllamaPreset>Remplir pour Ollama sur cet ordinateur</RimBabel.Settings.OllamaPreset>
+  <RimBabel.Settings.OllamaPresetDesc>Renseigne lâ€™adresse et le modÃ¨le dâ€™un serveur Ollama gratuit sur cet ordinateur, sans clÃ©. Tools/Install-Ollama.ps1, dans le dÃ©pÃ´t de RimBabel, installe Ollama et tÃ©lÃ©charge ce modÃ¨le.</RimBabel.Settings.OllamaPresetDesc>
   <RimBabel.Settings.LibreUrlDesc>Lâ€™adresse de votre serveur LibreTranslate, par exemple http://localhost:5000. Une clÃ© nâ€™est nÃ©cessaire que si ce serveur en demande une.</RimBabel.Settings.LibreUrlDesc>
   <RimBabel.Settings.Email>Adresse e-mail</RimBabel.Settings.Email>
   <RimBabel.Settings.EmailDesc>Facultatif. MyMemory augmente son quota quotidien quand on lui donne une adresse e-mail. Rien dâ€™autre nâ€™est envoyÃ© avec.</RimBabel.Settings.EmailDesc>

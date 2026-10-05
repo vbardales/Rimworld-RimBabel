@@ -13,6 +13,7 @@ namespace RimBabel.Core
     {
         public const string DefaultAnthropicModel = "claude-haiku-4-5-20251001";
         public const string DefaultOpenAiUrl = "http://localhost:11434/v1";
+        public const string DefaultOllamaModel = "qwen2.5:7b";
         public const string DefaultLibreUrl = "http://localhost:5000";
         public const int DefaultBatchSize = 20;
 

@@ -30,6 +30,8 @@
   <RimBabel.Settings.Problem.NoModel>This engine needs a model name.</RimBabel.Settings.Problem.NoModel>
   <RimBabel.Settings.Problem.BadUrl>The server address is not a valid web address.</RimBabel.Settings.Problem.BadUrl>
   <RimBabel.Settings.Problem.NoFolder>This engine needs a folder identifier.</RimBabel.Settings.Problem.NoFolder>
+  <RimBabel.Settings.OllamaPreset>Fill in for Ollama on this computer</RimBabel.Settings.OllamaPreset>
+  <RimBabel.Settings.OllamaPresetDesc>Sets the address and the model for a free Ollama server on this computer, with no key. Tools/Install-Ollama.ps1, in RimBabel's repository, installs Ollama and downloads that model.</RimBabel.Settings.OllamaPresetDesc>
   <RimBabel.Settings.LibreUrlDesc>The address of your LibreTranslate server, for example http://localhost:5000. A key is only needed if that server asks for one.</RimBabel.Settings.LibreUrlDesc>
   <RimBabel.Settings.Email>E-mail address</RimBabel.Settings.Email>
   <RimBabel.Settings.EmailDesc>Optional. MyMemory raises its daily allowance when it is given an e-mail address. Nothing else is sent with it.</RimBabel.Settings.EmailDesc>

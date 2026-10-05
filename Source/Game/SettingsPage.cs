@@ -97,6 +97,14 @@ namespace RimBabel.Game
                     s.openAiUrl = TextRow(l, "RimBabel.Settings.Url", "RimBabel.Settings.UrlDesc", s.openAiUrl);
                     s.openAiModel = TextRow(l, "RimBabel.Settings.Model", "RimBabel.Settings.ModelDesc", s.openAiModel);
                     s.openAiKey = KeyRow(l, s.openAiKey);
+                    Rect presetRow = l.GetRect(30f);
+                    if (Widgets.ButtonText(presetRow.LeftPart(0.5f), "RimBabel.Settings.OllamaPreset".Translate()))
+                    {
+                        s.openAiUrl = EngineConfig.DefaultOpenAiUrl;
+                        s.openAiModel = EngineConfig.DefaultOllamaModel;
+                        s.openAiKey = "";
+                    }
+                    TooltipHandler.TipRegion(presetRow.LeftPart(0.5f), "RimBabel.Settings.OllamaPresetDesc".Translate());
                     break;
             }
 
