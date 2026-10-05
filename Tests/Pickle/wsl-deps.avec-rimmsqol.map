@@ -1,0 +1,10 @@
+# RIMMSQOL and the shared steps that drive its real MainButtons list. This pass exists so that "can RIMMSQOL list and reveal
+# RimBabel's settings shortcut, and does the revealed button open the same settings as Mod options" rests on a run and not on
+# reading its source (MOD_SETTINGS.md, shortcut integration). Adapted from BillAutopilot's pass of the same name.
+#
+# The steps are PickleTools/RimmsqolSteps, not something this mod wrote. PickleTools has to be cloned beside the mods under
+# exactly that name: the path below is relative to the collection's root, and the folder's own About.xml packageId must equal
+# the one written here. The requirement tags of 03-rimmsqol-shortcut.feature keep it out of any pass where RIMMSQOL or the
+# steps are absent.
+MalteSchulze.RIMMSqol            1084452457
+nelim.pickletools.rimmsqol       path:PickleTools/RimmsqolSteps/Mod
