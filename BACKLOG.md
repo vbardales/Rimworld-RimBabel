@@ -25,6 +25,15 @@ This mod's own backlog, not the monorepo's. Opened 2026-10-03.
 - [ ] Generated repositories also carry `.github/` workflows and `publish.config.json` (from `Rimworld-Release-Admin`'s generator) and
   a `FRENCH_REVIEW.md` for French packages.
 - [ ] Align the generated `STATUS.md` front matter with the schema of `PUBLISHING.md` / `AUDIT.md`.
+- [ ] Choose how packages are cut: one translation mod per source mod (today), or one big translation mod holding the texts of
+  every translated mod, per language. The manifest would then group its entries by source mod; the choice is a setting, and
+  a package of the first kind can be merged into the second. Open points: the big mod needs a load-order and
+  optional-dependency story (a text of a mod that is not installed must be harmless), and a text is blamed on its source mod
+  for licence and attribution, so the big one carries every source licence.
+- [ ] A free-pack button: import a translation already installed for the mod being translated (the `Importer` exists, the
+  button does not), and a shared library of community translations is a larger question left open.
+- [ ] Try Google Cloud, LibreTranslate and Yandex against real services (only the request shape is tested offline), and the
+  new translation entry of the developer menu in a real game.
 
 ## Later
 
