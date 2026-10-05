@@ -8,7 +8,7 @@ repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
 stage:        showcase
-workflow_stage: preOptions
+workflow_stage: options
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -16,7 +16,7 @@ licence_name: MIT
 licence_file: LICENSE (identical copy in Mod/LICENSE)
 dependencies: none yet
 showcase:     unchecked
-settings_audit: partial
+settings_audit: passed
 tested_on:    N/A
 workshop:      item 381412975321 (private, created by the owner's prepublication 0.1.0 on 2026-10-05; nothing published)
 remaining:
@@ -24,11 +24,10 @@ remaining:
   - unverified: the extractor (Source/Game/SourceScanner.cs) ran once in a real game, in the WSL install: Pickle request `20261004-000340-546-454b` (English, tree 8e7ecfb, played 2026-10-04 19:23-19:28) 4 scenarios passed, `exitReason: passed`, `Player.log` shows "5 new, 0 changed, 0 removed" for the fixture mod then "0 new, 5 unchanged" on the second scan, with no error line. Not yet proved: a large real mod (many defs, patches, inheritance), and the narrowed walk with many mods loaded (the suite loads Core and the DLC only)
   - defect: the first scan was far too slow (about 72 s for one small mod: the game's walk read every def of every mod before the mod's own were kept). Fixed 2026-10-04 by passing the mod's metadata to `DefInjectionUtility`, which skips other mods' defs before reading a field; a fifth Pickle scenario asserts a scan under 15 s. Proved in French on 2026-10-04: scans took 18-111 ms and the speed scenario passed (414 ms)
   - defect: the three engines have each talked to their real service once; Google Cloud and Anthropic did on 2026-10-05 (claude-haiku-4-5, three short texts, everything intact, after the key was replaced by one scoped to a workspace); the OpenAI-compatible one on 2026-10-05 on 2026-10-05 (api.openai.com, gpt-4.1-nano, three short texts: placeholders, both markers and the colour tag all came back intact); DeepL did, once, on 2026-10-04 (free host, three short texts), see docs/runs/history.md; the page has a test button to try one, not yet pressed; there is no window to translate a mod from, only the developer-menu action
-  - unverified: settings_audit - what is left: a real restart of the game reading the values back (the read-back scenario uses the game's loader on the file, not a restart). Proved 2026-10-05, English and French (tree f523a85, `suite5-en-b`/`suite5-fr`): the engine chosen in the settings of a running game drives a translation run (04-translation, fake server; the dev-menu window itself is not exercised), route by Mod options, page drawing without a logged error, file written, values read back, RIMMSQOL
   - unverified: the About.xml description is a draft: it ends with the "Source code on GitHub" link and the <url> field points at the repository, but the text itself is a placeholder to rewrite once the mod does something
   - unverified: GitHub social preview image (Mod/About/Preview.png exists now; the setting exists only on the web page, the owner uploads it)
   - unverified: Mod/Assemblies/RimBabel.dll is committed from the sources of 2026-10-04 (revision 7cb8a47 plus the protector fix of 2026-10-04); the shipped assembly must match the sources before any upload
-  - unverified: the Pickle suite (Tests/Pickle, 5 features, 21 scenarios: 01-package 5, 02-settings 7, 03-rimmsqol-shortcut 3, 04-translation 3, 05-gallery 3). English `20261005-211555-570-2d3a` and French `20261005-205750-969-81f5` on tree f523a85 (21 scenarios: the four features, plus 05-gallery, pictures for the Workshop gallery): 18 passed, 0 failed, 3 skipped (the RIMMSQOL ones, outside their pass), captures read, evidence `suite5-en-b` and `suite5-fr`; the first English attempt `20261005-205745-557-f457` crashed the game at start (signal 11 in the Mono collector, before any scenario) and proves nothing. The RIMMSQOL scenarios last passed in the `avec-rimmsqol` pass `20261005-060643-651-594a` (English) and `20261005-060647-164-61e0` (French), evidence `rimmsqol-en` and `rimmsqol-fr`. 04-translation proves a translation run in a real game against a fake server on the loopback address (5 texts translated, blacklist honoured, a second run sends nothing, no placeholder reaches the service); it does not prove any real engine (see docs/runs/history.md). Execution and reading of the reports is a criterion of done -> tested; passes are declared in Tests/Pickle/README.md (minimal English, minimal French)
+  - unverified: the Pickle suite (Tests/Pickle, 8 features, 24 scenarios: 01-package 5, 02-settings 7, 03-rimmsqol-shortcut 3, 04-translation 3, 05-gallery 3, 06-08 restart chain 3 (one scenario per launch)). English `20261005-211555-570-2d3a` and French `20261005-205750-969-81f5` on tree f523a85 (21 scenarios: the four features, plus 05-gallery, pictures for the Workshop gallery): 18 passed, 0 failed, 3 skipped (the RIMMSQOL ones, outside their pass), captures read, evidence `suite5-en-b` and `suite5-fr`; the restart chain on tree 4181851, three launches each: English `20261005-224000-666-952f` and French `20261005-224002-867-eeff`, 3 of 3 passed, evidence `restart-en` and `restart-fr` (`seq1` to `seq3`); the first English attempt `20261005-205745-557-f457` crashed the game at start (signal 11 in the Mono collector, before any scenario) and proves nothing. The RIMMSQOL scenarios last passed in the `avec-rimmsqol` pass `20261005-060643-651-594a` (English) and `20261005-060647-164-61e0` (French), evidence `rimmsqol-en` and `rimmsqol-fr`. 04-translation proves a translation run in a real game against a fake server on the loopback address (5 texts translated, blacklist honoured, a second run sends nothing, no placeholder reaches the service); it does not prove any real engine (see docs/runs/history.md). Execution and reading of the reports is a criterion of done -> tested; passes are declared in Tests/Pickle/README.md (minimal English, minimal French)
   - unverified: licence of the generated translation packages - a package is a derivative of its source mod, so the generator refuses to call one publishable while the source licence is unknown (PackageWriter.Blockers)
 session:      local_a2fc6f2c-0a40-46e3-b162-497e9923317b
 updated:      2026-10-05, v1 scope fixed, ModIcon accepted: preOptions; nothing published
@@ -44,8 +43,12 @@ delivered (32 px check: the head reads, the two side objects blur; her override)
 `horsMonoRepo -> ModIcon générée` holds (development finished for that scope, build current, `ModIcon.png` 128x128 in
 `Mod/About`, accepted by the owner); `-> Preview générée` holds (`Preview.png` 896x504, 482 KB, read by eye 2026-10-04);
 `-> preOptions` holds (English description, plain name, teal accent against the gold secondary ink). `preOptions -> options`
-fails: the settings audit still lacks the effect of its options on a real run (see `remaining`); the Mod options route, the file, the read-back and RIMMSQOL were proved on 2026-10-05.
-`settings_audit` is `partial`. Retained: `workflow_stage: preOptions`,
+holds on 2026-10-05: the settings audit is `passed`. Proved in English and French, by Pickle on tree f523a85 and 4181851: the Mod
+options route (the game's own click opens the mod's settings window), the page drawing without a logged error, the file written,
+the values read back, RIMMSQOL, the engine chosen in the settings driving a translation run (fake server), and a real restart:
+three launches under one hold of the lock (`restart-en` `20261005-224000-666-952f`, `restart-fr` `20261005-224002-867-eeff`), the
+second reading what the game loaded at startup from the file the first wrote, the third putting everything back.
+`settings_audit` is `passed`. Retained: `workflow_stage: options`,
 `stage: showcase`.
 
 
