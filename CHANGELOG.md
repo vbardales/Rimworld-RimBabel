@@ -5,8 +5,13 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
-Nothing has been uploaded. There is no `About/PublishedFileId.txt`, so there is no `0.1.0` entry yet: that entry is
-written once the Workshop item exists ("creation of a publishId file") and says what the upload contained.
+Nothing yet. The Workshop item exists (private) and nothing has been published.
+
+## [0.1.0] - 2026-10-05
+
+Creation of a publishId file: the first upload, made by the owner to create the Workshop item (private, as Steam creates
+them all). It contained `Mod/` as it stood at commit `5d31c07`, and nothing in that folder has changed since. What it
+holds is listed below.
 
 ### Added
 
