@@ -159,15 +159,15 @@ namespace RimBabel.PickleSteps
                 + string.Join(", ", list.Select(m => m.Content == null ? "?" : m.Content.Name).Take(12).ToArray()));
         }
 
-        // What a click on the mod's name does: the window keeps the chosen mod in 'selectedMod' and draws its page.
+        // What a click on the mod's name does in the game's own code (Dialog_Options.DoModOptions): it opens the mod's
+        // Dialog_ModSettings, a window of its own over the options window. Setting the options window's "selectedMod" field
+        // instead, as this step first did, draws the page inside the list and overlaps it: that path serves a window opened
+        // on one mod, not the click.
         [When("RimBabel: RimBabel is chosen in the Mod options list")]
         public void ChooseUs(PickleContext ctx)
         {
-            Dialog_Options dialog = Find.WindowStack.Windows.OfType<Dialog_Options>().FirstOrDefault();
-            ctx.Require(dialog != null, "the options window is not open");
-            FieldInfo field = typeof(Dialog_Options).GetField("selectedMod", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-            ctx.Require(field != null, "Dialog_Options has no 'selectedMod' field in this version");
-            field.SetValue(dialog, RimBabelMod.Instance);
+            ctx.Require(Find.WindowStack.Windows.OfType<Dialog_Options>().Any(), "the options window is not open");
+            Find.WindowStack.Add(new Dialog_ModSettings(RimBabelMod.Instance));
         }
 
         [When("RimBabel: I set the dictionary to {int} lines")]

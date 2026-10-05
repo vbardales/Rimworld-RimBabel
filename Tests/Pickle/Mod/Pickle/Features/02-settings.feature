@@ -51,13 +51,14 @@ Feature: RimBabel's settings page and its hidden shortcut
     And I take a screenshot "RimBabel settings page"
     And I close all dialogs
 
-  # The primary route of MOD_SETTINGS.md, through the game's own options window. The click on the mod's name is simulated by
-  # setting the window's chosen mod: a real click is a pointer event Pickle does not send to an immediate-mode window.
+  # The primary route of MOD_SETTINGS.md, through the game's own options window. A click on the mod's name opens the mod's own
+  # settings window over it (Dialog_ModSettings); a real pointer click is not something Pickle sends to an immediate-mode window.
   Scenario: Options, Mod options lists RimBabel and its page draws from there
     When RimBabel: the game's options window is opened on Mod options
     And RimBabel: the settings window draws for 5 frames
     Then the Mod options list holds RimBabel
     When RimBabel: RimBabel is chosen in the Mod options list
+    Then a settings dialog is open for RimBabel
     And RimBabel: the settings window draws for 10 frames
     Then no errors were logged
     When I close all dialogs
