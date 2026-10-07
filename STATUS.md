@@ -184,3 +184,23 @@ runtime checks have not run.
 - **Two traps found on the way**, both now covered by a check: the serializer writes the platform's line break (a Windows save
   reads a multi-line dictionary back with CR LF; the text is normalised on load), and the game has no scrolling text area
   (`Widgets.TextAreaScrollable` does not exist in 1.6; the page lays the text out in its own scroll view).
+
+## Gate to `tested` (prepared 2026-10-07, tree 49fe6c6)
+
+`done -> tested` is not claimed. What is established, what is filed, and what waits, against `AUDIT.md` step 9 and the owner's gate of 2026-10-03:
+
+| Criterion | State |
+| --- | --- |
+| Pickle suites run and green on the final revision | **filed, not read**: minimal English `20261007-194429-861-079f` and French `20261007-194430-577-665f` (24 scenarios expected, 3 skipped without their pass), evidence `Tests/Pickle/Evidence/final-en` and `final-fr`. `Mod/` and `Source/` are unchanged since f523a85, whose runs were green. |
+| Every `@requires` has had its pass | **filed, not read**: pass `avec-rimmsqol` English `20261007-194432-124-c95c` and French `20261007-194432-844-8395` (03-rimmsqol-shortcut, 3 scenarios), evidence `final-rimmsqol-en` and `final-rimmsqol-fr`. The last green ones date from before the French corrections. |
+| Scenarios played against scenarios discovered, `exitReason` read first | to do when the reports arrive (8 features, 24 scenarios, 21 played in a minimal pass). |
+| `@review` captures opened and looked at | the settings page, in English and in French, and the gallery pictures were read on 2026-10-05 (tree f523a85); to repeat on the final runs. |
+| No scenario in `@wip` | holds (none in the suite). |
+| Logs checked, interface in French and in English | the Pickle step "no errors were logged" runs in every scenario; to read again on the final runs. |
+| Options, persistence, shortcut | proved (Mod options route, file, restart chain `restart-en` and `restart-fr`, RIMMSQOL). |
+| New game and existing save | not relevant: RimBabel writes no save data and changes no gameplay; `test-colony` is loaded by 02-settings. |
+| Regression tests after corrections | the whole suite is replayed on the final revision (above). |
+| No manual test left to validate | **not applicable, with reasons**: (1) the developer-menu window (click the entry, pick a mod): a developer tool with no player-facing layout, the code under it is run by 01 and 04 (`DevActions.WriteFor`, `PackageBuilder.Translate`); (2) a translation by a real service inside the game: needs a paid key that no automated run may hold, covered by the fake server in 04 and by the one-off live tries in `docs/runs/history.md`; (3) a large real mod: not what this suite proves. |
+| Owner items | English description confirmed 2026-10-07; French validated at `3111404`. |
+
+Waiting on the four runs above; none of them is a proof until its report is read.
