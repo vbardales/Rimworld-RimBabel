@@ -8,7 +8,7 @@ repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
 stage:        showcase
-workflow_stage: options
+workflow_stage: l10n
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -130,6 +130,7 @@ no other player-facing text (no gizmo, letter, alert or thought).
   chat; the review line of `FRENCH_REVIEW.md` is hers and was not touched. Any later change to a French file sets
   `translation_fr` back to `unchecked`.
 - **French re-read, 2026-10-05, revision `3111404`: validated** by the owner in chat ("Français correct, encodage propre, révision 3111404 reproductible"); `translation_fr: complete` holds. Recorded by a session on her statement; the review line of `FRENCH_REVIEW.md` was not touched.
+- **Texts that stay in English, by decision of the owner (2026-10-07).** The three entries of the developer menu ("Write a translation package for a mod...", "Translate a mod with the chosen engine...", "Take back the texts of one engine...") and the `[RimBabel]` lines of the game log are developer tooling: the game's own debug menus and log are English, and the menu only exists in development mode. They are not interface for a player and are not translated. Everything a player sees (the settings page, its tooltips, the shortcut) exists in English and French.
 - **Known limits, stated rather than hidden.** (1) The engines' error messages are technical English strings built in the
   core (`anthropic answered 401: ...`); the page shows them after "It failed:". Translating them would mean carrying a key
   through the core for every failure. (2) The developer-menu entry `RimBabel > Write a translation package for a mod...` and
