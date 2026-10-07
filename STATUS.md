@@ -8,13 +8,13 @@ repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
 stage:        showcase
-workflow_stage: l10n
+workflow_stage: preTest
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
 licence_name: MIT
 licence_file: LICENSE (identical copy in Mod/LICENSE)
-dependencies: none yet
+dependencies: none (verified 2026-10-07: no modDependencies, loadAfter or incompatibleWith in About.xml; Source references only the game through Krafs.Rimworld.Ref, no Harmony, no other mod; RIMMSQOL is an optional customization mod that may reveal the shortcut, nothing in the code names it; no LoadFolders.xml needed for a single 1.6 version)
 showcase:     unchecked
 settings_audit: passed
 tested_on:    N/A
@@ -48,7 +48,7 @@ options route (the game's own click opens the mod's settings window), the page d
 the values read back, RIMMSQOL, the engine chosen in the settings driving a translation run (fake server), and a real restart:
 three launches under one hold of the lock (`restart-en` `20261005-224000-666-952f`, `restart-fr` `20261005-224002-867-eeff`), the
 second reading what the game loaded at startup from the file the first wrote, the third putting everything back.
-`settings_audit` is `passed`. Retained: `workflow_stage: l10n` (it was `options` until 2026-10-07),
+`settings_audit` is `passed`. Retained: `workflow_stage: preTest` (`options -> l10n` and `l10n -> preTest` held on 2026-10-07; it was `options` until then),
 `stage: showcase`.
 
 
