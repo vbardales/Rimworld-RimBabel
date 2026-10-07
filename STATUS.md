@@ -7,8 +7,8 @@ packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-stage:        showcase
-workflow_stage: preTest
+stage:        done
+workflow_stage: done
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -48,8 +48,17 @@ options route (the game's own click opens the mod's settings window), the page d
 the values read back, RIMMSQOL, the engine chosen in the settings driving a translation run (fake server), and a real restart:
 three launches under one hold of the lock (`restart-en` `20261005-224000-666-952f`, `restart-fr` `20261005-224002-867-eeff`), the
 second reading what the game loaded at startup from the file the first wrote, the third putting everything back.
-`settings_audit` is `passed`. Retained: `workflow_stage: preTest` (`options -> l10n` and `l10n -> preTest` held on 2026-10-07; it was `options` until then),
-`stage: showcase`.
+`preTest -> done` holds on 2026-10-07, tree of the shipped `Mod/` (`Mod/Assemblies/RimBabel.dll` rebuilt from `Source/` with no difference):
+the offline tests ran again (379 checks, 0 failed) and so did the checks against the game's assemblies (47, 0 failed). XML tests: the
+files of `Mod/` that are XML (`Languages/*/Keyed`, `DefInjected`, `Defs/MainButtonDefs`) are read by `Tests/SettingsTests.cs`
+(same keys and `{n}` parameters in both languages, no empty or garbled text, every key the code asks for exists, the shortcut's
+declaration and its French injection); there is no patch and no other Def to test. Pickle scenarios are written (eight features, 24
+scenarios, perimeter in `Tests/Pickle/README.md` and `TESTING.md`: only what a running game shows) and, beyond what this step asks,
+they were played and are green in both languages. Functional scenarios with preconditions, actions and expected results are the
+table of `TESTING.md`. Not applicable: tests of the real services (no automated test may call a paid service; each was tried once by hand,
+see `docs/runs/history.md`).
+`settings_audit` is `passed`. Retained: `workflow_stage: done` (`options -> l10n`, `l10n -> preTest` and `preTest -> done` held on 2026-10-07; it was `options` until then),
+`stage: done`.
 
 
 ## Decision of 2026-10-04: `horsMonoRepo` (superseded)

@@ -1,6 +1,6 @@
 # The Pickle suite for RimBabel
 
-One feature file, written 2026-10-03. Passes of 2026-10-04: English 4 of 4 (older tree), French 5 of 5 (tree with the speed fix), and the speed scenario alone in English. It holds what only a running game can show; everything provable
+Eight feature files, 24 scenarios, written from 2026-10-03 to 2026-10-07; the runs and their evidence are in `STATUS.md` and `docs/runs/history.md`. The suite holds what only a running game can show; everything provable
 outside one is proven outside one (`Tests/RimBabel.Tests.csproj` for the package core, `Tests/Game` for the extractor against
 the game's assemblies). A scenario that restated those would take the machine for nothing.
 
@@ -21,6 +21,18 @@ it carries two Defs (`Mod/Defs/Fixture.xml`) and a Keyed file (`Mod/Languages/En
 are known, so what RimBabel lists is checked text by text. No second mod, no `wsl-deps` map: the minimal pass is enough.
 Adding a text to the fixture means adding a line to `01-package.feature`.
 `02-settings.feature` (5 scenarios, needs the save `test-colony`): hidden shortcut contract, dialog belongs to this mod, page draws without a logged error, settings file written, every text present in the pass language, one `@review` screenshot. Steps in `Source/SettingsSteps.cs`. Run it in English and in French.
+
+`03-rimmsqol-shortcut.feature` (3, pass `avec-rimmsqol`, `wsl-deps.avec-rimmsqol.map`): the shortcut seen from RIMMSQOL's own list.
+`04-translation.feature` (3): a translation run in a real game against a fake server on `127.0.0.1:18765` (the steps of `TranslationSteps.cs`).
+`05-gallery.feature` (3, `@review`): pictures of Mod options and the page, with example values and a masked placeholder key (`GallerySteps.cs`).
+`06-restart-write`, `07-restart-read`, `08-restart-reset` (one scenario each): the settings across a real restart, three launches under one hold of the lock (`RestartSteps.cs`). In a full pass they run in one process and prove only that the steps hold together; only the chain proves the restart:
+
+```powershell
+Submit-PickleRun.ps1 -Mod RimBabel -Owner local_<id> -Label "restart, <sha>" -NoBatch -Language English `
+  -EvidenceDir RimBabel/Tests/Pickle/Evidence/restart-en -Filter '06-restart-write' -Then '07-restart-read','08-restart-reset'
+```
+
+`-EvidenceDir` is always a full path under the repository, never a bare name (a bare name lands at the root of `rimworld`).
 
 ## Passes
 

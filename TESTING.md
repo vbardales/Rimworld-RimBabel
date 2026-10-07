@@ -1,6 +1,6 @@
 # Testing RimBabel
 
-Nothing has been played in game: the in-game part does not exist yet. `STATUS.md` is the source of truth for what has
+The three layers below all ran on the tree of the shipped `Mod/`. `STATUS.md` is the source of truth for what has
 run and when; this file says what each layer proves and what to keep.
 
 ## What runs without the game
@@ -11,7 +11,7 @@ The package core (`Source/Core`) is plain C# and its tests compile it in directl
 dotnet run --project Tests/RimBabel.Tests.csproj
 ```
 
-304 checks, exit code 1 when one fails; all passed on 2026-10-04. They cover: the source hash ignores the newline
+379 checks (the translation machinery and the engines included), exit code 1 when one fails; 0 failed on 2026-10-07 on the tree of the current `Mod/`. They cover: the source hash ignores the newline
 convention; the manifest round-trips special characters, newlines, status, engine, glossary and blacklist, and refuses a
 newer schema; the merge keeps unchanged and human text, makes a stale draft of a changed source, never touches a locked
 text, reports new and removed keys, and bumps the version only on a change; the writer lays out the package, escapes
@@ -42,8 +42,8 @@ dotnet build Source/RimBabel.csproj -c Release && dotnet build Tests/Game/RimBab
 
 Needs a RimWorld install (the `Managed` folder; override `RimWorldManaged` or pass it as the first argument). It runs
 the **shipped** `Mod/Assemblies/RimBabel.dll` against the real `Assembly-CSharp`, builds a few Defs by hand, registers them
-in the game's own `DefDatabase` and lets `SourceScanner` walk them with the game's own `DefInjectionUtility`. 32 checks,
-all green on 2026-10-03: Keyed texts listed with their placeholders and real line breaks; a def's label and description
+in the game's own `DefDatabase` and lets `SourceScanner` walk them with the game's own `DefInjectionUtility`. 47 checks, 0 failed on 2026-10-07,
+Keyed texts listed with their placeholders and real line breaks; a def's label and description
 listed under the exact injection path; a one-word label and description taken because the game marks both
 `MustTranslate`; a texture path (even with a space in it), a defName, another mod's def and a generated def left out; a
 text inside a list of objects listed through the list; every path a valid XML element name; no entry twice; then the
@@ -64,27 +64,25 @@ that only exists in the newer profile can fail here without being a defect in th
 
 ## What needs the game
 
-A real list of Defs only exists in a running game, so what the extractor returns for a real loaded mod is **written as a
-Pickle scenario and not played yet**. Not written yet: the engines' calls. Engines are
-exercised with a fake endpoint, not the real services: no test calls DeepL or Anthropic.
+A real list of Defs, a settings window, a restart and the main bar only exist in a running game, so they are Pickle scenarios
+(`Tests/Pickle/`, eight features, 24 scenarios, played in English and in French through the Ticket Dispatcher; the step
+assemblies are in `Tests/Pickle/Source/`, `Check-Steps.ps1` checks the step expressions). **Not tested anywhere: the real
+services.** No automated test calls DeepL, Anthropic, OpenAI, Google Cloud or the others: they run against a fake endpoint
+(offline in `Tests/`, and a small server on the loopback address in `04-translation`). Each real service was tried once by
+hand with a throwaway program outside the repository, and the outcome is in `docs/runs/history.md`.
 
-### The Pickle suite (written 2026-10-03, not run)
+### Functional scenarios (preconditions, actions, expected results)
 
-`Tests/Pickle/` holds two features. `01-package.feature` (5 scenarios, the manual check "write the package of a mod from the developer
-menu, read the manifest" made into steps), its step assembly (`Source/PackageSteps.cs`, built into
-`Mod/Pickle/Assemblies/`) and `README.md`, which says what each scenario needs a game for and what stays manual (the menu
-window, a large real mod). The companion mod is also the source mod: it carries two Defs and a Keyed file whose texts are
-known. The scenarios run at the main menu, with no save, so a run is seconds. `Check-Steps.ps1` compiles the step
-expressions with Pickle's own engine and checks them for ambiguity. **Execution and the review of anything it produces
-belong to `done -> tested`**; until a report exists the verdict is `unverified`.
+| Feature | Precondition | Action | Expected |
+| --- | --- | --- | --- |
+| 01 package (5) | main menu, the companion mod loaded | the code the developer-menu entry calls scans the companion mod | its five known texts are in the manifest, nothing else; a rescan changes nothing; the scan takes well under a second |
+| 02 settings (7) | the save `test-colony`, settings at their defaults | reveal and hide the shortcut; activate it; choose RimBabel in Mod options; set values and write | hidden by default, drawn once revealed; the dialog is this mod's; the page draws for ten frames with no logged error; the file holds the values and no key; every text exists in the language of the pass; values come back after a read of the file, line breaks included |
+| 03 rimmsqol-shortcut (3, pass `avec-rimmsqol`) | RIMMSQOL loaded | reveal, open and hide the shortcut from RIMMSQOL's own list | offered hidden; drawn and opens the same settings; gone again, nothing left behind |
+| 04 translation (3) | a fake server on the loopback address, the engine set to it | translate the companion mod with the chosen engine; with a blacklisted text; twice | five texts translated and recorded with their engine, the blacklisted one still pending, the second run sends nothing, no placeholder or glossary term reaches the server |
+| 05 gallery (3, `@review`) | example values, a masked placeholder key | open Mod options, the page, scrolled down | pictures for a person; nothing asserted |
+| 06-08 restart (3, one chain of three launches) | main menu | write values; in a new game process read what the game loaded at startup; put back | the second launch holds the values the first wrote; the third leaves nothing |
 
-`02-settings.feature` (5 scenarios, written 2026-10-04, run 2026-10-04, English and French passed; the first French capture caught a clipped line, fixed) holds what only a game shows about the settings page: the
-hidden shortcut (hidden on a clean configuration, drawn and not greyed once revealed, gone again when hidden), that activating it
-opens the dialog of this mod and not another, that the page draws for ten frames without a logged error, that the game writes
-the settings file (and no key when none was set), that every settings text exists in the language of the pass, and a `@review`
-screenshot of the page for a person to read. These need the save `test-colony` (the main bar answers differently without a
-map), run in English and in French, and each puts the player's own settings back afterwards. Its step assembly is
-`Source/SettingsSteps.cs`.
+The menu window of the developer entries is not covered (a developer tool, not player-facing; see `STATUS.md`).
 
 ## Passes
 
