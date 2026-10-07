@@ -48,7 +48,7 @@ options route (the game's own click opens the mod's settings window), the page d
 the values read back, RIMMSQOL, the engine chosen in the settings driving a translation run (fake server), and a real restart:
 three launches under one hold of the lock (`restart-en` `20261005-224000-666-952f`, `restart-fr` `20261005-224002-867-eeff`), the
 second reading what the game loaded at startup from the file the first wrote, the third putting everything back.
-`settings_audit` is `passed`. Retained: `workflow_stage: options`,
+`settings_audit` is `passed`. Retained: `workflow_stage: l10n` (it was `options` until 2026-10-07),
 `stage: showcase`.
 
 
