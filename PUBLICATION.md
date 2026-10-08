@@ -77,7 +77,7 @@ RimBabel reads the texts of a mod, translates what is missing with the engine yo
 If I do not answer within a reasonable time after being contacted, anyone may freely update this or any other of my mods, including publishing a continuation of it. All credit must be preserved.
 
 **AI-GENERATED**
-The code, the tests and the texts of this mod were written with Claude (Anthropic), under my direction and review. The icon is my own work. No generated image is in the mod.
+The code, the tests and the texts of this mod were written with Claude (Anthropic), under my direction and review. The icon was generated with DALL-E (OpenAI). The Workshop preview's background picture: tool to be named by the owner before the first public version.
 
 **THANKS**
 - [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678]Pickle[/url], for the in-game tests; development only, never a dependency of RimBabel.

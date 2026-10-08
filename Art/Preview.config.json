@@ -15,7 +15,7 @@
   "backgroundPosition": "0px -10px",
   "backgroundSize": "896px auto",
   "iconBadge": {
-    "file": "ModIcon-badge.png",
+    "file": "ModIcon-source.png",
     "corner": "bottom-left",
     "width": 220,
     "outline": false,
