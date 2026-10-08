@@ -1,14 +1,14 @@
 ---
 localization: complete
-translation_en: complete
-translation_fr: complete
+translation_en: unchecked
+translation_fr: unchecked
 mod:          RimBabel
 packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-stage:        tested
-workflow_stage: tested
+stage:        showcase
+workflow_stage: options
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -17,7 +17,7 @@ licence_file: LICENSE (identical copy in Mod/LICENSE)
 dependencies: none (verified 2026-10-07: no modDependencies, loadAfter or incompatibleWith in About.xml; Source references only the game through Krafs.Rimworld.Ref, no Harmony, no other mod; RIMMSQOL is an optional customization mod that may reveal the shortcut, nothing in the code names it; no LoadFolders.xml needed for a single 1.6 version)
 showcase:     unchecked
 settings_audit: passed
-tested_on:    2026-10-08 (Pickle final runs on tree 49fe6c6, English and French, Mod/ unchanged since f523a85)
+tested_on:    N/A (the Pickle final runs of 2026-10-08 on tree 49fe6c6 are green but predate the four text corrections of adab2c7; replay needed)
 workshop:      item 381412975321 (private, created by the owner's prepublication 0.1.0 on 2026-10-05; nothing published)
 remaining:
   - unverified: the Steam description is the one in About.xml (rewritten 2026-10-04 and 2026-10-05, last changed in `a463f5a`; the English text was confirmed by the owner in chat on 2026-10-07, recorded by a session on her statement); ModIcon.png (128x128, 25 KB, from the owner's cut-out source) and Preview.png (896x504, 482 KB, rendered by Render-Preview.cjs, copy in Art/Gallery/0-preview.png) are installed; the 32 px legibility check of the icon passes for the head, while the two side objects blur, so the owner decides
@@ -56,8 +56,8 @@ scenarios, perimeter in `Tests/Pickle/README.md` and `TESTING.md`: only what a r
 they were played and are green in both languages. Functional scenarios with preconditions, actions and expected results are the
 table of `TESTING.md`. Not applicable: tests of the real services (no automated test may call a paid service; each was tried once by hand,
 see `docs/runs/history.md`).
-`settings_audit` is `passed`. Retained: `workflow_stage: tested` (`options -> l10n`, `l10n -> preTest` and `preTest -> done` held on 2026-10-07, `done -> tested` on 2026-10-08),
-`stage: tested`.
+`settings_audit` is `passed`. Retained (2026-10-08, after the review corrections of `adab2c7`): `workflow_stage: options`, `stage: showcase`; before them it was `tested` (`options -> l10n`, `l10n -> preTest` and `preTest -> done` held on 2026-10-07, `done -> tested` on 2026-10-08),
+(the `stage` code is `showcase` now.)
 
 
 ## Decision of 2026-10-04: `horsMonoRepo` (superseded)
@@ -138,6 +138,7 @@ no other player-facing text (no gizmo, letter, alert or thought).
   chat; the review line of `FRENCH_REVIEW.md` is hers and was not touched. Any later change to a French file sets
   `translation_fr` back to `unchecked`.
 - **French re-read, 2026-10-05, revision `3111404`: validated** by the owner in chat ("Français correct, encodage propre, révision 3111404 reproductible"); `translation_fr: complete` holds. Recorded by a session on her statement; the review line of `FRENCH_REVIEW.md` was not touched.
+- **Review of 2026-10-08, revision `adab2c7`: four corrections applied, to be read again.** The owner's review of the settings texts asked for changes to `EngineDesc` (both languages: "Each service needs its own key, except a server running on your own computer." / "Chaque service demande sa propre clé, sauf un serveur lancé sur votre propre ordinateur."), `ResetDesc` (French "Rétablit tous les réglages de cette page, sauf vos clés."; the English follows it: "Restores every setting on this page, except your keys."), `LanguageDesc` (both languages, as dictated) and `OutputDesc` (French, infinitive register: "Laisser ce champ vide pour utiliser le dossier par défaut, à côté des sauvegardes."; the English keeps its imperative, natural in English, and is unchanged). Applied in `adab2c7`, `FRENCH_REVIEW.md` regenerated at that revision. Consequence by the rule below: `translation_en` and `translation_fr` are `unchecked` until the owner reads the corrected texts; the stage falls back to `options` (the last transition that holds), `stage: showcase`, and the Pickle runs of 2026-10-07/08 (green on the previous texts) are to be replayed on the new revision. The review also states that no text describes a pawn, so the empty `french-review-flags.json` is coherent.
 - **Texts that stay in English, by decision of the owner (2026-10-07).** The three entries of the developer menu ("Write a translation package for a mod...", "Translate a mod with the chosen engine...", "Take back the texts of one engine...") and the `[RimBabel]` lines of the game log are developer tooling: the game's own debug menus and log are English, and the menu only exists in development mode. They are not interface for a player and are not translated. Everything a player sees (the settings page, its tooltips, the shortcut) exists in English and French.
 - **Known limits, stated rather than hidden.** (1) The engines' error messages are technical English strings built in the
   core (`anthropic answered 401: ...`); the page shows them after "It failed:". Translating them would mean carrying a key
