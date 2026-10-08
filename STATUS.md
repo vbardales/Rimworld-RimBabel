@@ -7,8 +7,8 @@ packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-stage:        done
-workflow_stage: done
+stage:        tested
+workflow_stage: tested
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -17,7 +17,7 @@ licence_file: LICENSE (identical copy in Mod/LICENSE)
 dependencies: none (verified 2026-10-07: no modDependencies, loadAfter or incompatibleWith in About.xml; Source references only the game through Krafs.Rimworld.Ref, no Harmony, no other mod; RIMMSQOL is an optional customization mod that may reveal the shortcut, nothing in the code names it; no LoadFolders.xml needed for a single 1.6 version)
 showcase:     unchecked
 settings_audit: passed
-tested_on:    N/A
+tested_on:    2026-10-08 (Pickle final runs on tree 49fe6c6, English and French, Mod/ unchanged since f523a85)
 workshop:      item 381412975321 (private, created by the owner's prepublication 0.1.0 on 2026-10-05; nothing published)
 remaining:
   - unverified: the Steam description is the one in About.xml (rewritten 2026-10-04 and 2026-10-05, last changed in `a463f5a`; the English text was confirmed by the owner in chat on 2026-10-07, recorded by a session on her statement); ModIcon.png (128x128, 25 KB, from the owner's cut-out source) and Preview.png (896x504, 482 KB, rendered by Render-Preview.cjs, copy in Art/Gallery/0-preview.png) are installed; the 32 px legibility check of the icon passes for the head, while the two side objects blur, so the owner decides
@@ -26,7 +26,7 @@ remaining:
   - defect: the three engines have each talked to their real service once; Google Cloud and Anthropic did on 2026-10-05 (claude-haiku-4-5, three short texts, everything intact, after the key was replaced by one scoped to a workspace); the OpenAI-compatible one on 2026-10-05 on 2026-10-05 (api.openai.com, gpt-4.1-nano, three short texts: placeholders, both markers and the colour tag all came back intact); DeepL did, once, on 2026-10-04 (free host, three short texts), see docs/runs/history.md; the page has a test button to try one, not yet pressed; there is no window to translate a mod from, only the developer-menu action
   - unverified: GitHub social preview image (Mod/About/Preview.png exists now; the setting exists only on the web page, the owner uploads it)
   - unverified: Mod/Assemblies/RimBabel.dll is committed from the sources of 2026-10-04 (revision 7cb8a47 plus the protector fix of 2026-10-04); the shipped assembly must match the sources before any upload
-  - unverified: the Pickle suite (Tests/Pickle, 8 features, 24 scenarios: 01-package 5, 02-settings 7, 03-rimmsqol-shortcut 3, 04-translation 3, 05-gallery 3, 06-08 restart chain 3 (one scenario per launch)). English `20261005-211555-570-2d3a` and French `20261005-205750-969-81f5` on tree f523a85 (21 scenarios: the four features, plus 05-gallery, pictures for the Workshop gallery): 18 passed, 0 failed, 3 skipped (the RIMMSQOL ones, outside their pass), captures read, evidence `suite5-en-b` and `suite5-fr`; the restart chain on tree 4181851, three launches each: English `20261005-224000-666-952f` and French `20261005-224002-867-eeff`, 3 of 3 passed, evidence `restart-en` and `restart-fr` (`seq1` to `seq3`); the first English attempt `20261005-205745-557-f457` crashed the game at start (signal 11 in the Mono collector, before any scenario) and proves nothing. The RIMMSQOL scenarios last passed in the `avec-rimmsqol` pass `20261005-060643-651-594a` (English) and `20261005-060647-164-61e0` (French), evidence `rimmsqol-en` and `rimmsqol-fr`. 04-translation proves a translation run in a real game against a fake server on the loopback address (5 texts translated, blacklist honoured, a second run sends nothing, no placeholder reaches the service); it does not prove any real engine (see docs/runs/history.md). Execution and reading of the reports is a criterion of done -> tested; passes are declared in Tests/Pickle/README.md (minimal English, minimal French)
+  - verified: the Pickle suite (Tests/Pickle, 8 features, 24 scenarios: 01-package 5, 02-settings 7, 03-rimmsqol-shortcut 3, 04-translation 3, 05-gallery 3, 06-08 restart chain 3, one scenario per launch). Final runs of 2026-10-08 on tree 49fe6c6 (`Mod/` and `Source/` unchanged since f523a85): minimal English `20261007-194429-861-079f` and French `20261007-194432-124-c95c`, 24 discovered, 21 passed, 0 failed, 3 skipped (the RIMMSQOL ones); pass `avec-rimmsqol` English `20261007-194430-577-665f` and French `20261007-194432-844-8395`, 3 of 3 passed; evidence `final-en`, `final-fr`, `final-rimmsqol-en`, `final-rimmsqol-fr`. The restart chain, three launches in one hold of the lock, passed on tree 4181851: English `20261005-224000-666-952f`, French `20261005-224002-867-eeff`, evidence `restart-en` and `restart-fr` (`seq1` to `seq3`). 04-translation proves a translation run in a real game against a fake server on the loopback address; it proves no real engine (see docs/runs/history.md). Passes are declared in Tests/Pickle/README.md (minimal English, minimal French, avec-rimmsqol)
   - unverified: licence of the generated translation packages - a package is a derivative of its source mod, so the generator refuses to call one publishable while the source licence is unknown (PackageWriter.Blockers)
 session:      local_a2fc6f2c-0a40-46e3-b162-497e9923317b
 updated:      2026-10-05, v1 scope fixed, ModIcon accepted: preOptions; nothing published
@@ -56,8 +56,8 @@ scenarios, perimeter in `Tests/Pickle/README.md` and `TESTING.md`: only what a r
 they were played and are green in both languages. Functional scenarios with preconditions, actions and expected results are the
 table of `TESTING.md`. Not applicable: tests of the real services (no automated test may call a paid service; each was tried once by hand,
 see `docs/runs/history.md`).
-`settings_audit` is `passed`. Retained: `workflow_stage: done` (`options -> l10n`, `l10n -> preTest` and `preTest -> done` held on 2026-10-07; it was `options` until then),
-`stage: done`.
+`settings_audit` is `passed`. Retained: `workflow_stage: tested` (`options -> l10n`, `l10n -> preTest` and `preTest -> done` held on 2026-10-07, `done -> tested` on 2026-10-08),
+`stage: tested`.
 
 
 ## Decision of 2026-10-04: `horsMonoRepo` (superseded)
@@ -191,16 +191,16 @@ runtime checks have not run.
 
 | Criterion | State |
 | --- | --- |
-| Pickle suites run and green on the final revision | **filed, not read**: minimal English `20261007-194429-861-079f` and French `20261007-194432-124-c95c` (24 scenarios expected, 3 skipped without their pass), evidence `Tests/Pickle/Evidence/final-en` and `final-fr`. `Mod/` and `Source/` are unchanged since f523a85, whose runs were green. |
-| Every `@requires` has had its pass | **filed, not read**: pass `avec-rimmsqol` English `20261007-194430-577-665f` and French `20261007-194432-844-8395` (03-rimmsqol-shortcut, 3 scenarios), evidence `final-rimmsqol-en` and `final-rimmsqol-fr`. The last green ones date from before the French corrections. |
-| Scenarios played against scenarios discovered, `exitReason` read first | to do when the reports arrive (8 features, 24 scenarios, 21 played in a minimal pass). |
-| `@review` captures opened and looked at | the settings page, in English and in French, and the gallery pictures were read on 2026-10-05 (tree f523a85); to repeat on the final runs. |
+| Pickle suites run and green on the final revision | **read 2026-10-08**: minimal English `20261007-194429-861-079f` and French `20261007-194432-124-c95c` (24 scenarios expected, 3 skipped without their pass), evidence `Tests/Pickle/Evidence/final-en` and `final-fr`: `exitReason` passed, set `sans-facultatifs`, 24 discovered, 21 passed, 0 failed, 3 skipped (the RIMMSQOL ones, played in their own pass). `Mod/` and `Source/` unchanged since f523a85. |
+| Every `@requires` has had its pass | **read 2026-10-08**: pass `avec-rimmsqol` English `20261007-194430-577-665f` and French `20261007-194432-844-8395` (03-rimmsqol-shortcut, 3 scenarios), evidence `final-rimmsqol-en` and `final-rimmsqol-fr`: `exitReason` passed, set `avec-rimmsqol`, 3 of 3 passed in each language. |
+| Scenarios played against scenarios discovered, `exitReason` read first | done: 8 features, 24 scenarios discovered, 21 played in a minimal pass plus the 3 of the RIMMSQOL pass, `exitReason` read first. |
+| `@review` captures opened and looked at | done 2026-10-08 on the final runs: the settings page and the Mod options list were opened in English and French (no clipped line, no raw key, the key field masked or empty, French texts complete); the tooltip of the pointer position covers a slider, a known limit of the harness. |
 | No scenario in `@wip` | holds (none in the suite). |
-| Logs checked, interface in French and in English | the Pickle step "no errors were logged" runs in every scenario; to read again on the final runs. |
+| Logs checked, interface in French and in English | the Pickle step "no errors were logged" passed in every scenario; `Player.log` of the four final runs holds 0 `[ERROR]` in the minimal passes and one in each RIMMSQOL pass, which is Pickle Tools reporting that its own RIMMSQOL sub-mod loads no content (not RimBabel, the 3 scenarios pass); the warnings are the game's own (hidden ritual precept, save version, no Steam in WSL). |
 | Options, persistence, shortcut | proved (Mod options route, file, restart chain `restart-en` and `restart-fr`, RIMMSQOL). |
 | New game and existing save | not relevant: RimBabel writes no save data and changes no gameplay; `test-colony` is loaded by 02-settings. |
 | Regression tests after corrections | the whole suite is replayed on the final revision (above). |
 | No manual test left to validate | **not applicable, with reasons**: (1) the developer-menu window (click the entry, pick a mod): a developer tool with no player-facing layout, the code under it is run by 01 and 04 (`DevActions.WriteFor`, `PackageBuilder.Translate`); (2) a translation by a real service inside the game: needs a paid key that no automated run may hold, covered by the fake server in 04 and by the one-off live tries in `docs/runs/history.md`; (3) a large real mod: not what this suite proves. |
 | Owner items | English description confirmed 2026-10-07; French validated at `3111404`. |
 
-Waiting on the four runs above; none of them is a proof until its report is read.
+All four runs read on 2026-10-08. `done -> tested` holds.
