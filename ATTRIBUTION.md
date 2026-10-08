@@ -29,5 +29,5 @@ published or were not read.
 
 ## Tools
 
-Built with Claude (Anthropic). The mod icon (`Art/ModIcon-source.png`, and the Preview's badge) was generated with DALL-E (OpenAI) and cut out by the owner. Tests, once they exist in game, run with Pickle and RimLogging, which are development
+Built with Claude (Anthropic). The mod icon (`Art/ModIcon-source.png`, also the Preview's badge) and the Preview's background picture (`Art/Preview-source.png`) were generated with DALL-E (OpenAI); the owner cut out the icon. Tests, once they exist in game, run with Pickle and RimLogging, which are development
 tools and never a dependency of the mod.
