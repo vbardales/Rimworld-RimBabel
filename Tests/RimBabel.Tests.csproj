@@ -21,6 +21,7 @@
   <ItemGroup>
     <!-- The Pickle suite and the game-assembly tests have their own projects. -->
     <Compile Remove="Pickle\**" />
+    <Compile Remove="obj\**" />
     <Compile Remove="Game\**" />
   </ItemGroup>
 

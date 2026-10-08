@@ -1,7 +1,8 @@
 <Project>
-  <!-- Intermediates go outside Mod/, which Steam publishes whole. This must be here and not in a
-       .csproj: the NuGet restore reads the property before the project file. -->
+  <!-- Intermediates go outside Mod/, which Steam publishes whole, and under Tests/obj (ignored by git) so that
+       nothing hidden sits at the repository root. This must be here and not in a .csproj: the NuGet restore reads
+       the property before the project file. -->
   <PropertyGroup>
-    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory).build\obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)Tests\obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
   </PropertyGroup>
 </Project>

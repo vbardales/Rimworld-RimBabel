@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <!-- Intermediates stay out of the test mod folder, as they do for the shipped mod: the staging copies
-         Tests/Pickle/Mod verbatim, and an obj/ inside it would travel with it. -->
-    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)..\..\..\.build\pickle\obj\</BaseIntermediateOutputPath>
-    <BaseOutputPath>$(MSBuildThisFileDirectory)..\..\..\.build\pickle\bin\</BaseOutputPath>
+         Tests/Pickle/Mod verbatim, and an obj/ inside it would travel with it. They go under Tests/obj (ignored by git). -->
+    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)..\..\obj\pickle\obj\</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(MSBuildThisFileDirectory)..\..\obj\pickle\bin\</BaseOutputPath>
   </PropertyGroup>
 
 </Project>
