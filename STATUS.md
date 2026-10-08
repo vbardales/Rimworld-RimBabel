@@ -191,8 +191,8 @@ runtime checks have not run.
 
 | Criterion | State |
 | --- | --- |
-| Pickle suites run and green on the final revision | **filed, not read**: minimal English `20261007-194429-861-079f` and French `20261007-194430-577-665f` (24 scenarios expected, 3 skipped without their pass), evidence `Tests/Pickle/Evidence/final-en` and `final-fr`. `Mod/` and `Source/` are unchanged since f523a85, whose runs were green. |
-| Every `@requires` has had its pass | **filed, not read**: pass `avec-rimmsqol` English `20261007-194432-124-c95c` and French `20261007-194432-844-8395` (03-rimmsqol-shortcut, 3 scenarios), evidence `final-rimmsqol-en` and `final-rimmsqol-fr`. The last green ones date from before the French corrections. |
+| Pickle suites run and green on the final revision | **filed, not read**: minimal English `20261007-194429-861-079f` and French `20261007-194432-124-c95c` (24 scenarios expected, 3 skipped without their pass), evidence `Tests/Pickle/Evidence/final-en` and `final-fr`. `Mod/` and `Source/` are unchanged since f523a85, whose runs were green. |
+| Every `@requires` has had its pass | **filed, not read**: pass `avec-rimmsqol` English `20261007-194430-577-665f` and French `20261007-194432-844-8395` (03-rimmsqol-shortcut, 3 scenarios), evidence `final-rimmsqol-en` and `final-rimmsqol-fr`. The last green ones date from before the French corrections. |
 | Scenarios played against scenarios discovered, `exitReason` read first | to do when the reports arrive (8 features, 24 scenarios, 21 played in a minimal pass). |
 | `@review` captures opened and looked at | the settings page, in English and in French, and the gallery pictures were read on 2026-10-05 (tree f523a85); to repeat on the final runs. |
 | No scenario in `@wip` | holds (none in the suite). |
