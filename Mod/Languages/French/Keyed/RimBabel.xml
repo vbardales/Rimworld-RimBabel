@@ -4,11 +4,11 @@
   <RimBabel.Settings.Intro>RimBabel traduit les textes d’un mod et génère un mod de traduction distinct. Aucun mod installé n’est modifié.</RimBabel.Settings.Intro>
   <RimBabel.Settings.Applies>Les changements s’appliquent tout de suite et sont enregistrés à la fermeture de cette fenêtre.</RimBabel.Settings.Applies>
   <RimBabel.Settings.Reset>Rétablir les valeurs par défaut</RimBabel.Settings.Reset>
-  <RimBabel.Settings.ResetDesc>Rétablit tout ce qui est sur cette page, sauf vos clés.</RimBabel.Settings.ResetDesc>
+  <RimBabel.Settings.ResetDesc>Rétablit tous les réglages de cette page, sauf vos clés.</RimBabel.Settings.ResetDesc>
 
   <!-- Moteur -->
   <RimBabel.Settings.EngineHeader>Moteur de traduction</RimBabel.Settings.EngineHeader>
-  <RimBabel.Settings.EngineDesc>Le service qui traduit les textes. Chacun demande sa propre clé, sauf un serveur lancé sur votre propre ordinateur.</RimBabel.Settings.EngineDesc>
+  <RimBabel.Settings.EngineDesc>Chaque service demande sa propre clé, sauf un serveur lancé sur votre propre ordinateur.</RimBabel.Settings.EngineDesc>
   <RimBabel.Settings.EngineDeepL>DeepL</RimBabel.Settings.EngineDeepL>
   <RimBabel.Settings.EngineAnthropic>Anthropic (Claude)</RimBabel.Settings.EngineAnthropic>
   <RimBabel.Settings.EngineOpenAi>Serveur compatible OpenAI (Ollama, LM Studio, OpenRouter...)</RimBabel.Settings.EngineOpenAi>
@@ -49,10 +49,10 @@
   <RimBabel.Settings.AuthorDesc>Écrit dans le fichier About.xml des mods de traduction que vous générez.</RimBabel.Settings.AuthorDesc>
   <RimBabel.Settings.Language>Langue cible</RimBabel.Settings.Language>
   <RimBabel.Settings.LanguageGame>La langue du jeu ({0})</RimBabel.Settings.LanguageGame>
-  <RimBabel.Settings.LanguageDesc>Langue vers laquelle les textes sont traduits. Par défaut, celle dans laquelle le jeu s’exécute.</RimBabel.Settings.LanguageDesc>
+  <RimBabel.Settings.LanguageDesc>La langue dans laquelle les mods de traduction sont générés. Par défaut, celle dans laquelle le jeu s’exécute.</RimBabel.Settings.LanguageDesc>
   <RimBabel.Settings.Output>Dossier de sortie</RimBabel.Settings.Output>
   <RimBabel.Settings.OutputDefault>{0} (par défaut)</RimBabel.Settings.OutputDefault>
-  <RimBabel.Settings.OutputDesc>Dossier où sont créés les mods de traduction. Laissez ce champ vide pour le dossier par défaut, à côté de vos sauvegardes.</RimBabel.Settings.OutputDesc>
+  <RimBabel.Settings.OutputDesc>Dossier où les mods de traduction sont créés. Laisser ce champ vide pour utiliser le dossier par défaut, à côté des sauvegardes.</RimBabel.Settings.OutputDesc>
   <RimBabel.Settings.OutputOpen>Ouvrir le dossier</RimBabel.Settings.OutputOpen>
 
   <!-- Dictionnaire et liste noire -->

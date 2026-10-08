@@ -4,11 +4,11 @@
   <RimBabel.Settings.Intro>RimBabel translates the texts of a mod and writes the result as a translation mod of its own. Nothing here changes a mod you have installed.</RimBabel.Settings.Intro>
   <RimBabel.Settings.Applies>Changes apply immediately and are saved when you close this window.</RimBabel.Settings.Applies>
   <RimBabel.Settings.Reset>Reset to defaults</RimBabel.Settings.Reset>
-  <RimBabel.Settings.ResetDesc>Restores everything on this page except your keys.</RimBabel.Settings.ResetDesc>
+  <RimBabel.Settings.ResetDesc>Restores every setting on this page, except your keys.</RimBabel.Settings.ResetDesc>
 
   <!-- Engine -->
   <RimBabel.Settings.EngineHeader>Translation engine</RimBabel.Settings.EngineHeader>
-  <RimBabel.Settings.EngineDesc>The service that translates the texts. Each one needs its own key, except a server running on your own computer.</RimBabel.Settings.EngineDesc>
+  <RimBabel.Settings.EngineDesc>Each service needs its own key, except a server running on your own computer.</RimBabel.Settings.EngineDesc>
   <RimBabel.Settings.EngineDeepL>DeepL</RimBabel.Settings.EngineDeepL>
   <RimBabel.Settings.EngineAnthropic>Anthropic (Claude)</RimBabel.Settings.EngineAnthropic>
   <RimBabel.Settings.EngineOpenAi>OpenAI-compatible server (Ollama, LM Studio, OpenRouter...)</RimBabel.Settings.EngineOpenAi>
@@ -49,7 +49,7 @@
   <RimBabel.Settings.AuthorDesc>Written into the About.xml of the packages you generate.</RimBabel.Settings.AuthorDesc>
   <RimBabel.Settings.Language>Target language</RimBabel.Settings.Language>
   <RimBabel.Settings.LanguageGame>The game's language ({0})</RimBabel.Settings.LanguageGame>
-  <RimBabel.Settings.LanguageDesc>The language packages are translated into. By default, the language the game runs in.</RimBabel.Settings.LanguageDesc>
+  <RimBabel.Settings.LanguageDesc>The language into which packages are translated. By default, it is the language the game is running in.</RimBabel.Settings.LanguageDesc>
   <RimBabel.Settings.Output>Output folder</RimBabel.Settings.Output>
   <RimBabel.Settings.OutputDefault>{0} (default)</RimBabel.Settings.OutputDefault>
   <RimBabel.Settings.OutputDesc>Where packages are written. Leave it empty for the default folder, next to your saves.</RimBabel.Settings.OutputDesc>
