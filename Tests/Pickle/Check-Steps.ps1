@@ -74,6 +74,16 @@ function Read-Patterns($dir, $source) {
                 Pattern = ($m.Groups[1].Value -replace '\\\\', '\' -replace '\\"', '"')
             }
         }
+        # A tool that keeps its prefix in a constant: [When(Prefix + "text")], the constant declared in the same file.
+        foreach ($m in [regex]::Matches($text, '\[(?:Given|When|Then)\((\w+) \+ "((?:[^"\\]|\\.)*)"')) {
+            $c = [regex]::Match($text, 'const string ' + $m.Groups[1].Value + ' = "((?:[^"\\]|\\.)*)"')
+            if (-not $c.Success) { continue }
+            [pscustomobject]@{
+                Source  = $source
+                File    = $f.Name
+                Pattern = (($c.Groups[1].Value + $m.Groups[2].Value) -replace '\\\\', '\' -replace '\\"', '"')
+            }
+        }
     }
 }
 
