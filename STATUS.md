@@ -204,3 +204,11 @@ runtime checks have not run.
 | Owner items | English description confirmed 2026-10-07; French validated at `3111404`. |
 
 All four runs read on 2026-10-08. `done -> tested` holds.
+
+## Code review (reviewed commit)
+
+Last review: `a3863248d374d1c2459cc4c95d15d054b3d5d4d8` (2026-10-05, whole history up to that commit, tests left out, low effort); three findings, fixed in the commit that follows. The commit is the reference, not a version number. The next review starts from it.
+
+## Publication file (2026-10-08)
+
+`PUBLICATION.md` rewritten against `PUBLISHING.md`: item `381412975321` (private), the CI route, the gallery order and its rules (`0-` copy of the Preview, candidates, 2 MB and 8 MB), the full Steam description (body, `IF I GO QUIET`, `AI-GENERATED`, `THANKS`, attribution line, source link), the register of thanks (Pickle and RIMMSQOL already `posted`, `RimBabel` added to their `Covers`; four translation workshop pages to draft after a fresh read). Open: the owner to confirm the AI-GENERATED wording (the icon being hers), the four comments, the pictures staged on the Sanctuary.
