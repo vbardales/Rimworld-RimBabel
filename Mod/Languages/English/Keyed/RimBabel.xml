@@ -57,9 +57,9 @@
 
   <!-- Dictionary and blacklist -->
   <RimBabel.Settings.DictionaryHeader>Dictionary</RimBabel.Settings.DictionaryHeader>
-  <RimBabel.Settings.DictionaryDesc>One entry per line: word = required translation. It applies to every mod, so the same word is translated the same way everywhere. A line starting with # is ignored.</RimBabel.Settings.DictionaryDesc>
-  <RimBabel.Settings.DictionaryBad.One>1 line has no word or no translation around its equals sign, and is ignored.</RimBabel.Settings.DictionaryBad.One>
-  <RimBabel.Settings.DictionaryBad.Many>{0} lines have no word or no translation around their equals sign, and are ignored.</RimBabel.Settings.DictionaryBad.Many>
+  <RimBabel.Settings.DictionaryDesc>One entry per line: word = required translation. Each entry applies to every mod, so the same word is translated the same way everywhere. A line starting with # is ignored.</RimBabel.Settings.DictionaryDesc>
+  <RimBabel.Settings.DictionaryBad.One>1 line has no word or no translation on either side of its equals sign, and is ignored.</RimBabel.Settings.DictionaryBad.One>
+  <RimBabel.Settings.DictionaryBad.Many>{0} lines have no word or no translation on either side of their equals sign, and are ignored.</RimBabel.Settings.DictionaryBad.Many>
   <RimBabel.Settings.BlacklistHeader>Never translate</RimBabel.Settings.BlacklistHeader>
   <RimBabel.Settings.BlacklistDesc>One rule per line. A text is named K:key for a Keyed text, or D:DefType/defName.field for a Def text. Use * and ? as wildcards, or start the line with re: for a regular expression. A line starting with # is ignored.</RimBabel.Settings.BlacklistDesc>
   <RimBabel.Settings.BlacklistBad.One>1 rule is not a valid regular expression and matches nothing.</RimBabel.Settings.BlacklistBad.One>
