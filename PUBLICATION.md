@@ -155,3 +155,10 @@ Tried your mod but I never got it running on my side, so no real feedback, and i
 ```
 
 Note: the item id in these links is the Workshop item's (private until public).
+
+Universal Translation Framework (3495185132), **optional, not in the register**: the owner did not try it, so the draft says so and rests on the page only (it replaces hardcoded strings by IL transpilation, the part RimBabel does not cover; source: github.com/Ocean456/UniversalTranslationFramework). Post only if the owner wants a comment there:
+
+```
+Haven't tried it myself, but replacing hardcoded strings through IL patching is exactly the gap my own translator leaves open (it only handles XML), so it's good to know it exists :) Thanks for sharing it!
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
+```
