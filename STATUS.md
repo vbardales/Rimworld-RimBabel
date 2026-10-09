@@ -29,6 +29,7 @@ remaining:
   - verified: the Pickle suite (Tests/Pickle, 8 features, 24 scenarios: 01-package 5, 02-settings 7, 03-rimmsqol-shortcut 3, 04-translation 3, 05-gallery 3, 06-08 restart chain 3, one scenario per launch). Final runs of 2026-10-09 on tree 9999e7e (the owner-validated texts of adab2c7, the new icon; the `Source/` unchanged since f523a85): minimal English `20261008-132558-965-7143` and French `20261008-132600-696-2bf9`, 24 discovered, 18 passed, 0 failed, 6 skipped (3 RIMMSQOL and 3 gallery, each played in its own pass); pass `avec-rimmsqol` English `20261008-132559-605-9c54` and French `20261008-132601-597-59cc`, 3 of 3 passed; gallery pass `sanctuary` (save Nelims-tribe, place window-backdrop-for-height) English `20261008-142709-921-dd6d` and French `20261008-131408-231-64e7`, 3 of 3 passed; evidence `final2-en`, `final2-fr`, `final2-rimmsqol-en`, `final2-rimmsqol-fr`, `gallery-en-b`, `gallery-fr`. The first English gallery attempt `…-432a` was ended by the launcher before any scenario (no report, no proof). The restart chain, three launches in one hold of the lock, passed on tree 4181851 (`Source/` unchanged since): English `20261005-224000-666-952f`, French `20261005-224002-867-eeff`, evidence `restart-en` and `restart-fr` (`seq1` to `seq3`). 04-translation proves a translation run in a real game against a fake server on the loopback address; it proves no real engine (see docs/runs/history.md). Passes are declared in Tests/Pickle/README.md (minimal English, minimal French, avec-rimmsqol, sanctuary)
   - unverified: licence of the generated translation packages - a package is a derivative of its source mod, so the generator refuses to call one publishable while the source licence is unknown (PackageWriter.Blockers)
 code_review_sha: b297ec08a7bc60428e1b25add17a0a9fd76f09fa
+publication_changelog_review_sha: 9902a106fb52e5ce16c44914af4618cf79239b41
 session:      local_a2fc6f2c-0a40-46e3-b162-497e9923317b
 updated:      2026-10-05, v1 scope fixed, ModIcon accepted: preOptions; nothing published
 ---
@@ -211,7 +212,7 @@ All four runs read on 2026-10-08. `done -> tested` holds.
 
 ## Code review (reviewed commit)
 
-Last review: `a3863248d374d1c2459cc4c95d15d054b3d5d4d8` (2026-10-05, whole history up to that commit, tests left out, low effort); three findings, fixed in the commit that follows. The commit is the reference, not a version number. The next review starts from it. Review of 2026-10-09 (low effort, `a386324..HEAD`, Source diff only: Pipeline, Protector, PackageBuilder, RimBabelMod): no finding; `code_review_sha` holds the reviewed HEAD.
+Last review: `a3863248d374d1c2459cc4c95d15d054b3d5d4d8` (2026-10-05, whole history up to that commit, tests left out, low effort); three findings, fixed in the commit that follows. The commit is the reference, not a version number. The next review starts from it. Review of 2026-10-09 (low effort, `a386324..HEAD`, Source diff only: Pipeline, Protector, PackageBuilder, RimBabelMod): no finding; `code_review_sha` holds the reviewed HEAD. `publication_changelog_review_sha` (2026-10-09): recorded on the owner's chat statement that she read PUBLICATION.md and CHANGELOG.md once and will not read them again before this delivery; the sha is the HEAD at that statement, not a commit she named.
 
 ## Publication file (2026-10-08)
 
