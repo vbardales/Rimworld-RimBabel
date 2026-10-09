@@ -29,7 +29,7 @@ remaining:
   - verified: the Pickle suite (Tests/Pickle, 8 features, 24 scenarios: 01-package 5, 02-settings 7, 03-rimmsqol-shortcut 3, 04-translation 3, 05-gallery 3, 06-08 restart chain 3, one scenario per launch). Final runs of 2026-10-09 on tree 9999e7e (the owner-validated texts of adab2c7, the new icon; the `Source/` unchanged since f523a85): minimal English `20261008-132558-965-7143` and French `20261008-132600-696-2bf9`, 24 discovered, 18 passed, 0 failed, 6 skipped (3 RIMMSQOL and 3 gallery, each played in its own pass); pass `avec-rimmsqol` English `20261008-132559-605-9c54` and French `20261008-132601-597-59cc`, 3 of 3 passed; gallery pass `sanctuary` (save Nelims-tribe, place window-backdrop-for-height) English `20261008-142709-921-dd6d` and French `20261008-131408-231-64e7`, 3 of 3 passed; evidence `final2-en`, `final2-fr`, `final2-rimmsqol-en`, `final2-rimmsqol-fr`, `gallery-en-b`, `gallery-fr`. The first English gallery attempt `…-432a` was ended by the launcher before any scenario (no report, no proof). The restart chain, three launches in one hold of the lock, passed on tree 4181851 (`Source/` unchanged since): English `20261005-224000-666-952f`, French `20261005-224002-867-eeff`, evidence `restart-en` and `restart-fr` (`seq1` to `seq3`). 04-translation proves a translation run in a real game against a fake server on the loopback address; it proves no real engine (see docs/runs/history.md). Passes are declared in Tests/Pickle/README.md (minimal English, minimal French, avec-rimmsqol, sanctuary)
   - unverified: licence of the generated translation packages - a package is a derivative of its source mod, so the generator refuses to call one publishable while the source licence is unknown (PackageWriter.Blockers)
 code_review_sha: b297ec08a7bc60428e1b25add17a0a9fd76f09fa
-publication_changelog_review_sha: 9902a106fb52e5ce16c44914af4618cf79239b41
+publication_changelog_review_sha: 8392baf14f5dbe7a61ee36fec852eb306046cf61
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
 updated:      2026-10-09, STATUS trimmed to the current state; gallery and publication drafts done; nothing published
 protocols_read_sha: 06705f0dcd1a7a0afd7fe5a38425550728becdf7
@@ -102,7 +102,7 @@ reasons: the developer-menu window (developer tool), a real paid service in game
 - Verified 2026-10-09: `Mod/Assemblies/RimBabel.dll` rebuilt from `Source/` is byte-identical to the committed one. Code review of
   `a386324..HEAD` (low effort, Pipeline, Protector, PackageBuilder, RimBabelMod): no finding; `code_review_sha` = reviewed HEAD.
 - `publication_changelog_review_sha`: recorded on the owner's statement that she read both files once and will not re-read them for this
-  delivery; the sha is HEAD at that statement, not a commit she named. `PUBLICATION.md` changed since (drafts, note, gallery), not re-read.
+  delivery; the sha is HEAD when she confirmed (2026-10-09, chat) that the one read of this major delivery stands for the later corrections too (drafts, 1.0.0 note, external review fixes); not a commit she named. `PUBLICATION.md` changed since (drafts, note, gallery), not re-read.
 - Unverified: a large real mod and the narrowed walk with many mods loaded (the suite loads Core and the DLC only); a first scan in a real
   game was fast (18-111 ms; a fifth scenario asserts under 15 s); the three engines each answered a real service once (Google Cloud and
   Anthropic 2026-10-05, OpenAI-compatible 2026-10-05, DeepL 2026-10-04); LibreTranslate and Yandex only offline; the page's test button not yet pressed.
