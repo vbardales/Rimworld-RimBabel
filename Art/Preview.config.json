@@ -14,6 +14,18 @@
   "backgroundFile": "Preview-source.png",
   "backgroundPosition": "0px -10px",
   "backgroundSize": "896px auto",
+  "echo": {
+    "file": "echo.png",
+    "preSized": true,
+    "width": 1024,
+    "height": 1536,
+    "panelTop": 3,
+    "panelRight": 3,
+    "panelWidth": 42,
+    "color": "#E5B66F",
+    "opacity": 0.16,
+    "veil": "accent-panel"
+  },
   "iconBadge": {
     "file": "ModIcon-source.png",
     "corner": "bottom-left",
