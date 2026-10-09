@@ -27,7 +27,7 @@ whoever picks this mod up later. State at that date: the item exists and is priv
 - **Dependencies and DLC**: none to declare. RimBabel needs no other mod and no DLC; Harmony is not used. RIMMSQOL is an optional
   customization mod that can reveal the hidden settings shortcut: nothing in the code names it, so it is not a `loadAfter` and
   not a dependency, but it is thanked below because a Pickle pass exercises it.
-- **Adult-content boxes**: not applicable (no content), to be confirmed on the page.
+- **Adult-content questionnaire**: applies; answer `No` (the mod has no such content). To be confirmed on the page.
 - **Visibility**: the owner sets it to public by hand once the gallery and the description are in place.
 - **Gallery**: see below; the pictures are staged on the Sanctuary and read before they are kept.
 - **Description**: the block below carries every required section; the English text must be read once more by the owner before the
@@ -35,7 +35,7 @@ whoever picks this mod up later. State at that date: the item exists and is priv
 
 ## Screenshots, in upload order
 
-Steam shows the first image large. `Art/Gallery/` holds only the images to upload, numbered on one digit, under 2 MB each and
+Steam shows the first image large. `Art/Gallery/` holds only the images to upload, numbered in upload order, under 2 MB each and
 under 8 MB in all; `0-` is a byte copy of `Mod/About/Preview.png`. Candidates carry `candidate` in their name until the owner
 accepts them (the word is then dropped); refused ones are deleted.
 
@@ -60,15 +60,15 @@ The block is Markdown; the CI converts it. Sections in the order `PUBLISHING.md`
 `THANKS`, the line about `ATTRIBUTION.md` and the licence, then the source link.
 
 ```markdown
-Translate any RimWorld mod into your language, and get the result as a translation mod of its own, ready to publish.
+Translate any RimWorld mod into your language and get a standalone translation mod, ready to publish.
 
 RimBabel reads the texts of a mod, translates what is missing with the engine you choose (DeepL, Anthropic, Google Cloud, LibreTranslate, MyMemory, Yandex, or any OpenAI-compatible server, including one running on your own computer), and writes a normal translation mod. It never touches the mod it translates.
 
 - One dictionary for every mod, so the same word is translated the same way everywhere.
-- A blacklist for the texts that must stay as they are.
+- A blacklist for texts that must remain unchanged.
 - Placeholders, tags and markers are kept out of the engine's sight and checked on the way back. A translation that loses one is refused.
 - Run it again when the source mod changes: only the texts that moved are translated again. Texts you reviewed by hand are never overwritten.
-- Every text records which engine produced it, so one engine's work can be taken back without touching the rest.
+- Every text records which engine produced it, so you can remove one engine's output without disturbing the rest.
 - Import an existing translation as the starting point.
 - Settings under Mod options, in English and French. Your keys stay in the game's settings file on your computer.
 
@@ -81,14 +81,14 @@ If I do not answer within a reasonable time after being contacted, anyone may fr
 The code, the tests and the texts of this mod were written with Claude (Anthropic), under my direction and review. The icon was generated with DALL-E (OpenAI). The picture behind the Workshop preview was generated with DALL-E too.
 
 **THANKS**
-- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678]Pickle[/url], for the in-game tests; development only, never a dependency of RimBabel.
-- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3806142401]Nelim's Pickle Tools[/url], my own test tools, development only.
-- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457]RIMMSQOL[/url], which can reveal the settings shortcut; optional, a test pass exercises it.
-- The authors of the translation tools I read before writing a line: Auto Translation, [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3759370650]Auto Translation Framework[/url], AI Translation Network and Auto Translator (Workshop), and the open-source RimTranslate, RimTrans and their kin. Nothing was copied; what each taught is in ATTRIBUTION.md.
+- [Pickle](https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678), for the in-game tests; development only, never a dependency of RimBabel.
+- [Nelim's Pickle Tools](https://steamcommunity.com/sharedfiles/filedetails/?id=3806142401), my own test tools, development only.
+- [RIMMSQOL](https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457), which can reveal the settings shortcut; optional, a test pass exercises it.
+- The authors of the translation tools I read before writing a line: Auto Translation, [Auto Translation Framework](https://steamcommunity.com/sharedfiles/filedetails/?id=3759370650), AI Translation Network and Auto Translator (Workshop), and the open-source RimTranslate, RimTrans and their kin. Nothing was copied; what each taught is in ATTRIBUTION.md.
 
 RimBabel is original work under the MIT licence. What I studied and what I took (nothing) is in ATTRIBUTION.md, next to the licence, in the repository.
 
-[url=https://github.com/vbardales/Rimworld-RimBabel]Source code on GitHub[/url]
+[Source code on GitHub](https://github.com/vbardales/Rimworld-RimBabel)
 ```
 
 ## Thanks to post
