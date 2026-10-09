@@ -32,7 +32,7 @@ code_review_sha: b297ec08a7bc60428e1b25add17a0a9fd76f09fa
 publication_changelog_review_sha: 9902a106fb52e5ce16c44914af4618cf79239b41
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
 updated:      2026-10-09, STATUS trimmed to the current state; gallery and publication drafts done; nothing published
-protocols_read_sha: 1f87403adb048feda17fa83ca9e41efa092a9224
+protocols_read_sha: 06705f0dcd1a7a0afd7fe5a38425550728becdf7
 ---
 
 # RimBabel - status
