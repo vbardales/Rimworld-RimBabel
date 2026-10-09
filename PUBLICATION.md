@@ -126,10 +126,10 @@ Drafted from the four Workshop pages read on 2026-10-09 (descriptions only: the 
 language, mood and whether the author answers are still to check before posting). Owner's voice, one comment per page, none posted;
 post only once this item is public. **To rewrite**: the owner tested all four mods, and these drafts rest on their pages only; they are replaced once she gives what she saw in each.
 
-Auto Translation Framework (3759370650):
+Auto Translation Framework (3759370650), **rewritten from the owner's experience** (same trouble as AI Translation Network: a free engine spoiled many translations and no bulk invalidation or retranslation; and the GitHub link on its page is only the presentation site, not the code):
 
 ```
-Your page says the text hidden in C# is the part most translators leave behind, and that's the exact gap I kept running into :) RimBabel stays on XML and writes a standalone translation mod instead, but I read your approach before starting. Thanks!
+Covering the text hidden in C# is a real plus, but a free engine spoiled many of my translations and I found no way to invalidate them in bulk or ask for a bulk retranslation. I also looked for the code to suggest a fix, but the GitHub link only leads to the docs site. That gap is why I wrote my own translator. Thanks anyway!
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
 ```
 
