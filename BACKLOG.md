@@ -45,3 +45,11 @@ This mod's own backlog, not the monorepo's. Opened 2026-10-03.
   translation itself; Pickle has no step to place the pointer, so that step comes first.
 - [ ] `.po` import and export; a stored index (SQLite) if the in-memory one stops being enough, which means an explicit
   exception to the rule against bundling third-party DLLs.
+
+- [ ] Merge the translation mods a player already has installed (several authors, many small mods to load) into one, once they
+  are translated: a step after translation, not before. A translation is a derivative of its author's work, so the licence of
+  each pack is checked before anything is redistributed (see the free-pack button above and the big-package choice).
+- [ ] A translation window in the game, usable on the Steam Deck: in Big Picture mode the player has no file access, so a tool
+  that sends the player to an external editor or a folder cannot be used there. The window must run everything in game (pick
+  the mod, translate, review, lock), and the output folder must be reachable without a file manager. Owner, 2026-10-09. Today
+  the developer menu is the only entry and it needs development mode.

@@ -18,7 +18,7 @@ project, so the ideas below are the only thing that crossed.
 | [RimWorld-ModTranslator](https://github.com/R17CTL/RimWorld-ModTranslator) (R17CTL) | MIT | That an unofficial web endpoint is a poor default |
 | [RimworldModTranslator](https://github.com/TokcDK/RimworldModTranslator) (TokcDK) | GPL-3.0 | Filling a target from existing translations; keeping a reviewable file |
 
-Workshop items read for their description only: Auto Translation (3278005460), Auto Translation Framework
+Workshop items read for their description only: Auto Translation (3278005460), Momaomao's Translation Forge (3756134010: an in-game scaffold, gap check, export and import for translators, also released as a desktop build), Auto Translation Framework
 (3759370650), AI Translation Network (3721659501) and Auto Translator (3668680570). Their sources are not
 published or were not read.
 
