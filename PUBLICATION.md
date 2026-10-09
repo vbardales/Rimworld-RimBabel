@@ -1,6 +1,6 @@
 # Publishing RimBabel
 
-What the Workshop page asks for and the repository holds nowhere else, checked against `PUBLISHING.md` on 2026-10-08. Kept for
+What the Workshop page asks for and the repository holds nowhere else, checked against `PUBLISHING.md` on 2026-10-09. Kept for
 whoever picks this mod up later. State at that date: the item exists and is private; nothing is public.
 
 ## Where the item stands
@@ -49,8 +49,8 @@ accepts them (the word is then dropped); refused ones are deleted.
 
 The earlier candidates were crops of the Pickle
 runs of 2026-10-07 (taken in the test colony); they were replaced by the pictures staged on the Sanctuary (feature `05-gallery`,
-the place `window-backdrop-for-height`, the save `Nelims-tribe`). Windows are screen captures of what they
-are and are not dressed; the series tells one day of Nelim opening the options, choosing an engine and filling the dictionary.
+the place `window-backdrop-for-height`, the save `Nelims-tribe`). The windows are shown as they are, without decorative staging;
+the series follows Nelim opening the options, choosing an engine and filling the dictionary.
 The developer menu (the way version 1 is used) is not pictured yet: the game's debug window is a tabbed window the scenarios
 cannot open on a given category (see `BACKLOG.md`).
 
@@ -93,14 +93,14 @@ RimBabel is original work under the MIT licence. What I studied and what I took 
 
 ## Thanks to post
 
-The register is `WORKSHOP_COMMENTS.md` (key: the recipient's Workshop id). Rows and what this project owes them, 2026-10-08:
+The register is `WORKSHOP_COMMENTS.md` (key: the recipient's Workshop id). Rows and what this project owes them, 2026-10-09:
 
 | Recipient | Register | For this project | State |
 | --- | --- | --- | --- |
 | Pickle (3791648678) | `posted`, 2026-09-22 | In-game tests; add `RimBabel` to the `Covers` column, repost nothing | recorded in the register (`Covers` lists RimBabel) |
 | RIMMSQOL (1084452457) | `posted`, 2026-09-22 | A Pickle pass drives it (hidden shortcut); add `RimBabel` to `Covers`, repost nothing | recorded in the register (`Covers` lists RimBabel) |
 | PickleTools (3806142401) | `not_applicable` (same author) | Staged in the passes | nothing to post |
-| Harmony (2009463077) | `posted` | **Not used by RimBabel**: not claimed, not thanked here | nothing |
+| Harmony (2009463077) | `posted` (for other mods; RimBabel is not in its `Covers`) | **Not used by RimBabel**: not claimed, not thanked here | nothing |
 | Auto Translation Framework (3759370650) | not in the register | Studied for its shared library and translation memory (description read, 2026-10-03 and 2026-10-05) | **drafted 2026-10-09** (page read that day), see "Thanks, drafts" |
 | Auto Translation (3278005460), AI Translation Network (3721659501), Auto Translator (3668680570) | not in the register | Descriptions read on 2026-10-03; sources not read | **drafted 2026-10-09** (pages read that day), one personalised comment each, under 1000 characters, BBCode with `[url=…]name[/url]`; post only once this item is public |
 
@@ -124,12 +124,12 @@ Settings under Mod options, RimBabel: engine and key, dictionary, blacklist, tar
 
 Drafted from the four Workshop pages read on 2026-10-09 (descriptions only: the comment threads load by script and were not read, so
 language, mood and whether the author answers are still to check before posting). Owner's voice, one comment per page, none posted;
-post only once this item is public. **To rewrite**: the owner tested all four mods, and these drafts rest on their pages only; they are replaced once she gives what she saw in each.
+post only once this item is public. The four drafts below were rewritten from what the owner saw while using each mod (she tested all four); the two optional ones rest on their pages only.
 
-Auto Translation Framework (3759370650), **rewritten from the owner's experience** (same trouble as AI Translation Network: a free engine spoiled many translations and no bulk invalidation or retranslation; and the GitHub link on its page is only the presentation site, not the code):
+Auto Translation Framework (3759370650), **rewritten from the owner's experience** (same trouble as AI Translation Network: a free engine produced poor results for many translations and no bulk invalidation or retranslation; and the GitHub link on its page is only the presentation site, not the code):
 
 ```
-Covering the text hidden in C# is a real plus, but a free engine spoiled many of my translations and I found no way to invalidate them in bulk or ask for a bulk retranslation. I also looked for the code to suggest a fix, but the GitHub link only leads to the docs site. That gap is why I wrote my own translator. Thanks anyway!
+Covering the text hidden in C# is a real plus, but a free engine gave poor results for many of my translations and I found no way to invalidate them in bulk or ask for a bulk retranslation. I also looked for the code to suggest a fix, but the GitHub link only leads to the docs site. That gap is why I wrote my own translator. Thanks anyway!
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
 ```
 
@@ -140,10 +140,10 @@ Used your mod for a while, and having Google, DeepL and Claude in one list was r
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
 ```
 
-AI Translation Network (3721659501), **rewritten from the owner's experience** (she enabled the free package, Yandex spoiled many translations, and she could neither invalidate them in bulk nor ask for a bulk retranslation):
+AI Translation Network (3721659501), **rewritten from the owner's experience** (she enabled the free package, Yandex produced poor results for many translations, and she could neither invalidate them in bulk nor ask for a bulk retranslation):
 
 ```
-The cloud hub and the multi-provider list are great, but I switched on the free package and Yandex ruined a lot of my translations, and I could not invalidate them in bulk or ask for a bulk retranslation. That exact problem pushed me to build my own translator (each text remembers which engine wrote it). Thanks!
+The cloud hub and the multi-provider list are great, but I switched on the free package and Yandex gave poor results for many of my translations, and I could not invalidate them in bulk or ask for a bulk retranslation. That exact problem pushed me to build my own translator (each text remembers which engine wrote it). Thanks!
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
 ```
 
