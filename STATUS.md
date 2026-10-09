@@ -7,8 +7,8 @@ packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-stage:        done
-workflow_stage: done
+stage:        tested
+workflow_stage: tested
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -17,7 +17,7 @@ licence_file: LICENSE (identical copy in Mod/LICENSE)
 dependencies: none (verified 2026-10-07: no modDependencies, loadAfter or incompatibleWith in About.xml; Source references only the game through Krafs.Rimworld.Ref, no Harmony, no other mod; RIMMSQOL is an optional customization mod that may reveal the shortcut, nothing in the code names it; no LoadFolders.xml needed for a single 1.6 version)
 showcase:     unchecked
 settings_audit: passed
-tested_on:    N/A (the Pickle final runs of 2026-10-08 on tree 49fe6c6 predate the corrected texts and the new icon; replayed on cc1acae, see the gate below)
+tested_on:    2026-10-09 (Pickle final runs on tree 9999e7e, English and French, 24 scenarios per language, 21 played outside their own passes; Source unchanged since f523a85)
 workshop:      item 381412975321 (private, created by the owner's prepublication 0.1.0 on 2026-10-05; nothing published)
 remaining:
   - unverified: the Steam description is the one in About.xml (rewritten 2026-10-04 and 2026-10-05, last changed in `a463f5a`; the English text was confirmed by the owner in chat on 2026-10-07, recorded by a session on her statement); ModIcon.png (128x128, transparent padding, regenerated 2026-10-08 from the new `Art/ModIcon-source.png`, a DALL-E image cut out by the owner) and Preview.png (896x504, 482 KB, rendered by Render-Preview.cjs, copy in Art/Gallery/0-preview.png) are installed; the 32 px legibility check of the icon passes for the head, while the two side objects blur, so the owner decides
@@ -26,7 +26,7 @@ remaining:
   - defect: the three engines have each talked to their real service once; Google Cloud and Anthropic did on 2026-10-05 (claude-haiku-4-5, three short texts, everything intact, after the key was replaced by one scoped to a workspace); the OpenAI-compatible one on 2026-10-05 on 2026-10-05 (api.openai.com, gpt-4.1-nano, three short texts: placeholders, both markers and the colour tag all came back intact); DeepL did, once, on 2026-10-04 (free host, three short texts), see docs/runs/history.md; the page has a test button to try one, not yet pressed; there is no window to translate a mod from, only the developer-menu action
   - unverified: GitHub social preview image (Mod/About/Preview.png exists now; the setting exists only on the web page, the owner uploads it)
   - unverified: Mod/Assemblies/RimBabel.dll is committed from the sources of 2026-10-04 (revision 7cb8a47 plus the protector fix of 2026-10-04); the shipped assembly must match the sources before any upload
-  - verified: the Pickle suite (Tests/Pickle, 8 features, 24 scenarios: 01-package 5, 02-settings 7, 03-rimmsqol-shortcut 3, 04-translation 3, 05-gallery 3, 06-08 restart chain 3, one scenario per launch). Final runs of 2026-10-08 on tree 49fe6c6 (`Mod/` and `Source/` unchanged since f523a85): minimal English `20261007-194429-861-079f` and French `20261007-194432-124-c95c`, 24 discovered, 21 passed, 0 failed, 3 skipped (the RIMMSQOL ones); pass `avec-rimmsqol` English `20261007-194430-577-665f` and French `20261007-194432-844-8395`, 3 of 3 passed; evidence `final-en`, `final-fr`, `final-rimmsqol-en`, `final-rimmsqol-fr`. The restart chain, three launches in one hold of the lock, passed on tree 4181851: English `20261005-224000-666-952f`, French `20261005-224002-867-eeff`, evidence `restart-en` and `restart-fr` (`seq1` to `seq3`). 04-translation proves a translation run in a real game against a fake server on the loopback address; it proves no real engine (see docs/runs/history.md). Passes are declared in Tests/Pickle/README.md (minimal English, minimal French, avec-rimmsqol)
+  - verified: the Pickle suite (Tests/Pickle, 8 features, 24 scenarios: 01-package 5, 02-settings 7, 03-rimmsqol-shortcut 3, 04-translation 3, 05-gallery 3, 06-08 restart chain 3, one scenario per launch). Final runs of 2026-10-09 on tree 9999e7e (the owner-validated texts of adab2c7, the new icon; the `Source/` unchanged since f523a85): minimal English `20261008-132558-965-7143` and French `20261008-132600-696-2bf9`, 24 discovered, 18 passed, 0 failed, 6 skipped (3 RIMMSQOL and 3 gallery, each played in its own pass); pass `avec-rimmsqol` English `20261008-132559-605-9c54` and French `20261008-132601-597-59cc`, 3 of 3 passed; gallery pass `sanctuary` (save Nelims-tribe, place window-backdrop-for-height) English `20261008-142709-921-dd6d` and French `20261008-131408-231-64e7`, 3 of 3 passed; evidence `final2-en`, `final2-fr`, `final2-rimmsqol-en`, `final2-rimmsqol-fr`, `gallery-en-b`, `gallery-fr`. The first English gallery attempt `…-432a` was ended by the launcher before any scenario (no report, no proof). The restart chain, three launches in one hold of the lock, passed on tree 4181851 (`Source/` unchanged since): English `20261005-224000-666-952f`, French `20261005-224002-867-eeff`, evidence `restart-en` and `restart-fr` (`seq1` to `seq3`). 04-translation proves a translation run in a real game against a fake server on the loopback address; it proves no real engine (see docs/runs/history.md). Passes are declared in Tests/Pickle/README.md (minimal English, minimal French, avec-rimmsqol, sanctuary)
   - unverified: licence of the generated translation packages - a package is a derivative of its source mod, so the generator refuses to call one publishable while the source licence is unknown (PackageWriter.Blockers)
 session:      local_a2fc6f2c-0a40-46e3-b162-497e9923317b
 updated:      2026-10-05, v1 scope fixed, ModIcon accepted: preOptions; nothing published
@@ -56,7 +56,7 @@ scenarios, perimeter in `Tests/Pickle/README.md` and `TESTING.md`: only what a r
 they were played and are green in both languages. Functional scenarios with preconditions, actions and expected results are the
 table of `TESTING.md`. Not applicable: tests of the real services (no automated test may call a paid service; each was tried once by hand,
 see `docs/runs/history.md`).
-`settings_audit` is `passed`. Retained (2026-10-08, after the owner's validation of `adab2c7` and the offline tests rerun at `cc1acae`: 379 and 47 checks, 0 failed): `workflow_stage: done`, `stage: done`; between the corrections and the validation it was `options`, and before them `tested` (`options -> l10n`, `l10n -> preTest` and `preTest -> done` held on 2026-10-07, `done -> tested` on 2026-10-08),
+`settings_audit` is `passed`. Retained (2026-10-09, after the replayed runs of `9999e7e`): `workflow_stage: tested`, `stage: tested`; it was `done` between the owner's validation of `adab2c7` and the replay, `options` between the corrections and the validation, and `tested` before them.
 (`done -> tested` waits for the Pickle runs of `cc1acae`.)
 
 
@@ -187,14 +187,14 @@ runtime checks have not run.
   reads a multi-line dictionary back with CR LF; the text is normalised on load), and the game has no scrolling text area
   (`Widgets.TextAreaScrollable` does not exist in 1.6; the page lays the text out in its own scroll view).
 
-## Gate to `tested` (prepared 2026-10-07, tree 49fe6c6)
+## Gate to `tested` (prepared 2026-10-07, tree 49fe6c6; replayed 2026-10-09 on tree 9999e7e, see the last paragraph)
 
 `done -> tested` is not claimed. What is established, what is filed, and what waits, against `AUDIT.md` step 9 and the owner's gate of 2026-10-03:
 
 | Criterion | State |
 | --- | --- |
-| Pickle suites run and green on the final revision | **read 2026-10-08**: minimal English `20261007-194429-861-079f` and French `20261007-194432-124-c95c` (24 scenarios expected, 3 skipped without their pass), evidence `Tests/Pickle/Evidence/final-en` and `final-fr`: `exitReason` passed, set `sans-facultatifs`, 24 discovered, 21 passed, 0 failed, 3 skipped (the RIMMSQOL ones, played in their own pass). `Mod/` and `Source/` unchanged since f523a85. |
-| Every `@requires` has had its pass | **read 2026-10-08**: pass `avec-rimmsqol` English `20261007-194430-577-665f` and French `20261007-194432-844-8395` (03-rimmsqol-shortcut, 3 scenarios), evidence `final-rimmsqol-en` and `final-rimmsqol-fr`: `exitReason` passed, set `avec-rimmsqol`, 3 of 3 passed in each language. |
+| Pickle suites run and green on the final revision | **read 2026-10-08**: minimal English `20261007-194429-861-079f` and French `20261007-194432-124-c95c` (24 scenarios expected, 3 skipped without their pass), evidence `final2-en` and `final2-fr` (replacing `final-en` and `final-fr`, runs of 49fe6c6, deleted): `exitReason` passed, set `sans-facultatifs`, 24 discovered, 21 passed, 0 failed, 3 skipped (the RIMMSQOL ones, played in their own pass). `Mod/` and `Source/` unchanged since f523a85. |
+| Every `@requires` has had its pass | **read 2026-10-08**: pass `avec-rimmsqol` English `20261007-194430-577-665f` and French `20261007-194432-844-8395` (03-rimmsqol-shortcut, 3 scenarios), evidence `final2-rimmsqol-en` and `final2-rimmsqol-fr` (replacing the runs of 49fe6c6, deleted): `exitReason` passed, set `avec-rimmsqol`, 3 of 3 passed in each language. |
 | Scenarios played against scenarios discovered, `exitReason` read first | done: 8 features, 24 scenarios discovered, 21 played in a minimal pass plus the 3 of the RIMMSQOL pass, `exitReason` read first. |
 | `@review` captures opened and looked at | done 2026-10-08 on the final runs: the settings page and the Mod options list were opened in English and French (no clipped line, no raw key, the key field masked or empty, French texts complete); the tooltip of the pointer position covers a slider, a known limit of the harness. |
 | No scenario in `@wip` | holds (none in the suite). |
@@ -214,3 +214,5 @@ Last review: `a3863248d374d1c2459cc4c95d15d054b3d5d4d8` (2026-10-05, whole histo
 ## Publication file (2026-10-08)
 
 `PUBLICATION.md` rewritten against `PUBLISHING.md`: item `381412975321` (private), the CI route, the gallery order and its rules (`0-` copy of the Preview, candidates, 2 MB and 8 MB), the full Steam description (body, `IF I GO QUIET`, `AI-GENERATED`, `THANKS`, attribution line, source link), the register of thanks (Pickle and RIMMSQOL already `posted`, `RimBabel` added to their `Covers`; four translation workshop pages to draft after a fresh read). The icon and the Preview background are DALL-E (stated by the owner on 2026-10-08); open: the owner to confirm the corrected texts, the four comments, the pictures staged on the Sanctuary.
+
+**Replay of 2026-10-09 (tree 9999e7e).** The four text corrections of dab2c7, the owner's validation, the new icon and DALL-E attribution changed Mod/ after the first gate; the whole suite was played again: minimal English 7143 and French 2bf9 (24 discovered, 18 passed, 0 failed, 6 skipped = 3 RIMMSQOL + 3 gallery, each played elsewhere), pass vec-rimmsqol 9c54 and 59cc (3 of 3), gallery pass sanctuary dd6d and 64e7 (3 of 3). xitReason passed in all, 0 [ERROR] in the minimal passes (the RIMMSQOL passes carry the one error of Pickle Tools' own sub-mod). Captures read: the settings page, the engines, the dictionary and the Mod options list, in English and French; the English gallery pictures show no anomaly (the French Mod options list shows accent noise on other mods' names, so it is not kept). done -> tested holds. Gallery: three candidate pictures in Art/Gallery/ (1-candidate-mod-options-list.png, 2-candidate-engines.png, 3-candidate-dictionary-and-blacklist.png, 2.2 MB the folder with the Preview), for the owner to accept or refuse.
