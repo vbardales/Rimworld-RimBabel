@@ -133,10 +133,10 @@ Your page says the text hidden in C# is the part most translators leave behind, 
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
 ```
 
-Auto Translation (3278005460):
+Auto Translation (3278005460), **rewritten from the owner's own experience** (she used it: the translation editor loaded very slowly and every write was slow too, perhaps an indexing problem):
 
 ```
-Saving every translation so it applies instantly at the next startup is a neat call, and having Claude and DeepL in the same list made me want to support more than one engine too. RimBabel writes a separate translation mod instead. Thanks for the idea :)
+Used your mod for a while, and having Google, DeepL and Claude in one list was really handy :) One thing on my setup: the translation editor took ages to load and every write was slow too, maybe something with indexing? Still, thanks for the work! which is called RimBabel:
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
 ```
 
