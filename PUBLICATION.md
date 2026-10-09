@@ -42,13 +42,14 @@ accepts them (the word is then dropped); refused ones are deleted.
 | # | File | What it shows | Why here |
 | --- | --- | --- | --- |
 | 0 | `0-preview.png` | The Preview | Rule: always first. |
-| 1 | `1-candidate-mod-options-list.png` | Options, Mod options: RimBabel among the mods that have settings | Where a player finds the mod. |
-| 2 | `2-candidate-engines.png` (to be taken) | The settings page: seven engines, the key masked, the batch size | The most demonstrative page: what the mod offers at a glance. |
-| 3 | `3-candidate-dictionary-and-blacklist.png` | The dictionary and the texts that must stay as they are | The two things a translator controls. |
+| 1 | `1-engines.png` | The settings page: seven engines, the key masked, the batch size | The most demonstrative page: what the mod offers at a glance. |
+| 2 | `2-dictionary-and-blacklist.png` | The dictionary and the texts that must stay as they are | The two things a translator controls. |
 
-The two present candidates (`1-candidate-mod-options-list.png`, `2-candidate-dictionary-and-blacklist.png`) are crops of the Pickle
-runs of 2026-10-07 (taken in the test colony); they are replaced by the pictures staged on the Sanctuary (feature `05-gallery`,
-the place `window-backdrop-for-height`, the save `Nelims-tribe`) once those runs are read. Windows are screen captures of what they
+**Crop rule (owner, 2026-10-09):** every interface capture taken on `window-backdrop-for-height` is cropped sideways, leaving 5 px of backdrop on each side of the window (owner chose 5 px, 2026-10-09); full height kept. Pictures 1 and 2 are cropped that way (908x1080, from 1220x1080), accepted by the owner the same day.
+
+The earlier candidates were crops of the Pickle
+runs of 2026-10-07 (taken in the test colony); they were replaced by the pictures staged on the Sanctuary (feature `05-gallery`,
+the place `window-backdrop-for-height`, the save `Nelims-tribe`). Windows are screen captures of what they
 are and are not dressed; the series tells one day of Nelim opening the options, choosing an engine and filling the dictionary.
 The developer menu (the way version 1 is used) is not pictured yet: the game's debug window is a tabbed window the scenarios
 cannot open on a given category (see `BACKLOG.md`).
