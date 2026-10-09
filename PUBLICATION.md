@@ -97,8 +97,8 @@ The register is `WORKSHOP_COMMENTS.md` (key: the recipient's Workshop id). Rows 
 
 | Recipient | Register | For this project | State |
 | --- | --- | --- | --- |
-| Pickle (3791648678) | `posted`, 2026-09-22 | In-game tests; add `RimBabel` to the `Covers` column, repost nothing | to record in the register |
-| RIMMSQOL (1084452457) | `posted`, 2026-09-22 | A Pickle pass drives it (hidden shortcut); add `RimBabel` to `Covers`, repost nothing | to record in the register |
+| Pickle (3791648678) | `posted`, 2026-09-22 | In-game tests; add `RimBabel` to the `Covers` column, repost nothing | recorded in the register (`Covers` lists RimBabel) |
+| RIMMSQOL (1084452457) | `posted`, 2026-09-22 | A Pickle pass drives it (hidden shortcut); add `RimBabel` to `Covers`, repost nothing | recorded in the register (`Covers` lists RimBabel) |
 | PickleTools (3806142401) | `not_applicable` (same author) | Staged in the passes | nothing to post |
 | Harmony (2009463077) | `posted` | **Not used by RimBabel**: not claimed, not thanked here | nothing |
 | Auto Translation Framework (3759370650) | not in the register | Studied for its shared library and translation memory (description read, 2026-10-03 and 2026-10-05) | **drafted 2026-10-09** (page read that day), see "Thanks, drafts" |
