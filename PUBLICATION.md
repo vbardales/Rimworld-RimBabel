@@ -111,3 +111,48 @@ Workshop page, not a template copied four times.
 
 `### 0.1.0` is the prepublication (a private item; there is no note to show players). From the first public version, each `###
 <version>` block starts with a BBCode line carrying that exact version.
+
+Draft for the first public version (version number to fix by the owner; the CI refuses a block whose first BBCode line does not carry exactly the version of its `###` heading, so `X.Y.Z` is replaced in both places at once):
+
+```
+### X.Y.Z
+[b]X.Y.Z[/b]
+First public version. Translate a mod from the developer menu with DeepL, Anthropic, Google Cloud, LibreTranslate, MyMemory, Yandex or any OpenAI-compatible server, and get a standalone translation mod.
+Settings under Mod options, RimBabel: engine and key, dictionary, blacklist, target language, output folder.
+```
+
+## Thanks, drafts (2026-10-09)
+
+Drafted from the four Workshop pages read on 2026-10-09 (descriptions only: the comment threads load by script and were not read, so
+language, mood and whether the author answers are still to check before posting). Owner's voice, one comment per page, none posted;
+post only once this item is public. Each is under 350 characters; edit freely.
+
+Auto Translation Framework (3759370650):
+
+```
+Your page says the text hidden in C# is the part most translators leave behind, and that's the exact gap I kept running into :) RimBabel stays on XML and writes a standalone translation mod instead, but I read your approach before starting. Thanks!
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
+```
+
+Auto Translation (3278005460):
+
+```
+Saving every translation so it applies instantly at the next startup is a neat call, and having Claude and DeepL in the same list made me want to support more than one engine too. RimBabel writes a separate translation mod instead. Thanks for the idea :)
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
+```
+
+AI Translation Network (3721659501):
+
+```
+"Download community translations first to avoid spending credits twice" is the line that stuck with me. RimBabel is much smaller (XML only, one standalone translation mod out) but it keeps which engine wrote each text. Thanks for the inspiration xD
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
+```
+
+Auto Translator (3668680570):
+
+```
+Generating a normal localization mod and letting people fix the result by hand is the right shape for this, and it's what I aimed for too. RimBabel adds a dictionary and a blacklist on top. Thanks for showing the way :)
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
+```
+
+Note: the item id in these links is the Workshop item's (private until public).
