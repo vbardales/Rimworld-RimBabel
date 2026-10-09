@@ -111,11 +111,11 @@ The four comments are drafted below ("Thanks, drafts"), each from a true detail 
 `### 0.1.0` is the prepublication (a private item; there is no note to show players). From the first public version, each `###
 <version>` block starts with a BBCode line carrying that exact version.
 
-Draft for the first public version (version number to fix by the owner; the CI refuses a block whose first BBCode line does not carry exactly the version of its `###` heading, so `X.Y.Z` is replaced in both places at once):
+Draft for the first public version, `1.0.0` (owner, 2026-10-09; the CI refuses a block whose first BBCode line does not carry exactly the version of its `###` heading):
 
 ```
-### X.Y.Z
-[b]X.Y.Z[/b]
+### 1.0.0
+[b]1.0.0[/b]
 First public version. Translate a mod from the developer menu with DeepL, Anthropic, Google Cloud, LibreTranslate, MyMemory, Yandex or any OpenAI-compatible server, and get a standalone translation mod.
 Settings under Mod options, RimBabel: engine and key, dictionary, blacklist, target language, output folder.
 ```
@@ -124,7 +124,7 @@ Settings under Mod options, RimBabel: engine and key, dictionary, blacklist, tar
 
 Drafted from the four Workshop pages read on 2026-10-09 (descriptions only: the comment threads load by script and were not read, so
 language, mood and whether the author answers are still to check before posting). Owner's voice, one comment per page, none posted;
-post only once this item is public. Each is under 350 characters; edit freely.
+post only once this item is public. **To rewrite**: the owner tested all four mods, and these drafts rest on their pages only; they are replaced once she gives what she saw in each.
 
 Auto Translation Framework (3759370650):
 
