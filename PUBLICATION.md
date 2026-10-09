@@ -101,11 +101,10 @@ The register is `WORKSHOP_COMMENTS.md` (key: the recipient's Workshop id). Rows 
 | RIMMSQOL (1084452457) | `posted`, 2026-09-22 | A Pickle pass drives it (hidden shortcut); add `RimBabel` to `Covers`, repost nothing | to record in the register |
 | PickleTools (3806142401) | `not_applicable` (same author) | Staged in the passes | nothing to post |
 | Harmony (2009463077) | `posted` | **Not used by RimBabel**: not claimed, not thanked here | nothing |
-| Auto Translation Framework (3759370650) | not in the register | Studied for its shared library and translation memory (description read, 2026-10-03 and 2026-10-05) | **to draft**, in the owner's voice, after a fresh read of the page: Steam answered HTTP 429 on 2026-10-08, so no detail has been checked today |
-| Auto Translation (3278005460), AI Translation Network (3721659501), Auto Translator (3668680570) | not in the register | Descriptions read on 2026-10-03; sources not read | **to draft** after a fresh read of each page, one personalised comment each, under 1000 characters, BBCode with `[url=…]name[/url]`; post only once this item is public |
+| Auto Translation Framework (3759370650) | not in the register | Studied for its shared library and translation memory (description read, 2026-10-03 and 2026-10-05) | **drafted 2026-10-09** (page read that day), see "Thanks, drafts" |
+| Auto Translation (3278005460), AI Translation Network (3721659501), Auto Translator (3668680570) | not in the register | Descriptions read on 2026-10-03; sources not read | **drafted 2026-10-09** (pages read that day), one personalised comment each, under 1000 characters, BBCode with `[url=…]name[/url]`; post only once this item is public |
 
-No comment is drafted yet, on purpose: a draft needs a true detail from each page, and the register's rule is one main comment per
-Workshop page, not a template copied four times.
+The four comments are drafted below ("Thanks, drafts"), each from a true detail of its page, none posted. The register's rule stays: one main comment per Workshop page, not a template copied four times.
 
 ## Steam change notes
 
