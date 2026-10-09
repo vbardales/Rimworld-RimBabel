@@ -7,7 +7,6 @@ packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-stage:        tested
 workflow_stage: tested
 licence:      original
 licence_at:   original work
@@ -33,7 +32,7 @@ code_review_sha: b297ec08a7bc60428e1b25add17a0a9fd76f09fa
 publication_changelog_review_sha: 8392baf14f5dbe7a61ee36fec852eb306046cf61
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
 updated:      2026-10-09, STATUS trimmed to the current state; gallery and publication drafts done; nothing published
-protocols_read_sha: e3c3e3d3c78df91838c4fdec8e4ce5f8270d078c
+protocols_read_sha: 83a2aadef0db6a0f1239dec6eb06f6b651d9e32f
 ---
 
 # RimBabel - status
