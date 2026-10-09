@@ -1,6 +1,6 @@
 ---
 localization: complete
-translation_en: unchecked
+translation_en: complete
 translation_fr: complete
 mod:          RimBabel
 packageId:    nelim.rimbabel
@@ -64,7 +64,7 @@ The mod's own interface is the settings page and the hidden shortcut; no gizmo, 
 - **French:** validated by the owner at `adab2c7` (four corrections applied, then her validation in chat; recorded by a session on her
   statement, the review line of `FRENCH_REVIEW.md` is hers and untouched). French files unchanged since.
 - **English polish, 2026-10-09 (`9c7f86d`, `a6a5637`):** `DictionaryDesc` and `DictionaryBad.One/Many`, then `EmailDesc` and
-  `DictionaryBad`, reworded on a review suggestion the owner approved in chat. `translation_en` is `unchecked` until the owner reads the changed English texts (`FRENCH_REVIEW.md`, English column), by the rule of protocols
+  `DictionaryBad`, reworded on a review suggestion the owner approved in chat. `translation_en` is `complete` again: the owner read the changed English texts and validated them in chat on 2026-10-09, revision 25546ae (recorded by a session on her statement; the review line of `FRENCH_REVIEW.md` was not touched), by the rule of protocols
   5286cad (a text edit after validation sends nothing back and needs no full validation pass, but her review of the changed texts stays a gate BEFORE the fail-fast deploy); the Pickle non-regression replay (English
   and French, scenarios that show the changed texts) is owed AFTER the fail-fast deploy; record its verdict here and in `docs/runs/`.
   `FRENCH_REVIEW.md` regenerated with the shared `scripts/Make-FrenchReview.ps1`; no flags file kept (an empty one is redundant).
