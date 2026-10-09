@@ -22,8 +22,8 @@
     "panelTop": 3,
     "panelRight": 3,
     "panelWidth": 42,
-    "color": "#E5B66F",
-    "opacity": 0.16,
+    "color": "#6BB7B0",
+    "opacity": 1,
     "veil": "accent-panel"
   },
   "iconBadge": {
