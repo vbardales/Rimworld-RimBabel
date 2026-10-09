@@ -136,7 +136,7 @@ Your page says the text hidden in C# is the part most translators leave behind, 
 Auto Translation (3278005460), **rewritten from the owner's own experience** (she used it: the translation editor loaded very slowly and every write was slow too, perhaps an indexing problem):
 
 ```
-Used your mod for a while, and having Google, DeepL and Claude in one list was really handy :) One thing on my setup: the translation editor took ages to load and every write was slow too, maybe something with indexing? Still, thanks for the work! which is called RimBabel:
+Used your mod for a while, and having Google, DeepL and Claude in one list was really handy :) One thing on my setup: the translation editor took ages to load and every write was slow too, maybe something with indexing? Still, thanks for the work! It helped me with my own translator:
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
 ```
 
@@ -147,10 +147,10 @@ AI Translation Network (3721659501):
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
 ```
 
-Auto Translator (3668680570):
+Auto Translator (3668680570), **rewritten from the owner's experience** (she could not get it to work, and is not sure the fault was not hers):
 
 ```
-Generating a normal localization mod and letting people fix the result by hand is the right shape for this, and it's what I aimed for too. RimBabel adds a dictionary and a blacklist on top. Thanks for showing the way :)
+Tried your mod but I never got it running on my side, so no real feedback, and it may well be my setup :) I like the idea of generating a normal localization mod that people can edit, it is what I went for in my own translator. Thanks for the work!
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
 ```
 
