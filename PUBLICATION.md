@@ -162,3 +162,10 @@ Universal Translation Framework (3495185132), **optional, not in the register**:
 Haven't tried it myself, but replacing hardcoded strings through IL patching is exactly the gap my own translator leaves open (it only handles XML), so it's good to know it exists :) Thanks for sharing it!
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
 ```
+
+AutoTranslator (3777360574), **optional, not in the register**: not tried by the owner, so the draft says so and rests on the page only (real-time and batch translation, results kept in the language pack's `Keyed/auto.xml`, a `verified="true"` mark that locks a reviewed entry, Volcano Engine / Alibaba Cloud / Baidu). Post only if the owner wants a comment there:
+
+```
+Haven't tried it, but the verified="true" mark that locks a hand-fixed line so the machine never overwrites it is a really good idea, I ended up with the same kind of lock in my own translator :) Thanks for sharing it!
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
+```
