@@ -140,10 +140,10 @@ Used your mod for a while, and having Google, DeepL and Claude in one list was r
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
 ```
 
-AI Translation Network (3721659501):
+AI Translation Network (3721659501), **rewritten from the owner's experience** (she enabled the free package, Yandex spoiled many translations, and she could neither invalidate them in bulk nor ask for a bulk retranslation):
 
 ```
-"Download community translations first to avoid spending credits twice" is the line that stuck with me. RimBabel is much smaller (XML only, one standalone translation mod out) but it keeps which engine wrote each text. Thanks for the inspiration xD
+The cloud hub and the multi-provider list are great, but I switched on the free package and Yandex ruined a lot of my translations, and I could not invalidate them in bulk or ask for a bulk retranslation. That exact problem pushed me to build my own translator (each text remembers which engine wrote it). Thanks!
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=381412975321]RimBabel[/url]
 ```
 
