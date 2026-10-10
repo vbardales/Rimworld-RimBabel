@@ -23,7 +23,7 @@ social_preview_sha256: 7c28a6e4c1bbd0f8585f47866ac60b98043a649e958a5b11773d938b0
 # echo decision, 2026-10-10: keep (redone 2026-10-09) - the echo was drawn at 16 % in the gold ink (near invisible); now the accent colour at full opacity, owner validated the render. Final render after the shared renderer fixes (icon flush with the corner, panel echo at z-index 1): observed, the echo is invisible at z-index -1 and visible at 1 with the text above it (mechanism not established)
 remaining:
   - unverified: a large real mod (many defs, patches, inheritance) and the narrowed walk with many mods loaded; the suite loads Core and the DLC only
-  - unverified: Yandex answered a real service with HTTP 403 only (key accepted, the service account lacks a translate role on its folder, owner to grant `ai.translate.user`); LibreTranslate answered for real on 2026-10-10; DeepL, Anthropic, OpenAI-compatible and Google Cloud answered a real service once each (docs/runs/history.md); the page's test button was never pressed
+  - unverified: the page's test button was never pressed; DeepL, Anthropic, OpenAI-compatible and Google Cloud answered a real service once each, and LibreTranslate and Yandex on 2026-10-10 (docs/runs/history.md)
   - unverified: licence of generated translation packages (a package derives from its source mod; `PackageWriter.Blockers`)
   - open: the published `About.xml` lacks the Workshop links added to THANKS on 2026-10-10 (the Steam page description was pasted by hand and has them); the next CI publish fixes it
   - open: the four thanks comments were posted without a session having read the comment threads
