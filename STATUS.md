@@ -7,7 +7,7 @@ packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-workflow_stage: prepareRelease[1.0.0]
+workflow_stage: publish[1.0.0]
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -33,8 +33,8 @@ remaining:
 code_review_sha: c46da0a74e5a538b35c80423fb748795668c61e6
 publication_changelog_review_sha: c46da0a74e5a538b35c80423fb748795668c61e6
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
-updated:      2026-10-09, STATUS trimmed to the current state; gallery and publication drafts done; nothing published
-protocols_read_sha: 80ee01299918bd5fd757286ce3489a370cb4351d
+updated:      2026-10-10, publish[1.0.0]: dry-run green (run 38041328164, SHA f7c9c92), owner deploys 2026-10-10, CHANGELOG date confirmed
+protocols_read_sha: 9f58f59d4c756c649e692d7501d531325cbefa74
 ---
 
 # RimBabel - status
@@ -43,7 +43,7 @@ Current state only. The history of earlier decisions is in `git log STATUS.md`; 
 
 ## Where it stands (audit of 2026-10-10, protocols 095e02a, chain of fifteen states)
 
-`workflow_stage: prepareRelease[1.0.0]` (old vocabulary: `tested`; the correspondence table of AUDIT.md is indicative, the audit decides). Nothing is published; Workshop item `3814129753` is private. v1 scope (owner, 2026-10-05): the developer menu plus the settings page; a translation window, regular-expression search and hover original are out of v1 (`BACKLOG.md`).
+`workflow_stage: publish[1.0.0]` (old vocabulary: `tested`; the correspondence table of AUDIT.md is indicative, the audit decides). Nothing is published; Workshop item `3814129753` is private. v1 scope (owner, 2026-10-05): the developer menu plus the settings page; a translation window, regular-expression search and hover original are out of v1 (`BACKLOG.md`).
 
 Audited against the current AUDIT.md, state by state: `setupRepo` to `playTests` hold (repository, sources, icon, code and DLL identical to the sources, no dependency, settings `passed`, texts complete in English and French with the owner's validations, Pickle suite green on tree 9999e7e; texts changed since follow the post-validation rule: the Pickle non-regression replay is owed after the fail-fast deploy). `shootGallery` holds (gallery `0-` to `2-` accepted, cropped, contiguous). `mountPreview` holds: the owner uploaded `Mod/About/Preview.png` as the social preview by hand on 2026-10-10; the served image (`og:image` on `repository-images.githubusercontent.com`) is byte-identical to the file (same sha256, recorded in `social_preview_sha256`). The echo is validated (`echo_review_sha`; decision keep, redone 2026-10-09).
 
