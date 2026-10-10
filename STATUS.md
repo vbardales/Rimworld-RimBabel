@@ -17,7 +17,7 @@ dependencies: none (verified 2026-10-07: no modDependencies, loadAfter or incomp
 showcase:     unchecked
 settings_audit: passed
 tested_on:    2026-10-09 (Pickle final runs on tree 9999e7e, English and French, 24 scenarios per language, 21 played outside their own passes; Source unchanged since f523a85)
-workshop:      item 381412975321 (private, created by the owner's prepublication 0.1.0 on 2026-10-05; nothing published)
+workshop:      item 3814129753 (private, created by the owner's prepublication 0.1.0 on 2026-10-05; nothing published)
 echo_review_sha: 161e5fb24cd2d72e40d1517acb7b260c25f8735d
 social_preview_sha256: 7c28a6e4c1bbd0f8585f47866ac60b98043a649e958a5b11773d938b0e1c823b
 # echo decision, 2026-10-10: keep (redone 2026-10-09) - the echo was drawn at 16 % in the gold ink (near invisible); now the accent colour at full opacity, owner validated the render. Final render after the shared renderer fixes (icon flush with the corner, panel echo at z-index 1): observed, the echo is invisible at z-index -1 and visible at 1 with the text above it (mechanism not established)
@@ -43,7 +43,7 @@ Current state only. The history of earlier decisions is in `git log STATUS.md`; 
 
 ## Where it stands (audit of 2026-10-10, protocols 095e02a, chain of fifteen states)
 
-`workflow_stage: writeDocs[1.0.0]` (old vocabulary: `tested`; the correspondence table of AUDIT.md is indicative, the audit decides). Nothing is published; Workshop item `381412975321` is private. v1 scope (owner, 2026-10-05): the developer menu plus the settings page; a translation window, regular-expression search and hover original are out of v1 (`BACKLOG.md`).
+`workflow_stage: writeDocs[1.0.0]` (old vocabulary: `tested`; the correspondence table of AUDIT.md is indicative, the audit decides). Nothing is published; Workshop item `3814129753` is private. v1 scope (owner, 2026-10-05): the developer menu plus the settings page; a translation window, regular-expression search and hover original are out of v1 (`BACKLOG.md`).
 
 Audited against the current AUDIT.md, state by state: `setupRepo` to `playTests` hold (repository, sources, icon, code and DLL identical to the sources, no dependency, settings `passed`, texts complete in English and French with the owner's validations, Pickle suite green on tree 9999e7e; texts changed since follow the post-validation rule: the Pickle non-regression replay is owed after the fail-fast deploy). `shootGallery` holds (gallery `0-` to `2-` accepted, cropped, contiguous). `mountPreview` holds: the owner uploaded `Mod/About/Preview.png` as the social preview by hand on 2026-10-10; the served image (`og:image` on `repository-images.githubusercontent.com`) is byte-identical to the file (same sha256, recorded in `social_preview_sha256`). The echo is validated (`echo_review_sha`; decision keep, redone 2026-10-09).
 

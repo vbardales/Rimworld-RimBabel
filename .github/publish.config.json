@@ -1,0 +1,21 @@
+{
+  "templateStamp": "82de20b8aa50",
+  "workshopId": "3814129753",
+  "packageId": "nelim.rimbabel",
+  "releaseTitle": "RimBabel {version}",
+  "requirePaths": [
+    "Assemblies/RimBabel.dll"
+  ],
+  "forbidPaths": [],
+  "previewFile": "About/Preview.png",
+  "galleryDir": "Art/Gallery",
+  "aboutFromDescription": true,
+  "build": {
+    "project": "Source/RimBabel.csproj"
+  },
+  "description": {
+    "file": "PUBLICATION.md",
+    "format": "markdown",
+    "heading": "^## Steam description$"
+  }
+}
