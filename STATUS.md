@@ -22,7 +22,7 @@ echo_review_sha: 161e5fb24cd2d72e40d1517acb7b260c25f8735d
 social_preview_sha256: 7c28a6e4c1bbd0f8585f47866ac60b98043a649e958a5b11773d938b0e1c823b
 # echo decision, 2026-10-10: keep (redone 2026-10-09) - the echo was drawn at 16 % in the gold ink (near invisible); now the accent colour at full opacity, owner validated the render. Final render after the shared renderer fixes (icon flush with the corner, panel echo at z-index 1): observed, the echo is invisible at z-index -1 and visible at 1 with the text above it (mechanism not established)
 remaining:
-  - unverified: owner reading of the 1.1.0 texts, English and French (`FRENCH_REVIEW.md`, 17 new keys: Mistral, reuse of installed translations, source language, shared dictionary, one mod per language)
+  - unverified: owner reading of the 1.1.0 texts, English and French (`FRENCH_REVIEW.md`, 11 new keys: Mistral, reuse of installed translations, source language, shared dictionary, one mod per language)
   - unverified: settings_audit 1.1.0 in a game, and: the scan of installed translation packs (`PackageBuilder.InstalledPacks`) against real mods, the source-language picker and the buttons of the new settings; only the shared dictionary and the one-mod option have Pickle scenarios
   - unverified: a large real mod (many defs, patches, inheritance) and the narrowed walk with many mods loaded; the suite loads Core and the DLC only
   - unverified: Mistral only with two sentences, no whole mod; DeepL, Anthropic, OpenAI-compatible, Google Cloud, LibreTranslate, Yandex and Mistral answered a real service once each (docs/runs/history.md); the page's test button is covered by two Pickle scenarios (fake server)
