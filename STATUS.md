@@ -7,7 +7,7 @@ packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-workflow_stage: writeDocs[1.0.0]
+workflow_stage: prepareRelease[1.0.0]
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -34,7 +34,7 @@ code_review_sha: c46da0a74e5a538b35c80423fb748795668c61e6
 publication_changelog_review_sha: c46da0a74e5a538b35c80423fb748795668c61e6
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
 updated:      2026-10-09, STATUS trimmed to the current state; gallery and publication drafts done; nothing published
-protocols_read_sha: ea597abb1b605783bf41ce388bc552b4bc1bfbb4
+protocols_read_sha: 80ee01299918bd5fd757286ce3489a370cb4351d
 ---
 
 # RimBabel - status
@@ -43,11 +43,13 @@ Current state only. The history of earlier decisions is in `git log STATUS.md`; 
 
 ## Where it stands (audit of 2026-10-10, protocols 095e02a, chain of fifteen states)
 
-`workflow_stage: writeDocs[1.0.0]` (old vocabulary: `tested`; the correspondence table of AUDIT.md is indicative, the audit decides). Nothing is published; Workshop item `3814129753` is private. v1 scope (owner, 2026-10-05): the developer menu plus the settings page; a translation window, regular-expression search and hover original are out of v1 (`BACKLOG.md`).
+`workflow_stage: prepareRelease[1.0.0]` (old vocabulary: `tested`; the correspondence table of AUDIT.md is indicative, the audit decides). Nothing is published; Workshop item `3814129753` is private. v1 scope (owner, 2026-10-05): the developer menu plus the settings page; a translation window, regular-expression search and hover original are out of v1 (`BACKLOG.md`).
 
 Audited against the current AUDIT.md, state by state: `setupRepo` to `playTests` hold (repository, sources, icon, code and DLL identical to the sources, no dependency, settings `passed`, texts complete in English and French with the owner's validations, Pickle suite green on tree 9999e7e; texts changed since follow the post-validation rule: the Pickle non-regression replay is owed after the fail-fast deploy). `shootGallery` holds (gallery `0-` to `2-` accepted, cropped, contiguous). `mountPreview` holds: the owner uploaded `Mod/About/Preview.png` as the social preview by hand on 2026-10-10; the served image (`og:image` on `repository-images.githubusercontent.com`) is byte-identical to the file (same sha256, recorded in `social_preview_sha256`). The echo is validated (`echo_review_sha`; decision keep, redone 2026-10-09).
 
-Noted for later states: `TESTING.md` holds the functional scenarios table (7.a names `TEST_SCENARIOS.md`); `CHANGELOG.md` `[Unreleased]` becomes `## [1.0.0] - <date>` on the day of the deploy (owner, 2026-10-09); the `.github/` publishing workflow does not exist yet (generate it with `generate-publish-workflow.sh`, then dry-run the exact SHA, 12.e); first public version `1.0.0`, draft note and thanks comments in `PUBLICATION.md`.
+`writeDocs` holds: description and `About.xml` (synced), `CHANGELOG.md` `## [1.0.0] - 2026-10-10` (provisional date: to be set to the deploy day, which needs a new dry-run), adult questionnaire `No`, thanks drafts (post after the item is public), `### 1.0.0` change note under a real heading (the CI could not read it inside a code fence), owner's review of `PUBLICATION.md` + `CHANGELOG.md` for the 1.0 line (her statement of 2026-10-10 in chat).
+
+`prepareRelease`: the `.github/` workflow was generated with `generate-publish-workflow.sh` (template 82de20b8aa50) and the owner set up `steam-production`. **Dry-run green, 2026-10-10: run 38041328164, SHA f7c9c92f656a5ba0d1a36edd25d355b4a377c998, version 1.0.0, all four options on (preview, description, title, tags)**; log read: build byte-identical, About.xml check, 11 files staged (0.62 MB), change note, description 3158 bytes, title `RimBabel`, tags `Mod, 1.6`, nothing sent. Item has no public details yet, so no comparison with the page. Owed before `publish`: the owner's gallery upload by hand (3 files), a new dry-run if the CHANGELOG date or any file changes, `workflow_stage: publish[1.0.0]` committed before the send (12.h). After the deploy: Pickle non-regression replay of the changed texts, thanks comments, owner's visibility switch.
 
 ## Where the work is
 
@@ -103,8 +105,7 @@ reasons: the developer-menu window (developer tool), a real paid service in game
 
 - Verified 2026-10-09: `Mod/Assemblies/RimBabel.dll` rebuilt from `Source/` is byte-identical to the committed one. Code review of
   `a386324..HEAD` (low effort, Pipeline, Protector, PackageBuilder, RimBabelMod): no finding; `code_review_sha` = reviewed HEAD.
-- `publication_changelog_review_sha`: recorded on the owner's statement that she read both files once and will not re-read them for this
-  delivery; the sha is HEAD when she confirmed (2026-10-09, chat) that the one read of this major delivery stands for the later corrections too (drafts, 1.0.0 note, external review fixes); not a commit she named. `PUBLICATION.md` changed since (drafts, note, gallery), not re-read.
+- `publication_changelog_review_sha`: recorded on the owner's statement (chat, 2026-10-10: "j'ai relu") for the 1.0 line; the sha is HEAD when she said it, not a commit she named. Later edits (CHANGELOG 1.0.0 section, note heading, id typo) were not re-read by her.
 - Unverified: a large real mod and the narrowed walk with many mods loaded (the suite loads Core and the DLC only); a first scan in a real
   game was fast (18-111 ms; a fifth scenario asserts under 15 s); the three engines each answered a real service once (Google Cloud and
   Anthropic 2026-10-05, OpenAI-compatible 2026-10-05, DeepL 2026-10-04); LibreTranslate and Yandex only offline; the page's test button not yet pressed.
