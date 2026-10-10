@@ -7,7 +7,7 @@ packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-workflow_stage: playTests[1.0.1]
+workflow_stage: code[1.0.1]
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -31,8 +31,8 @@ remaining:
 code_review_sha: 122fd14688b3ce8d493873d0ad6b19e8f1d84e82
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
-updated:      2026-10-10, playTests[1.0.1]: four Pickle runs green
-protocols_read_sha: 9e53ad19092521ae81c488e37d06716b159dd78b
+updated:      2026-10-10, code[1.0.1]: code review fix after the first test runs; the passes are to be redone on the final tree
+protocols_read_sha: 957b8340a80d000272579de47a46913165055986
 ---
 
 # RimBabel - status
