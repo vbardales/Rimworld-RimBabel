@@ -7,7 +7,7 @@ packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-workflow_stage: mountPreview[1.0.1]
+workflow_stage: writeDocs[1.0.1]
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -31,7 +31,7 @@ remaining:
 code_review_sha: 122fd14688b3ce8d493873d0ad6b19e8f1d84e82
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
-updated:      2026-10-10, mountPreview[1.0.1]: Preview kept as is by the owner (2026-10-10), echo_review_sha unchanged
+updated:      2026-10-10, writeDocs[1.0.1]: description unchanged, CHANGELOG and Steam change note 1.0.1 drafted; the 1.0 line review stands
 protocols_read_sha: 7f71f354104dac9f12d9a9b560680a398848a975
 ---
 
