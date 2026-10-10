@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="a mod is translated with the engine of the settings" tests="2" failures="0" skipped="0" flakes="0" time="1.154">
+    <testcase name="the test button of the settings page reaches the engine and shows its answer" classname="a mod is translated with the engine of the settings" time="0.624">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="the test button says it failed, with a reason, when nothing answers" classname="a mod is translated with the engine of the settings" time="0.530">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -171,6 +171,11 @@ internal static partial class Program
         Check(un.Failed == 1 && un.Translated == 1 && u1.Status == EntryStatus.Pending && u1.Target == null && u2.Status == EntryStatus.Machine, "pipeline: an answer equal to a multi-word source is refused, a one-word one is kept");
         Check(un.Failures.Count == 1 && un.Failures[0].Contains("unchanged"), "pipeline: the refusal says the text came back unchanged");
 
+        // A source made only of protected spans comes back untouched by design: it is not an unchanged answer.
+        Entry p1 = Entry.Keyed("P1", "{PAWN_nameDef} {PAWN_pronoun}");
+        PipelineReport ph = Pipeline.Run(ManifestOf(p1), new FakeEngine { Behaviour = t => t }, "English", "French", 10);
+        Check(ph.Translated == 1 && ph.Failed == 0 && p1.Status == EntryStatus.Machine, "pipeline: a source of placeholders only is not refused as unchanged");
+
         // A shifted answer is dropped whole.
         Entry c1 = Entry.Keyed("C1", "First text here"), c2 = Entry.Keyed("C2", "Second text here");
         var shifted = new FakeEngine { Behaviour = t => new[] { "un" } };

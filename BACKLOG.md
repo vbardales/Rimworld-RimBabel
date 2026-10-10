@@ -53,3 +53,7 @@ This mod's own backlog, not the monorepo's. Opened 2026-10-03.
   that sends the player to an external editor or a folder cannot be used there. The window must run everything in game (pick
   the mod, translate, review, lock), and the output folder must be reachable without a file manager. Owner, 2026-10-09. Today
   the developer menu is the only entry and it needs development mode.
+- [ ] Mistral (asked by a player in a Workshop comment, 2026-10-10: it has a free API key and works in Russia). Tried 2026-10-10 through the OpenAI-compatible engine: `open-mistral-nemo` works on the free plan, `mistral-small-latest` is refused (429, quota 0). Its API is OpenAI-compatible
+  (`https://api.mistral.ai/v1`, bearer key), so the OpenAI-compatible engine should already work with that address and a model such as
+  `open-mistral-nemo`. Still to do: a whole mod with it, then either name it in the description and the page's
+  tooltip, or add a "Mistral" choice that fills the address.

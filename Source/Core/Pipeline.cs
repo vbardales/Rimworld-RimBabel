@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace RimBabel.Core
 {
@@ -66,7 +67,7 @@ namespace RimBabel.Core
                 for (int i = 0; i < batch.Count; i++)
                 {
                     Entry e = batch[i];
-                    Restored r = CheckUnchanged(Protector.Restore(answers[i], prot[i], e.Source), e.Source, fromLanguage, toLanguage);
+                    Restored r = CheckUnchanged(Protector.Restore(answers[i], prot[i], e.Source), prot[i], e.Source, fromLanguage, toLanguage);
                     // After the run stopped, the answers already received are still used; only the extra requests are not made.
                     if (!r.Ok && !report.Aborted)
                     {
@@ -74,7 +75,7 @@ namespace RimBabel.Core
                         try
                         {
                             string[] again = engine.Translate(new[] { prot[i].Text }, fromLanguage, toLanguage, manifest.Glossary);
-                            r = again != null && again.Length == 1 ? CheckUnchanged(Protector.Restore(again[0], prot[i], e.Source), e.Source, fromLanguage, toLanguage) : r;
+                            r = again != null && again.Length == 1 ? CheckUnchanged(Protector.Restore(again[0], prot[i], e.Source), prot[i], e.Source, fromLanguage, toLanguage) : r;
                         }
                         catch (Exception ex)
                         {
@@ -102,15 +103,15 @@ namespace RimBabel.Core
         /// <summary>
         /// An answer equal to its source, for a text of several words, is the engine handing the source back
         /// (a service that did not detect the language, a model that refused): refused, so the text stays
-        /// pending for a later pass instead of being locked in as a "translation". One word is let through,
+        /// pending for a later pass instead of being locked in as a "translation". Words are counted outside the protected spans (a source made of placeholders only comes back untouched by design). One word is let through,
         /// since a name or a loanword may be the same in both languages.
         /// </summary>
-        private static Restored CheckUnchanged(Restored r, string source, string fromLanguage, string toLanguage)
+        private static Restored CheckUnchanged(Restored r, Protected p, string source, string fromLanguage, string toLanguage)
         {
             if (!r.Ok || string.Equals(fromLanguage, toLanguage, StringComparison.OrdinalIgnoreCase)) return r;
             string a = Hashing.Normalize(source).Trim();
             string b = Hashing.Normalize(r.Text).Trim();
-            int words = a.Split(new[] { ' ', '\t', '\n' }, StringSplitOptions.RemoveEmptyEntries).Count(w => w.Any(char.IsLetter));
+            int words = Regex.Replace(p.Text, "⟦\\d+⟧", " ").Split(new[] { ' ', '\t', '\n' }, StringSplitOptions.RemoveEmptyEntries).Count(w => w.Any(char.IsLetter));
             if (words < 2 || !string.Equals(a, b, StringComparison.Ordinal)) return r;
             return new Restored { Ok = false, Reason = "the engine returned the text unchanged, still in " + fromLanguage };
         }
