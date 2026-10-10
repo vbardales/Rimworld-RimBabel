@@ -5,11 +5,24 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
-Nothing has been published; the Workshop item exists (private).
+Nothing yet.
+
+## [1.0.0] - 2026-10-10
+
+First public version. The Workshop item existed since 0.1.0 (private).
+
+### Added
+
+- Four more engines, Google Cloud, LibreTranslate, MyMemory and Yandex, join DeepL, Anthropic and any OpenAI-compatible server.
+- Every text records which engine produced it, so one engine's output can be removed without disturbing the rest.
+- The description says how to use the mod in version 1 (the developer menu, step by step), with the thanks, the AI disclosure and the "if I go quiet" notice.
+- Gallery images, a Workshop preview with the mod icon, and the repository social preview.
+- The Steam publishing workflow of the Rimworld-Release-Admin protocols (`.github/`), with a dry-run before every publish.
 
 ### Changed
 
-- The description says how to use the mod in version 1 (the developer menu, step by step), and the French settings texts follow the owner's review.
+- English texts polished (dictionary and e-mail descriptions, dictionary error messages); the French settings texts follow the owner's review.
+- 379 offline checks, and an in-game Pickle suite of 8 features and 24 scenarios, all green.
 
 ## [0.1.0] - 2026-10-05
 
