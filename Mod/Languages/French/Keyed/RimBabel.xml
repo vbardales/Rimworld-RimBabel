@@ -4,7 +4,7 @@
   <RimBabel.Settings.Intro>RimBabel traduit les textes d’un mod et génère un mod de traduction distinct. Aucun mod installé n’est modifié.</RimBabel.Settings.Intro>
   <RimBabel.Settings.Applies>Les changements s’appliquent tout de suite et sont enregistrés à la fermeture de cette fenêtre.</RimBabel.Settings.Applies>
   <RimBabel.Settings.Reset>Rétablir les valeurs par défaut</RimBabel.Settings.Reset>
-  <RimBabel.Settings.ResetDesc>Rétablit tous les réglages de cette page, sauf vos clés.</RimBabel.Settings.ResetDesc>
+  <RimBabel.Settings.ResetDesc>Rétablit tous les réglages de cette page, sauf les clés.</RimBabel.Settings.ResetDesc>
 
   <!-- Moteur -->
   <RimBabel.Settings.EngineHeader>Moteur de traduction</RimBabel.Settings.EngineHeader>
@@ -13,7 +13,7 @@
   <RimBabel.Settings.EngineAnthropic>Anthropic (Claude)</RimBabel.Settings.EngineAnthropic>
   <RimBabel.Settings.EngineOpenAi>Serveur compatible OpenAI (Ollama, LM Studio, OpenRouter...)</RimBabel.Settings.EngineOpenAi>
   <RimBabel.Settings.EngineGoogle>Google Cloud Translation</RimBabel.Settings.EngineGoogle>
-  <RimBabel.Settings.EngineLibre>LibreTranslate (gratuit, libre : votre propre serveur)</RimBabel.Settings.EngineLibre>
+  <RimBabel.Settings.EngineLibre>LibreTranslate (gratuit, libre : son propre serveur)</RimBabel.Settings.EngineLibre>
   <RimBabel.Settings.EngineMyMemory>MyMemory (gratuit, sans clé, petit quota par jour)</RimBabel.Settings.EngineMyMemory>
   <RimBabel.Settings.EngineYandex>Yandex Cloud Translate</RimBabel.Settings.EngineYandex>
   <RimBabel.Settings.Key>Clé</RimBabel.Settings.Key>
@@ -33,17 +33,17 @@
   <RimBabel.Settings.OllamaPreset>Préremplir les champs pour Ollama sur cet ordinateur</RimBabel.Settings.OllamaPreset>
   <RimBabel.Settings.OllamaPresetDesc>Renseigne l’adresse et le modèle d’un serveur Ollama gratuit sur cet ordinateur, sans clé. Tools/Install-Ollama.ps1, dans le dépôt de RimBabel, installe Ollama et télécharge ce modèle.</RimBabel.Settings.OllamaPresetDesc>
   <RimBabel.Settings.MistralPreset>Préremplir les champs pour Mistral (offre gratuite)</RimBabel.Settings.MistralPreset>
-  <RimBabel.Settings.MistralPresetDesc>Renseigne l’adresse et un modèle de l’offre gratuite de Mistral. Saisissez votre propre clé Mistral dans le champ ci-dessus : vous pouvez la créer gratuitement sur le site de Mistral.</RimBabel.Settings.MistralPresetDesc>
+  <RimBabel.Settings.MistralPresetDesc>Renseigne l’adresse et un modèle de l’offre gratuite de Mistral. Saisir sa propre clé Mistral dans le champ ci-dessus ; elle se crée gratuitement sur le site de Mistral.</RimBabel.Settings.MistralPresetDesc>
   <RimBabel.Settings.ReusePacks>Réutiliser les traductions installées</RimBabel.Settings.ReusePacks>
-  <RimBabel.Settings.ReusePacksDesc>Avant de solliciter le moteur, réutilise les textes de toute traduction déjà installée pour le mod (un dossier Languages dans votre langue) et les considère comme du travail humain. Le moteur ne les écrase jamais. Un mod de traduction qui les utilise ne peut pas être publié tant que vous n’avez pas vérifié la licence de la traduction d’origine.</RimBabel.Settings.ReusePacksDesc>
+  <RimBabel.Settings.ReusePacksDesc>Avant de solliciter le moteur, réutilise les textes de toute traduction déjà installée pour le mod (un dossier Languages dans la langue cible) et les considère comme du travail humain. Le moteur ne les écrase jamais. Un mod de traduction qui les utilise ne peut pas être publié tant que la licence de la traduction d’origine n’a pas été vérifiée.</RimBabel.Settings.ReusePacksDesc>
   <RimBabel.Settings.SourceLanguage>Langue des textes du mod</RimBabel.Settings.SourceLanguage>
-  <RimBabel.Settings.SourceLanguageDesc>La langue dans laquelle sont écrits les mods que vous traduisez. Anglais par défaut ; choisissez une autre langue pour un mod écrit en chinois ou en russe, par exemple. Son dossier Languages dans cette langue est lu, et le moteur traduit à partir de cette langue. Les textes des Defs du mod sont également considérés comme étant dans cette langue.</RimBabel.Settings.SourceLanguageDesc>
+  <RimBabel.Settings.SourceLanguageDesc>La langue dans laquelle sont écrits les mods à traduire. Anglais par défaut ; choisir une autre langue pour un mod écrit en chinois ou en russe, par exemple. Son dossier Languages dans cette langue est lu, et le moteur traduit à partir de cette langue. Les textes des Defs du mod sont également considérés comme étant dans cette langue.</RimBabel.Settings.SourceLanguageDesc>
   <RimBabel.Settings.SameLanguage>La langue des textes et la langue cible sont les mêmes : il n’y a rien à traduire.</RimBabel.Settings.SameLanguage>
   <RimBabel.Settings.OneMod>Un seul mod de traduction pour toute la langue</RimBabel.Settings.OneMod>
   <RimBabel.Settings.OneModDesc>Désactivé : un mod de traduction par mod traduit. Activé : après chaque passe, génère aussi un mod qui réunit les textes de tous les mods traduits dans cette langue. Les textes de chaque mod ne se chargent que si ce mod est actif. Les paquets par mod restent tels quels. Le publier demande de vérifier la licence de chaque mod source.</RimBabel.Settings.OneModDesc>
   <RimBabel.Settings.SharedDictionary>Ouvrir le dictionnaire commun à tous les mods</RimBabel.Settings.SharedDictionary>
-  <RimBabel.Settings.SharedDictionaryDesc>Un seul fichier pour la langue cible, utilisé pour tous les mods que vous traduisez dans cette langue, à côté des mods de traduction : {0}. Même format que la zone ci-dessus. Crée le fichier s’il n’existe pas encore ; la zone ci-dessus l’emporte pour un mot présent aux deux endroits.</RimBabel.Settings.SharedDictionaryDesc>
-  <RimBabel.Settings.LibreUrlDesc>L’adresse de votre serveur LibreTranslate, par exemple http://localhost:5000. Une clé n’est nécessaire que si ce serveur en demande une.</RimBabel.Settings.LibreUrlDesc>
+  <RimBabel.Settings.SharedDictionaryDesc>Un seul fichier pour la langue cible, utilisé pour tous les mods traduits dans cette langue, à côté des mods de traduction : {0}. Même format que la zone ci-dessus. Crée le fichier s’il n’existe pas encore ; la zone ci-dessus l’emporte pour un mot présent aux deux endroits.</RimBabel.Settings.SharedDictionaryDesc>
+  <RimBabel.Settings.LibreUrlDesc>L’adresse du serveur LibreTranslate, par exemple http://localhost:5000. Une clé n’est nécessaire que si ce serveur en demande une.</RimBabel.Settings.LibreUrlDesc>
   <RimBabel.Settings.Email>Adresse e-mail</RimBabel.Settings.Email>
   <RimBabel.Settings.EmailDesc>Facultatif. MyMemory augmente son quota quotidien quand on lui donne une adresse e-mail. Rien d’autre n’est envoyé avec.</RimBabel.Settings.EmailDesc>
   <RimBabel.Settings.Folder>Identifiant du dossier</RimBabel.Settings.Folder>
@@ -57,7 +57,7 @@
   <!-- Mods de traduction -->
   <RimBabel.Settings.PackagesHeader>Mods de traduction</RimBabel.Settings.PackagesHeader>
   <RimBabel.Settings.Author>Nom de la personne créditée</RimBabel.Settings.Author>
-  <RimBabel.Settings.AuthorDesc>Écrit dans le fichier About.xml des mods de traduction que vous générez.</RimBabel.Settings.AuthorDesc>
+  <RimBabel.Settings.AuthorDesc>Écrit dans le fichier About.xml des mods de traduction générés.</RimBabel.Settings.AuthorDesc>
   <RimBabel.Settings.Language>Langue cible</RimBabel.Settings.Language>
   <RimBabel.Settings.LanguageGame>La langue du jeu ({0})</RimBabel.Settings.LanguageGame>
   <RimBabel.Settings.LanguageDesc>La langue dans laquelle les mods de traduction sont générés. Par défaut, celle dans laquelle le jeu s’exécute.</RimBabel.Settings.LanguageDesc>
