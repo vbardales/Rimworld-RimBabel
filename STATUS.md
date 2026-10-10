@@ -18,7 +18,7 @@ showcase:     unchecked
 settings_audit: passed
 tested_on:    2026-10-09 (Pickle final runs on tree 9999e7e, English and French, 24 scenarios per language, 21 played outside their own passes; Source unchanged since f523a85)
 workshop:      item 381412975321 (private, created by the owner's prepublication 0.1.0 on 2026-10-05; nothing published)
-echo_review: 2026-10-09 redo - the echo was drawn at 16 % in the gold ink (near invisible); now the accent colour at full opacity, owner validated the render. Final render after the shared renderer fixes (icon flush with the corner, panel echo at z-index 1): observed, the echo is invisible at z-index -1 and visible at 1 with the text above it (mechanism not established)
+echo_review: 2026-10-10 keep (redone 2026-10-09) - the echo was drawn at 16 % in the gold ink (near invisible); now the accent colour at full opacity, owner validated the render. Final render after the shared renderer fixes (icon flush with the corner, panel echo at z-index 1): observed, the echo is invisible at z-index -1 and visible at 1 with the text above it (mechanism not established)
 remaining:
   - verified 2026-10-09: the Steam description (the Markdown block of `PUBLICATION.md`, source of `About.xml`) was read by the owner for this delivery: English confirmed in chat 2026-10-07, her one read of `PUBLICATION.md`, and the later wording corrections approved in chat (recorded by a session on her statement). Earlier note: it was the one in About.xml (rewritten 2026-10-04 and 2026-10-05, last changed in `a463f5a`; the English text was confirmed by the owner in chat on 2026-10-07, recorded by a session on her statement); ModIcon.png (128x128, transparent padding, regenerated 2026-10-08 from the new `Art/ModIcon-source.png`, a DALL-E image cut out by the owner) and Preview.png (896x504, 482 KB, rendered by Render-Preview.cjs, copy in Art/Gallery/0-preview.png) are installed; the 32 px legibility check of the icon passes for the head, while the two side objects blur, so the owner decides
   - unverified: the extractor (Source/Game/SourceScanner.cs) ran once in a real game, in the WSL install: Pickle request `20261004-000340-546-454b` (English, tree 8e7ecfb, played 2026-10-04 19:23-19:28) 4 scenarios passed, `exitReason: passed`, `Player.log` shows "5 new, 0 changed, 0 removed" for the fixture mod then "0 new, 5 unchanged" on the second scan, with no error line. Not yet proved: a large real mod (many defs, patches, inheritance), and the narrowed walk with many mods loaded (the suite loads Core and the DLC only)
@@ -32,7 +32,7 @@ code_review_sha: b297ec08a7bc60428e1b25add17a0a9fd76f09fa
 publication_changelog_review_sha: 8392baf14f5dbe7a61ee36fec852eb306046cf61
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
 updated:      2026-10-09, STATUS trimmed to the current state; gallery and publication drafts done; nothing published
-protocols_read_sha: 83a2aadef0db6a0f1239dec6eb06f6b651d9e32f
+protocols_read_sha: 9e1f8a5bf974bb2d8db6b80097c020ed205ef458
 ---
 
 # RimBabel - status
