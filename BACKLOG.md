@@ -32,7 +32,7 @@ This mod's own backlog, not the monorepo's. Opened 2026-10-03.
   for licence and attribution, so the big one carries every source licence.
 - [ ] A free-pack button: import a translation already installed for the mod being translated (the `Importer` exists, the
   button does not), and a shared library of community translations is a larger question left open.
-- [ ] Try LibreTranslate and Yandex against real services (only the request shape is tested offline; Google Cloud was tried 2026-10-05), and the
+- [ ] Try Yandex against a real service (LibreTranslate answered for real 2026-10-10; Yandex answers 403 until the service account gets a translate role; Google Cloud was tried 2026-10-05), and the
   new translation entry of the developer menu in a real game.
 
 ## Later
