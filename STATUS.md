@@ -7,7 +7,7 @@ packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-workflow_stage: publish[1.0.1]
+workflow_stage: followUp[1.0.1]
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -17,7 +17,7 @@ dependencies: none (verified 2026-10-07: no modDependencies, loadAfter or incomp
 showcase:     unchecked
 settings_audit: passed
 tested_on:    2026-10-10 (Pickle final runs on tree 2aa7f56, English and French, 26 scenarios per language, 23 played outside their own passes; Source unchanged since 122fd14)
-workshop:      item 3814129753 (public since 2026-10-10; 1.0.0 sent by CI run 38041633893, tag v1.0.0)
+workshop:      item 3814129753 (public; 1.0.1 sent by CI run 38072465989, tag v1.0.1, SHA 7a506da6c9dc970897b2e027992f85660d143126, manifest 4567641811929016102; 1.0.0 by run 38041633893)
 echo_review_sha: 161e5fb24cd2d72e40d1517acb7b260c25f8735d
 social_preview_sha256: 7c28a6e4c1bbd0f8585f47866ac60b98043a649e958a5b11773d938b0e1c823b
 # echo decision, 2026-10-10: keep (redone 2026-10-09) - the echo was drawn at 16 % in the gold ink (near invisible); now the accent colour at full opacity, owner validated the render. Final render after the shared renderer fixes (icon flush with the corner, panel echo at z-index 1): observed, the echo is invisible at z-index -1 and visible at 1 with the text above it (mechanism not established)
@@ -31,8 +31,8 @@ remaining:
 code_review_sha: 122fd14688b3ce8d493873d0ad6b19e8f1d84e82
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
-updated:      2026-10-10, publish[1.0.1]: dry-run 38070387332 green on 7a506da6c9dc970897b2e027992f85660d143126, send waits for the owner
-protocols_read_sha: e99694cb8b81b55ec22b97329650f41c95de04b8
+updated:      2026-10-10, followUp[1.0.1]: 1.0.1 sent and the public change note read on the page
+protocols_read_sha: fc2fe915a7378bc22fdefadc18a2ccb246c9d5cb
 ---
 
 # RimBabel - status
