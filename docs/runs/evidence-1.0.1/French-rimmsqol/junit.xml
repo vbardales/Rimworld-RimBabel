@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="RIMMSQOL reveals and hides the RimBabel shortcut" tests="3" failures="0" skipped="0" flakes="0" time="27.422">
+    <testcase name="RIMMSQOL's own list offers the shortcut, hidden, and the bar does not draw it" classname="RIMMSQOL reveals and hides the RimBabel shortcut" time="10.985">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: rimmsqol, its list of main buttons, with the rimbabel shortcut -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--rimmsqol--its-list-of-main-buttons--with-the-rimbabe-82fdcd86--step0.png
+</system-out>
+    </testcase>
+    <testcase name="revealed in RIMMSQOL the shortcut is drawn, and it opens the same settings as Mod options" classname="RIMMSQOL reveals and hides the RimBabel shortcut" time="8.431">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: rimmsqol, edit page of the rimbabel shortcut, revealed -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--rimmsqol--edit-page-of-the-rimbabel-shortcut--reveal-c19e0af9--step0.png
+Attachment: rimbabel settings, opened by the shortcut RIMMSQOL revealed -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--rimbabel-settings--opened-by-the-shortcut-RIMMSQOL-r-15488465--step0.png
+</system-out>
+    </testcase>
+    <testcase name="hidden again in RIMMSQOL the shortcut leaves the bar, and forgetting the choice leaves nothing behind" classname="RIMMSQOL reveals and hides the RimBabel shortcut" time="8.006">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -7,7 +7,7 @@ packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-workflow_stage: code[1.0.1]
+workflow_stage: playTests[1.0.1]
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -16,7 +16,7 @@ licence_file: LICENSE (identical copy in Mod/LICENSE)
 dependencies: none (verified 2026-10-07: no modDependencies, loadAfter or incompatibleWith in About.xml; Source references only the game through Krafs.Rimworld.Ref, no Harmony, no other mod; RIMMSQOL is an optional customization mod that may reveal the shortcut, nothing in the code names it; no LoadFolders.xml needed for a single 1.6 version)
 showcase:     unchecked
 settings_audit: passed
-tested_on:    2026-10-09 (Pickle final runs on tree 9999e7e, English and French, 24 scenarios per language, 21 played outside their own passes; Source unchanged since f523a85)
+tested_on:    2026-10-10 (Pickle final runs on tree 0393436, English and French, 24 scenarios per language, 21 played outside their own passes; Source changed since 9999e7e by the Pipeline unchanged-answer refusal)
 workshop:      item 3814129753 (public since 2026-10-10; 1.0.0 sent by CI run 38041633893, tag v1.0.0)
 echo_review_sha: 161e5fb24cd2d72e40d1517acb7b260c25f8735d
 social_preview_sha256: 7c28a6e4c1bbd0f8585f47866ac60b98043a649e958a5b11773d938b0e1c823b
@@ -31,7 +31,7 @@ remaining:
 code_review_sha: a1e58b2a7487d9acf2459ba215659fdaf7750784
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
-updated:      2026-10-10, code[1.0.1]: unchanged-answer refusal in Pipeline, 381 offline checks green
+updated:      2026-10-10, playTests[1.0.1]: four Pickle runs green
 protocols_read_sha: 9e53ad19092521ae81c488e37d06716b159dd78b
 ---
 
