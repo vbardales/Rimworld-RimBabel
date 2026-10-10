@@ -84,7 +84,7 @@ The code, the tests and the texts of this mod were written with Claude (Anthropi
 - [Pickle](https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678), for the in-game tests; development only, never a dependency of RimBabel.
 - [Nelim's Pickle Tools](https://steamcommunity.com/sharedfiles/filedetails/?id=3806142401), my own test tools, development only.
 - [RIMMSQOL](https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457), which can reveal the settings shortcut; optional, a test pass exercises it.
-- The authors of the translation tools I read before writing a line: Auto Translation, [Auto Translation Framework](https://steamcommunity.com/sharedfiles/filedetails/?id=3759370650), AI Translation Network and Auto Translator (Workshop), and the open-source RimTranslate, RimTrans and their kin. Nothing was copied; what each taught is in ATTRIBUTION.md.
+- The authors of the translation tools I read before writing a line: [Auto Translation](https://steamcommunity.com/sharedfiles/filedetails/?id=3278005460), [Auto Translation Framework](https://steamcommunity.com/sharedfiles/filedetails/?id=3759370650), [AI Translation Network](https://steamcommunity.com/sharedfiles/filedetails/?id=3721659501) and [Auto Translator](https://steamcommunity.com/sharedfiles/filedetails/?id=3668680570), and the open-source RimTranslate, RimTrans and their kin. Nothing was copied; what each taught is in ATTRIBUTION.md.
 
 RimBabel is original work under the MIT licence. What I studied and what I took (nothing) is in ATTRIBUTION.md, next to the licence, in the repository.
 
