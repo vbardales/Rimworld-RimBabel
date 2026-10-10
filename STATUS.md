@@ -30,11 +30,11 @@ remaining:
   - verified 2026-10-09: Mod/Assemblies/RimBabel.dll rebuilt from Source/ (Release, no incremental) is byte-identical to the committed one
   - verified: the Pickle suite (Tests/Pickle, 8 features, 24 scenarios: 01-package 5, 02-settings 7, 03-rimmsqol-shortcut 3, 04-translation 3, 05-gallery 3, 06-08 restart chain 3, one scenario per launch). Final runs of 2026-10-09 on tree 9999e7e (the owner-validated texts of adab2c7, the new icon; the `Source/` unchanged since f523a85): minimal English `20261008-132558-965-7143` and French `20261008-132600-696-2bf9`, 24 discovered, 18 passed, 0 failed, 6 skipped (3 RIMMSQOL and 3 gallery, each played in its own pass); pass `avec-rimmsqol` English `20261008-132559-605-9c54` and French `20261008-132601-597-59cc`, 3 of 3 passed; gallery pass `sanctuary` (save Nelims-tribe, place window-backdrop-for-height) English `20261008-142709-921-dd6d` and French `20261008-131408-231-64e7`, 3 of 3 passed; evidence `final2-en`, `final2-fr`, `final2-rimmsqol-en`, `final2-rimmsqol-fr`, `gallery-en-b`, `gallery-fr`. The first English gallery attempt `…-432a` was ended by the launcher before any scenario (no report, no proof). The restart chain, three launches in one hold of the lock, passed on tree 4181851 (`Source/` unchanged since): English `20261005-224000-666-952f`, French `20261005-224002-867-eeff`, evidence `restart-en` and `restart-fr` (`seq1` to `seq3`). 04-translation proves a translation run in a real game against a fake server on the loopback address; it proves no real engine (see docs/runs/history.md). Passes are declared in Tests/Pickle/README.md (minimal English, minimal French, avec-rimmsqol, sanctuary)
   - unverified: licence of the generated translation packages - a package is a derivative of its source mod, so the generator refuses to call one publishable while the source licence is unknown (PackageWriter.Blockers)
-code_review_sha: b297ec08a7bc60428e1b25add17a0a9fd76f09fa
-publication_changelog_review_sha: 8392baf14f5dbe7a61ee36fec852eb306046cf61
+code_review_sha: c46da0a74e5a538b35c80423fb748795668c61e6
+publication_changelog_review_sha: c46da0a74e5a538b35c80423fb748795668c61e6
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
 updated:      2026-10-09, STATUS trimmed to the current state; gallery and publication drafts done; nothing published
-protocols_read_sha: 6591dbc87e6e41defa0dcf1fc510aac5ca522048
+protocols_read_sha: ea597abb1b605783bf41ce388bc552b4bc1bfbb4
 ---
 
 # RimBabel - status
