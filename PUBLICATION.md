@@ -111,10 +111,11 @@ The four comments are drafted below ("Thanks, drafts"), each from a true detail 
 `### 0.1.0` is the prepublication (a private item; there is no note to show players). From the first public version, each `###
 <version>` block starts with a BBCode line carrying that exact version.
 
-Draft for the first public version, `1.0.0` (owner, 2026-10-09; the CI refuses a block whose first BBCode line does not carry exactly the version of its `###` heading):
+Note for the first public version, `1.0.0` (owner, 2026-10-09). The CI reads the fenced block under the heading and refuses one whose first BBCode line does not carry exactly the version of the heading:
+
+### 1.0.0
 
 ```
-### 1.0.0
 [b]1.0.0[/b]
 First public version. Translate a mod from the developer menu with DeepL, Anthropic, Google Cloud, LibreTranslate, MyMemory, Yandex or any OpenAI-compatible server, and get a standalone translation mod.
 Settings under Mod options, RimBabel: engine and key, dictionary, blacklist, target language, output folder.
