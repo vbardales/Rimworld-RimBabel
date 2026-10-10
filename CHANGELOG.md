@@ -5,6 +5,10 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
+Nothing yet.
+
+## [1.0.1] - 2026-10-10
+
 ### Added
 
 - A test of the settings page's engine button in the Pickle suite (it reaches the engine and shows its answer, and says it failed with a reason when nothing answers). Mistral was tried through the OpenAI-compatible engine (address `https://api.mistral.ai/v1`, a free-tier model such as `open-mistral-nemo`); LibreTranslate and Yandex were tried against real services.
