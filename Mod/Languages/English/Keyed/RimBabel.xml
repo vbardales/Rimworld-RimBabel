@@ -33,7 +33,7 @@
   <RimBabel.Settings.OllamaPreset>Fill in for Ollama on this computer</RimBabel.Settings.OllamaPreset>
   <RimBabel.Settings.OllamaPresetDesc>Sets the address and the model for a free Ollama server on this computer, with no key. Tools/Install-Ollama.ps1, in RimBabel's repository, installs Ollama and downloads that model.</RimBabel.Settings.OllamaPresetDesc>
   <RimBabel.Settings.MistralPreset>Fill in for Mistral (free tier)</RimBabel.Settings.MistralPreset>
-  <RimBabel.Settings.MistralPresetDesc>Sets the address and a model of Mistral's free tier. Keep your own Mistral key in the field above: the key is free but you create it on Mistral's site. The larger models are refused on a free account.</RimBabel.Settings.MistralPresetDesc>
+  <RimBabel.Settings.MistralPresetDesc>Sets the address and a model of Mistral's free tier. Keep your own Mistral key in the field above: the key is free but you create it on Mistral's site.</RimBabel.Settings.MistralPresetDesc>
   <RimBabel.Settings.ReusePacks>Reuse installed translations</RimBabel.Settings.ReusePacks>
   <RimBabel.Settings.ReusePacksDesc>Before asking the engine, take the texts of any translation pack you already have installed for the mod (a Languages folder in your language) as human work. The engine never overwrites them, and a package that uses them cannot be published until you have checked that pack's licence.</RimBabel.Settings.ReusePacksDesc>
   <RimBabel.Settings.SourceLanguage>Language of the mod's texts</RimBabel.Settings.SourceLanguage>

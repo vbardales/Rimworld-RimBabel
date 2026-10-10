@@ -6,33 +6,33 @@ This mod's own backlog, not the monorepo's. Opened 2026-10-03.
 
 ## Before `horsMonoRepo`
 
-- [ ] Create the GitHub repository and agree its name, add the remote, push the first commit (the owner's call).
+- [x] Create the GitHub repository, add the remote, push the first commit (done; 1.0.1 is published).
 
 ## Version 1, offline
 
 - [x] Package core: entry, manifest, merge, package writer, offline tests.
 - [x] Read a mod's texts in game: `DefInjectionUtility` for Defs, `Languages/English/Keyed` for Keyed (written and
-  compiled, **not run in a game yet**).
-- [ ] Run the extractor on a real mod and read what it lists; tune `SourceScanner.IsText` (single-word fields other
+  compiled, run in a game since 1.0.1).
+- [ ] Still to do: run the extractor on a large real mod and read what it lists; tune `SourceScanner.IsText` (single-word fields other
   than `label` are missed today).
-- [ ] Source languages other than English; English DefInjected files that override a Def.
-- [x] Import an existing translation pack into a package, as human work an engine never overwrites (`Importer`, tested). [ ] Still to do: check the licence of the pack before it is redistributed, and wire it to a window or action.
+- [x] Source languages other than English (implemented for 1.1.0, in-game check and publication remaining). [ ] Still to do: English DefInjected files that override a Def.
+- [x] Import an existing translation pack into a package, as human work an engine never overwrites (`Importer`, tested). Implemented for 1.1.0: the licence of the pack blocks publication until checked, and a button and a developer action import it (in-game check and publication remaining).
 - [x] Engines written and tested against a fake network: DeepL (free and paid hosts, tokens sent as XML tags), Anthropic (Messages API) and any OpenAI-compatible endpoint (Ollama, LM Studio, OpenRouter...). [ ] Still to do: try each against its real service (needs keys: the owner's), a free no-key fallback (MyMemory or LibreTranslate), DeepL glossary ids, and the settings that hold the keys (never in a package or a repository).
-- [x] Placeholder protection: tokenise, validate (same tokens, length), retry once alone, else keep the source (`Protector`, `Pipeline`, tested). [ ] Done in 1.0.1: an answer equal to a multi-word source is refused. Still to do: translate the literal branches of a gender switch.
-- [x] Dictionary applied before the engine and handed to it as a glossary; blacklist by key glob or regular expression (`Protector`, `Blacklist`, tested). [ ] Still to do: a dictionary shared across mods (one file, not per package), blacklist by kind of text (colonist names) for the on-the-fly mode, and their screens.
+- [x] Placeholder protection: tokenise, validate (same tokens, length), retry once alone, else keep the source (`Protector`, `Pipeline`, tested). [x] Done in 1.0.1: an answer equal to a multi-word source is refused. [ ] Still to do: translate the literal branches of a gender switch.
+- [x] Dictionary applied before the engine and handed to it as a glossary; blacklist by key glob or regular expression (`Protector`, `Blacklist`, tested). Implemented for 1.1.0: a dictionary shared across mods (one file). [ ] Still to do: blacklist by kind of text (colonist names) for the on-the-fly mode, and their screens.
 - [x] Settings page under Mod options, hidden MainButtons shortcut, English and French keys.
 - [ ] Search across the texts with regular expressions (in-memory index first; a stored index only if it is needed).
 - [ ] Generated repositories also carry `.github/` workflows and `publish.config.json` (from `Rimworld-Release-Admin`'s generator) and
   a `FRENCH_REVIEW.md` for French packages.
 - [ ] Align the generated `STATUS.md` front matter with the schema of `PUBLISHING.md` / `AUDIT.md`.
-- [ ] Choose how packages are cut: one translation mod per source mod (today), or one big translation mod holding the texts of
+- [x] Implemented for 1.1.0 (one-mod setting, `CombinedPackage`; in-game check and publication remaining). Choice of how packages are cut: one translation mod per source mod (today), or one big translation mod holding the texts of
   every translated mod, per language. The manifest would then group its entries by source mod; the choice is a setting, and
   a package of the first kind can be merged into the second. Open points: the big mod needs a load-order and
   optional-dependency story (a text of a mod that is not installed must be harmless), and a text is blamed on its source mod
   for licence and attribution, so the big one carries every source licence.
-- [ ] A free-pack button: import a translation already installed for the mod being translated (the `Importer` exists, the
+- [x] Implemented for 1.1.0 (in-game check and publication remaining). A free-pack button: import a translation already installed for the mod being translated (the `Importer` exists, the
   button does not), and a shared library of community translations is a larger question left open.
-- [ ] Both were tried against real services (LibreTranslate and Yandex on 2026-10-10, Google Cloud on 2026-10-05); still to do: the
+- [ ] LibreTranslate, Yandex and Google Cloud have been tested against real services; still to do: the
   new translation entry of the developer menu in a real game.
 
 ## Later
@@ -53,7 +53,7 @@ This mod's own backlog, not the monorepo's. Opened 2026-10-03.
   that sends the player to an external editor or a folder cannot be used there. The window must run everything in game (pick
   the mod, translate, review, lock), and the output folder must be reachable without a file manager. Owner, 2026-10-09. Today
   the developer menu is the only entry and it needs development mode.
-- [ ] Mistral (asked by a player in a Workshop comment, 2026-10-10: it has a free API key and works in Russia). Tried 2026-10-10 through the OpenAI-compatible engine: `open-mistral-nemo` works on the free plan, `mistral-small-latest` is refused (429, quota 0). Its API is OpenAI-compatible
+- [x] Implemented for 1.1.0 (preset button; in-game check and publication remaining). Mistral (asked by a player in a Workshop comment, 2026-10-10: it has a free API key and works in Russia). Tried 2026-10-10 through the OpenAI-compatible engine: `open-mistral-nemo` works on the free plan, `mistral-small-latest` is refused (429, quota 0). Its API is OpenAI-compatible
   (`https://api.mistral.ai/v1`, bearer key), so the OpenAI-compatible engine should already work with that address and a model such as
   `open-mistral-nemo`. Still to do: a whole mod with it, then either name it in the description and the page's
   tooltip, or add a "Mistral" choice that fills the address.

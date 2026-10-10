@@ -13,7 +13,7 @@
   <RimBabel.Settings.EngineAnthropic>Anthropic (Claude)</RimBabel.Settings.EngineAnthropic>
   <RimBabel.Settings.EngineOpenAi>Serveur compatible OpenAI (Ollama, LM Studio, OpenRouter...)</RimBabel.Settings.EngineOpenAi>
   <RimBabel.Settings.EngineGoogle>Google Cloud Translation</RimBabel.Settings.EngineGoogle>
-  <RimBabel.Settings.EngineLibre>LibreTranslate (gratuit, libre : son propre serveur)</RimBabel.Settings.EngineLibre>
+  <RimBabel.Settings.EngineLibre>LibreTranslate (gratuit, libre : serveur auto-hébergé)</RimBabel.Settings.EngineLibre>
   <RimBabel.Settings.EngineMyMemory>MyMemory (gratuit, sans clé, petit quota par jour)</RimBabel.Settings.EngineMyMemory>
   <RimBabel.Settings.EngineYandex>Yandex Cloud Translate</RimBabel.Settings.EngineYandex>
   <RimBabel.Settings.Key>Clé</RimBabel.Settings.Key>
@@ -40,7 +40,7 @@
   <RimBabel.Settings.SourceLanguageDesc>La langue dans laquelle sont écrits les mods à traduire. Anglais par défaut ; choisir une autre langue pour un mod écrit en chinois ou en russe, par exemple. Son dossier Languages dans cette langue est lu, et le moteur traduit à partir de cette langue. Les textes des Defs du mod sont également considérés comme étant dans cette langue.</RimBabel.Settings.SourceLanguageDesc>
   <RimBabel.Settings.SameLanguage>La langue des textes et la langue cible sont les mêmes : il n’y a rien à traduire.</RimBabel.Settings.SameLanguage>
   <RimBabel.Settings.OneMod>Un seul mod de traduction pour toute la langue</RimBabel.Settings.OneMod>
-  <RimBabel.Settings.OneModDesc>Désactivé : un mod de traduction par mod traduit. Activé : après chaque passe, génère aussi un mod qui réunit les textes de tous les mods traduits dans cette langue. Les textes de chaque mod ne se chargent que si ce mod est actif. Les paquets par mod restent tels quels. Le publier demande de vérifier la licence de chaque mod source.</RimBabel.Settings.OneModDesc>
+  <RimBabel.Settings.OneModDesc>Désactivé : un mod de traduction par mod traduit. Activé : après chaque passe, génère aussi un mod qui réunit les textes de tous les mods traduits dans cette langue. Les textes de chaque mod ne se chargent que si ce mod est actif. Les mods de traduction individuels restent inchangés. Le publier demande de vérifier la licence de chaque mod source.</RimBabel.Settings.OneModDesc>
   <RimBabel.Settings.SharedDictionary>Ouvrir le dictionnaire commun à tous les mods</RimBabel.Settings.SharedDictionary>
   <RimBabel.Settings.SharedDictionaryDesc>Un seul fichier pour la langue cible, utilisé pour tous les mods traduits dans cette langue, à côté des mods de traduction : {0}. Même format que la zone ci-dessus. Crée le fichier s’il n’existe pas encore ; la zone ci-dessus l’emporte pour un mot présent aux deux endroits.</RimBabel.Settings.SharedDictionaryDesc>
   <RimBabel.Settings.LibreUrlDesc>L’adresse du serveur LibreTranslate, par exemple http://localhost:5000. Une clé n’est nécessaire que si ce serveur en demande une.</RimBabel.Settings.LibreUrlDesc>
