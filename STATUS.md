@@ -7,13 +7,13 @@ packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-workflow_stage: declareDependencies[1.1.0]
+workflow_stage: auditSettings[1.1.0]
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
 licence_name: MIT
 licence_file: LICENSE (identical copy in Mod/LICENSE)
-dependencies: none (verified 2026-10-07: no modDependencies, loadAfter or incompatibleWith in About.xml; Source references only the game through Krafs.Rimworld.Ref, no Harmony, no other mod; RIMMSQOL is an optional customization mod that may reveal the shortcut, nothing in the code names it; no LoadFolders.xml needed for a single 1.6 version)
+dependencies: none (re-verified 2026-10-11 at 1.1.0, tree 4019ad7, no change: new code reads other mods only as data through `LoadedModManager.RunningModsListForReading`, adds no reference to a mod assembly; first verified 2026-10-07: no modDependencies, loadAfter or incompatibleWith in About.xml; Source references only the game through Krafs.Rimworld.Ref, no Harmony, no other mod; RIMMSQOL is an optional customization mod that may reveal the shortcut, nothing in the code names it; no LoadFolders.xml needed for a single 1.6 version)
 showcase:     unchecked
 settings_audit: passed
 tested_on:    2026-10-10 (Pickle final runs on tree 2aa7f56, English and French, 26 scenarios per language, 23 played outside their own passes; Source unchanged since 122fd14)
@@ -31,7 +31,7 @@ remaining:
 code_review_sha: 122fd14688b3ce8d493873d0ad6b19e8f1d84e82
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
-updated:      2026-10-11, declareDependencies[1.1.0]: five features coded, DLL rebuilt from Source (382 to 434 offline checks), CHANGELOG Unreleased filled
+updated:      2026-10-11, auditSettings[1.1.0]: dependencies re-verified in the sources, still none; LoadFolders not needed for one version; combined package uses IfModActive on its own generated folders only
 protocols_read_sha: a5c7cf48b349ae00e7d28fd643e852dc860dfaf2
 ---
 
