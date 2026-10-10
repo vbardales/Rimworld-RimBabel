@@ -39,6 +39,8 @@
   <RimBabel.Settings.SourceLanguage>Language of the mod's texts</RimBabel.Settings.SourceLanguage>
   <RimBabel.Settings.SourceLanguageDesc>The language the mods you translate are written in. English by default; pick another one for a mod written in, say, Chinese or Russian: its Languages folder in that language is read, and the engine translates from it. Texts written inside the mod's Defs are taken to be in this language too.</RimBabel.Settings.SourceLanguageDesc>
   <RimBabel.Settings.SameLanguage>The language of the texts and the target language are the same: there is nothing to translate.</RimBabel.Settings.SameLanguage>
+  <RimBabel.Settings.OneMod>One translation mod for the whole language</RimBabel.Settings.OneMod>
+  <RimBabel.Settings.OneModDesc>Off: one translation mod per mod you translate. On: after each run, also generate one mod holding the texts of every mod you translated into that language. Each mod's texts load only when that mod is active. The per-mod packages stay as they are. Publishing it means checking the licence of every source mod.</RimBabel.Settings.OneModDesc>
   <RimBabel.Settings.SharedDictionary>Open the dictionary shared by every mod</RimBabel.Settings.SharedDictionary>
   <RimBabel.Settings.SharedDictionaryDesc>One file for the target language, used for every mod you translate into it, next to the packages: {0}. Same format as the box above. Creates the file if it does not exist yet; the box above wins where both have the same word.</RimBabel.Settings.SharedDictionaryDesc>
   <RimBabel.Settings.LibreUrlDesc>The address of your LibreTranslate server, for example http://localhost:5000. A key is only needed if that server asks for one.</RimBabel.Settings.LibreUrlDesc>

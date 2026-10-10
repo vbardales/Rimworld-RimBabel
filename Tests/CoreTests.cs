@@ -27,6 +27,7 @@ internal static partial class Program
         BlacklistTests();
         PipelineTests();
         ImporterTests();
+        CombinedTests();
         JsonTests();
         EngineTests();
         MtEngineTests();

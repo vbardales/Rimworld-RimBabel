@@ -72,12 +72,15 @@ namespace RimBabel.Game
             internal ITranslationEngine Engine;
             internal string Language;
             internal int BatchSize;
+            internal string Author;
+            internal bool Combine;
 
             /// <summary>Blocks until the engine is done. A refused key or an exhausted quota stops the run, and what was translated before it is kept.</summary>
             public TranslationOutcome Run()
             {
                 PipelineReport report = Pipeline.Run(Manifest, Engine, SourceLanguage, Language, BatchSize);
                 PackageWriter.Save(Package.Root, Spec, Manifest);
+                if (Combine) RebuildCombined(Language, Author);
                 return new TranslationOutcome { Package = Package, Report = report, EngineName = Engine.Name };
             }
         }
@@ -97,7 +100,7 @@ namespace RimBabel.Game
             if (settings.reuseInstalledPacks) Importer.ImportPacks(manifest, InstalledPacks(mod, language));
             return new TranslationJob
             {
-                Package = package, Spec = SpecFor(mod, language, author), Manifest = manifest, Language = language, BatchSize = settings.batchSize,
+                Package = package, Spec = SpecFor(mod, language, author), Manifest = manifest, Language = language, BatchSize = settings.batchSize, Author = author, Combine = settings.oneModPerLanguage,
                 Engine = EngineFactory.Create(settings.ToConfig(), http),
             };
         }
@@ -144,6 +147,7 @@ namespace RimBabel.Game
             Manifest manifest = Manifest.Parse(File.ReadAllText(Path.Combine(package.Root, PackageWriter.ManifestPath), Encoding.UTF8));
             ImportReport report = Importer.ImportPacks(manifest, InstalledPacks(mod, language));
             PackageWriter.Save(package.Root, spec, manifest);
+            if (RimBabelMod.Settings != null && RimBabelMod.Settings.oneModPerLanguage) RebuildCombined(language, author);
             return report;
         }
 
@@ -173,6 +177,35 @@ namespace RimBabel.Game
                 File.WriteAllText(path, "# RimBabel dictionary for " + language + ", shared by every mod you translate into it.\n# One line per word: word = translation. The dictionary on the settings page wins where both have the same word.\n", new UTF8Encoding(false));
             }
             return path;
+        }
+
+        public static string CombinedPackageId(string language)
+        {
+            return "nelim.rimbabel.all." + Slug(language);
+        }
+
+        /// <summary>
+        /// Generates the one translation mod of a language from the per-mod packages next to it in the output folder (every package of
+        /// that language that holds a manifest). The per-mod packages are not touched: they stay the source of truth.
+        /// </summary>
+        public static PackageResult RebuildCombined(string language, string author)
+        {
+            var sources = new System.Collections.Generic.List<CombinedSource>();
+            if (Directory.Exists(OutputRoot))
+                foreach (string dir in Directory.GetDirectories(OutputRoot).OrderBy(d => d, StringComparer.Ordinal))
+                {
+                    string manifestPath = Path.Combine(dir, PackageWriter.ManifestPath);
+                    if (!File.Exists(manifestPath) || File.Exists(Path.Combine(dir, CombinedPackage.ListPath))) continue;
+                    Manifest m = Manifest.Parse(File.ReadAllText(manifestPath, Encoding.UTF8));
+                    if (!string.Equals(m.Language, language, StringComparison.Ordinal) || string.IsNullOrEmpty(m.SourcePackageId)) continue;
+                    sources.Add(new CombinedSource
+                    {
+                        Manifest = m,
+                        Spec = new PackageSpec { Language = language, FileName = Safe(m.SourceName ?? m.SourcePackageId), SourcePackageId = m.SourcePackageId, SourceName = m.SourceName },
+                    });
+                }
+            var spec = new PackageSpec { PackageId = CombinedPackageId(language), Name = "RimBabel " + language + " translations", Author = author, Language = language };
+            return CombinedPackage.Write(Path.Combine(OutputRoot, spec.PackageId), spec, sources);
         }
 
         /// <summary>Takes back the machine texts one engine wrote in the package of a mod (see Merge.Flush), and writes the package again.</summary>

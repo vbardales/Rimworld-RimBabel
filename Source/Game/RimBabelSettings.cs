@@ -35,6 +35,8 @@ namespace RimBabel.Game
 
         /// <summary>Texts of an installed translation pack of the mod being translated are taken as human work before any engine is asked.</summary>
         public bool reuseInstalledPacks = true;
+        /// <summary>False: one translation mod per source mod. True: one translation mod for the whole language, generated from the per-mod packages.</summary>
+        public bool oneModPerLanguage = false;
         public string dictionaryText = "";
         public string blacklistText = "";
 
@@ -68,6 +70,7 @@ namespace RimBabel.Game
             dictionaryText = "";
             blacklistText = "";
             reuseInstalledPacks = true;
+            oneModPerLanguage = false;
         }
 
         public override void ExposeData()
@@ -91,6 +94,7 @@ namespace RimBabel.Game
             Scribe_Values.Look(ref targetLanguage, "targetLanguage", "");
             Scribe_Values.Look(ref outputFolder, "outputFolder", "");
             Scribe_Values.Look(ref reuseInstalledPacks, "reuseInstalledPacks", true);
+            Scribe_Values.Look(ref oneModPerLanguage, "oneModPerLanguage", false);
             Scribe_Values.Look(ref dictionaryText, "dictionaryText", "");
             Scribe_Values.Look(ref blacklistText, "blacklistText", "");
             base.ExposeData();

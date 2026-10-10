@@ -96,6 +96,37 @@ namespace RimBabel.PickleSteps
             for (int i = 0; i < 300 && SettingsPage.TestState == 1; i++) Thread.Sleep(100);
         }
 
+        [Given("RimBabel: the shared dictionary file of {string} does not exist")]
+        public void NoSharedDictionary(PickleContext ctx, string language)
+        {
+            string path = PackageBuilder.SharedDictionaryPath(language);
+            if (File.Exists(path)) File.Delete(path);
+        }
+
+        [Given("RimBabel: the shared dictionary file of {string} holds {string}")]
+        public void SharedDictionary(PickleContext ctx, string language, string line)
+        {
+            string path = PackageBuilder.SharedDictionaryPath(language);
+            Directory.CreateDirectory(Path.GetDirectoryName(path));
+            File.WriteAllText(path, line + "\n", new UTF8Encoding(false));
+        }
+
+        [Given("RimBabel: the settings ask for one translation mod per language")]
+        public void OneMod(PickleContext ctx)
+        {
+            Settings(ctx).oneModPerLanguage = true;
+        }
+
+        [Then("RimBabel: the one translation mod of {string} loads the folder of {string} only when that mod is active")]
+        public void CombinedLoads(PickleContext ctx, string language, string sourcePackageId)
+        {
+            string root = Path.Combine(PackageBuilder.OutputRoot, PackageBuilder.CombinedPackageId(language), "Mod");
+            ctx.Require(File.Exists(Path.Combine(root, "LoadFolders.xml")), "the one translation mod of " + language + " was not written under " + root);
+            ctx.Assert(File.ReadAllText(Path.Combine(root, "LoadFolders.xml")).Contains("IfModActive=\"" + sourcePackageId + "\""), "LoadFolders.xml does not load the folder of " + sourcePackageId + " only when it is active");
+            string keyed = Path.Combine(root, sourcePackageId, "Languages", language, "Keyed");
+            ctx.Assert(Directory.Exists(keyed) && Directory.GetFiles(keyed, "*.xml").Any(f => File.ReadAllText(f, Encoding.UTF8).Contains("FR: Hello {0}")), "the folder of " + sourcePackageId + " holds no translated text under " + keyed);
+        }
+
         [Given("RimBabel: the blacklist holds {string}")]
         public void Blacklist(PickleContext ctx, string rule) { Settings(ctx).blacklistText = rule; }
 

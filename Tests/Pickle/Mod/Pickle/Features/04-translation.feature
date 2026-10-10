@@ -14,6 +14,7 @@ Feature: a mod is translated with the engine of the settings
     Given RimBabel: a fake translation server is listening
     And RimBabel: the engine is the fake server
     And RimBabel: no package exists yet for the mod "RimBabel - Pickle tests" in "French" on this run
+    And RimBabel: the shared dictionary file of "French" does not exist
 
   Scenario: every text goes to the engine, comes back, and lands in the package
     When RimBabel: I translate the mod "RimBabel - Pickle tests" into "French" with the chosen engine
@@ -45,3 +46,13 @@ Feature: a mod is translated with the engine of the settings
     Given RimBabel: the engine address is one that nothing listens on
     When RimBabel: I press the engine test button of the settings page
     Then RimBabel: the engine test says it failed
+
+  Scenario: the dictionary file shared by every mod reaches the run
+    Given RimBabel: the shared dictionary file of "French" holds "Line one = ligne un"
+    When RimBabel: I translate the mod "RimBabel - Pickle tests" into "French" with the chosen engine
+    Then RimBabel: the text "K:RbFixture_Two" reads "FR: Ligne un\nline two" and comes from "openai-compatible:stub"
+
+  Scenario: one translation mod for the whole language is generated next to the per-mod package
+    Given RimBabel: the settings ask for one translation mod per language
+    When RimBabel: I translate the mod "RimBabel - Pickle tests" into "French" with the chosen engine
+    Then RimBabel: the one translation mod of "French" loads the folder of "nelim.rimbabel.pickletests" only when that mod is active

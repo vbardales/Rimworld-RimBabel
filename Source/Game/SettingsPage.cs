@@ -220,6 +220,7 @@ namespace RimBabel.Game
 
             s.author = TextRow(l, "RimBabel.Settings.Author", "RimBabel.Settings.AuthorDesc", s.author);
             l.CheckboxLabeled("RimBabel.Settings.ReusePacks".Translate(), ref s.reuseInstalledPacks, "RimBabel.Settings.ReusePacksDesc".Translate());
+            l.CheckboxLabeled("RimBabel.Settings.OneMod".Translate(), ref s.oneModPerLanguage, "RimBabel.Settings.OneModDesc".Translate());
 
             Rect sourceRow = l.GetRect(30f);
             Widgets.Label(sourceRow.LeftPart(0.25f), "RimBabel.Settings.SourceLanguage".Translate());

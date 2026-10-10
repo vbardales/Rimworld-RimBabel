@@ -92,6 +92,23 @@ namespace RimBabel.Core
         /// Rebuilds everything generated from an edited manifest, without touching the source mod.
         /// Used after a review pass or an engine run changed entries.
         /// </summary>
+        /// <summary>
+        /// Writes the texts of one source mod under a Languages/&lt;language&gt; folder: Keyed in one file, DefInjected in one file per def type.
+        /// Pending entries have no text and are left out, so the game falls back to the source.
+        /// </summary>
+        internal static void WriteLanguageFolder(string langDir, string fileName, IEnumerable<Entry> entries)
+        {
+            IEnumerable<Entry> shipped = entries.Where(e => !string.IsNullOrEmpty(e.Target));
+            var keyed = shipped.Where(e => e.Kind == EntryKind.Keyed).ToList();
+            if (keyed.Count > 0)
+                WriteLanguageFile(Path.Combine(langDir, "Keyed", fileName + ".xml"), keyed);
+            foreach (IGrouping<string, Entry> g in shipped.Where(e => e.Kind == EntryKind.DefInjected).GroupBy(e => e.DefType))
+            {
+                RequireName(g.Key, "DefType");
+                WriteLanguageFile(Path.Combine(langDir, "DefInjected", g.Key, fileName + ".xml"), g.ToList());
+            }
+        }
+
         public static void Save(string root, PackageSpec spec, Manifest manifest)
         {
             RequireName(spec.Language, "Language");
@@ -105,17 +122,7 @@ namespace RimBabel.Core
                 if (Directory.Exists(d)) Directory.Delete(d, true);
             }
 
-            // Pending entries have no text: left out, so the game falls back to the source.
-            IEnumerable<Entry> shipped = manifest.Entries.Where(e => !string.IsNullOrEmpty(e.Target));
-
-            var keyed = shipped.Where(e => e.Kind == EntryKind.Keyed).ToList();
-            if (keyed.Count > 0)
-                WriteLanguageFile(Path.Combine(langDir, "Keyed", spec.FileName + ".xml"), keyed);
-            foreach (IGrouping<string, Entry> g in shipped.Where(e => e.Kind == EntryKind.DefInjected).GroupBy(e => e.DefType))
-            {
-                RequireName(g.Key, "DefType");
-                WriteLanguageFile(Path.Combine(langDir, "DefInjected", g.Key, spec.FileName + ".xml"), g.ToList());
-            }
+            WriteLanguageFolder(langDir, spec.FileName, manifest.Entries);
 
             WriteText(Path.Combine(root, "Mod", "Babel", "manifest.xml"), manifest.ToXml());
             WriteText(Path.Combine(root, "Mod", "About", "About.xml"), About(spec, manifest));
@@ -251,13 +258,13 @@ namespace RimBabel.Core
 
         // ---- helpers ----
 
-        private static void RequireName(string value, string what)
+        internal static void RequireName(string value, string what)
         {
             if (string.IsNullOrWhiteSpace(value) || value.Contains("..") || value.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
                 throw new ArgumentException(what + " must be a plain name, got '" + value + "'.");
         }
 
-        private static void WriteText(string path, string text)
+        internal static void WriteText(string path, string text)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(path));
             File.WriteAllText(path, text, new UTF8Encoding(false));

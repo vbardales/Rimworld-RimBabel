@@ -94,6 +94,15 @@ namespace RimBabel.Game
             Find.WindowStack.Add(new Dialog_DebugOptionListLister(options));
         }
 
+        [DebugAction("RimBabel", "Rebuild the one translation mod of the language", allowedGameStates = AllowedGameStates.Entry | AllowedGameStates.Playing)]
+        private static void RebuildCombined()
+        {
+            string language = SettingsPage.TargetLanguage(RimBabelMod.Settings);
+            PackageResult r = PackageBuilder.RebuildCombined(language, AuthorName());
+            Log.Message("[RimBabel] " + language + " -> " + r.Root + ". " + (r.PublishBlockers.Count == 0
+                ? "Nothing in the way of publication." : "Not publishable yet: " + string.Join(" ", r.PublishBlockers.ToArray())));
+        }
+
         [DebugAction("RimBabel", "Take back the texts of one engine...", allowedGameStates = AllowedGameStates.Entry | AllowedGameStates.Playing)]
         private static void TakeBack()
         {

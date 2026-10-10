@@ -11,7 +11,7 @@ The package core (`Source/Core`) is plain C# and its tests compile it in directl
 dotnet run --project Tests/RimBabel.Tests.csproj
 ```
 
-382 checks (the translation machinery and the engines included), exit code 1 when one fails; 0 failed on 2026-10-10 on the tree of the current `Mod/`. They cover: the source hash ignores the newline
+434 checks (the translation machinery and the engines included), exit code 1 when one fails; 0 failed on 2026-10-10 on the tree of the current `Mod/`. They cover: the source hash ignores the newline
 convention; the manifest round-trips special characters, newlines, status, engine, glossary and blacklist, and refuses a
 newer schema; the merge keeps unchanged and human text, makes a stale draft of a changed source, never touches a locked
 text, reports new and removed keys, and bumps the version only on a change; the writer lays out the package, escapes

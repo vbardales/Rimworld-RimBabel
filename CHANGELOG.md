@@ -4,6 +4,21 @@ Format inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This file serves the repository and the writing of Steam patch notes; RimWorld does not display it in game.
 
 
+## [Unreleased]
+
+### Added
+
+- A "Mistral (free tier)" button next to the Ollama one fills in Mistral's address and a model its free plan accepts. You still bring your own key.
+- Translations you already have installed for a mod (a Languages folder in your language) are taken as human work before the engine is asked, so they are never overwritten and cost nothing. A setting turns it off, and a developer-menu entry, "Import an installed translation into a package...", does it without any engine. A package that uses such texts cannot be published until the licence of that translation is checked.
+- A setting for the language the mods you translate are written in (English by default): the Keyed texts are read from that language's folder and the engine translates from it.
+- A dictionary file shared by every mod you translate into one language (`dictionary.<Language>.txt` next to the packages), opened from the page. The dictionary on the page wins where both have the same word.
+- An option to also generate one translation mod for the whole language, holding every translated mod's texts in a folder of its own that loads only when that mod is active. The per-mod packages stay as they are; a developer-menu entry rebuilds it.
+- Pickle scenarios for the shared dictionary and the one-mod option.
+
+### Changed
+
+- Generated package repositories now ignore `build/` instead of `.build/`.
+
 ## [1.0.1] - 2026-10-10
 
 ### Added
