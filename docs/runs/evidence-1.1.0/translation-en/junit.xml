@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="a mod is translated with the engine of the settings" tests="7" failures="0" skipped="0" flakes="0" time="7.281">
+    <testcase name="every text goes to the engine, comes back, and lands in the package" classname="a mod is translated with the engine of the settings" time="1.707">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="a blacklisted text is never sent" classname="a mod is translated with the engine of the settings" time="0.887">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="a second run sends nothing again" classname="a mod is translated with the engine of the settings" time="0.947">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="the test button of the settings page reaches the engine and shows its answer" classname="a mod is translated with the engine of the settings" time="0.898">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="the test button says it failed, with a reason, when nothing answers" classname="a mod is translated with the engine of the settings" time="0.850">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="the dictionary file shared by every mod reaches the run" classname="a mod is translated with the engine of the settings" time="0.981">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="one translation mod for the whole language is generated next to the per-mod package" classname="a mod is translated with the engine of the settings" time="1.011">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

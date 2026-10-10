@@ -7,7 +7,7 @@ packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-workflow_stage: code[1.1.0]
+workflow_stage: declareDependencies[1.1.0]
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -22,11 +22,7 @@ echo_review_sha: 161e5fb24cd2d72e40d1517acb7b260c25f8735d
 social_preview_sha256: 7c28a6e4c1bbd0f8585f47866ac60b98043a649e958a5b11773d938b0e1c823b
 # echo decision, 2026-10-10: keep (redone 2026-10-09) - the echo was drawn at 16 % in the gold ink (near invisible); now the accent colour at full opacity, owner validated the render. Final render after the shared renderer fixes (icon flush with the corner, panel echo at z-index 1): observed, the echo is invisible at z-index -1 and visible at 1 with the text above it (mechanism not established)
 remaining:
-  - feature: 1.1.0 Mistral preset in the settings page (BACKLOG.md)
-  - feature: 1.1.0 free-pack import with a button, licence check before redistribution
-  - feature: 1.1.0 dictionary shared across mods
-  - feature: 1.1.0 source languages other than English
-  - feature: 1.1.0 choice of package cut (one translation mod per source mod, or one big mod per language)
+  - unverified: 1.1.0 in a game: the scan of installed translation packs (`PackageBuilder.InstalledPacks`) against real mods, the source-language picker and the buttons of the new settings; only the shared dictionary and the one-mod option have Pickle scenarios
   - unverified: a large real mod (many defs, patches, inheritance) and the narrowed walk with many mods loaded; the suite loads Core and the DLC only
   - unverified: Mistral only with two sentences, no whole mod; DeepL, Anthropic, OpenAI-compatible, Google Cloud, LibreTranslate, Yandex and Mistral answered a real service once each (docs/runs/history.md); the page's test button is covered by two Pickle scenarios (fake server)
   - unverified: licence of generated translation packages (a package derives from its source mod; `PackageWriter.Blockers`)
@@ -35,8 +31,8 @@ remaining:
 code_review_sha: 122fd14688b3ce8d493873d0ad6b19e8f1d84e82
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
-updated:      2026-10-10, code[1.1.0]: reopened for the backlog (owner: all five points)
-protocols_read_sha: b4a73cf0998fa5914b1d5e52b0817a8fe77abab3
+updated:      2026-10-11, declareDependencies[1.1.0]: five features coded, DLL rebuilt from Source (382 to 434 offline checks), CHANGELOG Unreleased filled
+protocols_read_sha: a5c7cf48b349ae00e7d28fd643e852dc860dfaf2
 ---
 
 # RimBabel - status
