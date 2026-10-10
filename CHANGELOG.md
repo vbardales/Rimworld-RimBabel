@@ -5,6 +5,10 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
+### Added
+
+- A test of the settings page's engine button in the Pickle suite (it reaches the engine and shows its answer, and says it failed with a reason when nothing answers). Mistral was tried through the OpenAI-compatible engine (address `https://api.mistral.ai/v1`, a free-tier model such as `open-mistral-nemo`); LibreTranslate and Yandex were tried against real services.
+
 ### Fixed
 
 - A translation that comes back identical to a multi-word source (an engine that handed the text back, a service that did not detect the language) is now refused and the text stays pending, instead of being stored as a machine translation. A one-word text is let through, since a name may be the same in both languages.

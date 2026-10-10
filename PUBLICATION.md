@@ -94,6 +94,14 @@ The register is `WORKSHOP_COMMENTS.md` (key: the recipient's Workshop id). Pickl
 
 Each `### <version>` heading is followed by a fenced block whose first line is BBCode carrying that exact version (`[b]x.y.z[/b]`); the CI reads the block and refuses one that does not carry the version of its heading. `0.1.0` was the prepublication (a private item, no note). The note sent with `1.0.0` is in `docs/runs/posted-1.0.0.md`.
 
+### 1.0.1
+
+```
+[b]1.0.1[/b]
+A translation that comes back identical to its source (an engine that handed the text back) is now refused and stays pending, instead of being saved as a machine translation.
+Mistral works through the OpenAI-compatible engine (address https://api.mistral.ai/v1, a free-tier model such as open-mistral-nemo).
+```
+
 Template for the next version:
 
 ### x.y.z
