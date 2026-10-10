@@ -35,3 +35,13 @@ Feature: a mod is translated with the engine of the settings
     And RimBabel: I translate the mod "RimBabel - Pickle tests" into "French" with the chosen engine
     Then RimBabel: the engine translated 0 texts and refused none
     And RimBabel: the server received 1 requests
+
+  Scenario: the test button of the settings page reaches the engine and shows its answer
+    When RimBabel: I press the engine test button of the settings page
+    Then RimBabel: the engine test says it worked with "FR: Hello {0}, welcome to the colony."
+    And RimBabel: the server received 1 requests
+
+  Scenario: the test button says it failed, with a reason, when nothing answers
+    Given RimBabel: the engine address is one that nothing listens on
+    When RimBabel: I press the engine test button of the settings page
+    Then RimBabel: the engine test says it failed

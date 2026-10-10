@@ -61,6 +61,41 @@ namespace RimBabel.PickleSteps
             s.batchSize = 20;
         }
 
+        [Given("RimBabel: the engine address is one that nothing listens on")]
+        public void DeadAddress(PickleContext ctx)
+        {
+            Settings(ctx).openAiUrl = "http://127.0.0.1:18766/v1";
+        }
+
+        [When("RimBabel: I press the engine test button of the settings page")]
+        public void PressTest(PickleContext ctx)
+        {
+            SettingsPage.StartTest(Settings(ctx));
+            ctx.Assert(SettingsPage.TestState == 1, "the test did not start: state " + SettingsPage.TestState);
+        }
+
+        [Then("RimBabel: the engine test says it worked with {string}")]
+        public void TestWorked(PickleContext ctx, string text)
+        {
+            WaitForTest();
+            ctx.Assert(SettingsPage.TestState == 2, "the test ended in state " + SettingsPage.TestState + " (2 is worked): " + SettingsPage.TestDetail);
+            ctx.Assert(SettingsPage.TestDetail == text, "the test answered '" + SettingsPage.TestDetail + "', expected '" + text + "'");
+        }
+
+        [Then("RimBabel: the engine test says it failed")]
+        public void TestFailed(PickleContext ctx)
+        {
+            WaitForTest();
+            ctx.Assert(SettingsPage.TestState == 3, "the test ended in state " + SettingsPage.TestState + " (3 is failed): " + SettingsPage.TestDetail);
+            ctx.Assert(!string.IsNullOrWhiteSpace(SettingsPage.TestDetail), "the failed test gave no reason");
+        }
+
+        // The test runs on a pool thread: wait for it to leave the running state (a refused connection returns at once).
+        private static void WaitForTest()
+        {
+            for (int i = 0; i < 300 && SettingsPage.TestState == 1; i++) Thread.Sleep(100);
+        }
+
         [Given("RimBabel: the blacklist holds {string}")]
         public void Blacklist(PickleContext ctx, string rule) { Settings(ctx).blacklistText = rule; }
 

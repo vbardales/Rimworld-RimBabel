@@ -123,7 +123,7 @@ namespace RimBabel.Game
             Rect testRow = l.GetRect(30f);
             bool running = testState == 1;
             if (Widgets.ButtonText(testRow.LeftPart(0.35f), "RimBabel.Settings.Test".Translate()) && !running)
-                RunTest(s.ToConfig(), TargetLanguage(s));
+                StartTest(s);
             TooltipHandler.TipRegion(testRow.LeftPart(0.35f), "RimBabel.Settings.TestDesc".Translate());
             string status = testState == 1 ? "RimBabel.Settings.TestRunning".Translate().Resolve()
                 : testState == 2 ? "RimBabel.Settings.TestOk".Translate(testDetail).Resolve()
@@ -167,6 +167,15 @@ namespace RimBabel.Game
             TooltipHandler.TipRegion(row, tipKey.Translate());
             return result;
         }
+
+        /// <summary>What the page's test button does. Public so a Pickle scenario, which has no pointer to press the button with, can start the same test.</summary>
+        public static void StartTest(RimBabelSettings s) { RunTest(s.ToConfig(), TargetLanguage(s)); }
+
+        /// <summary>0 none, 1 running, 2 worked, 3 failed: the state the page shows next to the button.</summary>
+        public static int TestState { get { return testState; } }
+
+        /// <summary>The translated sample when the test worked, the reason when it failed.</summary>
+        public static string TestDetail { get { return testDetail; } }
 
         private static void RunTest(EngineConfig config, string language)
         {
