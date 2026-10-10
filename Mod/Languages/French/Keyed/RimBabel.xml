@@ -32,6 +32,8 @@
   <RimBabel.Settings.Problem.NoFolder>Ce moteur demande un identifiant de dossier.</RimBabel.Settings.Problem.NoFolder>
   <RimBabel.Settings.OllamaPreset>Préremplir les champs pour Ollama sur cet ordinateur</RimBabel.Settings.OllamaPreset>
   <RimBabel.Settings.OllamaPresetDesc>Renseigne l’adresse et le modèle d’un serveur Ollama gratuit sur cet ordinateur, sans clé. Tools/Install-Ollama.ps1, dans le dépôt de RimBabel, installe Ollama et télécharge ce modèle.</RimBabel.Settings.OllamaPresetDesc>
+  <RimBabel.Settings.MistralPreset>Préremplir les champs pour Mistral (offre gratuite)</RimBabel.Settings.MistralPreset>
+  <RimBabel.Settings.MistralPresetDesc>Renseigne l’adresse et un modèle de l’offre gratuite de Mistral. Garde ta propre clé Mistral dans le champ ci-dessus : elle est gratuite, mais tu la crées sur le site de Mistral. Les modèles plus gros sont refusés sur un compte gratuit.</RimBabel.Settings.MistralPresetDesc>
   <RimBabel.Settings.LibreUrlDesc>L’adresse de votre serveur LibreTranslate, par exemple http://localhost:5000. Une clé n’est nécessaire que si ce serveur en demande une.</RimBabel.Settings.LibreUrlDesc>
   <RimBabel.Settings.Email>Adresse e-mail</RimBabel.Settings.Email>
   <RimBabel.Settings.EmailDesc>Facultatif. MyMemory augmente son quota quotidien quand on lui donne une adresse e-mail. Rien d’autre n’est envoyé avec.</RimBabel.Settings.EmailDesc>

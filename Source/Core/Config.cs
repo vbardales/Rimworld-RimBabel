@@ -14,6 +14,9 @@ namespace RimBabel.Core
         public const string DefaultAnthropicModel = "claude-haiku-4-5-20251001";
         public const string DefaultOpenAiUrl = "http://localhost:11434/v1";
         public const string DefaultOllamaModel = "qwen2.5:7b";
+        public const string MistralUrl = "https://api.mistral.ai/v1";
+        /// <summary>A model of Mistral's free tier: the larger ones answer 429 on a free account (tried 2026-10-10).</summary>
+        public const string MistralFreeModel = "open-mistral-nemo";
         public const string DefaultLibreUrl = "http://localhost:5000";
         public const int DefaultBatchSize = 20;
 

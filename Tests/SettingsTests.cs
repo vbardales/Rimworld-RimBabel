@@ -25,8 +25,12 @@ internal static partial class Program
         c.DeepLKey = " abc:fx ";
         Check(EngineFactory.Problems(c).Count == 0 && EngineFactory.Create(c, new FakeHttp()) is DeepLEngine, "config: DeepL with a key makes a DeepL engine");
 
+        // The Mistral preset (address and free-tier model) makes a complete OpenAI-compatible configuration.
+        var mistral = new EngineConfig { Kind = EngineKind.OpenAiCompatible, OpenAiUrl = EngineConfig.MistralUrl, OpenAiModel = EngineConfig.MistralFreeModel, OpenAiKey = "k" };
+        Check(EngineFactory.Problems(mistral).Count == 0 && EngineFactory.Create(mistral, new FakeHttp()).Name == "openai-compatible:" + EngineConfig.MistralFreeModel, "config: the Mistral preset gives a complete OpenAI-compatible engine");
+
         c.Kind = EngineKind.Anthropic;
-        Check(EngineFactory.Problems(c).SequenceEqual(new[] { EngineProblem.NoKey }), "config: Anthropic needs a key, and the default model is already set");
+        Check(EngineFactory.Problems(c).SequenceEqual(new[] { EngineProblem.NoKey }), "config: Anthropic needs a key, and the default modelis already set");
         c.AnthropicKey = "sk";
         Check(EngineFactory.Problems(c).Count == 0 && EngineFactory.Create(c, new FakeHttp()).Name.StartsWith("anthropic:"), "config: Anthropic with a key makes an Anthropic engine");
         c.AnthropicModel = "  ";

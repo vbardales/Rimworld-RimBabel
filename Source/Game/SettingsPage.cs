@@ -105,6 +105,14 @@ namespace RimBabel.Game
                         s.openAiKey = "";
                     }
                     TooltipHandler.TipRegion(presetRow.LeftPart(0.5f), "RimBabel.Settings.OllamaPresetDesc".Translate());
+                    Rect mistralButton = presetRow.RightPart(0.5f);
+                    if (Widgets.ButtonText(mistralButton, "RimBabel.Settings.MistralPreset".Translate()))
+                    {
+                        // The key stays as the player typed it: Mistral needs one, and it is theirs.
+                        s.openAiUrl = EngineConfig.MistralUrl;
+                        s.openAiModel = EngineConfig.MistralFreeModel;
+                    }
+                    TooltipHandler.TipRegion(mistralButton, "RimBabel.Settings.MistralPresetDesc".Translate());
                     break;
             }
 
