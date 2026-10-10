@@ -25,13 +25,14 @@ This mod's own backlog, not the monorepo's. Opened 2026-10-03.
 - [ ] Generated repositories also carry `.github/` workflows and `publish.config.json` (from `Rimworld-Release-Admin`'s generator) and
   a `FRENCH_REVIEW.md` for French packages.
 - [ ] Align the generated `STATUS.md` front matter with the schema of `PUBLISHING.md` / `AUDIT.md`.
-- [x] Implemented for 1.1.0 (one-mod setting, `CombinedPackage`; in-game check and publication remaining). Choice of how packages are cut: one translation mod per source mod (today), or one big translation mod holding the texts of
-  every translated mod, per language. The manifest would then group its entries by source mod; the choice is a setting, and
-  a package of the first kind can be merged into the second. Open points: the big mod needs a load-order and
-  optional-dependency story (a text of a mod that is not installed must be harmless), and a text is blamed on its source mod
-  for licence and attribution, so the big one carries every source licence.
-- [x] Implemented for 1.1.0 (in-game check and publication remaining). A free-pack button: import a translation already installed for the mod being translated (the `Importer` exists, the
-  button does not), and a shared library of community translations is a larger question left open.
+- [x] One translation mod per language, implemented for 1.1.0 (setting "one mod per language", `CombinedPackage`). The per-mod packages stay
+  the source of truth; the combined mod is generated from them, one folder per source mod loaded only when that mod is active
+  (`LoadFolders.xml`, `IfModActive`), so a text of a mod that is not installed is harmless. Each text is blamed on its source mod:
+  the combined mod carries every source licence and every blocker of its packages. [ ] Remaining: check it in a game (Pickle
+  scenario written) and publish it with 1.1.0.
+- [x] Free-pack import, implemented for 1.1.0: a translation already installed for the mod being translated is imported by a button
+  and a developer action (`Importer`), and its licence blocks publication until checked. [ ] Remaining: in-game check and
+  publication. A shared library of community translations is a larger question left open.
 - [ ] LibreTranslate, Yandex and Google Cloud have been tested against real services; still to do: the
   new translation entry of the developer menu in a real game.
 
@@ -54,6 +55,4 @@ This mod's own backlog, not the monorepo's. Opened 2026-10-03.
   the mod, translate, review, lock), and the output folder must be reachable without a file manager. Owner, 2026-10-09. Today
   the developer menu is the only entry and it needs development mode.
 - [x] Implemented for 1.1.0 (preset button; in-game check and publication remaining). Mistral (asked by a player in a Workshop comment, 2026-10-10: it has a free API key and works in Russia). Tried 2026-10-10 through the OpenAI-compatible engine: `open-mistral-nemo` works on the free plan, `mistral-small-latest` is refused (429, quota 0). Its API is OpenAI-compatible
-  (`https://api.mistral.ai/v1`, bearer key), so the OpenAI-compatible engine should already work with that address and a model such as
-  `open-mistral-nemo`. Still to do: a whole mod with it, then either name it in the description and the page's
-  tooltip, or add a "Mistral" choice that fills the address.
+  (`https://api.mistral.ai/v1`, bearer key), so a preset button fills that address and `open-mistral-nemo`. Still to do: translate a whole mod with it, and name it in the description and the page's tooltip.
