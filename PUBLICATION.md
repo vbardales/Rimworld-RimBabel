@@ -1,12 +1,12 @@
 # Publishing RimBabel
 
 What the Workshop page asks for and the repository holds nowhere else, checked against `PUBLISHING.md`. Kept for
-whoever picks this mod up later. State: version 1.0.0 is published and the item is public (2026-10-10).
+whoever picks this mod up later. State: version 1.0.1 is published and the item is public (2026-10-10).
 
 ## Where the item stands
 
 - **Workshop item `3814129753`**, created by the owner's prepublication `0.1.0` on 2026-10-05 from `Mod/` as it stood at
-  commit `5d31c07`; public since 2026-10-10, version `1.0.0` sent by the CI (tag `v1.0.0`).
+  commit `5d31c07`; public since 2026-10-10, `1.0.0` then `1.0.1` sent by the CI (tags `v1.0.0`, `v1.0.1`).
 - **`Mod/About/PublishedFileId.txt`** holds that id and is committed. `CHANGELOG.md` opens its `## [0.1.0]` with "creation of a
   publishId file".
 - **Publication goes through the CI** (`PUBLISHING.md`, "Publier par la CI"): a green dry-run of the exact commit first, then
@@ -92,15 +92,7 @@ The register is `WORKSHOP_COMMENTS.md` (key: the recipient's Workshop id). Pickl
 
 ## Steam change notes
 
-Each `### <version>` heading is followed by a fenced block whose first line is BBCode carrying that exact version (`[b]x.y.z[/b]`); the CI reads the block and refuses one that does not carry the version of its heading. `0.1.0` was the prepublication (a private item, no note). The note sent with `1.0.0` is in `docs/runs/posted-1.0.0.md`.
-
-### 1.0.1
-
-```
-[b]1.0.1[/b]
-A translation that comes back identical to its source (an engine that handed the text back) is now refused and stays pending, instead of being saved as a machine translation.
-Mistral works through the OpenAI-compatible engine (address https://api.mistral.ai/v1, a free-tier model such as open-mistral-nemo).
-```
+Each `### <version>` heading is followed by a fenced block whose first line is BBCode carrying that exact version (`[b]x.y.z[/b]`); the CI reads the block and refuses one that does not carry the version of its heading. `0.1.0` was the prepublication (a private item, no note). The notes sent are in `docs/runs/posted-1.0.0.md` and `docs/runs/posted-1.0.1.md`.
 
 Template for the next version:
 

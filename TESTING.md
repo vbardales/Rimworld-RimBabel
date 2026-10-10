@@ -11,7 +11,7 @@ The package core (`Source/Core`) is plain C# and its tests compile it in directl
 dotnet run --project Tests/RimBabel.Tests.csproj
 ```
 
-379 checks (the translation machinery and the engines included), exit code 1 when one fails; 0 failed on 2026-10-07 on the tree of the current `Mod/`. They cover: the source hash ignores the newline
+382 checks (the translation machinery and the engines included), exit code 1 when one fails; 0 failed on 2026-10-10 on the tree of the current `Mod/`. They cover: the source hash ignores the newline
 convention; the manifest round-trips special characters, newlines, status, engine, glossary and blacklist, and refuses a
 newer schema; the merge keeps unchanged and human text, makes a stale draft of a changed source, never touches a locked
 text, reports new and removed keys, and bumps the version only on a change; the writer lays out the package, escapes
@@ -42,7 +42,7 @@ dotnet build Source/RimBabel.csproj -c Release && dotnet build Tests/Game/RimBab
 
 Needs a RimWorld install (the `Managed` folder; override `RimWorldManaged` or pass it as the first argument). It runs
 the **shipped** `Mod/Assemblies/RimBabel.dll` against the real `Assembly-CSharp`, builds a few Defs by hand, registers them
-in the game's own `DefDatabase` and lets `SourceScanner` walk them with the game's own `DefInjectionUtility`. 47 checks, 0 failed on 2026-10-07,
+in the game's own `DefDatabase` and lets `SourceScanner` walk them with the game's own `DefInjectionUtility`. 47 checks, 0 failed on 2026-10-10,
 Keyed texts listed with their placeholders and real line breaks; a def's label and description
 listed under the exact injection path; a one-word label and description taken because the game marks both
 `MustTranslate`; a texture path (even with a space in it), a defName, another mod's def and a generated def left out; a
@@ -65,7 +65,7 @@ that only exists in the newer profile can fail here without being a defect in th
 ## What needs the game
 
 A real list of Defs, a settings window, a restart and the main bar only exist in a running game, so they are Pickle scenarios
-(`Tests/Pickle/`, eight features, 24 scenarios, played in English and in French through the Ticket Dispatcher; the step
+(`Tests/Pickle/`, eight features, 26 scenarios, played in English and in French through the Ticket Dispatcher; the step
 assemblies are in `Tests/Pickle/Source/`, `Check-Steps.ps1` checks the step expressions). **Not tested anywhere: the real
 services.** No automated test calls DeepL, Anthropic, OpenAI, Google Cloud or the others: they run against a fake endpoint
 (offline in `Tests/`, and a small server on the loopback address in `04-translation`). Each real service was tried once by
@@ -78,7 +78,7 @@ hand with a throwaway program outside the repository, and the outcome is in `doc
 | 01 package (5) | main menu, the companion mod loaded | the code the developer-menu entry calls scans the companion mod | its five known texts are in the manifest, nothing else; a rescan changes nothing; the scan takes well under a second |
 | 02 settings (7) | the save `test-colony`, settings at their defaults | reveal and hide the shortcut; activate it; choose RimBabel in Mod options; set values and write | hidden by default, drawn once revealed; the dialog is this mod's; the page draws for ten frames with no logged error; the file holds the values and no key; every text exists in the language of the pass; values come back after a read of the file, line breaks included |
 | 03 rimmsqol-shortcut (3, pass `avec-rimmsqol`) | RIMMSQOL loaded | reveal, open and hide the shortcut from RIMMSQOL's own list | offered hidden; drawn and opens the same settings; gone again, nothing left behind |
-| 04 translation (3) | a fake server on the loopback address, the engine set to it | translate the companion mod with the chosen engine; with a blacklisted text; twice | five texts translated and recorded with their engine, the blacklisted one still pending, the second run sends nothing, no placeholder or glossary term reaches the server |
+| 04 translation (5) | a fake server on the loopback address, the engine set to it | translate the companion mod with the chosen engine; with a blacklisted text; twice; press the settings page's test button (answer, and failure with a reason when nothing listens) | five texts translated and recorded with their engine, the blacklisted one still pending, the second run sends nothing, no placeholder or glossary term reaches the server |
 | 05 gallery (3, `@review`) | example values, a masked placeholder key | open Mod options, the page, scrolled down | pictures for a person; nothing asserted |
 | 06-08 restart (3, one chain of three launches) | main menu | write values; in a new game process read what the game loaded at startup; put back | the second launch holds the values the first wrote; the third leaves nothing |
 
