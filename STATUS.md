@@ -7,7 +7,7 @@ packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-workflow_stage: prepareRelease[1.0.1]
+workflow_stage: publish[1.0.1]
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -31,8 +31,8 @@ remaining:
 code_review_sha: 122fd14688b3ce8d493873d0ad6b19e8f1d84e82
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
-updated:      2026-10-10, prepareRelease[1.0.1]: CHANGELOG 1.0.1 dated, tree to be pushed and dry-run
-protocols_read_sha: 7f71f354104dac9f12d9a9b560680a398848a975
+updated:      2026-10-10, publish[1.0.1]: pushed, dry-run of the exact SHA next; rollback target tag v1.0.0
+protocols_read_sha: e99694cb8b81b55ec22b97329650f41c95de04b8
 ---
 
 # RimBabel - status
