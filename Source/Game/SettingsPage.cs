@@ -196,7 +196,7 @@ namespace RimBabel.Game
                     ITranslationEngine engine = EngineFactory.Create(config, new WebHttp());
                     const string sample = "Hello {0}, welcome to the colony.";
                     Protected p = Protector.Protect(sample, new KeyValuePair<string, string>[0]);
-                    string[] answer = engine.Translate(new[] { p.Text }, SourceScanner.SourceLanguage, language, new KeyValuePair<string, string>[0]);
+                    string[] answer = engine.Translate(new[] { p.Text }, PackageBuilder.SourceLanguage, language, new KeyValuePair<string, string>[0]);
                     Restored r = Protector.Restore(answer[0], p, sample);
                     testDetail = r.Ok ? r.Text : r.Reason;
                     testState = r.Ok ? 2 : 3;
@@ -221,6 +221,27 @@ namespace RimBabel.Game
             s.author = TextRow(l, "RimBabel.Settings.Author", "RimBabel.Settings.AuthorDesc", s.author);
             l.CheckboxLabeled("RimBabel.Settings.ReusePacks".Translate(), ref s.reuseInstalledPacks, "RimBabel.Settings.ReusePacksDesc".Translate());
 
+            Rect sourceRow = l.GetRect(30f);
+            Widgets.Label(sourceRow.LeftPart(0.25f), "RimBabel.Settings.SourceLanguage".Translate());
+            Rect sourceButton = new Rect(sourceRow.x + sourceRow.width * 0.27f, sourceRow.y, sourceRow.width * 0.73f, sourceRow.height);
+            if (Widgets.ButtonText(sourceButton, s.sourceLanguage))
+            {
+                var sourceOptions = new List<FloatMenuOption>();
+                foreach (LoadedLanguage lang in LanguageDatabase.AllLoadedLanguages)
+                {
+                    string folder = lang.folderName;
+                    sourceOptions.Add(new FloatMenuOption(lang.DisplayName + " (" + folder + ")", () => s.sourceLanguage = folder));
+                }
+                Find.WindowStack.Add(new FloatMenu(sourceOptions));
+            }
+            TooltipHandler.TipRegion(sourceRow, "RimBabel.Settings.SourceLanguageDesc".Translate());
+            if (string.Equals(s.sourceLanguage, TargetLanguage(s), StringComparison.OrdinalIgnoreCase))
+            {
+                GUI.color = new Color(1f, 0.6f, 0.4f);
+                l.Label("RimBabel.Settings.SameLanguage".Translate());
+                GUI.color = Color.white;
+            }
+
             Rect langRow = l.GetRect(30f);
             Widgets.Label(langRow.LeftPart(0.25f), "RimBabel.Settings.Language".Translate());
             string shown = string.IsNullOrEmpty(s.targetLanguage)
@@ -233,7 +254,7 @@ namespace RimBabel.Game
                 {
                     new FloatMenuOption("RimBabel.Settings.LanguageGame".Translate(LanguageDatabase.activeLanguage.folderName).Resolve(), () => s.targetLanguage = ""),
                 };
-                foreach (LoadedLanguage lang in LanguageDatabase.AllLoadedLanguages.Where(x => x.folderName != SourceScanner.SourceLanguage))
+                foreach (LoadedLanguage lang in LanguageDatabase.AllLoadedLanguages.Where(x => x.folderName != PackageBuilder.SourceLanguage))
                 {
                     string folder = lang.folderName;
                     options.Add(new FloatMenuOption(lang.DisplayName + " (" + folder + ")", () => s.targetLanguage = folder));

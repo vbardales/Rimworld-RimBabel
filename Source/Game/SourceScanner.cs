@@ -14,12 +14,13 @@ namespace RimBabel.Game
     /// </summary>
     public static class SourceScanner
     {
+        /// <summary>The default source language: the one the game's own mods are written in.</summary>
         public const string SourceLanguage = "English";
 
-        public static List<Entry> Scan(ModContentPack mod, bool narrowTheWalk = true)
+        public static List<Entry> Scan(ModContentPack mod, bool narrowTheWalk = true, string sourceLanguage = SourceLanguage)
         {
             var entries = new List<Entry>();
-            entries.AddRange(KeyedXml.ReadFolders(mod.foldersToLoadDescendingOrder, SourceLanguage));
+            entries.AddRange(KeyedXml.ReadFolders(mod.foldersToLoadDescendingOrder, sourceLanguage));
             entries.AddRange(ScanDefs(mod, narrowTheWalk));
             return entries;
         }

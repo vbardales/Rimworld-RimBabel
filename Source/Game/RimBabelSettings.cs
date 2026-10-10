@@ -27,6 +27,8 @@ namespace RimBabel.Game
 
         public string author = "";
         /// <summary>A language folder name; empty means the language the game runs in.</summary>
+        /// <summary>The language the mod's texts are written in: the Languages folder read for Keyed texts, and the language the engine translates from.</summary>
+        public string sourceLanguage = "English";
         public string targetLanguage = "";
         /// <summary>Empty means next to the saves.</summary>
         public string outputFolder = "";
@@ -60,6 +62,7 @@ namespace RimBabel.Game
             yandexFolder = "";
             batchSize = EngineConfig.DefaultBatchSize;
             author = "";
+            sourceLanguage = "English";
             targetLanguage = "";
             outputFolder = "";
             dictionaryText = "";
@@ -84,6 +87,7 @@ namespace RimBabel.Game
             Scribe_Values.Look(ref yandexKey, "yandexKey", "");
             Scribe_Values.Look(ref yandexFolder, "yandexFolder", "");
             Scribe_Values.Look(ref author, "author", "");
+            Scribe_Values.Look(ref sourceLanguage, "sourceLanguage", "English");
             Scribe_Values.Look(ref targetLanguage, "targetLanguage", "");
             Scribe_Values.Look(ref outputFolder, "outputFolder", "");
             Scribe_Values.Look(ref reuseInstalledPacks, "reuseInstalledPacks", true);
@@ -104,6 +108,7 @@ namespace RimBabel.Game
             if (yandexKey == null) yandexKey = "";
             if (yandexFolder == null) yandexFolder = "";
             if (author == null) author = "";
+            if (string.IsNullOrWhiteSpace(sourceLanguage)) sourceLanguage = "English";
             if (targetLanguage == null) targetLanguage = "";
             if (outputFolder == null) outputFolder = "";
             // The serializer writes the platform's line break, so a file saved on Windows reads back with CR LF: one

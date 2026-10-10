@@ -20,6 +20,16 @@ namespace RimBabel.Game
             }
         }
 
+        /// <summary>The language the texts of the mods are written in, from the settings (English by default).</summary>
+        public static string SourceLanguage
+        {
+            get
+            {
+                string chosen = RimBabelMod.Settings == null ? null : RimBabelMod.Settings.sourceLanguage;
+                return string.IsNullOrWhiteSpace(chosen) ? SourceScanner.SourceLanguage : chosen.Trim();
+            }
+        }
+
         public static PackageSpec SpecFor(ModContentPack mod, string language, string author)
         {
             string lang = Slug(language);
@@ -39,7 +49,7 @@ namespace RimBabel.Game
         {
             PackageSpec spec = SpecFor(mod, language, author);
             string root = Path.Combine(OutputRoot, spec.PackageId);
-            return PackageWriter.Write(root, spec, SourceScanner.Scan(mod), DateTime.UtcNow);
+            return PackageWriter.Write(root, spec, SourceScanner.Scan(mod, true, SourceLanguage), DateTime.UtcNow);
         }
 
         /// <summary>What a translation run did, for the log.</summary>
@@ -66,7 +76,7 @@ namespace RimBabel.Game
             /// <summary>Blocks until the engine is done. A refused key or an exhausted quota stops the run, and what was translated before it is kept.</summary>
             public TranslationOutcome Run()
             {
-                PipelineReport report = Pipeline.Run(Manifest, Engine, SourceScanner.SourceLanguage, Language, BatchSize);
+                PipelineReport report = Pipeline.Run(Manifest, Engine, SourceLanguage, Language, BatchSize);
                 PackageWriter.Save(Package.Root, Spec, Manifest);
                 return new TranslationOutcome { Package = Package, Report = report, EngineName = Engine.Name };
             }
@@ -78,6 +88,8 @@ namespace RimBabel.Game
         /// </summary>
         public static TranslationJob Prepare(ModContentPack mod, string language, string author, RimBabelSettings settings, IHttp http)
         {
+            if (string.Equals(language, SourceLanguage, StringComparison.OrdinalIgnoreCase))
+                throw new InvalidOperationException("The language of the texts and the target language are both " + language + ": there is nothing to translate.");
             PackageResult package = Build(mod, language, author);
             Manifest manifest = Manifest.Parse(File.ReadAllText(Path.Combine(package.Root, PackageWriter.ManifestPath), Encoding.UTF8));
             int ignored;
