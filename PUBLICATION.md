@@ -1,18 +1,17 @@
 # Publishing RimBabel
 
-What the Workshop page asks for and the repository holds nowhere else, checked against `PUBLISHING.md` on 2026-10-09. Kept for
-whoever picks this mod up later. State at that date: the item exists and is private; nothing is public.
+What the Workshop page asks for and the repository holds nowhere else, checked against `PUBLISHING.md`. Kept for
+whoever picks this mod up later. State: version 1.0.0 is published and the item is public (2026-10-10).
 
 ## Where the item stands
 
 - **Workshop item `3814129753`**, created by the owner's prepublication `0.1.0` on 2026-10-05 from `Mod/` as it stood at
-  commit `5d31c07`. Steam creates every item private; the owner switches it to public by hand.
+  commit `5d31c07`; public since 2026-10-10, version `1.0.0` sent by the CI (tag `v1.0.0`).
 - **`Mod/About/PublishedFileId.txt`** holds that id and is committed. `CHANGELOG.md` opens its `## [0.1.0]` with "creation of a
   publishId file".
 - **Publication goes through the CI** (`PUBLISHING.md`, "Publier par la CI"): a green dry-run of the exact commit first, then
   `publish` with the full 40-character SHA. No session approves `steam-production`; the CI creates the tag and the release.
-- **Reviewed commit for the code review**: `a3863248d374d1c2459cc4c95d15d054b3d5d4d8` (2026-10-05, the whole history, tests left
-  out, low effort; three findings, all fixed). A new review is due from that SHA before the first real publication.
+- **Code review**: `code_review_sha` in `STATUS.md` is the last reviewed commit; the next review covers `code_review_sha..HEAD`.
 
 ## The one-way parts
 
@@ -22,16 +21,12 @@ whoever picks this mod up later. State at that date: the item exists and is priv
 - **The packageId**: `nelim.rimbabel`. Changing it after publication disables the mod for everyone.
 - **`About/PublishedFileId.txt`**: committed, or the next upload creates a second item.
 
-## Open before the first public upload
+## Page settings (answered 2026-10-10)
 
-- **Dependencies and DLC**: none to declare. RimBabel needs no other mod and no DLC; Harmony is not used. RIMMSQOL is an optional
-  customization mod that can reveal the hidden settings shortcut: nothing in the code names it, so it is not a `loadAfter` and
-  not a dependency, but it is thanked below because a Pickle pass exercises it.
-- **Adult-content questionnaire**: applies; answer `No` (the mod has no such content). To be confirmed on the page.
-- **Visibility**: the owner sets it to public by hand once the gallery and the description are in place.
-- **Gallery**: see below; the pictures are staged on the Sanctuary and read before they are kept.
-- **Description**: the block below carries every required section; the English text must be read once more by the owner before the
-  first public version (she confirmed the body on 2026-10-07).
+- **Dependencies and DLC**: none to declare. RimBabel needs no other mod and no DLC; Harmony is not used. RIMMSQOL is an optional customization mod that can reveal the hidden settings shortcut: nothing in the code names it, so it is not a `loadAfter` and not a dependency, but it is thanked in the description because a Pickle pass exercises it.
+- **Adult-content questionnaire**: answered `No` on the page by the owner (the mod has no such content).
+- **Visibility**: public since 2026-10-10 (set by the owner by hand).
+- **Gallery**: see "Screenshots, in upload order"; uploaded by hand by the owner.
 
 ## Screenshots, in upload order
 
@@ -91,71 +86,26 @@ RimBabel is original work under the MIT licence. What I studied and what I took 
 [Source code on GitHub](https://github.com/vbardales/Rimworld-RimBabel)
 ```
 
-## Thanks to post
+## Thanks
 
-The register is `WORKSHOP_COMMENTS.md` (key: the recipient's Workshop id). Rows and what this project owes them, 2026-10-09:
-
-| Recipient | Register | For this project | State |
-| --- | --- | --- | --- |
-| Pickle (3791648678) | `posted`, 2026-09-22 | In-game tests; add `RimBabel` to the `Covers` column, repost nothing | recorded in the register (`Covers` lists RimBabel) |
-| RIMMSQOL (1084452457) | `posted`, 2026-09-22 | A Pickle pass drives it (hidden shortcut); add `RimBabel` to `Covers`, repost nothing | recorded in the register (`Covers` lists RimBabel) |
-| PickleTools (3806142401) | `not_applicable` (same author) | Staged in the passes | nothing to post |
-| Harmony (2009463077) | `posted` (for other mods; RimBabel is not in its `Covers`) | **Not used by RimBabel**: not claimed, not thanked here | nothing |
-| Auto Translation Framework (3759370650) | not in the register | Studied for its shared library and translation memory (description read, 2026-10-03 and 2026-10-05) | **drafted 2026-10-09** (page read that day), see "Thanks, drafts" |
-| Auto Translation (3278005460), AI Translation Network (3721659501), Auto Translator (3668680570) | not in the register | Descriptions read on 2026-10-03; sources not read | **drafted 2026-10-09** (pages read that day), one personalised comment each, under 1000 characters, BBCode with `[url=…]name[/url]`; post only once this item is public |
-
-The four comments are drafted below ("Thanks, drafts"), each from a true detail of its page, none posted. The register's rule stays: one main comment per Workshop page, not a template copied four times.
+The register is `WORKSHOP_COMMENTS.md` (key: the recipient's Workshop id). Pickle and RIMMSQOL were thanked earlier (`Covers` lists RimBabel); PickleTools is the same author; Harmony is not used by RimBabel. The owner posted one comment on each of Auto Translation Framework (3759370650), Auto Translation (3278005460), AI Translation Network (3721659501) and Auto Translator (3668680570) on 2026-10-10; the sent texts are in `docs/runs/posted-1.0.0.md`. The register's rule stays: one main comment per Workshop page, not a template copied four times.
 
 ## Steam change notes
 
-`### 0.1.0` is the prepublication (a private item; there is no note to show players). From the first public version, each `###
-<version>` block starts with a BBCode line carrying that exact version.
+Each `### <version>` heading is followed by a fenced block whose first line is BBCode carrying that exact version (`[b]x.y.z[/b]`); the CI reads the block and refuses one that does not carry the version of its heading. `0.1.0` was the prepublication (a private item, no note). The note sent with `1.0.0` is in `docs/runs/posted-1.0.0.md`.
 
-Note for the first public version, `1.0.0` (owner, 2026-10-09). The CI reads the fenced block under the heading and refuses one whose first BBCode line does not carry exactly the version of the heading:
+Template for the next version:
 
-### 1.0.0
-
-```
-[b]1.0.0[/b]
-First public version. Translate a mod from the developer menu with DeepL, Anthropic, Google Cloud, LibreTranslate, MyMemory, Yandex or any OpenAI-compatible server, and get a standalone translation mod.
-Settings under Mod options, RimBabel: engine and key, dictionary, blacklist, target language, output folder.
-```
-
-## Thanks, drafts (2026-10-09)
-
-Drafted from the four Workshop pages read on 2026-10-09 (descriptions only: the comment threads load by script and were not read, so
-language, mood and whether the author answers are still to check before posting). Owner's voice, one comment per page, none posted;
-post only once this item is public. The four drafts below were rewritten from what the owner saw while using each mod (she tested all four); the two optional ones rest on their pages only.
-
-Auto Translation Framework (3759370650), **rewritten from the owner's experience** (same trouble as AI Translation Network: a free engine produced poor results for many translations and no bulk invalidation or retranslation; and the GitHub link on its page is only the presentation site, not the code):
+### x.y.z
 
 ```
-Covering the text hidden in C# is a real plus, but a free engine gave poor results for many of my translations and I found no way to invalidate them in bulk or ask for a bulk retranslation. I also looked for the code to suggest a fix, but the GitHub link only leads to the docs site. That gap is why I wrote my own translator. Thanks anyway!
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3814129753]RimBabel[/url]
+[b]x.y.z[/b]
+What changed, one line each.
 ```
 
-Auto Translation (3278005460), **rewritten from the owner's own experience** (she used it: the translation editor loaded very slowly and every write was slow too, perhaps an indexing problem):
+## Optional thanks drafts, not posted
 
-```
-Used your mod for a while, and having Google, DeepL and Claude in one list was really handy :) One thing on my setup: the translation editor took ages to load and every write was slow too, maybe something with indexing? Still, thanks for the work! It helped me with my own translator:
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3814129753]RimBabel[/url]
-```
-
-AI Translation Network (3721659501), **rewritten from the owner's experience** (she enabled the free package, Yandex produced poor results for many translations, and she could neither invalidate them in bulk nor ask for a bulk retranslation):
-
-```
-The cloud hub and the multi-provider list are great, but I switched on the free package and Yandex gave poor results for many of my translations, and I could not invalidate them in bulk or ask for a bulk retranslation. That exact problem pushed me to build my own translator (each text remembers which engine wrote it). Thanks!
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3814129753]RimBabel[/url]
-```
-
-Auto Translator (3668680570), **rewritten from the owner's experience** (she could not get it to work, and is not sure the fault was not hers):
-
-```
-Tried your mod but I never got it running on my side, so no real feedback, and it may well be my setup :) I like the idea of generating a normal localization mod that people can edit, it is what I went for in my own translator. Thanks for the work!
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3814129753]RimBabel[/url]
-```
-
-Note: the item id in these links is the Workshop item's (private until public).
+The owner did not try these two mods; post only if she wants a comment there. Neither is in the register.
 
 Universal Translation Framework (3495185132), **optional, not in the register**: the owner did not try it, so the draft says so and rests on the page only (it replaces hardcoded strings by IL transpilation, the part RimBabel does not cover; source: github.com/Ocean456/UniversalTranslationFramework). Post only if the owner wants a comment there:
 

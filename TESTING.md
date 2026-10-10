@@ -89,23 +89,12 @@ The menu window of the developer entries is not covered (a developer tool, not p
 Declared in `Tests/Pickle/README.md`: **minimal in English, then minimal in French** (the package language is a setting,
 not the game's language, so the French pass shows it does not depend on it). No optional integration exists, so no pass
 with optional mods; no declared incompatibility; no DLC. Each pass is one request filed through the Ticket Dispatcher.
-Non-regression passes are filed together at the end, on the final revision.
+Non-regression passes run after the deploy, in small tickets (`AUDIT.md` 14.a).
 
 ## What is not tested here, and why
 
 The behaviour of a vanilla or other mod's Def, left as it is, is not tested: RimBabel does not change it. The game's
 own language switching is not tested either: a pass runs in one language.
-
-## Gate to `tested` (owner, 2026-10-03)
-
-Beyond the criteria of `AUDIT.md`, step `done -> tested`, three conditions are checked explicitly and written in
-`STATUS.md` before the move:
-
-1. **No scenario left in `@wip`.** Each is repaired and replayed, or deleted with its justification.
-2. **Every conditional scenario has run.** Each `@requires:<packageId>` had its pass, on a map that loads that mod, and
-   its report was read (suite and scenario names checked, since the report folder is shared by the machine).
-3. **No manual test left to validate.** What remained to tick by hand is automated and green, or listed as not
-   applicable with the reason. `@review` captures are still opened and read.
 
 ## Evidence: what to keep
 
