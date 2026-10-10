@@ -31,7 +31,7 @@ remaining:
 code_review_sha: 122fd14688b3ce8d493873d0ad6b19e8f1d84e82
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
-updated:      2026-10-10, followUp[1.0.1]: 1.0.1 sent and the public change note read on the page
+updated:      2026-10-10, followUp[1.0.1]: non-regression green in English and French, cleanup of the docs left
 protocols_read_sha: fc2fe915a7378bc22fdefadc18a2ccb246c9d5cb
 ---
 

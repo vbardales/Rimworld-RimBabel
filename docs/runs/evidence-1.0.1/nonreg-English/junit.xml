@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="RimBabel lists the texts of a loaded mod and writes its translation package" tests="5" failures="0" skipped="0" flakes="0" time="2.916">
+    <testcase name="the texts of the source mod are listed in the manifest" classname="RimBabel lists the texts of a loaded mod and writes its translation package" time="0.873">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="what is not a text is left out, and so are the texts of other mods" classname="RimBabel lists the texts of a loaded mod and writes its translation package" time="0.513">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="nothing is translated yet, and the package says so" classname="RimBabel lists the texts of a loaded mod and writes its translation package" time="0.554">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="scanning one mod is fast, whatever else is loaded" classname="RimBabel lists the texts of a loaded mod and writes its translation package" time="0.334">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="scanning the same mod again changes nothing" classname="RimBabel lists the texts of a loaded mod and writes its translation package" time="0.642">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="RimBabel's settings page and its hidden shortcut" tests="7" failures="0" skipped="0" flakes="0" time="50.102">
+    <testcase name="the shortcut is hidden on a clean configuration, drawn and live once revealed, gone again when hidden" classname="RimBabel's settings page and its hidden shortcut" time="8.068">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="activating the shortcut opens this mod's settings, and the page draws without an error" classname="RimBabel's settings page and its hidden shortcut" time="6.931">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="a changed setting reaches the file the game writes, and no key is there when none was set" classname="RimBabel's settings page and its hidden shortcut" time="7.007">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="every text of the page exists in the language of this pass" classname="RimBabel's settings page and its hidden shortcut" time="6.780">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="the settings page, for a person to look at" classname="RimBabel's settings page and its hidden shortcut" time="7.807">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: RimBabel settings page -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--RimBabel-settings-page--step0.png
+</system-out>
+    </testcase>
+    <testcase name="Options, Mod options lists RimBabel and its page draws from there" classname="RimBabel's settings page and its hidden shortcut" time="7.545">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="values survive a write and a read of the file, including line breaks" classname="RimBabel's settings page and its hidden shortcut" time="5.964">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="RIMMSQOL reveals and hides the RimBabel shortcut" tests="3" failures="0" skipped="3" flakes="0" time="0.000">
+    <testcase name="RIMMSQOL's own list offers the shortcut, hidden, and the bar does not draw it" classname="RIMMSQOL reveals and hides the RimBabel shortcut" time="0.000">
+      <skipped />
+    </testcase>
+    <testcase name="revealed in RIMMSQOL the shortcut is drawn, and it opens the same settings as Mod options" classname="RIMMSQOL reveals and hides the RimBabel shortcut" time="0.000">
+      <skipped />
+    </testcase>
+    <testcase name="hidden again in RIMMSQOL the shortcut leaves the bar, and forgetting the choice leaves nothing behind" classname="RIMMSQOL reveals and hides the RimBabel shortcut" time="0.000">
+      <skipped />
+    </testcase>
+  </testsuite>
+  <testsuite name="a mod is translated with the engine of the settings" tests="5" failures="0" skipped="0" flakes="0" time="3.132">
+    <testcase name="every text goes to the engine, comes back, and lands in the package" classname="a mod is translated with the engine of the settings" time="0.878">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="a blacklisted text is never sent" classname="a mod is translated with the engine of the settings" time="0.594">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="a second run sends nothing again" classname="a mod is translated with the engine of the settings" time="0.634">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="the test button of the settings page reaches the engine and shows its answer" classname="a mod is translated with the engine of the settings" time="0.500">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="the test button says it failed, with a reason, when nothing answers" classname="a mod is translated with the engine of the settings" time="0.526">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="RimBabel's windows, as pictures for the gallery" tests="3" failures="0" skipped="3" flakes="0" time="0.000">
+    <testcase name="Options, Mod options: RimBabel is among the mods that have settings" classname="RimBabel's windows, as pictures for the gallery" time="0.000">
+      <skipped />
+    </testcase>
+    <testcase name="RimBabel's settings, the engines and the key" classname="RimBabel's windows, as pictures for the gallery" time="0.000">
+      <skipped />
+    </testcase>
+    <testcase name="RimBabel's settings, the dictionary and the texts that stay as they are" classname="RimBabel's windows, as pictures for the gallery" time="0.000">
+      <skipped />
+    </testcase>
+  </testsuite>
+  <testsuite name="RimBabel's settings are written for the next launch (1 of 3, write)" tests="1" failures="0" skipped="0" flakes="0" time="1.881">
+    <testcase name="the settings are written, and the file holds them" classname="RimBabel's settings are written for the next launch (1 of 3, write)" time="1.881">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="RimBabel's settings are read back by the next launch (2 of 3, read)" tests="1" failures="0" skipped="0" flakes="0" time="0.695">
+    <testcase name="the game starts with the values the previous launch wrote" classname="RimBabel's settings are read back by the next launch (2 of 3, read)" time="0.695">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="RimBabel's settings are put back after the restart test (3 of 3, reset)" tests="1" failures="0" skipped="0" flakes="0" time="0.898">
+    <testcase name="the values of the restart test are gone" classname="RimBabel's settings are put back after the restart test (3 of 3, reset)" time="0.898">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+  </testsuite>
+</testsuites>
