@@ -7,7 +7,7 @@ packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-workflow_stage: tested
+workflow_stage: mountPreview[1.0.0]
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -18,7 +18,8 @@ showcase:     unchecked
 settings_audit: passed
 tested_on:    2026-10-09 (Pickle final runs on tree 9999e7e, English and French, 24 scenarios per language, 21 played outside their own passes; Source unchanged since f523a85)
 workshop:      item 381412975321 (private, created by the owner's prepublication 0.1.0 on 2026-10-05; nothing published)
-echo_review: 2026-10-10 keep (redone 2026-10-09) - the echo was drawn at 16 % in the gold ink (near invisible); now the accent colour at full opacity, owner validated the render. Final render after the shared renderer fixes (icon flush with the corner, panel echo at z-index 1): observed, the echo is invisible at z-index -1 and visible at 1 with the text above it (mechanism not established)
+echo_review_sha: 161e5fb24cd2d72e40d1517acb7b260c25f8735d
+# echo decision, 2026-10-10: keep (redone 2026-10-09) - the echo was drawn at 16 % in the gold ink (near invisible); now the accent colour at full opacity, owner validated the render. Final render after the shared renderer fixes (icon flush with the corner, panel echo at z-index 1): observed, the echo is invisible at z-index -1 and visible at 1 with the text above it (mechanism not established)
 remaining:
   - verified 2026-10-09: the Steam description (the Markdown block of `PUBLICATION.md`, source of `About.xml`) was read by the owner for this delivery: English confirmed in chat 2026-10-07, her one read of `PUBLICATION.md`, and the later wording corrections approved in chat (recorded by a session on her statement). Earlier note: it was the one in About.xml (rewritten 2026-10-04 and 2026-10-05, last changed in `a463f5a`; the English text was confirmed by the owner in chat on 2026-10-07, recorded by a session on her statement); ModIcon.png (128x128, transparent padding, regenerated 2026-10-08 from the new `Art/ModIcon-source.png`, a DALL-E image cut out by the owner) and Preview.png (896x504, 482 KB, rendered by Render-Preview.cjs, copy in Art/Gallery/0-preview.png) are installed; the 32 px legibility check of the icon passes for the head, while the two side objects blur, so the owner decides
   - unverified: the extractor (Source/Game/SourceScanner.cs) ran once in a real game, in the WSL install: Pickle request `20261004-000340-546-454b` (English, tree 8e7ecfb, played 2026-10-04 19:23-19:28) 4 scenarios passed, `exitReason: passed`, `Player.log` shows "5 new, 0 changed, 0 removed" for the fixture mod then "0 new, 5 unchanged" on the second scan, with no error line. Not yet proved: a large real mod (many defs, patches, inheritance), and the narrowed walk with many mods loaded (the suite loads Core and the DLC only)
@@ -32,20 +33,20 @@ code_review_sha: b297ec08a7bc60428e1b25add17a0a9fd76f09fa
 publication_changelog_review_sha: 8392baf14f5dbe7a61ee36fec852eb306046cf61
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
 updated:      2026-10-09, STATUS trimmed to the current state; gallery and publication drafts done; nothing published
-protocols_read_sha: 9e1f8a5bf974bb2d8db6b80097c020ed205ef458
+protocols_read_sha: 095e02a9112f7c8cadbc791427af9bd498b59a0d
 ---
 
 # RimBabel - status
 
 Current state only. The history of earlier decisions is in `git log STATUS.md`; run history is in `docs/runs/history.md`.
 
-## Where it stands (2026-10-09)
+## Where it stands (audit of 2026-10-10, protocols 095e02a, chain of fifteen states)
 
-`workflow_stage: tested`. Nothing is published; Workshop item `381412975321` is private. v1 scope (owner, 2026-10-05): the developer menu plus
-the settings page; a translation window, regular-expression search and hover original are out of v1 (`BACKLOG.md`). Next transition:
-`tested -> prepublished` (`AUDIT.md` step 10). Open for it: the icon at 32 px (her call),
-the GitHub social preview (web upload), `echo_review`; mine: the `## [1.0.0]` section of `CHANGELOG.md` and the dry-run on the exact SHA, on the
-day of the deploy. First public version: `1.0.0`. Draft note and thanks comments: `PUBLICATION.md`.
+`workflow_stage: mountPreview[1.0.0]` (old vocabulary: `tested`; the correspondence table of AUDIT.md is indicative, the audit decides). Nothing is published; Workshop item `381412975321` is private. v1 scope (owner, 2026-10-05): the developer menu plus the settings page; a translation window, regular-expression search and hover original are out of v1 (`BACKLOG.md`).
+
+Audited against the current AUDIT.md, state by state: `setupRepo` to `playTests` hold (repository, sources, icon, code and DLL identical to the sources, no dependency, settings `passed`, texts complete in English and French with the owner's validations, Pickle suite green on tree 9999e7e; texts changed since follow the post-validation rule: the Pickle non-regression replay is owed after the fail-fast deploy). `shootGallery` holds (gallery `0-` to `2-` accepted, cropped, contiguous). `mountPreview` is NOT left yet: 10.f, the repository is public and its social preview is still GitHub's generated image (`og:image` on `opengraph.githubassets.com`), so `Mod/About/Preview.png` is to be uploaded by the owner (web page only) and its sha256 recorded in `social_preview_sha256`. The echo is validated (`echo_review_sha`; decision keep, redone 2026-10-09).
+
+Noted for later states: `TESTING.md` holds the functional scenarios table (7.a names `TEST_SCENARIOS.md`); `CHANGELOG.md` `[Unreleased]` becomes `## [1.0.0] - <date>` on the day of the deploy (owner, 2026-10-09); the `.github/` publishing workflow does not exist yet (generate it with `generate-publish-workflow.sh`, then dry-run the exact SHA, 12.e); first public version `1.0.0`, draft note and thanks comments in `PUBLICATION.md`.
 
 ## Where the work is
 
