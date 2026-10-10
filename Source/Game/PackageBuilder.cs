@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using RimBabel.Core;
 using Verse;
@@ -82,6 +83,7 @@ namespace RimBabel.Game
             int ignored;
             manifest.Glossary = LineLists.ParseDictionary(settings.dictionaryText, out ignored);
             manifest.Blacklist = LineLists.ParseRules(settings.blacklistText);
+            if (settings.reuseInstalledPacks) Importer.ImportPacks(manifest, InstalledPacks(mod, language));
             return new TranslationJob
             {
                 Package = package, Spec = SpecFor(mod, language, author), Manifest = manifest, Language = language, BatchSize = settings.batchSize,
@@ -93,6 +95,45 @@ namespace RimBabel.Game
         public static TranslationOutcome Translate(ModContentPack mod, string language, string author, RimBabelSettings settings, IHttp http)
         {
             return Prepare(mod, language, author, settings, http).Run();
+        }
+
+        /// <summary>
+        /// The translation packs installed next to a mod: every other running mod that holds a Languages/&lt;language&gt; folder, in its root or
+        /// in one of its load folders. The packages RimBabel wrote itself are left out (their texts are machine work and would come back as
+        /// human work), and so is the mod being translated.
+        /// </summary>
+        public static System.Collections.Generic.List<InstalledPack> InstalledPacks(ModContentPack source, string language)
+        {
+            var packs = new System.Collections.Generic.List<InstalledPack>();
+            foreach (ModContentPack other in LoadedModManager.RunningModsListForReading)
+            {
+                if (other == source || other.IsCoreMod || other.IsOfficialMod) continue;
+                if (other.PackageId != null && other.PackageId.StartsWith("nelim.rimbabel.", StringComparison.OrdinalIgnoreCase)) continue;
+                var pack = new InstalledPack { Label = other.Name + " (" + other.PackageId + ")" };
+                var roots = new System.Collections.Generic.List<string> { other.RootDir };
+                roots.AddRange(other.foldersToLoadDescendingOrder);
+                foreach (string root in roots.Distinct())
+                {
+                    string folder = Path.Combine(Path.Combine(root, "Languages"), language);
+                    if (Directory.Exists(folder)) pack.Folders.Add(folder);
+                }
+                if (pack.Folders.Count > 0) packs.Add(pack);
+            }
+            return packs;
+        }
+
+        /// <summary>
+        /// Brings the texts of the installed translation packs into the package of a mod, as human work, and writes the package again.
+        /// Nothing is sent to an engine. Returns what came in.
+        /// </summary>
+        public static ImportReport ImportInstalled(ModContentPack mod, string language, string author)
+        {
+            PackageResult package = Build(mod, language, author);
+            PackageSpec spec = SpecFor(mod, language, author);
+            Manifest manifest = Manifest.Parse(File.ReadAllText(Path.Combine(package.Root, PackageWriter.ManifestPath), Encoding.UTF8));
+            ImportReport report = Importer.ImportPacks(manifest, InstalledPacks(mod, language));
+            PackageWriter.Save(package.Root, spec, manifest);
+            return report;
         }
 
         /// <summary>Takes back the machine texts one engine wrote in the package of a mod (see Merge.Flush), and writes the package again.</summary>

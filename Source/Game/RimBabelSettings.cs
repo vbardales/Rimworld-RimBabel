@@ -31,6 +31,8 @@ namespace RimBabel.Game
         /// <summary>Empty means next to the saves.</summary>
         public string outputFolder = "";
 
+        /// <summary>Texts of an installed translation pack of the mod being translated are taken as human work before any engine is asked.</summary>
+        public bool reuseInstalledPacks = true;
         public string dictionaryText = "";
         public string blacklistText = "";
 
@@ -62,6 +64,7 @@ namespace RimBabel.Game
             outputFolder = "";
             dictionaryText = "";
             blacklistText = "";
+            reuseInstalledPacks = true;
         }
 
         public override void ExposeData()
@@ -83,6 +86,7 @@ namespace RimBabel.Game
             Scribe_Values.Look(ref author, "author", "");
             Scribe_Values.Look(ref targetLanguage, "targetLanguage", "");
             Scribe_Values.Look(ref outputFolder, "outputFolder", "");
+            Scribe_Values.Look(ref reuseInstalledPacks, "reuseInstalledPacks", true);
             Scribe_Values.Look(ref dictionaryText, "dictionaryText", "");
             Scribe_Values.Look(ref blacklistText, "blacklistText", "");
             base.ExposeData();

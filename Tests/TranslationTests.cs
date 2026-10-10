@@ -227,6 +227,26 @@ internal static partial class Program
         Check(rep.Imported == 3, "import: three texts imported (" + rep.Imported + ")");
         Check(rep.Orphans.Contains("K:Gone") && rep.Orphans.Contains("D:ThingDef/Orphan.label"), "import: texts for keys the source no longer has are reported");
         Check(Importer.Import(new[] { a }, Path.Combine(root, "Nothing")).Imported == 0, "import: a folder that does not exist imports nothing");
+        // Several installed packs: the first wins for a key, a pack that brought nothing is not recorded, the licence blocker names the ones that did.
+        string packA = Path.Combine(root, "PackA", "French"), packB = Path.Combine(root, "PackB", "French"), packC = Path.Combine(root, "PackC", "French");
+        foreach (string p in new[] { packA, packB, packC }) Directory.CreateDirectory(Path.Combine(p, "Keyed"));
+        File.WriteAllText(Path.Combine(packA, "Keyed", "A.xml"), "<LanguageData><K1>un (A)</K1></LanguageData>");
+        File.WriteAllText(Path.Combine(packB, "Keyed", "B.xml"), "<LanguageData><K1>un (B)</K1><K2>deux (B)</K2></LanguageData>");
+        File.WriteAllText(Path.Combine(packC, "Keyed", "C.xml"), "<LanguageData><Unrelated>x</Unrelated></LanguageData>");
+        var pm = new Manifest { Language = "French" };
+        pm.Entries.Add(Entry.Keyed("K1", "one")); pm.Entries.Add(Entry.Keyed("K2", "two")); pm.Entries.Add(Entry.Keyed("K3", "three"));
+        ImportReport multi = Importer.ImportPacks(pm, new[]
+        {
+            new InstalledPack { Label = "Pack A (a.pack)", Folders = { packA } },
+            new InstalledPack { Label = "Pack B (b.pack)", Folders = { packB } },
+            new InstalledPack { Label = "Pack C (c.pack)", Folders = { packC } },
+        });
+        Check(pm.Entries[0].Target == "un (A)" && pm.Entries[1].Target == "deux (B)" && pm.Entries[2].Target == null, "import packs: the first pack wins for a key, the next fills what is left");
+        Check(pm.ImportedFrom.SequenceEqual(new[] { "Pack A (a.pack)", "Pack B (b.pack)" }), "import packs: only the packs that brought a text are recorded");
+        Check(Manifest.Parse(pm.ToXml()).ImportedFrom.SequenceEqual(pm.ImportedFrom), "import packs: the record survives the manifest round trip");
+        Check(Manifest.Parse(new Manifest { Language = "French" }.ToXml()).ImportedFrom.Count == 0, "import packs: a manifest without imports stays without");
+        var spec = new PackageSpec { PackageId = "x.y", Name = "X", Author = "a", Language = "French", FileName = "X", SourcePackageId = "s", SourceName = "S", SourceLicenceName = "MIT", LicenceText = "MIT" };
+        Check(PackageWriter.Blockers(root, spec, pm).Count(b => b.Contains("imported from the installed translation")) == 2, "import packs: each imported pack blocks publication until its licence is checked");
         Directory.Delete(root, true);
     }
 }

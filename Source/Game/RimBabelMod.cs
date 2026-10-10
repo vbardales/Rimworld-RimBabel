@@ -73,6 +73,27 @@ namespace RimBabel.Game
             Find.WindowStack.Add(new Dialog_DebugOptionListLister(options));
         }
 
+        [DebugAction("RimBabel", "Import an installed translation into a package...", allowedGameStates = AllowedGameStates.Entry | AllowedGameStates.Playing)]
+        private static void ImportInstalledTranslation()
+        {
+            string language = SettingsPage.TargetLanguage(RimBabelMod.Settings);
+            string author = AuthorName();
+            var options = new List<DebugMenuOption>();
+            foreach (ModContentPack mod in LoadedModManager.RunningModsListForReading.Where(m => !m.IsCoreMod && !m.IsOfficialMod))
+            {
+                ModContentPack captured = mod;
+                if (PackageBuilder.InstalledPacks(captured, language).Count == 0) continue;
+                options.Add(new DebugMenuOption(mod.Name, DebugMenuOptionMode.Action, () =>
+                {
+                    ImportReport r = PackageBuilder.ImportInstalled(captured, language, author);
+                    Log.Message("[RimBabel] " + captured.Name + ": " + r.Imported + " texts imported from installed translations, " + r.Outdated + " written for another source (kept as drafts), "
+                        + r.Kept + " already human work kept, " + r.Orphans.Count + " for texts the mod no longer has. The package cannot be published until the licence of each pack is checked.");
+                }));
+            }
+            if (options.Count == 0) { Log.Message("[RimBabel] no mod has an installed " + language + " translation next to it."); return; }
+            Find.WindowStack.Add(new Dialog_DebugOptionListLister(options));
+        }
+
         [DebugAction("RimBabel", "Take back the texts of one engine...", allowedGameStates = AllowedGameStates.Entry | AllowedGameStates.Playing)]
         private static void TakeBack()
         {

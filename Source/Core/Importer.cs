@@ -23,8 +23,40 @@ namespace RimBabel.Core
     /// each key) arrives as a Stale draft instead, so it is shown and not trusted. Texts for keys the
     /// source no longer has are reported, not dropped silently.
     /// </summary>
+    /// <summary>An installed translation pack: the name shown to the player and the Languages/&lt;language&gt; folders it holds.</summary>
+    public sealed class InstalledPack
+    {
+        public string Label;
+        public List<string> Folders = new List<string>();
+    }
+
     public static class Importer
     {
+        /// <summary>
+        /// Imports several installed packs in turn, the first one winning where two hold the same key (it fills the entry before the
+        /// next one is read). A pack that brought at least one text is recorded in <see cref="Manifest.ImportedFrom"/>, which blocks
+        /// publication until its licence is checked.
+        /// </summary>
+        public static ImportReport ImportPacks(Manifest manifest, IEnumerable<InstalledPack> packs)
+        {
+            var total = new ImportReport();
+            foreach (InstalledPack pack in packs)
+            {
+                int brought = 0;
+                foreach (string folder in pack.Folders)
+                {
+                    ImportReport r = Import(manifest.Entries, folder);
+                    brought += r.Imported + r.Outdated;
+                    total.Imported += r.Imported;
+                    total.Outdated += r.Outdated;
+                    total.Kept += r.Kept;
+                    total.Orphans.AddRange(r.Orphans);
+                }
+                if (brought > 0 && !manifest.ImportedFrom.Contains(pack.Label)) manifest.ImportedFrom.Add(pack.Label);
+            }
+            return total;
+        }
+
         public static ImportReport Import(IEnumerable<Entry> entries, string languageFolder)
         {
             var report = new ImportReport();

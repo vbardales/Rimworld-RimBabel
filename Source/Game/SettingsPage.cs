@@ -219,6 +219,7 @@ namespace RimBabel.Game
             Text.Font = GameFont.Small;
 
             s.author = TextRow(l, "RimBabel.Settings.Author", "RimBabel.Settings.AuthorDesc", s.author);
+            l.CheckboxLabeled("RimBabel.Settings.ReusePacks".Translate(), ref s.reuseInstalledPacks, "RimBabel.Settings.ReusePacksDesc".Translate());
 
             Rect langRow = l.GetRect(30f);
             Widgets.Label(langRow.LeftPart(0.25f), "RimBabel.Settings.Language".Translate());

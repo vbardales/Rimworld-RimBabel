@@ -142,6 +142,8 @@ namespace RimBabel.Core
                 list.Add("Mod/About/ModIcon.png is missing.");
             if (manifest.Entries.Count == 0)
                 list.Add("The package has no entries.");
+            foreach (string pack in manifest.ImportedFrom)
+                list.Add("Texts were imported from the installed translation " + pack + ": its licence must allow redistribution before this package is published.");
             return list;
         }
 
@@ -206,7 +208,8 @@ namespace RimBabel.Core
                 (string.IsNullOrEmpty(s.SourceVersion) ? "" : ", version " + s.SourceVersion) + ").\n" +
                 (string.IsNullOrEmpty(s.SourceUrl) ? "" : "Source: " + s.SourceUrl + "\n") +
                 "Licence of the source mod: " + (string.IsNullOrEmpty(s.SourceLicenceName) ? "unknown" : s.SourceLicenceName) + ".\n" +
-                "Texts in this package translate the source mod's texts; the source texts remain its author's work.\n";
+                "Texts in this package translate the source mod's texts; the source texts remain its author's work.\n" +
+                (m.ImportedFrom.Count == 0 ? "" : "Some texts were imported from installed translations: " + string.Join("; ", m.ImportedFrom.ToArray()) + ".\n");
         }
 
         private static string Status(PackageSpec s, Manifest m, List<string> blockers, DateTime today)

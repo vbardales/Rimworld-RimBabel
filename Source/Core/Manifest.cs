@@ -26,6 +26,8 @@ namespace RimBabel.Core
         public List<KeyValuePair<string, string>> Glossary = new List<KeyValuePair<string, string>>();
         /// <summary>Entry ids or patterns never sent to an engine.</summary>
         public List<string> Blacklist = new List<string>();
+        /// <summary>Installed translation packs whose texts were imported as human work ("name (packageId)"): their licence decides whether this package may be redistributed.</summary>
+        public List<string> ImportedFrom = new List<string>();
 
         public string ToXml()
         {
@@ -38,6 +40,7 @@ namespace RimBabel.Core
             root.Add(new XElement("glossary", Glossary.Select(g =>
                 new XElement("term", new XAttribute("from", g.Key), new XAttribute("to", g.Value)))));
             root.Add(new XElement("blacklist", Blacklist.Select(b => new XElement("li", b))));
+            if (ImportedFrom.Count > 0) root.Add(new XElement("imported", ImportedFrom.Select(i => new XElement("li", i))));
             root.Add(new XElement("entries", Entries.Select(ToElement)));
 
             using (var sw = new Utf8StringWriter())
@@ -93,6 +96,9 @@ namespace RimBabel.Core
             XElement bl = root.Element("blacklist");
             if (bl != null)
                 foreach (XElement li in bl.Elements("li")) m.Blacklist.Add(li.Value);
+            XElement imported = root.Element("imported");
+            if (imported != null)
+                foreach (XElement li in imported.Elements("li")) m.ImportedFrom.Add(li.Value);
             XElement entries = root.Element("entries");
             if (entries != null)
                 foreach (XElement el in entries.Elements("entry"))
