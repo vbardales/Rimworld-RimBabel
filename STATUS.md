@@ -28,7 +28,7 @@ remaining:
   - open: the published `About.xml` lacks the Workshop links added to THANKS on 2026-10-10 (the Steam page description was pasted by hand and has them); the next CI publish fixes it
   - open: the four thanks comments were posted without a session having read the comment threads
   - note: there is no translation window in v1, only the developer-menu action and the settings page (`BACKLOG.md`)
-code_review_sha: a1e58b2a7487d9acf2459ba215659fdaf7750784
+code_review_sha: 122fd14688b3ce8d493873d0ad6b19e8f1d84e82
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
 updated:      2026-10-10, playTests[1.0.1]: four Pickle runs green
