@@ -303,6 +303,10 @@ namespace RimBabel.Game
             int ignored;
             LineLists.ParseDictionary(s.dictionaryText, out ignored);
             if (ignored > 0) Warn(l, Counted("RimBabel.Settings.DictionaryBad", ignored));
+            Rect sharedRow = l.GetRect(30f);
+            if (Widgets.ButtonText(sharedRow.LeftPart(0.5f), "RimBabel.Settings.SharedDictionary".Translate()))
+                OpenFolder(System.IO.Path.GetDirectoryName(PackageBuilder.EnsureSharedDictionary(TargetLanguage(s))));
+            TooltipHandler.TipRegion(sharedRow.LeftPart(0.5f), "RimBabel.Settings.SharedDictionaryDesc".Translate(PackageBuilder.SharedDictionaryPath(TargetLanguage(s))));
         }
 
         private static void DrawBlacklist(Listing_Standard l, RimBabelSettings s)

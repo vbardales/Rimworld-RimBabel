@@ -20,6 +20,13 @@ internal static partial class Program
 
     private static void ConfigTests()
     {
+        // The dictionary shared by every mod: the page's lines win over the file's for the same word.
+        var own = new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("Colony", "Colonie") };
+        var shared = new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("colony", "établissement"), new KeyValuePair<string, string>("pawn", "pion") };
+        var both = LineLists.MergeDictionaries(own, shared);
+        Check(both.Count == 2 && both[0].Value == "Colonie" && both[1].Key == "pawn", "dictionary: the page's lines win over the shared file, whatever the case");
+        Check(LineLists.MergeDictionaries(new KeyValuePair<string, string>[0], shared).Count == 2, "dictionary: an empty page leaves the shared file whole");
+
         var c = new EngineConfig();
         Check(EngineFactory.Problems(c).SequenceEqual(new[] { EngineProblem.NoKey }), "config: DeepL without a key says it needs one");
         c.DeepLKey = " abc:fx ";

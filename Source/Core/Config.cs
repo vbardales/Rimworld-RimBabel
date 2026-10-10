@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RimBabel.Core
 {
@@ -114,6 +115,20 @@ namespace RimBabel.Core
                 list.Add(new KeyValuePair<string, string>(from, to));
             }
             return list;
+        }
+
+
+        /// <summary>
+        /// Two dictionaries as one: the first wins where both hold the same word (compared without regard to case), so the page's own
+        /// lines override the shared file.
+        /// </summary>
+        public static List<KeyValuePair<string, string>> MergeDictionaries(IEnumerable<KeyValuePair<string, string>> first, IEnumerable<KeyValuePair<string, string>> second)
+        {
+            var merged = new List<KeyValuePair<string, string>>(first);
+            var seen = new HashSet<string>(merged.Select(p => p.Key), StringComparer.OrdinalIgnoreCase);
+            foreach (KeyValuePair<string, string> pair in second)
+                if (seen.Add(pair.Key)) merged.Add(pair);
+            return merged;
         }
 
         /// <summary>One rule per line, # comments and blank lines left out.</summary>

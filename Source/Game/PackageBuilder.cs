@@ -92,8 +92,7 @@ namespace RimBabel.Game
                 throw new InvalidOperationException("The language of the texts and the target language are both " + language + ": there is nothing to translate.");
             PackageResult package = Build(mod, language, author);
             Manifest manifest = Manifest.Parse(File.ReadAllText(Path.Combine(package.Root, PackageWriter.ManifestPath), Encoding.UTF8));
-            int ignored;
-            manifest.Glossary = LineLists.ParseDictionary(settings.dictionaryText, out ignored);
+            manifest.Glossary = GlossaryFor(settings, language);
             manifest.Blacklist = LineLists.ParseRules(settings.blacklistText);
             if (settings.reuseInstalledPacks) Importer.ImportPacks(manifest, InstalledPacks(mod, language));
             return new TranslationJob
@@ -146,6 +145,34 @@ namespace RimBabel.Game
             ImportReport report = Importer.ImportPacks(manifest, InstalledPacks(mod, language));
             PackageWriter.Save(package.Root, spec, manifest);
             return report;
+        }
+
+        /// <summary>The dictionary shared by every mod translated into one language: one file in the output folder, not one per package.</summary>
+        public static string SharedDictionaryPath(string language)
+        {
+            return Path.Combine(OutputRoot, "dictionary." + Safe(language) + ".txt");
+        }
+
+        /// <summary>The page's own lines first, then the shared file's: the page overrides the file for a word both hold.</summary>
+        private static System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, string>> GlossaryFor(RimBabelSettings settings, string language)
+        {
+            int ignored;
+            var own = LineLists.ParseDictionary(settings.dictionaryText, out ignored);
+            string path = SharedDictionaryPath(language);
+            if (!File.Exists(path)) return own;
+            return LineLists.MergeDictionaries(own, LineLists.ParseDictionary(File.ReadAllText(path, Encoding.UTF8), out ignored));
+        }
+
+        /// <summary>Creates the shared dictionary file of a language with a short header, when it does not exist yet, and returns its path.</summary>
+        public static string EnsureSharedDictionary(string language)
+        {
+            string path = SharedDictionaryPath(language);
+            if (!File.Exists(path))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
+                File.WriteAllText(path, "# RimBabel dictionary for " + language + ", shared by every mod you translate into it.\n# One line per word: word = translation. The dictionary on the settings page wins where both have the same word.\n", new UTF8Encoding(false));
+            }
+            return path;
         }
 
         /// <summary>Takes back the machine texts one engine wrote in the package of a mod (see Merge.Flush), and writes the package again.</summary>

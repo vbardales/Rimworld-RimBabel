@@ -39,6 +39,8 @@
   <RimBabel.Settings.SourceLanguage>Langue des textes du mod</RimBabel.Settings.SourceLanguage>
   <RimBabel.Settings.SourceLanguageDesc>La langue dans laquelle sont écrits les mods que tu traduis. L’anglais par défaut ; choisis-en une autre pour un mod écrit en chinois ou en russe, par exemple : son dossier Languages dans cette langue est lu, et le moteur traduit depuis elle. Les textes écrits dans les Defs du mod sont considérés comme étant dans cette langue aussi.</RimBabel.Settings.SourceLanguageDesc>
   <RimBabel.Settings.SameLanguage>La langue des textes et la langue cible sont les mêmes : il n’y a rien à traduire.</RimBabel.Settings.SameLanguage>
+  <RimBabel.Settings.SharedDictionary>Ouvrir le dictionnaire commun à tous les mods</RimBabel.Settings.SharedDictionary>
+  <RimBabel.Settings.SharedDictionaryDesc>Un seul fichier pour la langue cible, utilisé pour tous les mods que tu traduis dans cette langue, à côté des paquets : {0}. Même format que la zone ci-dessus. Crée le fichier s’il n’existe pas encore ; la zone ci-dessus l’emporte pour un mot présent aux deux endroits.</RimBabel.Settings.SharedDictionaryDesc>
   <RimBabel.Settings.LibreUrlDesc>L’adresse de votre serveur LibreTranslate, par exemple http://localhost:5000. Une clé n’est nécessaire que si ce serveur en demande une.</RimBabel.Settings.LibreUrlDesc>
   <RimBabel.Settings.Email>Adresse e-mail</RimBabel.Settings.Email>
   <RimBabel.Settings.EmailDesc>Facultatif. MyMemory augmente son quota quotidien quand on lui donne une adresse e-mail. Rien d’autre n’est envoyé avec.</RimBabel.Settings.EmailDesc>
