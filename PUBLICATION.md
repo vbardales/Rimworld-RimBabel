@@ -62,7 +62,7 @@ RimBabel reads the texts of a mod, translates what is missing with the engine yo
 - One dictionary for every mod, so the same word is translated the same way everywhere.
 - A blacklist for texts that must remain unchanged.
 - Placeholders, tags and markers are kept out of the engine's sight and checked on the way back. A translation that loses one is refused.
-- Run it again when the source mod changes: only the texts that moved are translated again. Texts you reviewed by hand are never overwritten.
+- Run it again when the source mod changes: only new or changed texts are translated again. Texts you reviewed by hand are never overwritten.
 - Every text records which engine produced it, so you can remove one engine's output without disturbing the rest.
 - Import an existing translation as the starting point.
 - Settings under Mod options, in English and French. Your keys stay in the game's settings file on your computer.

@@ -8,7 +8,7 @@
 
   <!-- Engine -->
   <RimBabel.Settings.EngineHeader>Translation engine</RimBabel.Settings.EngineHeader>
-  <RimBabel.Settings.EngineDesc>Each service needs its own key, except a server running on your own computer.</RimBabel.Settings.EngineDesc>
+  <RimBabel.Settings.EngineDesc>Some services require an API key; others work without one.</RimBabel.Settings.EngineDesc>
   <RimBabel.Settings.EngineDeepL>DeepL</RimBabel.Settings.EngineDeepL>
   <RimBabel.Settings.EngineAnthropic>Anthropic (Claude)</RimBabel.Settings.EngineAnthropic>
   <RimBabel.Settings.EngineOpenAi>OpenAI-compatible server (Ollama, LM Studio, OpenRouter...)</RimBabel.Settings.EngineOpenAi>
