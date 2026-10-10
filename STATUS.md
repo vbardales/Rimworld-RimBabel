@@ -34,7 +34,7 @@ code_review_sha: a1e58b2a7487d9acf2459ba215659fdaf7750784
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
 updated:      2026-10-10, followUp[1.0.0]: 1.0.0 sent to Steam, tag v1.0.0 and release created by the CI; item still private
-protocols_read_sha: 9f58f59d4c756c649e692d7501d531325cbefa74
+protocols_read_sha: fcc251e46f641645cf3c59c4fc786ebd82d2038a
 ---
 
 # RimBabel - status
@@ -60,7 +60,7 @@ Audited against the current AUDIT.md, state by state: `setupRepo` to `playTests`
 - 11.d defect fixed 2026-10-10 (option B, owner): the THANKS line now links Auto Translation, AI Translation Network and Auto Translator (source `PUBLICATION.md` and `About.xml` updated in the repository). The Steam page does not have the links yet: the owner pastes the corrected description by hand; no new publish. The next CI publish with `update_description` sends the same text, so the page and the source agree afterwards. The owner pasted the corrected description on the Steam page on 2026-10-10 (chat), so the page and the source agree again; the published `About.xml` still lacks the links until the next CI publish.
 - 11.g: the owner answered the adult-content questionnaire `No` on the Steam page, 2026-10-10 (chat); the images were opened during the gallery sort (interface captures and a DALL-E preview, nothing sensitive).
 - 14.b: the owner posted the four thanks comments (Auto Translation Framework, Auto Translation, AI Translation Network, Auto Translator) on 2026-10-10, confirmed in chat ("les 4"); recorded in `WORKSHOP_COMMENTS.md`. I had not read the comment threads before drafting (descriptions only), so tone and language of each thread were never checked by a session. The two optional drafts stay unposted.
-- 14.a, English: Pickle run `20261010-114443-142-c116` (filter `02-settings,05-gallery`, evidence `Tests/Pickle/Evidence/nonreg-1.0.0-en`): 7 passed, 0 failed, 3 skipped (the `05-gallery` capture scenarios, outside the "sans-facultatifs" set), `exitReason: passed`. French run `20261010-114453-849-192a` pending.
+- 14.a, English: Pickle run `20261010-114443-142-c116` (filter `02-settings,05-gallery`, evidence `Tests/Pickle/Evidence/nonreg-1.0.0-en`): 7 passed, 0 failed, 3 skipped (the `05-gallery` capture scenarios, outside the "sans-facultatifs" set), `exitReason: passed`. French run `20261010-114453-849-192a` (evidence `nonreg-1.0.0-fr`): same result, 7 passed, 0 failed, 3 skipped, `exitReason: passed`. Non-regression of the changed texts holds in both languages; owed item closed. Line added to `docs/runs/history.md`.
 - 11.j: the owner said "relu" in chat on 2026-10-10, after being told of the 1.0.0 changelog section and the THANKS links fix; `publication_changelog_review_sha` recorded at the commit that carries the links fix.
 
 ## Where the work is
