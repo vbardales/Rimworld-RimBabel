@@ -44,6 +44,17 @@ internal static partial class Program
         EngineConfig c = back.ToConfig();
         Check(c.Kind == EngineKind.OpenAiCompatible && c.OpenAiModel == "qwen2.5" && c.BatchSize == 7 && c.DeepLKey == "dk:fx", "settings: ToConfig carries what the page set");
 
+        // 1.1.0 settings: documented defaults, a save and a load, an empty source language brought back to English, and the reset.
+        Check(d.sourceLanguage == "English" && d.reuseInstalledPacks && !d.oneModPerLanguage, "settings: the source language, the reuse of installed translations and the one-mod option start at their defaults (English, on, off)");
+        var s2 = new RimBabelSettings { sourceLanguage = "ChineseSimplified", reuseInstalledPacks = false, oneModPerLanguage = true };
+        SaveSettings(path, s2);
+        RimBabelSettings back2 = LoadSettings(path);
+        Check(back2.sourceLanguage == "ChineseSimplified" && !back2.reuseInstalledPacks && back2.oneModPerLanguage, "settings: the 1.1.0 settings survive a save and a load");
+        File.WriteAllText(path, "<settings><sourceLanguage></sourceLanguage></settings>");
+        Check(LoadSettings(path).sourceLanguage == "English", "settings: an empty source language is brought back to English");
+        s2.ResetExceptKeys();
+        Check(s2.sourceLanguage == "English" && s2.reuseInstalledPacks && !s2.oneModPerLanguage, "settings: reset restores the 1.1.0 settings");
+
         // The keys are in the settings file, and only there: the manifest and package files are written without them.
         string manifestXml = new Manifest { Language = "French" }.ToXml();
         Check(!manifestXml.Contains("dk:fx") && !manifestXml.Contains("sk-ant"), "settings: a key is never part of a manifest");
