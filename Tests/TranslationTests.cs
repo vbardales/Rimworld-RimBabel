@@ -160,9 +160,16 @@ internal static partial class Program
 
         // The retry rescues a text that only failed inside a batch.
         Entry b1 = Entry.Keyed("B1", "First {0} text here"), b2 = Entry.Keyed("B2", "Second {0} text here");
-        var flaky = new FakeEngine { Behaviour = t => t.Length > 1 ? t.Select(x => "oups").ToArray() : t };
+        var flaky = new FakeEngine { Behaviour = t => t.Length > 1 ? t.Select(x => "oups").ToArray() : upper(t) };
         PipelineReport rescued = Pipeline.Run(ManifestOf(b1, b2), flaky, "English", "French", 10);
         Check(rescued.Translated == 2 && rescued.Failed == 0 && b1.Status == EntryStatus.Machine, "pipeline: a retry alone rescues what failed in the batch");
+
+        // An engine that hands the source back is refused for a text of several words, let through for one word.
+        Entry u1 = Entry.Keyed("U1", "Still in English here"), u2 = Entry.Keyed("U2", "Colonist");
+        var same = new FakeEngine { Behaviour = t => t };
+        PipelineReport un = Pipeline.Run(ManifestOf(u1, u2), same, "English", "French", 10);
+        Check(un.Failed == 1 && un.Translated == 1 && u1.Status == EntryStatus.Pending && u1.Target == null && u2.Status == EntryStatus.Machine, "pipeline: an answer equal to a multi-word source is refused, a one-word one is kept");
+        Check(un.Failures.Count == 1 && un.Failures[0].Contains("unchanged"), "pipeline: the refusal says the text came back unchanged");
 
         // A shifted answer is dropped whole.
         Entry c1 = Entry.Keyed("C1", "First text here"), c2 = Entry.Keyed("C2", "Second text here");

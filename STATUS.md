@@ -7,7 +7,7 @@ packageId:    nelim.rimbabel
 repo:         Rimworld-RimBabel
 visibility:   public
 detached:     no
-workflow_stage: dormant
+workflow_stage: code[1.0.1]
 licence:      original
 licence_at:   original work
 upstream_mod_remotes: N/A
@@ -31,7 +31,7 @@ remaining:
 code_review_sha: a1e58b2a7487d9acf2459ba215659fdaf7750784
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
-updated:      2026-10-10, dormant: 1.0.0 published and public, cleanup done
+updated:      2026-10-10, code[1.0.1]: unchanged-answer refusal in Pipeline, 381 offline checks green
 protocols_read_sha: 9e53ad19092521ae81c488e37d06716b159dd78b
 ---
 

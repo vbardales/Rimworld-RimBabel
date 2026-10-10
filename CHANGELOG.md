@@ -5,7 +5,10 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 
 ## [Unreleased]
 
-Nothing yet.
+### Fixed
+
+- A translation that comes back identical to a multi-word source (an engine that handed the text back, a service that did not detect the language) is now refused and the text stays pending, instead of being stored as a machine translation. A one-word text is let through, since a name may be the same in both languages.
+
 
 ## [1.0.0] - 2026-10-10
 
