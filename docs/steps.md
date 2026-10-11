@@ -5,7 +5,7 @@ The Pickle steps this repository ships. **Pickle's own steps are in its catalogu
 [Nelim's Pickle Tools](https://github.com/vbardales/Rimworld-Nelim-Pickle-Tools/blob/main/docs/steps.md). Every step here starts with `RimBabel:` or names RimBabel (see the note on prefixes in `Tests/Pickle/README.md`).
 
 This file is **generated** from the `[Given]`, `[When]` and `[Then]` attributes of `Tests/Pickle/Source/` and the summary above them: do not edit it,
-run `docs/Generate-Steps.ps1` (`-Check` verifies that it is current). 51 steps. Pickle matches on the text alone, so a scenario may use
+run `scripts/Generate-Steps.ps1 -ModRoot RimBabel` of the protocols repository (`-Check` verifies that it is current). 59 steps. Pickle matches on the text alone, so a scenario may use
 `Given`, `When`, `Then` or `And` as it reads best. The steps of the Sanctuary are in [SanctuaryBacklot/docs/steps.md](https://github.com/vbardales/Rimworld-Nelim-Sanctuary-Backlot/blob/main/docs/steps.md).
 
 | Step | Does |
@@ -51,6 +51,14 @@ run `docs/Generate-Steps.ps1` (`-Check` verifies that it is current). 51 steps. 
 | `RimBabel: the file read back by the game holds author {string} and a dictionary of {int} lines` (Then) | (no description yet) |
 | `RimBabel: a fake translation server is listening` (Given) | (no description yet) |
 | `RimBabel: the engine is the fake server` (Given) | (no description yet) |
+| `RimBabel: the engine address is one that nothing listens on` (Given) | (no description yet) |
+| `RimBabel: I press the engine test button of the settings page` (When) | (no description yet) |
+| `RimBabel: the engine test says it worked with {string}` (Then) | (no description yet) |
+| `RimBabel: the engine test says it failed` (Then) | (no description yet) |
+| `RimBabel: the shared dictionary file of {string} does not exist` (Given) | (no description yet) |
+| `RimBabel: the shared dictionary file of {string} holds {string}` (Given) | (no description yet) |
+| `RimBabel: the settings ask for one translation mod per language` (Given) | (no description yet) |
+| `RimBabel: the one translation mod of {string} loads the folder of {string} only when that mod is active` (Then) | (no description yet) |
 | `RimBabel: the blacklist holds {string}` (Given) | (no description yet) |
 | `RimBabel: the dictionary holds {string}` (Given) | (no description yet) |
 | `RimBabel: I translate the mod {string} into {string} with the chosen engine` (When) | (no description yet) |
