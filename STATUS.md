@@ -16,7 +16,7 @@ licence_file: LICENSE (identical copy in Mod/LICENSE)
 dependencies: none (re-verified 2026-10-11 at 1.1.0, tree 4019ad7, no change: new code reads other mods only as data through `LoadedModManager.RunningModsListForReading`, adds no reference to a mod assembly; first verified 2026-10-07: no modDependencies, loadAfter or incompatibleWith in About.xml; Source references only the game through Krafs.Rimworld.Ref, no Harmony, no other mod; RIMMSQOL is an optional customization mod that may reveal the shortcut, nothing in the code names it; no LoadFolders.xml needed for a single 1.6 version)
 showcase:     unchecked
 settings_audit: partial
-tested_on:    2026-10-10 (Pickle final runs on tree 2aa7f56, English and French, 26 scenarios per language, 23 played outside their own passes; Source unchanged since 122fd14)
+tested_on:    2026-10-11 (Pickle final runs of 1.1.0 on tree f3043d0, Source unchanged since the 1.1.0 code: English and French, default pass 28 scenarios 22 played 6 skipped, avec-rimmsqol pass 3 of 3, all green; evidence docs/runs/evidence-1.1.0/final-*)
 workshop:      item 3814129753 (public; 1.0.1 sent by CI run 38072465989, tag v1.0.1, SHA 7a506da6c9dc970897b2e027992f85660d143126, manifest 4567641811929016102; 1.0.0 by run 38041633893)
 echo_review_sha: 161e5fb24cd2d72e40d1517acb7b260c25f8735d
 social_preview_sha256: 7c28a6e4c1bbd0f8585f47866ac60b98043a649e958a5b11773d938b0e1c823b
@@ -28,7 +28,7 @@ remaining:
   - unverified: licence of generated translation packages (a package derives from its source mod; `PackageWriter.Blockers`)
   - open: the four thanks comments were posted without a session having read the comment threads
   - note: there is no translation window in v1, only the developer-menu action and the settings page (`BACKLOG.md`)
-code_review_sha: 122fd14688b3ce8d493873d0ad6b19e8f1d84e82
+code_review_sha: f3043d0c36dde754aed964cfc68f027508a4a47b
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
 updated:      2026-10-11, playTests[1.1.0]: owner read the 11 new texts, English and French, validated in chat (translation_en and translation_fr complete); final Pickle passes and in-game settings checks next
