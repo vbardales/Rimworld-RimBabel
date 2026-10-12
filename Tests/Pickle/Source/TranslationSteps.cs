@@ -262,6 +262,56 @@ namespace RimBabel.PickleSteps
             listener = null;
         }
 
+        [When("RimBabel: the Mistral button of the settings page is applied")]
+        public void MistralPreset(PickleContext ctx)
+        {
+            SettingsPage.ApplyMistralPreset(Settings(ctx));
+        }
+
+        [Then("RimBabel: the engine address and model are Mistral's free tier and the key is untouched")]
+        public void MistralApplied(PickleContext ctx)
+        {
+            RimBabelSettings s = Settings(ctx);
+            ctx.Assert(s.openAiUrl == EngineConfig.MistralUrl && s.openAiModel == "open-mistral-nemo", "the address is '" + s.openAiUrl + "' and the model '" + s.openAiModel + "'");
+            ctx.Assert(s.openAiKey == "typed-by-the-player", "the key is '" + s.openAiKey + "', expected the one typed before");
+            ctx.Assert(EngineFactory.Problems(s.ToConfig()).Count == 0, "the preset leaves the configuration incomplete");
+        }
+
+        [Given("RimBabel: the OpenAI-compatible key typed is {string}")]
+        public void TypedKey(PickleContext ctx, string key) { Settings(ctx).openAiKey = key; }
+
+        [Given("RimBabel: the language of the texts is {string}")]
+        public void SourceLanguageIs(PickleContext ctx, string language) { Settings(ctx).sourceLanguage = language; }
+
+        [Then("RimBabel: translating the mod {string} into {string} is refused because there is nothing to translate")]
+        public void SameLanguageRefused(PickleContext ctx, string modName, string language)
+        {
+            ModContentPack mod = LoadedModManager.RunningModsListForReading.FirstOrDefault(m => m.Name == modName);
+            ctx.Require(mod != null, "no running mod is named '" + modName + "'");
+            bool refused = false;
+            try { PackageBuilder.Prepare(mod, language, "Pickle Tester", Settings(ctx), new WebHttp()); }
+            catch (InvalidOperationException e) { refused = e.Message.Contains("nothing to translate"); }
+            ctx.Assert(refused, "translating into the language of the texts was not refused");
+        }
+
+        [Then("RimBabel: the manifest lists no Keyed text, since the mod holds none in the language of the texts")]
+        public void NoKeyed(PickleContext ctx)
+        {
+            ctx.Assert(!Last(ctx).Manifest.Entries.Any(e => e.Kind == EntryKind.Keyed), "the manifest lists Keyed texts read from another language folder");
+            ctx.Assert(Last(ctx).Manifest.Entries.Any(e => e.Kind == EntryKind.DefInjected), "the manifest lists no def text either: the scan found nothing");
+        }
+
+        [Then("RimBabel: the installed translations next to {string} in {string} include {string} and none of RimBabel's own packages")]
+        public void InstalledPacksListed(PickleContext ctx, string modName, string language, string packageId)
+        {
+            ModContentPack mod = LoadedModManager.RunningModsListForReading.FirstOrDefault(m => m.Name == modName);
+            ctx.Require(mod != null, "no running mod is named '" + modName + "'");
+            var labels = PackageBuilder.InstalledPacks(mod, language).Select(p => p.Label).ToList();
+            ctx.Assert(labels.Any(l => l.EndsWith("(" + packageId + ")")), "no installed pack of " + packageId + " among: " + string.Join(", ", labels.ToArray()));
+            ctx.Assert(!labels.Any(l => l.Contains("(nelim.rimbabel.")), "a package RimBabel wrote itself is listed: " + string.Join(", ", labels.ToArray()));
+            ctx.Assert(!labels.Any(l => l.Contains("(" + mod.PackageId + ")")), "the mod being translated lists itself");
+        }
+
         private static Run Last(PickleContext ctx)
         {
             Run r = ctx.Get<Run>();

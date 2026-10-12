@@ -108,9 +108,7 @@ namespace RimBabel.Game
                     Rect mistralButton = presetRow.RightPart(0.5f);
                     if (Widgets.ButtonText(mistralButton, "RimBabel.Settings.MistralPreset".Translate()))
                     {
-                        // The key stays as the player typed it: Mistral needs one, and it is theirs.
-                        s.openAiUrl = EngineConfig.MistralUrl;
-                        s.openAiModel = EngineConfig.MistralFreeModel;
+                        ApplyMistralPreset(s);
                     }
                     TooltipHandler.TipRegion(mistralButton, "RimBabel.Settings.MistralPresetDesc".Translate());
                     break;
@@ -174,6 +172,13 @@ namespace RimBabel.Game
             string result = Widgets.TextField(new Rect(row.x + row.width * 0.27f, row.y, row.width * 0.73f, row.height), value ?? "");
             TooltipHandler.TipRegion(row, tipKey.Translate());
             return result;
+        }
+
+        /// <summary>The Mistral button: the address and the free-tier model. The key stays as the player typed it: Mistral needs one, and it is theirs.</summary>
+        public static void ApplyMistralPreset(RimBabelSettings s)
+        {
+            s.openAiUrl = EngineConfig.MistralUrl;
+            s.openAiModel = EngineConfig.MistralFreeModel;
         }
 
         /// <summary>What the page's test button does. Public so a Pickle scenario, which has no pointer to press the button with, can start the same test.</summary>

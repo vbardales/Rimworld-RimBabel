@@ -56,3 +56,17 @@ Feature: a mod is translated with the engine of the settings
     Given RimBabel: the settings ask for one translation mod per language
     When RimBabel: I translate the mod "RimBabel - Pickle tests" into "French" with the chosen engine
     Then RimBabel: the one translation mod of "French" loads the folder of "nelim.rimbabel.pickletests" only when that mod is active
+
+  Scenario: the Mistral button fills the address and the free-tier model and keeps the key
+    Given RimBabel: the OpenAI-compatible key typed is "typed-by-the-player"
+    When RimBabel: the Mistral button of the settings page is applied
+    Then RimBabel: the engine address and model are Mistral's free tier and the key is untouched
+
+  Scenario: a mod written in another language is not read as English, and the target cannot be the language of the texts
+    Given RimBabel: the language of the texts is "French"
+    Then RimBabel: translating the mod "RimBabel - Pickle tests" into "French" is refused because there is nothing to translate
+    When RimBabel: I translate the mod "RimBabel - Pickle tests" into "German" with the chosen engine
+    Then RimBabel: the manifest lists no Keyed text, since the mod holds none in the language of the texts
+
+  Scenario: the installed translations are found next to a mod, and RimBabel's own packages are left out
+    Then RimBabel: the installed translations next to "RimBabel - Pickle tests" in "French" include "nelim.rimbabel" and none of RimBabel's own packages
