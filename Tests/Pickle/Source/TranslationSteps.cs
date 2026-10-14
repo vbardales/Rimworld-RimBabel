@@ -52,7 +52,6 @@ namespace RimBabel.PickleSteps
         public void UseFakeServer(PickleContext ctx)
         {
             RimBabelSettings s = Settings(ctx);
-            if (before == null) before = Snapshot(s);
             s.ResetExceptKeys();
             s.engine = EngineKind.OpenAiCompatible;
             s.openAiUrl = Prefix + "v1";
@@ -322,6 +321,8 @@ namespace RimBabel.PickleSteps
         private static RimBabelSettings Settings(PickleContext ctx)
         {
             ctx.Require(RimBabelMod.Settings != null, "RimBabel's settings are not loaded: the mod did not start");
+            // The first step that reaches the settings records them, so Clean restores whatever a scenario changed.
+            if (before == null) before = Snapshot(RimBabelMod.Settings);
             return RimBabelMod.Settings;
         }
 

@@ -32,7 +32,7 @@ code_review_sha: f3043d0c36dde754aed964cfc68f027508a4a47b
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
 updated:      2026-10-11, playTests[1.1.0]: owner read the 11 new texts, English and French, validated in chat (translation_en and translation_fr complete); final Pickle passes and in-game settings checks next
-protocols_read_sha: a5c7cf48b349ae00e7d28fd643e852dc860dfaf2
+protocols_read_sha: 1eba2baf4d52f146b4fe4f01d90bdd9f0988979e
 ---
 
 # RimBabel - status
