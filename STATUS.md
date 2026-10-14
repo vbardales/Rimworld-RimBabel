@@ -28,7 +28,7 @@ remaining:
   - unverified: licence of generated translation packages (a package derives from its source mod; `PackageWriter.Blockers`)
   - open: the four thanks comments were posted without a session having read the comment threads
   - note: there is no translation window in v1, only the developer-menu action and the settings page (`BACKLOG.md`)
-code_review_sha: f3043d0c36dde754aed964cfc68f027508a4a47b
+code_review_sha: 889972c691b8b7d3692ece4baed23733d8c2d9db
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
 updated:      2026-10-11, playTests[1.1.0]: owner read the 11 new texts, English and French, validated in chat (translation_en and translation_fr complete); final Pickle passes and in-game settings checks next
@@ -50,7 +50,7 @@ Current state only. The history of earlier decisions is in `git log STATUS.md`; 
 - **Dependencies:** none (no modDependencies, loadAfter or incompatibleWith; `Krafs.Rimworld.Ref` only; no Harmony). RIMMSQOL is an optional customization mod that may reveal the shortcut.
 - **Gallery and page:** `Art/Gallery/` holds `0-preview.png`, `1-engines.png`, `2-dictionary-and-blacklist.png` (accepted, cropped 5 px each side). Icon source `Art/ModIcon-source.png` (DALL-E, cut out by the owner), preview background DALL-E (stated in the description). Social preview uploaded by the owner and checked byte for byte (`social_preview_sha256`). Adult-content questionnaire answered `No` on the page.
 - **Comments:** the four thanks comments are posted (`WORKSHOP_COMMENTS.md`); two optional drafts stay unposted.
-- **Reviews:** `publication_changelog_review_sha` recorded for the 1.0 line (owner, chat 2026-10-10).
+- **Reviews:** `publication_changelog_review_sha` recorded for the 1.0 line (owner, chat 2026-10-10). `code_review_sha` at 889972c (2026-10-14): review of f3043d0..889972c, one code change (`SettingsPage.ApplyMistralPreset`, a pure extraction, behaviour identical), no finding; the Pickle steps got a settings snapshot at first access (test code only).
 
 ## Cleanup of 2026-10-10 (AUDIT 14.c to 14.e, after 1.0.1)
 
