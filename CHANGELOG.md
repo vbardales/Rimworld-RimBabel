@@ -15,6 +15,10 @@ This file serves the repository and the writing of Steam patch notes; RimWorld d
 - An option to also generate one translation mod for the whole language, holding every translated mod's texts in a folder of its own that loads only when that mod is active. The per-mod packages stay as they are; a developer-menu entry rebuilds it.
 - Pickle scenarios for the shared dictionary and the one-mod option.
 
+### Fixed
+
+- The settings page showed only its title as soon as an engine with a longer form than DeepL was chosen (Anthropic, OpenAI-compatible and the others): the page outgrew the height it had measured, the list started a second column and drew everything out of view. It now stays in one column. An error in one section of the page no longer blanks the others and is logged once.
+
 ### Changed
 
 - Generated package repositories now ignore `build/` instead of `.build/`.
