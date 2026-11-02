@@ -27,12 +27,14 @@ remaining:
   - unverified: Mistral only with two sentences, no whole mod; DeepL, Anthropic, OpenAI-compatible, Google Cloud, LibreTranslate, Yandex and Mistral answered a real service once each (docs/runs/history.md); the page's test button is covered by two Pickle scenarios (fake server)
   - unverified: licence of generated translation packages (a package derives from its source mod; `PackageWriter.Blockers`)
   - open: the four thanks comments were posted without a session having read the comment threads
+  - open (8.m, 8.a, 8.c, 7.f): Source/Game/SettingsPage.cs and Mod/Assemblies/RimBabel.dll changed after code_review_sha 889972c and are not committed (maxOneColumn + Guard, the blank settings page fix, CHANGELOG already says it); the Pickle greens (tree f3043d0) predate it: commit it, review the diff, replay the settings scenarios (02-settings) on the new build
+  - open (Check-Steps): 05-gallery.feature lacks @requires:nelim.pickletools.clickdiagnostics; pattern `the dictionary holds {string}` used by no feature
   - note: there is no translation window in v1, only the developer-menu action and the settings page (`BACKLOG.md`)
 code_review_sha: 889972c691b8b7d3692ece4baed23733d8c2d9db
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
-updated:      2026-10-11, playTests[1.1.0]: owner read the 11 new texts, English and French, validated in chat (translation_en and translation_fr complete); final Pickle passes and in-game settings checks next
-protocols_read_sha: 1eba2baf4d52f146b4fe4f01d90bdd9f0988979e
+updated:      2026-11-02, replay-audit: stays playTests[1.1.0]; uncommitted SettingsPage fix reopens 8.m, 8.a, 8.c; checks green (Status 0, ModBasics 0, Translations 0, UnitTests 434 ok, Steps 0)
+protocols_read_sha: 0780ca047aea43f76e2cd7beeb16ae995344952d
 ---
 
 # RimBabel - status
