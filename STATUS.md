@@ -27,13 +27,15 @@ remaining:
   - unverified: Mistral only with two sentences, no whole mod; DeepL, Anthropic, OpenAI-compatible, Google Cloud, LibreTranslate, Yandex and Mistral answered a real service once each (docs/runs/history.md); the page's test button is covered by two Pickle scenarios (fake server)
   - unverified: licence of generated translation packages (a package derives from its source mod; `PackageWriter.Blockers`)
   - open: the four thanks comments were posted without a session having read the comment threads
-  - open (8.m, 8.a, 8.c, 7.f): Source/Game/SettingsPage.cs and Mod/Assemblies/RimBabel.dll changed after code_review_sha 889972c and are not committed (maxOneColumn + Guard, the blank settings page fix, CHANGELOG already says it); the Pickle greens (tree f3043d0) predate it: commit it, review the diff, replay the settings scenarios (02-settings) on the new build
+  - open (8.m, 8.c): settings page fix committed 270c20c (maxOneColumn + Guard, 4 new 02-settings scenarios); diff read, no finding; Pickle ticket 20261103-073748-478-d5fe (filter 02-settings, Inbox/settings-270c20c) queued: on green set code_review_sha 270c20c, tested_on, 8.h; on red fix and replay alone
+  - open (NPT): Tests/Pickle/Source/RadioSteps.cs is a local Harmony step (real radio click); AGENTS.md wants NPT to own such a step: ask NPT, TM messages were held 2026-11-02
+  - open (owner, uncommitted, not RimBabel code): Art/Preview.config.json, Art/echo.png deleted, Art/echo-concept.png, Tools/*.ps1 deleted, Docs/runs/evidence-1.1.0 new folders
   - open (Check-Steps): 05-gallery.feature lacks @requires:nelim.pickletools.clickdiagnostics; pattern `the dictionary holds {string}` used by no feature
   - note: there is no translation window in v1, only the developer-menu action and the settings page (`BACKLOG.md`)
 code_review_sha: 889972c691b8b7d3692ece4baed23733d8c2d9db
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
-session:      local_ac6b8630-0142-49f6-bec9-a501e9012332
-updated:      2026-11-02, replay-audit: stays playTests[1.1.0]; uncommitted SettingsPage fix reopens 8.m, 8.a, 8.c; checks green (Status 0, ModBasics 0, Translations 0, UnitTests 434 ok, Steps 0)
+session:      local_9e2c4b7c-b3a8-410e-8935-ab26891a29ac
+updated:      2026-11-03, playTests[1.1.0]: settings fix 270c20c committed, Pickle ticket 20261103-073748-478-d5fe queued on 02-settings
 protocols_read_sha: 0780ca047aea43f76e2cd7beeb16ae995344952d
 ---
 
