@@ -66,7 +66,7 @@ that only exists in the newer profile can fail here without being a defect in th
 
 A real list of Defs, a settings window, a restart and the main bar only exist in a running game, so they are Pickle scenarios
 (`Tests/Pickle/`, eight features, 26 scenarios, played in English and in French through the Ticket Dispatcher; the step
-assemblies are in `Tests/Pickle/Source/`, `Check-Steps.ps1` checks the step expressions). **Not tested anywhere: the real
+assemblies are in `Tests/Pickle/Source/`, the shared `scripts/Check-Steps.ps1` checks the step expressions). **Not tested anywhere: the real
 services.** No automated test calls DeepL, Anthropic, OpenAI, Google Cloud or the others: they run against a fake endpoint
 (offline in `Tests/`, and a small server on the loopback address in `04-translation`). Each real service was tried once by
 hand with a throwaway program outside the repository, and the outcome is in `docs/runs/history.md`.
