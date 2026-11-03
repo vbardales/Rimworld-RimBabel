@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -88,6 +89,15 @@ namespace RimBabel.PickleSteps
         public async Task Draws(PickleContext ctx, int frames)
         {
             await ctx.WaitFrames(frames);
+        }
+
+        // What the player does with the radio buttons, without a pointer: the page then draws the section of that engine.
+        [When("RimBabel: the engine {string} is chosen")]
+        public void ChooseEngine(PickleContext ctx, string engine)
+        {
+            EngineKind kind;
+            ctx.Require(Enum.TryParse(engine, out kind), "'" + engine + "' is not an engine kind");
+            Settings(ctx).engine = kind;
         }
 
         [When("RimBabel: I set the author name to {string}")]

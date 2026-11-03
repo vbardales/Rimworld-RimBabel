@@ -32,6 +32,61 @@ Feature: RimBabel's settings page and its hidden shortcut
     Then no errors were logged
     When I close all dialogs
 
+  Scenario: the page draws without an error whichever engine is chosen
+    Given RimBabel: settings are at their defaults
+    When RimBabel's settings shortcut is activated
+    And RimBabel: the engine "DeepL" is chosen
+    And RimBabel: the settings window draws for 10 frames
+    Then no errors were logged
+    And RimBabel: the engine "Anthropic" is chosen
+    And RimBabel: the settings window draws for 10 frames
+    Then no errors were logged
+    And RimBabel: the engine "OpenAiCompatible" is chosen
+    And RimBabel: the settings window draws for 10 frames
+    Then no errors were logged
+    And RimBabel: the engine "GoogleCloud" is chosen
+    And RimBabel: the settings window draws for 10 frames
+    Then no errors were logged
+    And RimBabel: the engine "LibreTranslate" is chosen
+    And RimBabel: the settings window draws for 10 frames
+    Then no errors were logged
+    And RimBabel: the engine "MyMemory" is chosen
+    And RimBabel: the settings window draws for 10 frames
+    Then no errors were logged
+    And RimBabel: the engine "Yandex" is chosen
+    And RimBabel: the settings window draws for 10 frames
+    Then no errors were logged
+    When I close all dialogs
+
+  Scenario: a real click on the Anthropic radio shows the Anthropic section without an error
+    Given RimBabel: settings are at their defaults
+    And RimBabel: the radio buttons of the settings page can be clicked
+    When RimBabel's settings shortcut is activated
+    And RimBabel: the settings window draws for 10 frames
+    And I take a screenshot "RimBabel before the click"
+    And RimBabel: I click the radio keyed "RimBabel.Settings.EngineAnthropic"
+    And RimBabel: the settings window draws for 10 frames
+    Then RimBabel: the engine of the settings is "Anthropic"
+    And no errors were logged
+    And I take a screenshot "RimBabel Anthropic section"
+    When I close all dialogs
+
+  Scenario: the page after choosing Anthropic by code, for a person to look at
+    Given RimBabel: settings are at their defaults
+    When RimBabel's settings shortcut is activated
+    And RimBabel: the engine "Anthropic" is chosen
+    And RimBabel: the settings window draws for 10 frames
+    And I take a screenshot "RimBabel engine Anthropic by code"
+    And I close all dialogs
+
+  Scenario: the page after choosing OpenAiCompatible by code, for a person to look at
+    Given RimBabel: settings are at their defaults
+    When RimBabel's settings shortcut is activated
+    And RimBabel: the engine "OpenAiCompatible" is chosen
+    And RimBabel: the settings window draws for 10 frames
+    And I take a screenshot "RimBabel engine OpenAiCompatible by code"
+    And I close all dialogs
+
   Scenario: a changed setting reaches the file the game writes, and no key is there when none was set
     When RimBabel: I set the author name to "Pickle Tester"
     And RimBabel: the settings are written

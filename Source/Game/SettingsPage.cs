@@ -27,18 +27,22 @@ namespace RimBabel.Game
             var view = new Rect(0f, 0f, inRect.width - 20f, viewHeight);
             Widgets.BeginScrollView(inRect, ref scroll, view);
             var l = new Listing_Standard();
+            // One column however tall the content: the listing starts a new column when a row passes the height it was given,
+            // and that height is last pass's content height. A longer section (another engine) made the content outgrow it once,
+            // the new column shrank the measured height, and every later pass drew everything off to the right.
+            l.maxOneColumn = true;
             l.Begin(view);
 
             l.Label("RimBabel.Settings.Intro".Translate());
             l.Gap(4f);
 
-            DrawEngine(l, s);
+            Guard("engine", () => DrawEngine(l, s));
             l.GapLine(10f);
-            DrawPackages(l, s);
+            Guard("packages", () => DrawPackages(l, s));
             l.GapLine(10f);
-            DrawDictionary(l, s);
+            Guard("dictionary", () => DrawDictionary(l, s));
             l.GapLine(10f);
-            DrawBlacklist(l, s);
+            Guard("blacklist", () => DrawBlacklist(l, s));
             l.GapLine(10f);
 
             Rect reset = l.GetRect(30f);
@@ -52,6 +56,18 @@ namespace RimBabel.Game
             Widgets.EndScrollView();
         }
 
+        /// <summary>One failing section must not blank the whole page: an exception left the scroll view open, and the game drew nothing after the first line. The cause is logged once.</summary>
+        private static void Guard(string section, Action draw)
+        {
+            try { draw(); }
+            catch (Exception ex)
+            {
+                GUI.color = Color.white;
+                Text.Font = GameFont.Small;
+                Log.ErrorOnce("[RimBabel] The settings page failed in its " + section + " section: " + ex, 0x5E77 + section.GetHashCode());
+            }
+        }
+
         // ---- engine ----
 
         private static void DrawEngine(Listing_Standard l, RimBabelSettings s)
@@ -60,6 +76,7 @@ namespace RimBabel.Game
             l.Label("RimBabel.Settings.EngineHeader".Translate());
             Text.Font = GameFont.Small;
             l.Label("RimBabel.Settings.EngineDesc".Translate());
+
 
             if (l.RadioButton("RimBabel.Settings.EngineDeepL".Translate(), s.engine == EngineKind.DeepL)) s.engine = EngineKind.DeepL;
             if (l.RadioButton("RimBabel.Settings.EngineAnthropic".Translate(), s.engine == EngineKind.Anthropic)) s.engine = EngineKind.Anthropic;
