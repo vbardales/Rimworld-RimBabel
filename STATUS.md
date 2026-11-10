@@ -16,7 +16,7 @@ licence_file: LICENSE (identical copy in Mod/LICENSE)
 dependencies: none (re-verified 2026-10-11 at 1.1.0, tree 4019ad7, no change: new code reads other mods only as data through `LoadedModManager.RunningModsListForReading`, adds no reference to a mod assembly; first verified 2026-10-07: no modDependencies, loadAfter or incompatibleWith in About.xml; Source references only the game through Krafs.Rimworld.Ref, no Harmony, no other mod; RIMMSQOL is an optional customization mod that may reveal the shortcut, nothing in the code names it; no LoadFolders.xml needed for a single 1.6 version)
 showcase:     unchecked
 settings_audit: partial
-tested_on:    2026-10-11 (Pickle final runs of 1.1.0 on tree f3043d0, Source unchanged since the 1.1.0 code: English and French, default pass 28 scenarios 22 played 6 skipped, avec-rimmsqol pass 3 of 3, all green; evidence docs/runs/evidence-1.1.0/final-*)
+tested_on:    2026-11-04 (ticket 20261103-073748-478-d5fe, filter 02-settings, tree 270c20c: 11 of 11 passed; evidence Tests/Pickle/Inbox/settings-270c20c, to minify into Evidence). Earlier 2026-10-11 (Pickle final runs of 1.1.0 on tree f3043d0, Source unchanged since the 1.1.0 code: English and French, default pass 28 scenarios 22 played 6 skipped, avec-rimmsqol pass 3 of 3, all green; evidence docs/runs/evidence-1.1.0/final-*)
 workshop:      item 3814129753 (public; 1.0.1 sent by CI run 38072465989, tag v1.0.1, SHA 7a506da6c9dc970897b2e027992f85660d143126, manifest 4567641811929016102; 1.0.0 by run 38041633893)
 echo_review_sha: 161e5fb24cd2d72e40d1517acb7b260c25f8735d
 social_preview_sha256: 7c28a6e4c1bbd0f8585f47866ac60b98043a649e958a5b11773d938b0e1c823b
@@ -27,16 +27,17 @@ remaining:
   - unverified: Mistral only with two sentences, no whole mod; DeepL, Anthropic, OpenAI-compatible, Google Cloud, LibreTranslate, Yandex and Mistral answered a real service once each (docs/runs/history.md); the page's test button is covered by two Pickle scenarios (fake server)
   - unverified: licence of generated translation packages (a package derives from its source mod; `PackageWriter.Blockers`)
   - open: the four thanks comments were posted without a session having read the comment threads
-  - open (8.m, 8.c): settings page fix committed 270c20c (maxOneColumn + Guard, 4 new 02-settings scenarios); diff read, no finding; Pickle ticket 20261103-073748-478-d5fe (filter 02-settings, Inbox/settings-270c20c) queued: on green set code_review_sha 270c20c, tested_on, 8.h; on red fix and replay alone
+  - done (8.m, 8.c): settings page fix 270c20c, diff read, no finding; ticket d5fe green 11 of 11; Inbox run settings-270c20c still to minify into Evidence (`Prune-Evidence.ps1 -Mod RimBabel -Apply` would also delete final2-rimmsqol-en: judge first)
+  - done 2026-11-10: Preview rendered again with the new config schema, committed 31d229d
   - open (NPT): Tests/Pickle/Source/RadioSteps.cs is a local Harmony step (real radio click); AGENTS.md wants NPT to own such a step: ask NPT, TM messages were held 2026-11-02
   - open (owner, uncommitted, not RimBabel code): Art/Preview.config.json, Art/echo.png deleted, Art/echo-concept.png, Tools/*.ps1 deleted, Docs/runs/evidence-1.1.0 new folders
   - open (Check-Steps): 05-gallery.feature lacks @requires:nelim.pickletools.clickdiagnostics; pattern `the dictionary holds {string}` used by no feature
   - note: there is no translation window in v1, only the developer-menu action and the settings page (`BACKLOG.md`)
-code_review_sha: 889972c691b8b7d3692ece4baed23733d8c2d9db
+code_review_sha: 270c20c
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_9e2c4b7c-b3a8-410e-8935-ab26891a29ac
-updated:      2026-11-03, playTests[1.1.0]: settings fix 270c20c committed, Pickle ticket 20261103-073748-478-d5fe queued on 02-settings
-protocols_read_sha: 0780ca047aea43f76e2cd7beeb16ae995344952d
+updated:      2026-11-10, playTests[1.1.0]: resume done, Preview rendered again (31d229d), ticket d5fe green 11 of 11, code_review_sha 270c20c
+protocols_read_sha: adee907759387d40808fa758a3029ac1ece7bc5d
 ---
 
 # RimBabel - status
