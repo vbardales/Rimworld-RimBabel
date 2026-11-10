@@ -1,21 +1,14 @@
 {
   "panel": {
     "title": "RimBabel",
-    "titleSize": 54,
     "titleParts": [
-      { "text": "RimBabel", "scale": 1 }
+      { "text": "RimBabel" }
     ],
-    "copyLines": [
-      "Translate any mod with DeepL, Claude or your own server, and get a translation mod ready to publish."
-    ]
+    "description": "Translate any mod with DeepL, Claude or your own server, and get a translation mod ready to publish."
   },
-  "backgroundFile": "Preview-source.png",
-  "echo": {
-    "file": "echo-concept.png"
-  },
-  "icon": {
-    "file": "ModIcon-source.png"
-  },
+  "background": { "file": "Preview-source.png" },
+  "icon": { "file": "ModIcon-source.png" },
+  "echo": { "file": "echo-concept.png" },
   "palette": {
     "veil": "#2B2418",
     "inkPrimary": "#F2ECE1",
