@@ -29,7 +29,7 @@ remaining:
   - open: the four thanks comments were posted without a session having read the comment threads
   - done (8.m, 8.c): settings page fix 270c20c, diff read, no finding; ticket d5fe green 11 of 11; Inbox run settings-270c20c still to minify into Evidence (`Prune-Evidence.ps1 -Mod RimBabel -Apply` would also delete final2-rimmsqol-en: judge first)
   - done 2026-11-10: Preview rendered again with the new config schema, committed 31d229d
-  - open (8.f, ticket to file): avec-rimmsqol pass (03-rimmsqol-shortcut) not replayed since code commit 270c20c; 8.g other scenarios (01, 04 to 08) last run on f3043d0
+  - open (8.f, 8.i, tickets queued 2026-11-10 on cc1f5e5: 20261110-175115-145-5973 filter @rimmsqol map wsl-deps.avec-rimmsqol.map; 20261110-175047-741-dbad filter 02-settings French; evidence Tests/Pickle/Inbox/rimmsqol-cc1f5e5 and settings-fr-cc1f5e5): avec-rimmsqol pass (03-rimmsqol-shortcut) not replayed since code commit 270c20c; 8.g other scenarios (01, 04 to 08) last run on f3043d0
   - open (8.h, 8.i): settings in game in French after 270c20c, source-language picker, installed-pack scan, Mistral button; d5fe played in English only
   - open (8.l): Inbox run settings-270c20c read, to minify into Evidence; no docs/runs/history.md row for d5fe; Evidence 66.6 MB over the 2 MB target (Prune-Evidence.ps1)
   - open (owner): Mod/About/Preview.png changed 2026-11-10: upload the social preview again and record social_preview_sha256; TRANSLATION_REVIEW.md Review line (Virginie) is empty
