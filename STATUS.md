@@ -29,14 +29,18 @@ remaining:
   - open: the four thanks comments were posted without a session having read the comment threads
   - done (8.m, 8.c): settings page fix 270c20c, diff read, no finding; ticket d5fe green 11 of 11; Inbox run settings-270c20c still to minify into Evidence (`Prune-Evidence.ps1 -Mod RimBabel -Apply` would also delete final2-rimmsqol-en: judge first)
   - done 2026-11-10: Preview rendered again with the new config schema, committed 31d229d
+  - open (8.f, ticket to file): avec-rimmsqol pass (03-rimmsqol-shortcut) not replayed since code commit 270c20c; 8.g other scenarios (01, 04 to 08) last run on f3043d0
+  - open (8.h, 8.i): settings in game in French after 270c20c, source-language picker, installed-pack scan, Mistral button; d5fe played in English only
+  - open (8.l): Inbox run settings-270c20c read, to minify into Evidence; no docs/runs/history.md row for d5fe; Evidence 66.6 MB over the 2 MB target (Prune-Evidence.ps1)
+  - open (owner): Mod/About/Preview.png changed 2026-11-10: upload the social preview again and record social_preview_sha256; TRANSLATION_REVIEW.md Review line (Virginie) is empty
   - open (NPT): Tests/Pickle/Source/RadioSteps.cs is a local Harmony step (real radio click); AGENTS.md wants NPT to own such a step: ask NPT, TM messages were held 2026-11-02
   - open (owner, uncommitted, not RimBabel code): Art/Preview.config.json, Art/echo.png deleted, Art/echo-concept.png, Tools/*.ps1 deleted, Docs/runs/evidence-1.1.0 new folders
-  - open (Check-Steps): 05-gallery.feature lacks @requires:nelim.pickletools.clickdiagnostics; pattern `the dictionary holds {string}` used by no feature
+  - open (Check-Steps): pattern `the dictionary holds {string}` used by no feature (05-gallery.feature @requires fixed 2026-11-10)
   - note: there is no translation window in v1, only the developer-menu action and the settings page (`BACKLOG.md`)
-code_review_sha: 270c20c
+code_review_sha: 270c20c72fdba0ed2b74f5a529b3558d41014a28
 publication_changelog_review_sha: 5bec5c69e09b38b48829930baf0f1a817dad921f
 session:      local_9e2c4b7c-b3a8-410e-8935-ab26891a29ac
-updated:      2026-11-10, playTests[1.1.0]: resume done, Preview rendered again (31d229d), ticket d5fe green 11 of 11, code_review_sha 270c20c
+updated:      2026-11-10, playTests[1.1.0]: replay-audit, first open 8.f, stage unchanged; TRANSLATION_REVIEW.md regenerated, 05-gallery @requires fixed
 protocols_read_sha: adee907759387d40808fa758a3029ac1ece7bc5d
 ---
 

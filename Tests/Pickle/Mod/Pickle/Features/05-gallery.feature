@@ -12,6 +12,7 @@
 # key (masked on the page) and the author "Your name": no capture can hold a real key or a real name.
 @requires:nelim.pickletools.screenshotstudio
 @requires:nelim.pickletools.clearscreen
+@requires:nelim.pickletools.clickdiagnostics
 Feature: RimBabel's windows, as pictures for the gallery
 
   Background:
